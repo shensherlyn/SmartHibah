@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pakej Harga - SmartHibah</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --forest:    #032b1d; 
+      --forest-md: #0e3d2c;
+      --gold:      #bfa15f; 
+      --gold-lt:   #d9be7e;
+      --cream:     #faf7f2;
+      --white:     #ffffff;
+      --text:      #1a1a1a;
+      --muted:     #6b7a6e;
+      --border:    #dde8e2;
+      --radius:    16px;
+    }
+
+    * { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+      font-family: 'Poppins', sans-serif; 
+    }
+    
+    body { 
+      background-image: url('assets/bgsw.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      color: var(--text); 
+      line-height: 1.6; 
+    }
+    
+    /* ── 🛠️ NAV BAR / HEADER STATIK PREMIUM ── */
+    .header { 
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      background: var(--forest); 
+      color: var(--white); 
+      padding: 0 5% 0 0; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      z-index: 1000; 
+      box-shadow: 0 3px 15px rgba(0,0,0,.2);
+      height: 90px;
+    }
+    
+    .header-left {
+      display: flex;
+      align-items: center; 
+      gap: 25px;
+      height: 100%; 
+    }
+    
+    .header-logo-wrapper {
+      background: var(--white);
+      height: 100%; 
+      padding: 0 40px 0 5%; 
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom-right-radius: 90px 100px; 
+      border-right: 5px solid var(--gold);
+      box-shadow: 3px 0 10px rgba(0, 0, 0, 0.1); 
+    }
+    
+    .header-logo {
+      height: 50px; 
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .nav__links { 
+      display: flex; 
+      gap: 1.5rem; 
+      list-style: none; 
+      margin-left: auto; 
+      margin-right: 2rem; 
+    }
+    
+    .nav__links a { 
+      color: rgba(255,255,255,.88); 
+      text-decoration: none; 
+      font-size: .875rem; 
+      font-weight: 500; 
+      transition: color .2s; 
+    }
+    
+    .nav__links a:hover, .nav__links a.active { 
+      color: var(--gold-lt); 
+    }
+    
+    .nav__cta {
+      border: 2px solid var(--white);
+      color: var(--white);
+      background: transparent;
+      padding: .45rem 1.75rem; 
+      border-radius: 25px;
+      font-size: .875rem; 
+      font-weight: 600; 
+      text-decoration: none;
+      transition: all .2s ease;
+    }
+    
+    .nav__cta:hover { 
+      background: var(--white); 
+      color: var(--forest); 
+    }
+
+    .nav__hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      margin-left: auto;
+    }
+
+    .nav__hamburger span {
+      display: block;
+      width: 26px;
+      height: 3px;
+      background: var(--white);
+      border-radius: 2px;
+    }
+
+    .nav__mobile {
+      position: fixed;
+      top: 90px;
+      left: 0;
+      width: 100%;
+      background: var(--forest-md);
+      display: none;
+      flex-direction: column;
+      padding: 1.5rem 5%;
+      gap: 1.25rem;
+      z-index: 999;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .nav__mobile a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    .nav__mobile .nav__cta {
+      text-align: center;
+      margin-top: 0.5rem;
+      display: block;
+    }
+
+    .nav__mobile.open {
+      display: flex;
+    }
+
+    /* ── 🛠️ MAIN CONTAINER CONTENT ── */
+    .container { 
+      max-width: 1100px; 
+      margin: 10rem auto 4rem; 
+      padding: 0 5%; 
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── 🌟 SEKSYEN UTAMA PERKHIDMATAN (DIUBAH SUAI UNTUK KONTRAST TEKS) ── */
+    .services {
+      text-align: center;
+      padding: 3rem 2rem;
+      border-radius: var(--radius);
+      /* Jika anda menggunakan gambar keluarga sebagai background, buang tanda ulasan (comment) kod di bawah: */
+      /* background: linear-gradient(rgba(3, 43, 29, 0.7), rgba(3, 43, 29, 0.7)), url('assets/gambar-keluarga.png') no-repeat center/cover; */
+    }
+
+    .section-label {
+      color: var(--gold-lt);
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 0.5rem;
+      /* Tambah kesan bayang untuk naikkan contrast tulisan emas */
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7); 
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1rem;
+      /* Memastikan tulisan putih menyerlah dari background gambar */
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85); 
+    }
+
+    .section-sub {
+      color: rgba(255, 255, 255, 0.95); /* Cerahkan sedikit opacity dari 0.75 ke 0.95 */
+      max-width: 650px;
+      margin: 0 auto 3.5rem;
+      font-size: 1rem;
+      /* Memastikan perenggan penerangan mudah dibaca */
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8); 
+    }
+
+   /* Grid Pakej Baharu - 3 Kotak Dipaksa Sebaris Rapat */
+.services__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Sentiasa 3 lajur sebaris */
+  gap: 1.25rem; /* Jarak antara kotak dirapatkan sedikit supaya muat */
+  align-items: stretch;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Gaya Kad Kontainer (BEM) - Putih Solid (Tidak Transparan) */
+.service-card {
+  background: var(--white); /* Tukar kepada warna putih solid sepenuhnya */
+  border: 1px solid var(--border); /* Garisan luar yang kemas menggantikan sempadan transparan */
+  
+  /* Nota: Kesan 'backdrop-filter' & 'webkit-backdrop-filter' telah dipadamkan sepenuhnya */
+  
+  padding: 2.5rem 1.25rem; /* Padding kiri kanan dikecilkan sikit agar teks tidak sempit */
+  border-radius: var(--radius);
+  box-shadow: 0 10px 30px rgba(3, 43, 29, 0.06); /* Bayang dinaikkan sedikit untuk efek timbul yang premium */
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  animation: fadeInUp 0.5s ease-out both;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* Tambahan: Mengecilkan sedikit saiz teks senarai ciri-ciri agar muat sebaris dengan cantik */
+.service-card__features li {
+  font-size: 0.85rem;
+  gap: 8px;
+}
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 36px rgba(3, 43, 29, 0.15);
+      border-color: var(--gold);
+    }
+
+    /* Kad Menarik / Featured (SmartHibah Lengkap) */
+    .service-card--featured {
+      border: 2px solid var(--gold);
+      position: relative;
+    }
+
+    /* Pengurusan Badge */
+    .service-card__badge {
+      display: inline-block;
+      background: rgba(3, 43, 29, 0.08);
+      color: var(--forest);
+      padding: 0.25rem 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      border-radius: 20px;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .service-card--featured .service-card__badge {
+      background: var(--gold);
+      color: var(--white);
+    }
+
+    .service-card__head h3 {
+      font-size: 1.45rem;
+      color: var(--forest);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .service-card__head p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+      min-height: 44px;
+    }
+
+    /* Senarai Ciri-Ciri Elemen */
+    .service-card__features {
+      list-style: none;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .service-card__features li {
+      font-size: 0.9rem;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .service-card__features li::before {
+      content: '✓';
+      color: #28a745;
+      font-weight: 700;
+    }
+
+    /* Tag Harga */
+    .service-card__price {
+      font-size: 1.85rem;
+      color: var(--forest);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      margin-top: auto;
+    }
+
+    .service-card__price span {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    /* Butang CTA Dinamik */
+    .service-card__cta {
+      display: block;
+      background: var(--forest);
+      color: var(--white);
+      text-decoration: none;
+      text-align: center;
+      padding: 0.8rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+
+    .service-card__cta:hover {
+      background: var(--gold);
+      transform: translateY(-1px);
+    }
+
+    .service-card--featured .service-card__cta {
+      background: var(--gold);
+    }
+
+    .service-card--featured .service-card__cta:hover {
+      background: var(--forest);
+    }
+
+    /* Animasi Kelas Mengikut Masa Atur */
+    .anim { animation-fill-mode: both; }
+
+    @media (max-width: 768px) {
+      .header { padding: 0 5%; }
+      .nav__links { display: none; }
+      .nav__hamburger { display: flex; }
+      .container { margin-top: 8rem; }
+      .section-title { font-size: 2rem; } /* Pengecilan tulisan di telefon pintar */
+    }
+  /* ── 🤖 CHATBOT & WHATSAPP FLOATING CONTAINER ── */
+.floating-bot-wrapper {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999; /* Memastikan ia sentiasa di atas elemen footer */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Gabungan Ikon Suri & Lencana WhatsApp */
+.chatbot-trigger-container {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.chatbot-trigger-container:hover {
+  transform: scale(1.08);
+}
+
+/* Avatar Suri Bulat/Sipi - DIUBAH UNTUK MEMBESARKAN GIF */
+.suri-avatar {
+  width: 110px;        /* Asal: 75px -> Ditukar ke 110px */
+  height: 110px;       /* Asal: 75px -> Ditukar ke 110px */
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  background: #ffffff; /* Ditukar ke putih supaya latar belakang GIF kelihatan bersih */
+}
+
+.suri-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Lencana Mini WhatsApp di Bucu Avatar - DISESUAIKAN IKUT SAIZ BARU */
+.wa-mini-badge {
+  position: absolute;
+  bottom: 5px;         /* Diubah dari 2px ke 5px supaya kedudukan seimbang */
+  right: 5px;          /* Diubah dari 2px ke 5px supaya kedudukan seimbang */
+  width: 35px;         /* Asal: 25px -> Ditukar ke 35px */
+  height: 35px;        /* Asal: 25px -> Ditukar ke 35px */
+  background: #25d366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #fff; /* Ditebalkan sedikit bingkai putih */
+  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+}
+
+.wa-mini-badge svg {
+  width: 18px;         /* Asal: 14px -> Ditukar ke 18px */
+  height: 18px;        /* Asal: 14px -> Ditukar ke 18px */
+  fill: #fff;
+}
+
+/* ── KOTAK CHAT WINDOW - DIUBAH LEBIH LUAS DAN TINGGI ── */
+.chatbot-window {
+  position: absolute;
+  bottom: 125px;      /* Asal: 85px -> Dinaikkan sikit supaya tidak bertindih dengan bulatan Suri yang besar */
+  right: 0;
+  width: 400px;       /* Asal: 340px -> Ditukar ke 400px (Lebih lebar) */
+  height: 560px;      /* Asal: 460px -> Ditukar ke 560px (Lebih panjang) */
+  background: var(--white, #ffffff);
+  border-radius: 20px; /* Bucu tetingkap dibulatkan sedikit lagi agar sepadan */
+  box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+  border: 1px solid var(--border, #dde8e2);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.chatbot-window.open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* Elemen Dalaman Chat Window */
+.chat-header {
+  background: #032b1d; /* Warna forest syarikat */
+  color: #ffffff;
+  padding: 14px 18px;  /* Ditambah sedikit padding */
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 3px solid #bfa15f;
+}
+
+.chat-profile { display: flex; align-items: center; gap: 12px; }
+.chat-avatar-mini { width: 40px; height: 40px; border-radius: 50%; overflow: hidden; background: #fff; }
+.chat-avatar-mini img { width: 100%; height: 100%; object-fit: cover; }
+.chat-info h4 { font-size: 0.95rem; margin: 0; font-weight: 600; }
+.chat-info span { font-size: 0.75rem; color: #d9be7e; display: flex; align-items: center; gap: 5px; }
+.chat-info span::before { content: ''; width: 6px; height: 6px; background: #22c55e; border-radius: 50%; display: inline-block; }
+.close-chat-btn { background: none; border: none; color: #fff; font-size: 1.6rem; cursor: pointer; line-height: 1; }
+.chat-body { flex: 1; padding: 18px; background: #faf7f2; overflow-y: auto; display: flex; flex-direction: column; gap: 14px; }
+.message.bot { max-width: 85%; padding: 12px 14px; border-radius: 14px; font-size: 0.9rem; background: #fff; color: #1a1a1a; border-top-left-radius: 0; border: 1px solid #dde8e2; line-height: 1.48; }
+.chat-footer { padding: 12px; background: #fff; border-bottom-left-radius: 18px; border-bottom-right-radius: 18px; display: flex; gap: 10px; border-top: 1px solid #dde8e2; }
+.chat-input { flex: 1; padding: 10px 16px; border: 1px solid #dde8e2; border-radius: 24px; outline: none; font-size: 0.9rem; }
+.chat-send-btn { background: #032b1d; color: #fff; border: none; width: 38px; height: 38px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+
+/* Skrin Kecil Telefon - Mengelakkan Chatbox Terkeluar dari Skrin */
+@media (max-width: 480px) {
+  .floating-bot-wrapper { bottom: 15px; right: 15px; }
+  .suri-avatar { width: 85px; height: 85px; } /* Mengecil sedikit di mobile agar mesra pengguna */
+  .wa-mini-badge { width: 28px; height: 28px; bottom: 2px; right: 2px; }
+  .wa-mini-badge svg { width: 14px; height: 14px; }
+  .chatbot-window { width: calc(100vw - 30px); height: 480px; bottom: 100px; }
+}
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-left">
+      <div class="header-logo-wrapper">
+        <img src="assets/smarthibah1.png" alt="SmartHibah Logo" class="header-logo">
+      </div>
+    </div>
+    
+    <ul class="nav__links">
+      <li><a href="home.html">Laman Utama</a></li>
+      <li><a href="pakej.html" class="active">Pakej</a></li>
+      <li><a href="panduan.html">Panduan</a></li>
+      <li><a href="kalkulator.html">Kalkulator</a></li>
+      <li><a href="hubungi.html">Hubungi Kami</a></li>
+    </ul>
+    
+    <a href="login.html" class="nav__cta">Login</a>
+
+    <button class="nav__hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <div class="nav__mobile" id="mobileMenu">
+    <a href="home.html">Laman Utama</a>
+    <a href="pakej.html">Pakej</a>
+    <a href="panduan.html">Panduan</a>
+    <a href="kalkulator.html">Kalkulator</a>
+    <a href="hubungi.html">Hubungi Kami</a>
+    <a href="login.html" class="nav__cta">Login</a>
+  </div>
+
+  <div class="container">
+    
+    <section class="services" id="servis">
+      <p class="section-label anim">Pilihan Pakej</p>
+      <h2 class="section-title anim">Pilih Perkhidmatan Hibah</h2>
+      <p class="section-sub anim">Solusi menyeluruh dari penetapan harta sehingga penyediaan dokumen fizikal.</p>
+      
+      <div class="services__grid">
+        
+        <article class="service-card anim">
+          <div class="service-card__head">
+            <div class="service-card__badge">Asas</div>
+            <h3>SmartHibah Asas</h3>
+            <p>Penyediaan dokumen Hibah asas untuk aset terpilih.</p>
+          </div>
+          <div class="service-card__body">
+            <ul class="service-card__features">
+              <li>Kenal pasti aset untuk dihibahkan</li>
+              <li>Semakan kelayakan penerima</li>
+              <li>Nasihat ringkas agihan</li>
+              <li>Draf asas Deklarasi Hibah</li>
+            </ul>
+            <div class="service-card__price">RM 380 <span>/ dokumen</span></div>
+            <a class="service-card__cta" href="https://app.mysmartwills.com/portal/?company_id=4">Pilih Pakej</a>
+          </div>
+        </article>
+
+        <article class="service-card service-card--featured anim" style="transition-delay:.1s">
+          <div class="service-card__head">
+            <div class="service-card__badge">Popular</div>
+            <h3>SmartHibah Lengkap</h3>
+            <p>Pengurusan menyeluruh termasuk sokongan penuh dan dokumentasi rasmi.</p>
+          </div>
+          <div class="service-card__body">
+            <ul class="service-card__features">
+              <li>Semua dalam pakej Asas +</li>
+              <li>Penyediaan Dokumen Hibah penuh</li>
+              <li>Sesi semakan bersama pakar</li>
+              <li>Akuan berkanun dan tandatangan saksi</li>
+              <li>Panduan proses turun milik aset</li>
+            </ul>
+            <div class="service-card__price">RM 680 <span>/ dokumen</span></div>
+            <a class="service-card__cta" href="https://app.mysmartwills.com/portal/?company_id=4">Pilih Pakej</a>
+          </div>
+        </article>
+
+        <article class="service-card anim" style="transition-delay:.2s">
+          <div class="service-card__head">
+            <div class="service-card__badge">Korporat / Bisnes</div>
+            <h3>SmartHibah Korporat</h3>
+            <p>Hibah khusus untuk syer perniagaan atau pelaburan kompleks.</p>
+          </div>
+          <div class="service-card__body">
+            <ul class="service-card__features">
+              <li>Semua dalam pakej Lengkap +</li>
+              <li>Penilaian syer syarikat/perniagaan</li>
+              <li>Struktur perlindungan rakan kongsi</li>
+              <li>Pegawai perancang harta khusus</li>
+            </ul>
+            <div class="service-card__price">Hubungi Kami <span></span></div>
+            <a class="service-card__cta" href="http://wa.me/60182209929">Hubungi Penasihat</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </div>
+   <div class="floating-bot-wrapper">
+    
+    <div class="chatbot-trigger-container" id="chatTrigger">
+      <div class="suri-avatar">
+        <img src="assets/suri.gif" alt="Suri SmartWills">
+      </div>
+      <a href="https://wa.me/60182209929?text=Hai%20SmartWills,%20saya%20ingin%20bertanya%20mengenai%20perkhidmatan%20wasiat/hibah." 
+   target="_blank" 
+   class="wa-mini-badge" 
+   id="waLink">
+  <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.003 5.372 5.378 0 12.013 0c3.213.001 6.234 1.253 8.507 3.527 2.273 2.274 3.522 5.297 3.521 8.512-.004 6.643-5.379 12.015-12.015 12.015-2.006-.001-3.974-.5-5.764-1.451L0 24zm6.59-4.859c1.62.962 3.377 1.469 5.399 1.47 5.564 0 10.093-4.529 10.096-10.097.002-2.698-1.046-5.234-2.949-7.139C17.23 1.47 14.7.424 12.015.424 6.452.424 1.924 4.953 1.921 10.522c-.001 1.93.499 3.812 1.447 5.462l-.995 3.637 3.72-.976h-.046z"/></svg>
+</a>
+    </div>
+
+    <div class="chatbot-window" id="chatWindow">
+      <div class="chat-header">
+        <div class="chat-profile">
+          <div class="chat-avatar-mini">
+            <img src="assets/suri.gif" alt="Suri">
+          </div>
+          <div class="chat-info">
+            <h4>Suri</h4>
+            <span>Sedia Membantu</span>
+          </div>
+        </div>
+        <button class="close-chat-btn" id="closeChat">&times;</button>
+      </div>
+
+      <div class="chat-body">
+        <div class="message bot">
+          Hai! Saya Suri, pembantu maya SmartWills. Ada apa-apa soalan mengenai penyediaan draf dokumen hibah atau perancangan harta yang boleh saya bantu? 😊
+        </div>
+      </div>
+
+      <div class="chat-footer">
+        <input type="text" class="chat-input" placeholder="Tulis mesej di sini...">
+        <button class="chat-send-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+        </button>
+      </div>
+    </div>
+
+
+  <script>
+    document.getElementById('hamburger').addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    });
+    const chatTrigger = document.getElementById('chatTrigger');
+  const chatWindow = document.getElementById('chatWindow');
+  const closeChat = document.getElementById('closeChat');
+  const waLink = document.getElementById('waLink');
+
+  // Klik pada bulatan Suri akan buka/tutup chatbox
+  chatTrigger.addEventListener('click', () => {
+    chatWindow.classList.toggle('open');
+  });
+
+  // Klik pada butang hijau WhatsApp akan direct ke WhatsApp tanpa buka chatbox
+  waLink.addEventListener('click', (e) => {
+    e.stopPropagation(); // Menghalang kotak chatbox Suri daripada terbuka bersama
+  });
+
+  // Butang pangkah untuk tutup chatbox
+  closeChat.addEventListener('click', (e) => {
+    e.stopPropagation(); 
+    chatWindow.classList.remove('open');
+  });
+  // === KOD BARU: DIRECT TERUS KE WHATSAPP SELEPAS TEKAN SEND ===
+  const chatInput = document.querySelector('.chat-input');
+  const chatSendBtn = document.querySelector('.chat-send-btn');
+
+  function sendMessage() {
+    const messageText = chatInput.value.trim();
+    
+    // Jika pengguna tidak taip apa-apa, jangan hantar
+    if (messageText === '') return;
+
+    // 1. Nombor WhatsApp perniagaan anda (pastikan bermula dengan kod negara 60)
+    const phoneNum = "60182209929";
+
+    // 2. Menukar teks taipan menjadi format acuan URL (encode URL)
+    const encodedText = encodeURIComponent(messageText);
+
+    // 3. Bina pautan WhatsApp rasmi
+    const whatsappUrl = `https://wa.me/${phoneNum}?text=${encodedText}`;
+
+    // 4. Buka tab baru dan hantar mesej ke WhatsApp
+    window.open(whatsappUrl, '_blank');
+
+    // 5. Kosongkan semula ruangan input di laman web selepas dihantar
+    chatInput.value = '';
+  }
+
+  // Kekalkan fungsi trigger butang klik & enter yang sedia ada
+  if (chatSendBtn) {
+    chatSendBtn.addEventListener('click', sendMessage);
+  }
+
+  if (chatInput) {
+    chatInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        sendMessage();
+      }
+    });
+  }
+  </script>
+
+  </div>
+</body>
+</html>
