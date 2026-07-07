@@ -578,19 +578,43 @@
         gap: 1rem;
       }
     }
-    /* ── RESPONSIVE DENGAN KELAS NAV BAR BAHARU ── */
+ /* PADAMKAN KOD INI SUPAYA PADDING LOGO TIDAK MENGECIL PADA 992PX */
     @media (max-width: 992px) {
-      .header-logo-wrapper { padding-right: 20px; }
+      .header-logo-wrapper { padding-right: 20px; } 
       .nav__links { gap: 1rem; }
       .footer__container { grid-template-columns: 1.5fr repeat(3, 1fr); gap: 1.5rem; }
     }
 
-    /* ── RESPONSIVE MOBILE (TELAH DIPERBAIKI) ── */
+   /* ── RESPONSIVE MOBILE (TELAH DIPERBAIKI: 100% SAMA SEPERTI PAGE LAIN) ── */
     @media (max-width: 768px) {
-      /* 1. Sembunyikan menu desktop */
+      /* 1. Reset impak flex/gap pada header-left yang menolak logo ke dalam */
+      .header-left {
+        display: block !important; 
+        gap: 0 !important;         
+        height: 100%;
+      }
+
+      /* 2. Kekalkan spesifikasi wrapper logo tepat mengikut rekaan premium asal */
+      .header-logo-wrapper {
+        padding: 0 40px 0 5% !important; /* Force padding asal desktop */
+        border-bottom-right-radius: 90px 100px !important; /* Kekalkan lengkungan besar */
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* 3. Kekalkan saiz logo agar sentiasa tajam dan konsisten */
+      .header-logo {
+        height: 50px; 
+        width: auto;
+        object-fit: contain;
+      }
+
+      /* 4. Sembunyikan menu desktop */
       .nav__links, .nav__cta { display: none !important; }
 
-      /* 2. Hidupkan rupa bentuk butang Hamburger (3 Garisan Putih) */
+      /* 5. Hidupkan rupa bentuk butang Hamburger (3 Garisan Putih) */
       .nav__hamburger {
         display: flex !important;
         flex-direction: column;
@@ -601,7 +625,7 @@
         border: none;
         cursor: pointer;
         padding: 0;
-        margin-right: 5%; /* Selari dengan padding header */
+        margin-right: 5%; /* Selari dengan padding kanan header */
       }
 
       .nav__hamburger span {
@@ -611,14 +635,14 @@
         transition: all 0.3s ease;
       }
 
-      /* 3. Gaya Susunan Menu Mobil Dropdown */
+      /* 6. Gaya Susunan Menu Mobil Dropdown (Menggunakan '.open' mengikut JS anda) */
       .nav__mobile {
-        display: none; /* Sembunyi secara lalai */
+        display: none; 
         position: fixed;
         top: 90px; /* Diturunkan tepat di bawah tinggi header (90px) */
         left: 0;
         width: 100%;
-        background-color: var(--forest-md); /* Menggunakan warna forest medium tema anda */
+        background-color: var(--forest-md); 
         padding: 1.5rem;
         box-sizing: border-box;
         flex-direction: column;
@@ -627,8 +651,8 @@
         z-index: 999;
       }
 
-      /* Kelas pembuka apabila butang hamburger ditekan via JS */
-      .nav__mobile.active {
+      /* Mengaktifkan dropdown apabila menu dibuka */
+      .nav__mobile.open {
         display: flex !important;
       }
 
@@ -657,7 +681,7 @@
         border-radius: 25px;
       }
 
-      /* Kod asal Hero & Footer anda (Kekal & Tidak Diusik) */
+      /* Kod asal elemen Hero & Footer (Kekal & Tidak Diusik) */
       .hero { grid-template-columns: 1fr; padding: 3rem 5% 2rem; min-height: auto; gap: 2.5rem; }
       .hero__visual { order: -1; }
       .hero__h1 { font-size: 1.8rem; }
@@ -670,7 +694,6 @@
       .footer__desc { max-width: 100%; }
       .footer__bottom { flex-direction: column; text-align: center; margin-top: 2.5rem; }
     }
-
     @media (max-width: 480px) {
       .why__grid { grid-template-columns: 1fr 1fr; }
       .process__steps { grid-template-columns: 1fr 1fr; }
