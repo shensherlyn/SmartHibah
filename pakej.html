@@ -365,12 +365,55 @@
     /* Animasi Kelas Mengikut Masa Atur */
     .anim { animation-fill-mode: both; }
 
+   /* ── 📱 KOD PEMBAIKAN RESPONSIF TELEFON (MAX-WIDTH: 768px) ── */
     @media (max-width: 768px) {
-      .header { padding: 0 5%; }
-      .nav__links { display: none; }
-      .nav__hamburger { display: flex; }
-      .container { margin-top: 8rem; }
-      .section-title { font-size: 2rem; } /* Pengecilan tulisan di telefon pintar */
+      /* 1. Selesaikan masalah Header/Nav terkeluar skrin */
+      .header { 
+        padding: 0 5% 0 0; 
+        height: 70px; /* Kecilkan sedikit tinggi header di mobile */
+      }
+      .header-logo-wrapper {
+        padding: 0 20px 0 5%; /* Kurangkan padding dalam mobile */
+        border-bottom-right-radius: 45px 50px; /* Sesuaikan lengkungan */
+      }
+      .header-logo {
+        height: 35px; /* Kecilkan logo sedikit */
+      }
+      .nav__links, .nav__cta { 
+        display: none !important; 
+      }
+      .nav__hamburger { 
+        display: flex; 
+      }
+      .nav__mobile {
+        top: 70px; /* Selaraskan dengan tinggi header baru */
+      }
+
+      /* 2. Selesaikan masalah Kontainer Utama */
+      .container { 
+        margin: 7rem auto 3rem; 
+        padding: 0 4%;
+        overflow: hidden; /* Mengunci limpahan keluar */
+      }
+
+      /* 3. PEMBAIKAN UTAMA: Tukar 3 kotak sebaris menjadi susunan menegak (1 kotak 1 baris) */
+      .services__grid {
+        grid-template-columns: 1fr; /* Menjadi 1 lajur sahaja di telefon */
+        gap: 1.5rem;
+      }
+
+      .service-card {
+        padding: 2rem 1.5rem; /* Beri ruang teks bernafas */
+      }
+
+      .section-title { 
+        font-size: 1.8rem; 
+      }
+      
+      .section-sub {
+        font-size: 0.95rem;
+        margin-bottom: 2rem;
+      }
     }
   /* ── 🤖 CHATBOT & WHATSAPP FLOATING CONTAINER ── */
 .floating-bot-wrapper {
@@ -504,7 +547,7 @@
     </div>
     
     <ul class="nav__links">
-      <li><a href="home.html">Laman Utama</a></li>
+      <li><a href="index.html">Laman Utama</a></li>
       <li><a href="pakej.html" class="active">Pakej</a></li>
       <li><a href="panduan.html">Panduan</a></li>
       <li><a href="hubungi.html">Hubungi Kami</a></li>
@@ -518,7 +561,7 @@
   </header>
 
   <div class="nav__mobile" id="mobileMenu">
-    <a href="home.html">Laman Utama</a>
+    <a href="index.html">Laman Utama</a>
     <a href="pakej.html">Pakej</a>
     <a href="panduan.html">Panduan</a>
     <a href="hubungi.html">Hubungi Kami</a>
