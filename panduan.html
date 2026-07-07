@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Panduan SmartHibah</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartHibah – Deklarasi Hibah Online</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
       --forest:     #032b1d; 
       --forest-md: #0e3d2c;
-      --gold:       #bfa15f; 
+      --forest-lt: #2e6347;
+      --gold:      #bfa15f; 
       --gold-lt:   #d9be7e;
       --gold-pale: #f5e9c8;
       --cream:     #faf7f2;
@@ -20,14 +25,9 @@
       --radius:    16px;
     }
 
-    * { 
-      box-sizing: border-box; 
-      margin: 0; 
-      padding: 0; 
-      font-family: 'Poppins', sans-serif; 
-    }
-    
+    html { scroll-behavior: smooth; }
     body { 
+      font-family: 'Poppins', sans-serif;
       background-image: url('assets/bgsw.png');
       background-size: cover;
       background-position: center;
@@ -36,8 +36,8 @@
       color: var(--text); 
       line-height: 1.6; 
     }
-    
-    /* ── 🛠️ NAV BAR / HEADER STATIK ── */
+
+    /* ── 🛠️ NAV BAR / HEADER STATIK (100% SAMA SEPERTI PAKEJ.HTML) ── */
     .header { 
       position: fixed; 
       top: 0; 
@@ -61,6 +61,7 @@
       height: 100%; 
     }
     
+    /* KOTAK LOGO MELENGKUNG DENGAN GARISAN EMAS */
     .header-logo-wrapper {
       background: var(--white);
       height: 100%; 
@@ -80,6 +81,7 @@
       display: block;
     }
 
+    /* Pautan Navigasi Menu */
     .nav__links { 
       display: flex; 
       gap: 1.5rem; 
@@ -117,660 +119,1000 @@
       color: var(--forest); 
     }
 
-    .nav__hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 6px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0.5rem;
-      margin-left: auto;
+    /* ── HERO (DILARASKAN SUPAYA TIDAK TERTUTUP HEADER) ── */
+    .hero {
+      background: linear-gradient(135deg, var(--forest) 0%, var(--forest-md) 55%, #1e4a32 100%);
+      min-height: calc(100vh - 90px);
+      margin-top: 90px; 
+      display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+      padding: 5% 5% 4%;
+      gap: 3rem;
+      position: relative; overflow: hidden;
     }
-
-    .nav__hamburger span {
-      display: block;
-      width: 26px;
-      height: 3px;
-      background: var(--white);
-      border-radius: 2px;
-    }
-
-    .nav__mobile {
-      position: fixed;
-      top: 90px;
-      left: 0;
-      width: 100%;
-      background: var(--forest-md);
-      display: none;
-      flex-direction: column;
-      padding: 1.5rem 5%;
-      gap: 1.25rem;
-      z-index: 999;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-      border-top: 1px solid rgba(255,255,255,0.05);
-    }
-
-    .nav__mobile a {
-      color: var(--white);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 1rem;
-    }
-
-    .nav__mobile .nav__cta {
-      text-align: center;
-      margin-top: 0.5rem;
-      display: block;
-    }
-
-    .nav__mobile.open {
-      display: flex;
-    }
-
-    /* ── 🛠️ MAIN CONTAINER CONTENT ── */
-    .container { 
-      max-width: 1100px; 
-      margin: 10rem auto 4rem; 
-      padding: 0 5%; 
-      display: flex; 
-      flex-direction: column; 
-      gap: 3.5rem; 
-    }
-    
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Card Section Style */
-    .section-card { 
-      background: rgba(255, 255, 255, 0.97); 
-      padding: 3rem 2.5rem; 
-      border-radius: var(--radius); 
-      border: 1px solid rgba(255, 255, 255, 0.6); 
-      backdrop-filter: blur(16px); 
-      -webkit-backdrop-filter: blur(16px);
-      box-shadow: 0 15px 35px rgba(3, 43, 29, 0.05); 
-      animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
-    }
-    
-    .section-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 40px rgba(3, 43, 29, 0.12);
-      border-color: var(--gold);
-    }
-
-    .section-card h2 { color: var(--forest); font-size: 1.6rem; font-weight: 700; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 12px; }
-    .section-card h2::before { content: ''; display: inline-block; width: 6px; height: 26px; background: var(--gold); border-radius: 3px; }
-    
-    .section-card > p {
-      color: #333;
-      font-size: 1.05rem;
-      margin-bottom: 1.5rem;
-    }
-
-    /* Sub-grid Maklumat Dalaman (Premium List) */
-    .info-list-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-top: 1.5rem;
-    }
-
-    .info-list-card {
-      background: var(--cream);
-      padding: 1.5rem;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-    }
-
-    .info-list-card h3 {
-      color: var(--forest);
-      font-size: 1.1rem;
-      margin-bottom: 0.75rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .info-list-card h3::before {
-      content: '✓';
-      color: var(--gold);
-      font-weight: bold;
-    }
-
-    .info-list-card ul {
-      list-style: none;
-      padding-left: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .info-list-card ul li {
-      font-size: 0.9rem;
-      color: #4a5568;
-      position: relative;
-      padding-left: 14px;
-    }
-
-    .info-list-card ul li::before {
-      content: '•';
-      position: absolute;
-      left: 0;
-      color: var(--gold);
-    }
-
-    /* Grid untuk Proses */
-    .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin-top: 1.5rem; }
-    .step-item { background: rgba(250, 247, 242, 0.8); padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--forest); transition: all 0.25s ease; border-top: 1px solid var(--border); border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .step-item:hover { transform: translateY(-4px); background: var(--white); box-shadow: 0 8px 20px rgba(3, 43, 29, 0.08); border-color: var(--gold); }
-    .step-item h4 { color: var(--forest); margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 700; }
-
-    /* Jadual Korporat */
-    .table-responsive {
-      width: 100%;
-      overflow-x: auto;
-      margin-top: 1.5rem;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-    }
-
-    .comparison-table {
-      width: 100%;
-      border-collapse: collapse;
-      text-align: left;
-      font-size: 0.95rem;
-    }
-
-    .comparison-table th {
-      background: var(--forest);
-      color: var(--white);
-      padding: 1rem;
-      font-weight: 600;
-    }
-
-    .comparison-table td {
-      padding: 1rem;
-      border-bottom: 1px solid var(--border);
-      background: var(--white);
-      color: #333;
-    }
-
-    .comparison-table tr:nth-child(even) td {
-      background: var(--cream);
-    }
-
-    .comparison-table tr:last-child td {
-      border-bottom: none;
-    }
-
-    .highlight-td {
-      font-weight: 600;
-      color: var(--forest) !important;
-      background-color: rgba(191, 161, 95, 0.08) !important;
-    }
-
-    /* Style Kalkulator */
-    .calc-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2.5rem;
-      align-items: start;
-      margin-top: 1.5rem;
-    }
-
-    @media (max-width: 900px) {
-      .calc-layout { grid-template-columns: 1fr; gap: 1.5rem; }
-    }
-
-    .calc-box { width: 100%; background: var(--cream); padding: 2rem; border-radius: 12px; border: 1px solid var(--border); box-shadow: inset 0 2px 4px rgba(0,0,0,0.02); }
-    .form-group { margin-bottom: 1.5rem; }
-    .form-group label { display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--forest); }
-    .form-group input { width: 100%; padding: 0.85rem; border: 1px solid var(--border); border-radius: 8px; font-size: 1rem; outline: none; transition: all 0.2s; background: var(--white); box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
-    .form-group input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(191, 161, 95, 0.2); }
-    .calc-btn { background: var(--forest); color: var(--white); border: none; width: 100%; padding: 0.9rem; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 1rem; transition: all 0.2s; text-transform: uppercase; letter-spacing: 0.05em; }
-    .calc-btn:hover { background: var(--forest-md); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(3, 43, 29, 0.15); }
-    
-    .calc-info-pane {
-      background: rgba(191, 161, 95, 0.06);
-      border: 1px dashed var(--gold);
-      padding: 2rem;
-      border-radius: 12px;
-      height: 100%;
-    }
-
-    .calc-info-pane h3 { color: var(--forest); font-size: 1.2rem; margin-bottom: 0.75rem; }
-    .calc-info-pane p { font-size: 0.9rem; color: var(--muted); margin-bottom: 1rem; }
-
-    .calc-result { margin-top: 1.25rem; padding: 1.5rem; background: var(--white); border-radius: 8px; border-left: 5px solid #28a745; display: none; box-shadow: 0 4px 15px rgba(0,0,0,0.05); animation: fadeInUp 0.4s ease-out; }
-    .calc-result h4 { color: #28a745; font-size: 1.1rem; margin-bottom: 0.25rem; }
-    .calc-result .total-val { font-size: 1.8rem; font-weight: 800; color: var(--forest); margin-top: 0.25rem; }
-
-    /* Accordion FAQ */
-    details { background: rgba(250, 247, 242, 0.8); margin-bottom: 1rem; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); transition: all 0.3s ease; }
-    details[open] { border-color: var(--gold); background: var(--white); box-shadow: 0 4px 12px rgba(3, 43, 29, 0.04); }
-    summary { padding: 1.15rem; font-weight: 600; color: var(--forest); cursor: pointer; outline: none; display: flex; justify-content: space-between; align-items: center; }
-    summary::-webkit-details-marker { display: none; }
-    summary::after { content: '+'; font-size: 1.3rem; color: var(--gold); font-weight: bold; }
-    details[open] summary::after { content: '−'; }
-    .faq-content { padding: 1.25rem; background: var(--white); border-top: 1px solid var(--border); font-size: 0.92rem; color: #4a5568; line-height: 1.7; }
-
-    /* Premium Quote / Note block */
-    .premium-note {
-      background: var(--forest);
-      color: var(--white);
-      padding: 1.5rem;
-      border-radius: 10px;
-      margin-top: 1.5rem;
-      border-right: 4px solid var(--gold);
-    }
-    .premium-note p { font-size: 0.9rem; color: var(--gold-pale); }
-
-    /* Responsif Skrin Kecil / Mobile */
-    @media (max-width: 768px) {
-      .header { padding: 0 5%; }
-      .nav__links { display: none; }
-      .nav__hamburger { display: flex; }
-      .container { margin-top: 8rem; gap: 2.5rem; }
-      .section-card { padding: 2rem 1.5rem; }
-    }
-    
-    /* ── 🤖 CHATBOT & WHATSAPP FLOATING CONTAINER ── */
-    .floating-bot-wrapper {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 9999; 
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    .chatbot-trigger-container {
-      position: relative;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-
-    .chatbot-trigger-container:hover {
-      transform: scale(1.08);
-    }
-
-    .suri-avatar {
-      width: 110px;        
-      height: 110px;       
-      border-radius: 50%;
-      overflow: hidden;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-      background: #ffffff; 
-    }
-
-    .suri-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .wa-mini-badge {
-      position: absolute;
-      bottom: 5px;         
-      right: 5px;          
-      width: 35px;         
-      height: 35px;        
-      background: #25d366;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 3px solid #fff; 
-      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
-    }
-
-    .wa-mini-badge svg {
-      width: 18px;         
-      height: 18px;        
-      fill: #fff;
-    }
-
-    .chatbot-window {
-      position: absolute;
-      bottom: 125px;      
-      right: 0;
-      width: 400px;       
-      height: 560px;      
-      background: var(--white, #ffffff);
-      border-radius: 20px; 
-      box-shadow: 0 12px 40px rgba(0,0,0,0.25);
-      border: 1px solid var(--border, #dde8e2);
-      display: flex;
-      flex-direction: column;
-      opacity: 0;
-      transform: translateY(20px) scale(0.95);
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 70% at 80% 50%, rgba(184,146,42,.12), transparent);
       pointer-events: none;
-      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .hero__eyebrow {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(184,146,42,.18);
+      color: var(--gold-lt);
+      padding: .35rem .9rem; border-radius: 20px;
+      font-size: .78rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+    .hero__eyebrow::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold-lt); }
+
+    /* ── 📸 TULISAN HERO ── */
+    .hero__h1 {
+      font-size: clamp(2.5rem, 5.5vw, 3.8rem); 
+      font-weight: 850; 
+      color: var(--white); 
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.4);
     }
 
-    .chatbot-window.open {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-      pointer-events: auto;
+    .hero__h1 em { 
+      color: var(--gold-lt); 
+      font-style: normal; 
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     }
 
-    .chat-header {
-      background: #032b1d; 
-      color: #ffffff;
-      padding: 14px 18px;  
-      border-top-left-radius: 18px;
-      border-top-right-radius: 18px;
+    .hero__sub {
+      color: rgba(255, 255, 255, 0.95); 
+      font-size: 1.2rem; 
+      font-weight: 500; 
+      max-width: 700px;
+      margin: 0 auto 2.5rem; 
+      line-height: 1.7;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    }
+    .hero__actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-gold {
+      background: var(--gold); color: var(--white);
+      padding: .8rem 1.75rem; border-radius: 10px;
+      font-size: .95rem; font-weight: 600; text-decoration: none;
+      transition: background .2s, transform .15s; display: inline-block;
+    }
+    .btn-gold:hover { background: var(--gold-lt); transform: translateY(-2px); }
+    .btn-outline {
+      border: 2px solid rgba(255,255,255,.4); color: var(--white);
+      padding: .75rem 1.6rem; border-radius: 10px;
+      font-size: .95rem; font-weight: 500; text-decoration: none;
+      transition: border-color .2s, transform .15s; display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--gold-lt); color: var(--gold-lt); transform: translateY(-2px); }
+
+    /* ── HERO VISUAL KAD ── */
+    .hero__visual {
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+
+    /* ── WHY SECTION ── */
+    .why {
+      background: var(--cream);
+      padding: 5rem 5%;
+    }
+    .section-label {
+      text-align: center;
+      font-size: .75rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: .6rem;
+    }
+    .section-title {
+      text-align: center;
+      font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700;
+      color: var(--forest); margin-bottom: .75rem; line-height: 1.25;
+    }
+    .section-sub {
+      text-align: center; color: var(--muted); max-width: 540px; margin: 0 auto 3rem;
+      font-size: .95rem;
+    }
+    .why__grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem; max-width: 900px; margin: 0 auto;
+    }
+    .why__card {
+      background: var(--white); border-radius: var(--radius);
+      padding: 1.75rem 1.5rem; text-align: center;
+      box-shadow: 0 2px 12px rgba(26,58,42,.06);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .why__card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(26,58,42,.12); }
+    .why__icon {
+      width: 56px; height: 56px; border-radius: 14px;
+      background: var(--gold-pale); margin: 0 auto 1rem;
+      display: grid; place-items: center;
+    }
+    .why__icon svg { width: 28px; height: 28px; fill: var(--gold); }
+    .why__card h3 { font-size: .95rem; font-weight: 700; color: var(--forest); margin-bottom: .4rem; }
+    .why__card p { font-size: .83rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── SERVICES (TAMBAH BAIK: SHADOW & LAPISAN GELAP) ── */
+    .services { 
+      /* 🌟 MENAMBAH LAPISAN OVERLAY HITAM TELUS (0.45) DI ATAS GAMBAR LATAR BELAKANG */
+      background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('assets/bgsw.png') !important;
+      background-size: cover !important;
+      background-position: center !important;
+      background-repeat: no-repeat !important;
+      background-attachment: fixed !important;
+      padding: 5rem 5%; 
+    }
+    
+    /* 🌟 TAMBAH SHADOW: Perkataan "PILIHAN PAKEJ" */
+    .services .section-label {
+      color: var(--gold-pale) !important;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9), 0 4px 10px rgba(0, 0, 0, 0.9);
+    }
+
+    /* 🌟 TAMBAH SHADOW: Perkataan "Pilih Perkhidmatan Hibah" */
+    .services .section-title {
+      color: var(--white) !important;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.95), 0 4px 15px rgba(0, 0, 0, 0.9);
+    }
+
+    /* 🌟 TAMBAH SHADOW: Teks penerangan di bawah tajuk pakej */
+    .services .section-sub {
+      color: rgba(255, 255, 255, 0.95) !important;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9), 0 4px 8px rgba(0, 0, 0, 0.85);
+    }
+
+    .services__grid {
+      display: grid; 
+      grid-template-columns: repeat(3, 1fr); 
+      gap: 1.25rem; 
+      max-width: 1200px; 
+      margin: 0 auto;
+      align-items: stretch;
+    }
+    
+    .service-card {
+      background: var(--white) !important; 
+      border: 1px solid var(--border); 
+      border-radius: var(--radius);
+      overflow: hidden; 
+      transition: transform .2s, box-shadow .2s;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 30px rgba(3, 43, 29, 0.05); 
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+    }
+    .service-card:hover { transform: translateY(-5px); box-shadow: 0 12px 32px rgba(26,58,42,.1); }
+    .service-card__head {
+      background: var(--forest); padding: 2rem 1.75rem 1.5rem;
+      position: relative; overflow: hidden;
+    }
+    .service-card__head::after {
+      content: ''; position: absolute; bottom: -20px; right: -20px;
+      width: 100px; height: 100px; border-radius: 50%;
+      background: rgba(184,146,42,.15); pointer-events: none;
+    }
+    .service-card__badge {
+      display: inline-block;
+      background: rgba(184,146,42,.2); color: var(--gold-lt);
+      font-size: .7rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+      padding: .25rem .7rem; border-radius: 20px; margin-bottom: .75rem;
+    }
+    .service-card__head h3 { color: var(--white); font-size: 1.2rem; font-weight: 700; }
+    .service-card__head p { color: rgba(255,255,255,.7); font-size: .85rem; margin-top: .4rem; line-height: 1.5; }
+    .service-card__body { padding: 1.5rem 1.75rem; }
+    .service-card__features { list-style: none; display: flex; flex-direction: column; gap: .6rem; margin-bottom: 1.5rem; }
+    .service-card__features li {
+      display: flex; align-items: flex-start; gap: .6rem;
+      font-size: .875rem; color: var(--text);
+    }
+    .service-card__features li::before {
+      content: '';
+      flex-shrink: 0; width: 18px; height: 18px; border-radius: 50%;
+      background: var(--gold-pale);
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 8l3.5 3.5L13 5' stroke='%23b8922a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-size: 14px; background-position: center;
+      margin-top: 2px;
+    }
+    .service-card__price { font-size: 1.5rem; font-weight: 800; color: var(--forest); margin-bottom: 1rem; }
+    .service-card__price span { font-size: .85rem; font-weight: 400; color: var(--muted); }
+    .service-card__cta {
+      display: block; text-align: center;
+      background: var(--gold); color: var(--white);
+      padding: .75rem; border-radius: 10px;
+      font-weight: 600; font-size: .9rem; text-decoration: none;
+      transition: background .2s;
+    }
+    .service-card__cta:hover { background: var(--gold-lt); }
+    .service-card--featured .service-card__head { background: linear-gradient(135deg, var(--gold) 0%, #9a7520 100%); }
+    .service-card--featured .service-card__badge { background: rgba(255,255,255,.2); color: var(--white); }
+
+    /* ── PROCESS ── */
+    .process { background: var(--forest); padding: 5rem 5%; }
+    .process .section-title { color: var(--white); }
+    .process .section-label { color: var(--gold-lt); }
+    .process .section-sub { color: rgba(255,255,255,.65); }
+    .process__steps {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem; max-width: 960px; margin: 0 auto;
+      position: relative;
+    }
+    .process__step {
+      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--radius); padding: 2rem 1.5rem; text-align: center;
+      position: relative;
+    }
+    .process__num {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--gold); color: var(--white);
+      font-weight: 800; font-size: 1rem;
+      display: grid; place-items: center; margin: 0 auto 1rem;
+    }
+    .process__step h3 { color: var(--white); font-size: .95rem; font-weight: 700; margin-bottom: .5rem; }
+    .process__step p { color: rgba(255,255,255,.6); font-size: .83rem; line-height: 1.6; }
+
+    /* ── AUDIENCE ── */
+    .audience { padding: 5rem 5%; background: var(--cream); }
+    .audience__grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem; max-width: 900px; margin: 0 auto;
+    }
+    .audience__card {
+      background: var(--white); border-radius: var(--radius);
+      padding: 1.5rem 1rem; text-align: center;
+      border: 1.5px solid var(--border);
+      transition: border-color .2s, transform .2s;
+    }
+    .audience__card:hover { border-color: var(--gold); transform: translateY(-3px); }
+    .audience__icon {
+      width: 52px; height: 52px; background: var(--gold-pale);
+      border-radius: 50%; display: grid; place-items: center; margin: 0 auto .75rem;
+    }
+    .audience__icon svg { width: 26px; height: 26px; fill: var(--gold); }
+    .audience__card h3 { font-size: .875rem; font-weight: 700; color: var(--forest); margin-bottom: .3rem; }
+    .audience__card p { font-size: .78rem; color: var(--muted); line-height: 1.5; }
+
+    /* ── DOCUMENTS (TAMBAH BAIK: SHADOW & LAPISAN GELAP) ── */
+    .docs { 
+      /* 🌟 MENAMBAH LAPISAN OVERLAY HITAM TELUS (0.45) DI ATAS GAMBAR LATAR BELAKANG */
+      background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('assets/bgsw.png') !important;
+      background-size: cover !important;
+      background-position: center !important;
+      background-repeat: no-repeat !important;
+      background-attachment: fixed !important;
+      padding: 5rem 5%; 
+    }
+    
+    /* 🌟 TAMBAH SHADOW: Perkataan "KEPERLUAN" */
+    .docs .section-label {
+      color: var(--gold-pale) !important;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9), 0 4px 10px rgba(0, 0, 0, 0.9);
+    }
+
+    /* 🌟 TAMBAH SHADOW: Perkataan "Dokumen yang Diperlukan" */
+    .docs .section-title {
+      color: var(--white) !important;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.95), 0 4px 15px rgba(0, 0, 0, 0.9);
+    }
+
+    /* 🌟 TAMBAH SHADOW: Teks penerangan di bawah tajuk dokumen */
+    .docs .section-sub {
+      color: rgba(255, 255, 255, 0.95) !important;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9), 0 4px 8px rgba(0, 0, 0, 0.85);
+    }
+
+    .docs__grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem; max-width: 900px; margin: 0 auto;
+    }
+    .docs__item {
+      background: var(--forest); border-radius: var(--radius);
+      padding: 1.5rem; color: var(--white);
+    }
+    .docs__item h3 { font-size: .9rem; font-weight: 700; color: var(--gold-lt); margin-bottom: .5rem; }
+    .docs__item p { font-size: .83rem; color: rgba(255,255,255,.75); line-height: 1.6; }
+    
+    /* 🌟 TAMBAH SHADOW & TUKAR WARNA: Nota kaki bawah sekali ("Senarai khusus bergantung kepada...") */
+    .docs__note {
+      text-align: center; margin-top: 1.5rem;
+      font-size: .95rem; 
+      font-weight: 600;
+      color: var(--white) !important;
+      max-width: 600px; margin-left: auto; margin-right: auto;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 1), 0 4px 12px rgba(0, 0, 0, 1);
+    }
+
+    /* ── CTA BANNER ── */
+    .cta-banner {
+      background: linear-gradient(120deg, var(--gold) 0%, #9a7520 100%);
+      padding: 4.5rem 5%; text-align: center;
+    }
+    .cta-banner h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 800; color: var(--white); margin-bottom: 1rem; line-height: 1.25; }
+    .cta-banner p { color: rgba(255,255,255,.85); max-width: 500px; margin: 0 auto 2rem; font-size: .95rem; }
+    .cta-banner__actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-white {
+      background: var(--white); color: var(--gold);
+      padding: .8rem 2rem; border-radius: 10px;
+      font-weight: 700; font-size: .95rem; text-decoration: none;
+      transition: transform .15s, box-shadow .15s; display: inline-block;
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.15); }
+    .btn-outline-white {
+      border: 2px solid rgba(255,255,255,.7); color: var(--white);
+      padding: .75rem 1.75rem; border-radius: 10px;
+      font-weight: 500; font-size: .95rem; text-decoration: none;
+      transition: border-color .2s; display: inline-block;
+    }
+    .btn-outline-white:hover { border-color: var(--white); }
+
+/* ── FOOTER GREEN-WHITE THEME ── */
+    .footer {
+      background: var(--white);
+      color: var(--text);
+      padding: 4.5rem 5% 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer__container {
+      max-width: 1140px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr repeat(3, 1fr);
+      gap: 2.5rem;
+    }
+
+    .footer__brand {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .footer__logo {
+      height: 48px;
+      width: auto;
+      align-self: flex-start;
+      object-fit: contain;
+    }
+
+    .footer__desc {
+      font-size: .875rem;
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 320px;
+    }
+
+    .footer__column h4 {
+      color: var(--forest);
+      font-size: .95rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      text-transform: uppercase;
+      letter-spacing: .03em;
+    }
+
+    .footer__list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+    }
+
+    .footer__list a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: .875rem;
+      transition: color .2s ease;
+    }
+
+    .footer__list a:hover {
+      color: var(--gold);
+    }
+
+    /* ── KEMASKINI BAHAGIAN BAWAH FOOTER ── */
+    .footer__bottom {
+      max-width: 1140px;
+      margin: 3.5rem auto 0;
+      padding-top: 1.75rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: flex-start; /* Mengumpulkan semua elemen ke sebelah kiri */
+      align-items: center;
+    }
+
+    /* Membungkus copyright dan socials supaya sentiasa sebaris di sebelah kiri */
+    .footer__left-block {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      border-bottom: 3px solid #bfa15f;
+      gap: 1.5rem; /* Jarak antara teks WasiatKu dan ikon media sosial */
+      flex-wrap: wrap;
     }
 
-    .chat-profile { display: flex; align-items: center; gap: 12px; }
-    .chat-avatar-mini { width: 40px; height: 40px; border-radius: 50%; overflow: hidden; background: #fff; }
-    .chat-avatar-mini img { width: 100%; height: 100%; object-fit: cover; }
-    .chat-info h4 { font-size: 0.95rem; margin: 0; font-weight: 600; }
-    .chat-info span { font-size: 0.75rem; color: #d9be7e; display: flex; align-items: center; gap: 5px; }
-    .chat-info span::before { content: ''; width: 6px; height: 6px; background: #22c55e; border-radius: 50%; display: inline-block; }
-    .close-chat-btn { background: none; border: none; color: #fff; font-size: 1.6rem; cursor: pointer; line-height: 1; }
-    .chat-body { flex: 1; padding: 18px; background: #faf7f2; overflow-y: auto; display: flex; flex-direction: column; gap: 14px; }
-    .message.bot { max-width: 85%; padding: 12px 14px; border-radius: 14px; font-size: 0.9rem; background: #fff; color: #1a1a1a; border-top-left-radius: 0; border: 1px solid #dde8e2; line-height: 1.48; }
-    .chat-footer { padding: 12px; background: #fff; border-bottom-left-radius: 18px; border-bottom-right-radius: 18px; display: flex; gap: 10px; border-top: 1px solid #dde8e2; }
-    .chat-input { flex: 1; padding: 10px 16px; border: 1px solid #dde8e2; border-radius: 24px; outline: none; font-size: 0.9rem; }
-    .chat-send-btn { background: #032b1d; color: #fff; border: none; width: 38px; height: 38px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+    .footer__copyright {
+      font-size: .82rem;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .footer__socials {
+      display: flex;
+      gap: .75rem;
+    }
+
+    .footer__social-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--cream);
+      color: var(--forest);
+      display: grid;
+      place-items: center;
+      text-decoration: none;
+      transition: all .2s ease;
+      border: 1px solid transparent;
+    }
+
+    .footer__social-icon:hover {
+      background: var(--white);
+      color: var(--gold);
+      border-color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    /* ── RESPONSIVE MOBILE ── */
+    @media (max-width: 768px) {
+      .footer__bottom {
+        justify-content: flex-start;
+      }
+      
+      .footer__left-block {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+    }
+
+    /* ── RESPONSIVE MOBILE: Susunan kemas untuk skrin telefon ── */
+    @media (max-width: 480px) {
+      .footer__left-block {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+    }
+    /* ── RESPONSIVE DENGAN KELAS NAV BAR BAHARU ── */
+    @media (max-width: 992px) {
+      .header-logo-wrapper { padding-right: 20px; }
+      .nav__links { gap: 1rem; }
+      .footer__container { grid-template-columns: 1.5fr repeat(3, 1fr); gap: 1.5rem; }
+    }
+
+    @media (max-width: 768px) {
+      .nav__links, .nav__cta { display: none; }
+      .hero { grid-template-columns: 1fr; padding: 3rem 5% 2rem; min-height: auto; gap: 2.5rem; }
+      .hero__visual { order: -1; }
+      .hero__h1 { font-size: 1.8rem; }
+      .hero__sub { font-size: .9rem; }
+      .why, .services, .process, .audience, .docs { padding: 3.5rem 5%; }
+      
+      .footer__container { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
+      .footer__brand { align-items: center; }
+      .footer__logo { align-self: center; }
+      .footer__desc { max-width: 100%; }
+      .footer__bottom { flex-direction: column; text-align: center; margin-top: 2.5rem; }
+    }
 
     @media (max-width: 480px) {
-      .floating-bot-wrapper { bottom: 15px; right: 15px; }
-      .suri-avatar { width: 85px; height: 85px; } 
-      .wa-mini-badge { width: 28px; height: 28px; bottom: 2px; right: 2px; }
-      .wa-mini-badge svg { width: 14px; height: 14px; }
-      .chatbot-window { width: calc(100vw - 30px); height: 480px; bottom: 100px; }
+      .why__grid { grid-template-columns: 1fr 1fr; }
+      .process__steps { grid-template-columns: 1fr 1fr; }
+      .audience__grid { grid-template-columns: 1fr 1fr; }
     }
-  </style>
+
+    @media (prefers-reduced-motion: no-preference) {
+      .anim { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
+      .anim.visible { opacity: 1; transform: none; }
+    }
+/* ── 🤖 CHATBOT & WHATSAPP FLOATING CONTAINER ── */
+.floating-bot-wrapper {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999; /* Memastikan ia sentiasa di atas elemen footer */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Gabungan Ikon Suri & Lencana WhatsApp */
+.chatbot-trigger-container {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.chatbot-trigger-container:hover {
+  transform: scale(1.08);
+}
+
+/* Avatar Suri Bulat/Sipi - DIUBAH UNTUK MEMBESARKAN GIF */
+.suri-avatar {
+  width: 110px;        /* Asal: 75px -> Ditukar ke 110px */
+  height: 110px;       /* Asal: 75px -> Ditukar ke 110px */
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  background: #ffffff; /* Ditukar ke putih supaya latar belakang GIF kelihatan bersih */
+}
+
+.suri-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Lencana Mini WhatsApp di Bucu Avatar - DISESUAIKAN IKUT SAIZ BARU */
+.wa-mini-badge {
+  position: absolute;
+  bottom: 5px;         /* Diubah dari 2px ke 5px supaya kedudukan seimbang */
+  right: 5px;          /* Diubah dari 2px ke 5px supaya kedudukan seimbang */
+  width: 35px;         /* Asal: 25px -> Ditukar ke 35px */
+  height: 35px;        /* Asal: 25px -> Ditukar ke 35px */
+  background: #25d366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #fff; /* Ditebalkan sedikit bingkai putih */
+  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+}
+
+.wa-mini-badge svg {
+  width: 18px;         /* Asal: 14px -> Ditukar ke 18px */
+  height: 18px;        /* Asal: 14px -> Ditukar ke 18px */
+  fill: #fff;
+}
+
+/* ── KOTAK CHAT WINDOW - DIUBAH LEBIH LUAS DAN TINGGI ── */
+.chatbot-window {
+  position: absolute;
+  bottom: 125px;      /* Asal: 85px -> Dinaikkan sikit supaya tidak bertindih dengan bulatan Suri yang besar */
+  right: 0;
+  width: 400px;       /* Asal: 340px -> Ditukar ke 400px (Lebih lebar) */
+  height: 560px;      /* Asal: 460px -> Ditukar ke 560px (Lebih panjang) */
+  background: var(--white, #ffffff);
+  border-radius: 20px; /* Bucu tetingkap dibulatkan sedikit lagi agar sepadan */
+  box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+  border: 1px solid var(--border, #dde8e2);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.chatbot-window.open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* Elemen Dalaman Chat Window */
+.chat-header {
+  background: #032b1d; /* Warna forest syarikat */
+  color: #ffffff;
+  padding: 14px 18px;  /* Ditambah sedikit padding */
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 3px solid #bfa15f;
+}
+
+.chat-profile { display: flex; align-items: center; gap: 12px; }
+.chat-avatar-mini { width: 40px; height: 40px; border-radius: 50%; overflow: hidden; background: #fff; }
+.chat-avatar-mini img { width: 100%; height: 100%; object-fit: cover; }
+.chat-info h4 { font-size: 0.95rem; margin: 0; font-weight: 600; }
+.chat-info span { font-size: 0.75rem; color: #d9be7e; display: flex; align-items: center; gap: 5px; }
+.chat-info span::before { content: ''; width: 6px; height: 6px; background: #22c55e; border-radius: 50%; display: inline-block; }
+.close-chat-btn { background: none; border: none; color: #fff; font-size: 1.6rem; cursor: pointer; line-height: 1; }
+.chat-body { flex: 1; padding: 18px; background: #faf7f2; overflow-y: auto; display: flex; flex-direction: column; gap: 14px; }
+.message.bot { max-width: 85%; padding: 12px 14px; border-radius: 14px; font-size: 0.9rem; background: #fff; color: #1a1a1a; border-top-left-radius: 0; border: 1px solid #dde8e2; line-height: 1.48; }
+.chat-footer { padding: 12px; background: #fff; border-bottom-left-radius: 18px; border-bottom-right-radius: 18px; display: flex; gap: 10px; border-top: 1px solid #dde8e2; }
+.chat-input { flex: 1; padding: 10px 16px; border: 1px solid #dde8e2; border-radius: 24px; outline: none; font-size: 0.9rem; }
+.chat-send-btn { background: #032b1d; color: #fff; border: none; width: 38px; height: 38px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+
+/* Skrin Kecil Telefon - Mengelakkan Chatbox Terkeluar dari Skrin */
+@media (max-width: 480px) {
+  .floating-bot-wrapper { bottom: 15px; right: 15px; }
+  .suri-avatar { width: 85px; height: 85px; } /* Mengecil sedikit di mobile agar mesra pengguna */
+  .wa-mini-badge { width: 28px; height: 28px; bottom: 2px; right: 2px; }
+  .wa-mini-badge svg { width: 14px; height: 14px; }
+  .chatbot-window { width: calc(100vw - 30px); height: 480px; bottom: 100px; }
+}
+</style>
 </head>
 <body>
 
-  <header class="header">
-    <div class="header-left">
-      <div class="header-logo-wrapper">
-        <img src="assets/smarthibah1.png" alt="SmartHibah Logo" class="header-logo">
+<header class="header">
+  <div class="header-left">
+    <div class="header-logo-wrapper">
+      <a href="home.html">
+        <img src="assets/smarthibah1.png" alt="SmartHibah" class="header-logo" />
+      </a>
+    </div>
+  </div>
+  
+  <ul class="nav__links">
+    <li><a href="home.html" class="active">Laman Utama</a></li>
+    <li><a href="pakej.html">Pakej</a></li>
+    <li><a href="panduan.html">Panduan</a></li>
+    <li><a href="kalkulator.html">Kalkulator</a></li>
+    <li><a href="hubungi.html">Hubungi Kami</a></li>
+  </ul>
+
+  <a class="nav__cta d-none-mobile" href="https://app.mysmartwills.com/portal/?company_id=4">Login</a>
+
+  <button class="nav__hamburger" id="hamburger" aria-label="Buka menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</header>
+
+<div class="nav__mobile" id="mobileMenu">
+  <a href="home.html" class="active">Laman Utama</a>
+  <a href="pakej.html">Pakej</a>
+  <a href="panduan.html">Panduan</a>
+  <a href="kalkulator.html">Kalkulator</a>
+  <a href="hubungi.html">Hubungi Kami</a>
+  <a class="nav__cta-mobile" href="https://app.mysmartwills.com/portal/?company_id=4">Log Masuk</a>
+</div>
+
+<section class="hero" style="
+  background-image: url('assets/bgsw.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+">
+  <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.15); pointer-events: none;"></div>
+
+  <div style="position: relative; z-index: 2; text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.8), 0 0 4px rgba(0, 0, 0, 0.5);">
+    <span class="hero__eyebrow anim" style="background: rgba(3, 43, 29, 0.85); color: #b8922a; padding: 0.5rem 1.25rem; border-radius: 50px; font-weight: 700; display: inline-block; backdrop-filter: blur(4px);">100% Patuh Syariah</span>
+    <h1 class="hero__h1 anim" style="transition-delay: .08s; color: #ffffff;">Lindungi Masa Depan Insan Tersayang <em style="color: var(--gold-lt); font-style: normal; text-shadow: 1px 1px 8px rgba(0,0,0,0.9);">Bermula Hari Ini.</em></h1>
+    <p class="hero__sub anim" style="transition-delay: .16s; color: #ffffff; font-weight: 500;">
+      SmartHibah membantu anda menyusun pemberian aset kepada keluarga atau penerima pilihan dengan lebih jelas, mudah dan teratur. Elakkan waris anda daripada terbeban dengan proses yang rumit.
+    </p>
+    <div class="hero__actions anim" style="transition-delay: .24s;">
+      <a href="#" class="btn-gold">Mohon Sekarang</a>
+      <a href="#" class="btn-outline" style="background: rgba(3, 43, 29, 0.7); backdrop-filter: blur(4px);">Ketahui Lebih Lanjut</a>
+    </div>
+  </div>
+
+  <div class="hero__visual anim" style="transition-delay: .32s; position: relative; z-index: 2;">
+    <div style="background: rgba(3, 43, 29, 0.75); border: 1px solid rgba(255, 255, 255, 0.2); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); padding: 2rem; border-radius: 16px; width: 100%; max-width: 400px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+      <h3 style="color: var(--gold-lt); font-size: 1.1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
+        📊 Tiga Keutamaan SmartHibah
+      </h3>
+
+      <div style="margin-bottom: 1.25rem; display: flex; gap: 0.75rem; align-items: flex-start;">
+        <span style="background: var(--gold); color: #ffffff; padding: 0.25rem 0.5rem; border-radius: 6px; font-weight: bold; font-size: 0.85rem;">01</span>
+        <div>
+          <h4 style="color: var(--white); font-size: 0.95rem; font-weight: 600; margin-bottom: 0.25rem;">Kuasa Agihan Mutlak</h4>
+          <p style="color: rgba(255,255,255,0.9); font-size: 0.85rem; line-height: 1.4; font-weight: 400;">Anda berhak menentukan sendiri siapa penerima harta (termasuk bukan waris Faraid) semasa hidup.</p>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 1.25rem; display: flex; gap: 0.75rem; align-items: flex-start;">
+        <span style="background: var(--gold); color: #ffffff; padding: 0.25rem 0.5rem; border-radius: 6px; font-weight: bold; font-size: 0.85rem;">02</span>
+        <div>
+          <h4 style="color: var(--white); font-size: 0.95rem; font-weight: 600; margin-bottom: 0.25rem;">Pencairan Aset Pantas</h4>
+          <p style="color: rgba(255,255,255,0.9); font-size: 0.85rem; line-height: 1.4; font-weight: 400;">Harta hibah tidak dibekukan selepas kematian. Waris boleh tuntut terus tanpa birokrasi yang lama.</p>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 0.75rem; align-items: flex-start;">
+        <span style="background: var(--gold); color: #ffffff; padding: 0.25rem 0.5rem; border-radius: 6px; font-weight: bold; font-size: 0.85rem;">03</span>
+        <div>
+          <h4 style="color: var(--white); font-size: 0.95rem; font-weight: 600; margin-bottom: 0.25rem;">Dokumentasi Digital Sah</h4>
+          <p style="color: rgba(255,255,255,0.9); font-size: 0.85rem; line-height: 1.4; font-weight: 400;">Disediakan secara sistematik menerusi platform SmartWills yang patuh Syariah & diiktiraf undang-undang.</p>
+        </div>
       </div>
     </div>
-    
-    <ul class="nav__links">
-      <li><a href="home.html">Laman Utama</a></li>
-      <li><a href="pakej.html">Pakej</a></li>
-      <li><a href="panduan.html" class="active">Panduan</a></li>
-      <li><a href="hubungi.html">Hubungi Kami</a></li>
-    </ul>
-    
-    <a href="login.html" class="nav__cta">Login</a>
-
-    <button class="nav__hamburger" id="hamburger">
-      <span></span><span></span><span></span>
-    </button>
-  </header>
-
-  <div class="nav__mobile" id="mobileMenu">
-    <a href="home.html">Laman Utama</a>
-    <a href="pakej.html">Pakej</a>
-    <a href="panduan.html">Panduan</a>
-    <a href="hubungi.html">Hubungi Kami</a>
-    <a href="login.html" class="nav__cta">Login</a>
   </div>
+</section>
 
-  <div class="container">
-
-<section class="section-card">
-      <h2>Definisi & Rukun Sah Hibah</h2>
-      <p>Dari segi bahasa, <strong>Hibah</strong> bermaksud pemberian hadiah. Manakala dari segi istilah undang-undang Syariah, ia merujuk kepada suatu akad pemindahan hak milik harta secara sukarela oleh pemilik (Pemberi) kepada pihak lain (Penerima) semasa hidupnya tanpa mengharapkan sebarang balasan (iwad).</p>
-      
-      <h3 style="color: var(--forest); font-size: 1.15rem; margin-top: 1.5rem; margin-bottom: 0.75rem; font-weight:600;">4 Rukun Wajib Hibah (Syarat Sah Syarak)</h3>
-      <div class="info-list-grid">
-        <div class="info-list-card">
-          <h3>Pemberi Hibah (Al-Wahib)</h3>
-          <p style="font-size: 0.88rem; color:#555;">Pemilik mutlak harta, berakal sihat, baligh, dan bertindak secara sukarela tanpa sebarang paksaan.</p>
-        </div>
-        <div class="info-list-card">
-          <h3>Penerima Hibah (Al-Mawhub lahu)</h3>
-          <p style="font-size: 0.88rem; color:#555;">Sesiapa sahaja yang dipilih (Waris Faraid atau bukan waris). Bagi penerima di bawah umur 18 tahun, ia akan diwakili oleh Penjaga atau Wali yang sah.</p>
-        </div>
-        <div class="info-list-card">
-          <h3>Harta Dihibahkan (Al-Mawhub)</h3>
-          <p style="font-size: 0.88rem; color:#555;">Harta yang bernilai, halal, wujud secara nyata sewaktu akad dibuat, dan bebas daripada sekatan hutang yang tidak dilindungi.</p>
-        </div>
-        <div class="info-list-card">
-          <h3>Lafaz Akad (Sighah Bertulis)</h3>
-          <p style="font-size: 0.88rem; color:#555;">Dokumen pengisytiharan yang mengandungi penawaran (Ijab) dan penerimaan (Qabul) secara rasmi serta bertulis melalui sistem.</p>
-        </div>
+<section class="why" id="kenapa">
+  <p class="section-label anim">Kenapa Buat Hibah Sekarang?</p>
+  <h2 class="section-title anim">Perancangan Harta Paling Bijak</h2>
+  <p class="section-sub anim">Berikan kepastian kepada insan tersayang tanpa melalui proses tuntutan Faraid yang panjang.</p>
+  <div class="why__grid">
+    <div class="why__card anim">
+      <div class="why__icon">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
       </div>
-    </section>
+      <h3>Elak Konflik</h3>
+      <p>Mengurangkan risiko perebutan harta di kalangan waris selepas kematian.</p>
+    </div>
+    <div class="why__card anim" style="transition-delay:.08s">
+      <div class="why__icon">
+        <svg viewBox="0 0 24 24"><path d="M13 2.05V4.05C17.39 4.59 20.5 8.58 19.96 12.97C19.5 16.61 16.64 19.5 13 19.93V21.93C18.5 21.38 22.5 16.5 21.95 11C21.5 6.25 17.73 2.5 13 2.05M11 2.06C9.05 2.25 7.19 3 5.67 4.26L7.1 5.74C8.22 4.84 9.57 4.26 11 4.06V2.06M4.26 5.67C3 7.19 2.25 9.04 2.05 11H4.05C4.24 9.58 4.8 8.23 5.69 7.1L4.26 5.67M2.06 13C2.26 14.96 3.03 16.81 4.27 18.33L5.69 16.9C4.81 15.77 4.24 14.42 4.06 13H2.06M7.1 18.37L5.67 19.74C7.18 21 9.04 21.79 11 22V20C9.58 19.82 8.23 19.25 7.1 18.37M12 7L7 12H10V16H14V12H17L12 7Z"/></svg>
+      </div>
+      <h3>Sangat Fleksibel</h3>
+      <p>Boleh diberikan kepada sesiapa sahaja, termasuk anak angkat atau bukan waris Faraid.</p>
+    </div>
+    <div class="why__card anim" style="transition-delay:.16s">
+      <div class="why__icon">
+        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+      </div>
+      <h3>Sah & Terikat</h3>
+      <p>Menepati semua rukun dan syarat sah Hibah menurut perundangan Islam.</p>
+    </div>
+    <div class="why__card anim" style="transition-delay:.24s">
+      <div class="why__icon">
+        <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+      </div>
+      <h3>Terjamin</h3>
+      <p>Memberi ketenangan minda dengan menjamin masa depan keluarga secara sah.</p>
+    </div>
+  </div>
+</section>
 
-    <section class="section-card">
-      <h2>Matlamat Perlindungan & Analisis Perbandingan</h2>
-      <p>Berbeza dengan pengurusan Faraid atau Wasiat biasa, perancangan melalui SmartHibah memainkan peranan kritikal dalam sistem kewangan keluarga dengan objektif utama untuk mengelakkan pembekuan harta selepas kematian:</p>
-      <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.75rem; list-style-type: none;">
-        <li style="position:relative; padding-left: 20px;"><span style="color:var(--gold); position:absolute; left:0;">✦</span><strong>Mengelakkan Pembekuan Harta:</strong> Aset yang dihibahkan akan terus dipindahkan hak milik kepada penerima tanpa perlu melalui fasa pembekuan di institusi kewangan atau agensi pusaka.</li>
-        <li style="position:relative; padding-left: 20px;"><span style="color:var(--gold); position:absolute; left:0;">✦</span><strong>Melindungi Waris Tanggungan:</strong> Sangat membantu bagi situasi pasangan yang tiada anak lelaki, bapa tunggal, keluarga angkat, mahupun pemberian khas kepada anak istimewa.</li>
-        <li style="position:relative; padding-left: 20px;"><span style="color:var(--gold); position:absolute; left:0;">✦</span><strong>Menjamin Keharmonian Keluarga:</strong> Membantu meminimumkan risiko perbalahan, tuntutan bertindih, atau perebutan harta antara ahli keluarga terdekat selepas ketiadaan anda.</li>
+<section class="services" id="servis">
+  <p class="section-label anim">Pilihan Pakej</p>
+  <h2 class="section-title anim">Pilih Perkhidmatan Hibah</h2>
+  <p class="section-sub anim">Solusi menyeluruh dari penetapan harta sehingga penyediaan dokumen fizikal.</p>
+  <div class="services__grid">
+    <article class="service-card anim">
+      <div class="service-card__head">
+        <div class="service-card__badge">Asas</div>
+        <h3>SmartHibah Asas</h3>
+        <p>Penyediaan dokumen Hibah asas untuk aset terpilih.</p>
+      </div>
+      <div class="service-card__body">
+        <ul class="service-card__features">
+          <li>Kenal pasti aset untuk dihibahkan</li>
+          <li>Semakan kelayakan penerima</li>
+          <li>Nasihat ringkas agihan</li>
+          <li>Draf asas Deklarasi Hibah</li>
+        </ul>
+        <div class="service-card__price">RM 380 <span>/ dokumen</span></div>
+        <a class="service-card__cta" href="https://app.mysmartwills.com/portal/?company_id=4">Pilih Pakej</a>
+      </div>
+    </article>
+
+    <article class="service-card service-card--featured anim" style="transition-delay:.1s">
+      <div class="service-card__head">
+        <div class="service-card__badge">Popular</div>
+        <h3>SmartHibah Lengkap</h3>
+        <p>Pengurusan menyeluruh termasuk sokongan penuh dan dokumentasi rasmi.</p>
+      </div>
+      <div class="service-card__body">
+        <ul class="service-card__features">
+          <li>Semua dalam pakej Asas +</li>
+          <li>Penyediaan Dokumen Hibah penuh</li>
+          <li>Sesi semakan bersama pakar</li>
+          <li>Akuan berkanun dan tandatangan saksi</li>
+          <li>Panduan proses turun milik aset</li>
+        </ul>
+        <div class="service-card__price">RM 680 <span>/ dokumen</span></div>
+        <a class="service-card__cta" href="https://app.mysmartwills.com/portal/?company_id=4">Pilih Pakej</a>
+      </div>
+    </article>
+
+    <article class="service-card anim" style="transition-delay:.2s">
+      <div class="service-card__head">
+        <div class="service-card__badge">Korporat / Bisnes</div>
+        <h3>SmartHibah Korporat</h3>
+        <p>Hibah khusus untuk syer perniagaan atau pelaburan kompleks.</p>
+      </div>
+      <div class="service-card__body">
+        <ul class="service-card__features">
+          <li>Semua dalam pakej Lengkap +</li>
+          <li>Penilaian syer syarikat/perniagaan</li>
+          <li>Struktur perlindungan rakan kongsi</li>
+          <li>Pegawai perancang harta khusus</li>
+        </ul>
+        <div class="service-card__price">Hubungi Kami <span></span></div>
+        <a class="service-card__cta" href="http://wa.me/60182209929">Hubungi Penasihat</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="process" id="proses">
+  <p class="section-label anim">Cara Ia Berfungsi</p>
+  <h2 class="section-title anim">Proses Mudah dalam 4 Langkah</h2>
+  <p class="section-sub anim">Miliki dokumen rasmi tanpa urusan pejabat yang merumitkan.</p>
+  <div class="process__steps">
+    <article class="process__step anim">
+      <div class="process__num">1</div>
+      <h3>Maklumat Aset</h3>
+      <p>Daftar and senaraikan aset seperti rumah, tanah atau simpanan yang ingin dihibahkan.</p>
+    </article>
+    <article class="process__step anim" style="transition-delay:.1s">
+      <div class="process__num">2</div>
+      <h3>Senarai Penerima</h3>
+      <p>Namakan individu (isteri, anak, anak angkat) yang akan menerima aset tersebut.</p>
+    </article>
+    <article class="process__step anim" style="transition-delay:.2s">
+      <div class="process__num">3</div>
+      <h3>Penyediaan Dokumen</h3>
+      <p>Pakar kami akan menyediakan draf dokumen Deklarasi Hibah yang patuh Syariah.</p>
+    </article>
+    <article class="process__step anim" style="transition-delay:.3s">
+      <div class="process__num">4</div>
+      <h3>Pengesahan Rasmi</h3>
+      <p>Semak dokumen, setuju terma, dan tandatangan bersama dua orang saksi yang layak.</p>
+    </article>
+  </div>
+</section>
+
+<section class="audience" id="siapa">
+  <p class="section-label anim">Siapa Yang Memerlukan?</p>
+  <h2 class="section-title anim">Sesuai Untuk Situasi Berikut</h2>
+  <p class="section-sub anim">Hibah adalah penyelesaian terbaik bagi mengelak risiko kehilangan hak milik orang yang anda sayang.</p>
+  <div class="audience__grid">
+    <div class="audience__card anim">
+      <div class="audience__icon">
+        <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+      </div>
+      <h3>Pasangan Suami Isteri</h3>
+      <p>Melindungi rumah tangga dari tuntutan waris jauh</p>
+    </div>
+    <div class="audience__card anim" style="transition-delay:.07s">
+      <div class="audience__icon">
+        <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+      </div>
+      <h3>Anak Perempuan Sahaja</h3>
+      <p>Mengelak harta terpaksa dibahagi kepada waris asabah</p>
+    </div>
+    <div class="audience__card anim" style="transition-delay:.14s">
+      <div class="audience__icon">
+        <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+      </div>
+      <h3>Anak Angkat/Tiri</h3>
+      <p>Mereka yang tiada hak untuk menuntut Faraid secara sah</p>
+    </div>
+    <div class="audience__card anim" style="transition-delay:.21s">
+      <div class="audience__icon">
+        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg>
+      </div>
+      <h3>Golongan Mualaf</h3>
+      <p>Membantu memelihara kebajikan ahli keluarga yang belum Islam</p>
+    </div>
+    <div class="audience__card anim" style="transition-delay:.28s">
+      <div class="audience__icon">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+      </div>
+      <h3>Pemilik Perniagaan</h3>
+      <p>Mengelak krisis pemilikan syer dengan rakan kongsi selepas ketiadaan anda</p>
+    </div>
+  </div>
+</section>
+
+<section class="docs" id="keperluan">
+  <p class="section-label anim">Keperluan</p>
+  <h2 class="section-title anim">Dokumen yang Diperlukan</h2>
+  <p class="section-sub anim">Sediakan salinan dokumen berikut untuk kelancaran penyediaan draf.</p>
+  <div class="docs__grid">
+    <div class="docs__item anim">
+      <h3>Pengenalan Diri</h3>
+      <p>MyKad bagi pihak Pemberi (anda) dan Penerima Hibah berserta saksi-saksi.</p>
+    </div>
+    <div class="docs__item anim" style="transition-delay:.08s">
+      <h3>Bukti Pemilikan Aset</h3>
+      <p>Salinan Geran Tanah, Hakmilik Strata, buku akaun, atau geran kenderaan berkaitan.</p>
+    </div>
+    <div class="docs__item anim" style="transition-delay:.16s">
+      <h3>Dokumen Hubungan</h3>
+      <p>Sijil Perkahwinan atau Sijil Kelahiran jika penerima adalah ahli keluarga kandung.</p>
+    </div>
+    <div class="docs__item anim" style="transition-delay:.24s">
+      <h3>Surat Pembiayaan (Hutang)</h3>
+      <p>Penyata pinjaman terkini jika rumah/aset tersebut masih dalam pembiayaan bank.</p>
+    </div>
+  </div>
+  <p class="docs__note anim">Senarai khusus bergantung kepada jenis harta yang ingin dihibahkan.</p>
+</section>
+
+<section class="cta-banner" id="hubungi">
+  <h2 class="anim">Bertindak Hari Ini,<br />Ketenangan Berpanjangan Untuk Mereka</h2>
+  <p class="anim">Hadiahkan kasih sayang anda secara rasmi. Mulakan SmartHibah sekarang.</p>
+  <div class="cta-banner__actions anim">
+    <a class="btn-white" href="https://app.mysmartwills.com/portal/?company_id=4">Mula Deklarasi Hibah</a>
+    <a class="btn-outline-white" href="http://wa.me/60182209929">Tanya Penasihat Kami</a>
+  </div>
+</section>
+
+<footer style="background-color: #032b1d; color: #ffffff; padding: 4rem 2rem 2rem; font-family: 'Inter', sans-serif; border-top: 1px solid rgba(255,255,255,0.05);">
+  <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2.5rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
+    
+    <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+      <div style="background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); padding: 0.75rem 1.25rem; border-radius: 12px; display: inline-flex; align-items: center; gap: 0.85rem; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); width: fit-content;">
+        <img src="assets/smarthibah1.png" alt="SmartHibah Logo" style="height: 48px; width: auto; object-fit: contain;">
+        <span style="font-size: 1.2rem; font-weight: 700; letter-spacing: 0.3px; color: #032b1d;">SmartHibah</span>
+      </div>
+      <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.88rem; line-height: 1.6; margin: 0; font-weight: 400; max-width: 260px;">
+        Perkhidmatan Hibah digital yang mudah, pantas dan sah. Oleh WasiatKu Fintech Sdn. Bhd. (202301043968)
+      </p>  
+    </div>
+
+    <div>
+      <h4 style="font-size: 0.90rem; font-weight: 700; margin-top: 0; margin-bottom: 1.25rem; color: #b8922a; letter-spacing: 0.5px; text-transform: uppercase;">Lokasi Kami</h4>
+      <p style="color: rgba(255, 255, 255, 0.65); font-size: 0.88rem; margin-bottom: 1rem; line-height: 1.6;">
+        No. 46A (1st Floor), Jalan Ambong 1,<br>
+        Kepong Baru, 52100 Kuala Lumpur,<br>
+        Wilayah Persekutuan Kuala Lumpur
+      </p>
+      <div style="display: flex; gap: 10px;">
+        <a href="https://maps.app.goo.gl/nN117hmaCHs7i4g59" target="_blank" rel="noopener" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'" style="display: inline-flex; align-items: center; gap: 6px; color: #ffffff; text-decoration: none; font-size: 0.82rem; background: rgba(255,255,255,0.08); padding: 6px 12px; border-radius: 6px; transition: background 0.2s; border: 1px solid rgba(255,255,255,0.1);">
+          📍 Google Maps
+        </a>
+      </div>
+    </div>
+
+  <div>
+  <h4 style="font-size: 0.90rem; font-weight: 700; margin-top: 0; margin-bottom: 1.25rem; color: #b8922a; letter-spacing: 0.5px; text-transform: uppercase;">Waktu Pejabat</h4>
+  <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem; color: rgba(255, 255, 255, 0.65); font-size: 0.88rem;">
+    <li style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 4px;">
+      <span>Isnin - Jumaat:</span>
+      <span style="color: #ffffff; font-weight: 500;">9:00 AM - 5:30 PM</span>
+    </li>
+  
+    <li style="display: flex; justify-content: space-between; padding-bottom: 4px;">
+      <span>Sabtu & Ahad:</span>
+      <span style="color: #e63946; font-weight: 500;">Pejabat Tutup</span>
+    </li>
+  </ul>
+</div>
+
+    <div>
+      <h4 style="font-size: 0.90rem; font-weight: 700; margin-top: 0; margin-bottom: 1.25rem; color: #b8922a; letter-spacing: 0.5px; text-transform: uppercase;">Hubungi Kami</h4>
+      <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem;">
+        <li><a href="tel:+60182209929" onmouseover="this.style.color='#ffffff'; this.style.transform='translateX(3px)'" onmouseout="this.style.color='rgba(255, 255, 255, 0.65)'; this.style.transform='translateX(0)'" style="color: rgba(255, 255, 255, 0.65); text-decoration: none; font-size: 0.88rem; transition: all 0.2s ease; display: inline-block;">📞 +6018-220 9929</a></li>
+        <li><a href="mailto:enquiry@wasiatku.com.my" onmouseover="this.style.color='#ffffff'; this.style.transform='translateX(3px)'" onmouseout="this.style.color='rgba(255, 255, 255, 0.65)'; this.style.transform='translateX(0)'" style="color: rgba(255, 255, 255, 0.65); text-decoration: none; font-size: 0.88rem; transition: all 0.2s ease; display: inline-block;">✉️ enquiry@wasiatku.com.my</a></li>
+        <li><a href="https://wa.me/60182209929" target="_blank" rel="noopener" onmouseover="this.style.color='#ffffff'; this.style.transform='translateX(3px)'" onmouseout="this.style.color='rgba(255, 255, 255, 0.65)'; this.style.transform='translateX(0)'" style="color: rgba(255, 255, 255, 0.65); text-decoration: none; font-size: 0.88rem; transition: all 0.2s ease; display: inline-block;">💬 WhatsApp Chat</a></li>
       </ul>
-
-      <h3 style="color: var(--forest); font-size: 1.15rem; margin-top: 2rem; font-weight:600;">Jadual Perbandingan Ciri-Ciri Instrumen Pewarisan Harta</h3>
-      <div class="table-responsive">
-        <table class="comparison-table">
-          <thead>
-            <tr>
-              <th>Ciri-Ciri Utama</th>
-              <th>SmartHibah</th>
-              <th>Wasiat Am</th>
-              <th>Hukum Faraid</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Penerima Harta</strong></td>
-              <td class="highlight-td">Sesiapa sahaja (Bebas)</td>
-              <td>Bukan waris sahaja (Maksimum 1/3)</td>
-              <td>Waris sah sahaja</td>
-            </tr>
-            <tr>
-              <td><strong>Kadar Agihan</strong></td>
-              <td class="highlight-td">Ditentukan pemilik (0-100%)</td>
-              <td>Terhad kepada kadar wasiat</td>
-              <td>Mengikut ketetapan Syarak</td>
-            </tr>
-            <tr>
-              <td><strong>Persetujuan Waris</strong></td>
-              <td class="highlight-td">Tidak Perlu (Hak Mutlak)</td>
-              <td>Perlu jika melebihi had 1/3</td>
-              <td>Mutlak mengikut hukum asal</td>
-            </tr>
-            <tr>
-              <td><strong>Kelajuan Proses</strong></td>
-              <td class="highlight-td">Sangat Pantas & Terus</td>
-              <td>Melalui Prosedur Probet (Memakan Masa)</td>
-              <td>Mengambil masa (Sijil Faraid)</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="section-card">
-      <h2>Klasifikasi Jenis Harta</h2>
-      <p>Pastikan aset yang ingin dirancang dikategorikan dengan betul bagi melancarkan proses pengesahan dokumentasi:</p>
-      <div class="info-list-grid">
-        <div class="info-list-card" style="background:#fff; border-top: 3px solid var(--gold);">
-          <h3 style="color:var(--forest);">A. Harta Tak Alih (Hartanah)</h3>
-          <ul>
-            <li>Rumah kediaman (Teres, Kondominium, Pangsapuri, Flat) sama ada masih bercagar atau telah bebas hutang.</li>
-            <li>Tanah persendirian (Pertanian, Kedai, Komersial) atau tanah lot.</li>
-            <li>*Nota: Status geran individu atau strata mestilah sah dan berdaftar.</li>
-          </ul>
-        </div>
-        <div class="info-list-card" style="background:#fff; border-top: 3px solid var(--forest);">
-          <h3 style="color:var(--forest);">B. Harta Alih (Kewangan & Fizikal)</h3>
-          <ul>
-            <li>Akaun simpanan/semasa di institusi perbankan (Simpanan, Tabung Haji, ASB).</li>
-            <li>Portfolio saham tersenarai, Unit Amanah (Unit Trust), dan dana pelaburan patuh syariah.</li>
-            <li>Emas fizikal, barangan berharga, serta kenderaan yang telah bebas hutang.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-card">
-      <h2>Prosedur Pelaksanaan & Protokol Tuntutan</h2>
-      <p>Proses penyediaan dokumentasi digital bersama kami kini dipermudahkan melalui 4 fasa utama berikut:</p>
-      <div class="steps-grid">
-        <div class="step-item">
-          <h4>Langkah 1 (Kemasukan Data)</h4>
-          <p style="font-size: 0.85rem; color: var(--muted);">Penyediaan dan pengisian maklumat peribadi pemberi, penerima, serta muat naik dokumen bukti hak milik aset.</p>
-        </div>
-        <div class="step-item">
-          <h4>Langkah 2 (Penjanaan Dokumen)</h4>
-          <p style="font-size: 0.85rem; color: var(--muted);">Sistem akan menstrukturkan dan menjana draf dokumen pengisytiharan yang menepati ketetapan hukum Syariah.</p>
-        </div>
-        <div class="step-item">
-          <h4>Langkah 3 (Semakan Pakar)</h4>
-          <p style="font-size: 0.85rem; color: var(--muted);">Semakan ketulenan maklumat, integriti rukun hibah, dan pengesahan dokumen oleh panel pakar perunding kami.</p>
-        </div>
-        <div class="step-item">
-          <h4>Langkah 4 (Pengesahan)</h4>
-          <p style="font-size: 0.85rem; color: var(--muted);">Pencetakan serta penandatanganan dokumen fizikal di hadapan 2 orang saksi lelaki Muslim yang layak.</p>
-        </div>
-      </div>
-
-      <h3 style="color: var(--forest); font-size: 1.15rem; margin-top: 2rem; font-weight:600; margin-bottom:0.5rem;">Prosedur Tuntutan Apabila Berlaku Kematian Pemberi</h3>
-      <p style="font-size:0.9rem; color:#4a5568; margin-bottom:1rem;">Apabila berlaku kematian pemberi hibah, penerima hanya perlu mengikut langkah mudah ini untuk urusan pindah milik aset:</p>
-      <ol style="margin-left: 1.25rem; font-size: 0.9rem; color: #4a5568; display:flex; flex-direction:column; gap:0.4rem;">
-        <li><strong>Pemberitahuan:</strong> Kemukakan Sijil Kematian rasmi kepada pihak pentadbir SmartHibah.</li>
-        <li><strong>Pengesahan Dokumen:</strong> Pihak kami akan mengeluarkan Dokumen Deklarasi asal yang telah disahkan.</li>
-        <li><strong>Pindah Milik Aset:</strong> Dokumen tersebut dibawa ke agensi berkaitan (Pejabat Tanah atau Bank) untuk penukaran nama secara terus tanpa melalui proses pembekuan harta pusaka.</li>
-      </</ol>
-    </section>
-
-    <section class="section-card">
-      <h2>Senarai Dokumen Sokongan Pemfailan</h2>
-      <p>Untuk melancarkan pengesahan draf deklarasi hibah, sila sediakan senarai semak dokumen bukti hak milik yang wajib dimuat naik mengikut kategori harta:</p>
-      <ul style="margin-left: 1.5rem; font-size: 0.95rem; display:flex; flex-direction:column; gap:0.5rem; color:#333;">
-        <li><strong>Kategori Hartanah:</strong> Salinan Geran Hakmilik Sempurna, Perjanjian Jual Beli (SPA), dan Penyata Baki Pembiayaan Perumahan beserta bukti perlindungan MRTT/MLTT.</li>
-        <li><strong>Kategori Kewangan:</strong> Salinan buku bank atau penyata akaun rasmi yang memaparkan nombor akaun pemilik dengan jelas.</li>
-        <li><strong>Kategori Waris Bawah Umur:</strong> Salinan MyKid/Sijil Kelahiran penerima berserta Kad Pengenalan Pemegang Amanah (Pemegang Amanah) berdaftar yang dilantik.</li>
-      </ul>
-    </section>
-
-    <section class="section-card">
-      <h2>Arkib Soalan Lazim (FAQ) & Bidang Kuasa Undang-Undang</h2>
-      
-      <details>
-        <summary>Adakah hibah boleh ditarik balik?</summary>
-        <div class="faq-content">
-          Secara umumnya, ketetapan hukum menetapkan bahawa hibah yang sudah diserahkan (Qabd) tidak boleh ditarik balik KECUALI hibah yang dibuat oleh ibu, bapa, datuk, atau nenek kepada anak atau cucu kandung mereka.
-        </div>
-      </details>
-      
-      <details>
-        <summary>Apakah syarat sah barang atau aset yang ingin dihibahkan?</summary>
-        <div class="faq-content">
-          Aset mestilah wujud semasa akad dilakukan, merupakan milik mutlak pemberi hibah, tidak terikat dengan sebarang tuntutan mahkamah atau sekatan undang-undang, serta mempunyai nilai komersial atau manfaat menurut syarak.
-        </div>
-      </details>
-      
-      <details>
-        <summary>Bolehkah rumah yang masih dalam pinjaman bank dihibahkan?</summary>
-        <div class="faq-content">
-          Boleh (atas status harta bercagar), dengan syarat pembiayaan perumahan tersebut dilindungi oleh polisi insurans atau takaful seperti MRTT atau MLTT yang akan melunaskan baki hutang secara automatik sekiranya berlaku kematian pemilik.
-        </div>
-      </details>
-
-      <details>
-        <summary>Bolehkah membuat dokumen hibah kepada anak angkat atau anak tiri?</summary>
-        <div class="faq-content">
-          <strong>Boleh dan amat digalakkan.</strong> Di bawah hukum Faraid, anak angkat dan anak tiri tidak dikategorikan sebagai waris mutlak (tiada hubungan darah), maka mereka tidak akan mendapat sebarang bahagian harta secara automatik. Melalui perancangan SmartHibah, anda mempunyai hak mutlak untuk menghibahkan sehingga 100% aset anda kepada mereka semasa anda masih hidup.
-        </div>
-      </details>
-
-      <details>
-        <summary>Apakah perbezaan antara dokumen draf Hibah dengan dokumen Wasiat?</summary>
-        <div class="faq-content">
-          Wasiat hanya berkuat kuasa <strong>selepas kematian</strong> pemilik harta, kadarnya terhad kepada maksimum 1/3 daripada baki harta, dan <em>hanya boleh diberikan kepada bukan waris Faraid</em>. Manakala Hibah dibuat dan berkuat kuasa <strong>semasa pemilik masih hidup</strong>, tiada had kadar agihan (0% - 100%), serta bebas diberikan kepada sesiapa sahaja.
-        </div>
-      </details>
-
-      <details>
-        <summary>Adakah penerima hibah yang masih bayi atau belum berumur 18 tahun boleh menerima aset?</summary>
-        <div class="faq-content">
-          <strong>Boleh.</strong> Bagi memenuhi syarat rukun Qabd (penerimaan atau kawalan harta), pengisytiharan hibah bagi waris di bawah umur (bawah 18 tahun) atau waris kurang upaya (OKU) wajib melantik seorang <strong>Pemegang Amanah</strong> yang akan menguruskan aset tersebut bagi pihak penerima sehingga mereka mencapai umur matang.
-        </div>
-      </details>
-
-      <details>
-        <summary>Bagaimana status dokumen hibah sekiranya penerima meninggal dunia terlebih dahulu sebelum pemberi?</summary>
-        <div class="faq-content">
-          Apabila akad hibah telah sempurna dimetrai (berlakunya penyerahan atau Qabd), aset tersebut secara rasminya telah bertukar hak milik kepada penerima. Sekiranya penerima meninggal dunia dahulu, aset tersebut akan dikategorikan sebagai harta pusaka penerima dan akan dibahagikan kepada waris-waris penerima mengikut hukum Faraid. Ia tidak akan kembali kepada pemberi asal (melainkan melibatkan hibah daripada ibu bapa kepada anak).
-        </div>
-      </details>
-
-      <details>
-        <summary>Adakah aset yang berada di luar negara boleh dimasukkan ke dalam sistem SmartHibah?</summary>
-        <div class="faq-content">
-          Sistem SmartHibah dirancang khusus mengikut Enakmen Kesalahan Jenayah Syariah dan Undang-Undang Pentadbiran Agama Islam <strong>di dalam Malaysia sahaja</strong>. Bagi aset di luar negara, ia tertakluk kepada konflik bidang kuasa perundangan antarabangsa dan undang-undang sivil negara terbabit.
-        </div>
-      </details>
-
-      <details>
-        <summary>Adakah simpanan akaun bersama (Joint Account) di bank boleh dihibahkan?</summary>
-        <div class="faq-content">
-          Bagi akaun bersama, pemilik hanya dibenarkan menghibahkan kadar bahagian milikan beliau sahaja (biasanya dikira berasaskan anggaran 50% daripada jumlah baki simpanan, melainkan terdapat perjanjian bertulis yang lain). Proses ini memerlukan penelitian draf yang lebih spesifik bagi mengelakkan pertikaian hak milik dengan pihak bank.
-        </div>
-      </details>
-
-      <details>
-        <summary>Bolehkah saya membuat hibah sekiranya saya disahkan menghidap penyakit kritikal?</summary>
-        <div class="faq-content">
-          Sekiranya pemberi berada dalam fasa penyakit kritikal yang tenat atau fasa <em>Marad al-Mawt</em> (sakit yang membawa kepada kematian), kesahihan akad hibah boleh dicabar di Mahkamah Syariah kerana rukun kesihatan akal dan kesukarelaan pemberi boleh diragui. Oleh itu, perancangan ini amat digalakkan untuk dibuat sewaktu tubuh badan masih sihat.
-        </div>
-      </details>
-
-      <details>
-        <summary>Adakah dokumen deklarasi hibah digital ini perlu disahkan oleh Mahkamah Syariah dengan segera?</summary>
-        <div class="faq-content">
-          Dokumen deklarasi bertulis yang ditandatangani bersama 2 saksi Muslim yang adil sudah sah di sisi Syarak sebagai bukti niat dan akad. Proses pengesahan (isbat) di Mahkamah Syariah biasanya hanya akan dilakukan oleh penerima manfaat <strong>selepas berlakunya kematian pemberi</strong> (sebagai dokumen sokongan untuk perintah pindah milik agensi).
-        </div>
-      </details>
-
-      <details>
-        <summary>Apakah peranan 2 orang saksi lelaki Muslim di dalam Langkah 4 proses pelaksanaan?</summary>
-        <div class="faq-content">
-          Dua orang saksi berfungsi sebagai ejen pengesahan luaran. Mereka bertanggungjawab menyaksikan bahawa proses penawaran (Ijab) dan penerimaan (Qabul) dokumen berlaku tanpa paksaan, pemberi berada dalam keadaan sihat mental, serta tiada pemalsuan maklumat berlaku sewaktu cetakan fizikal ditandatangani.
-        </div>
-      </details>
-      
-      <div class="premium-note">
-        <p><strong>Nota Penafian Sempadan Perundangan:</strong> Senarai undang-undang khusus dan keperluan pengisytiharan rasmi adalah tertakluk kepada keputusan Mahkamah Syariah negeri masing-masing. Pihak SmartHibah menyediakan draf bertaraf profesional berdasarkan standard perundangan terkini dengan nota penafian bidang kuasa mutlak mahkamah tersebut.</p>
-      </div>
-    </section>
+    </div>
 
   </div>
-
-  <div class="floating-bot-wrapper">
+<div style="max-width: 1200px; margin: 0 auto; padding-top: 1.5rem; display: flex; align-items: center; justify-content: flex-start; flex-wrap: wrap; gap: 1.25rem;">
+  
+  <div style="color: rgba(255, 255, 255, 0.5); font-size: 0.82rem; letter-spacing: 0.2px; margin: 0;">
+    © 2023–2026 All rights reserved | WasiatKu.com.my
+  </div>
+  
+  <div style="display: flex; gap: 0.5rem; align-items: center;">
+    <a href="https://www.facebook.com/wasiatku.com.my/" target="_blank" rel="noopener" onmouseover="this.style.background='#b8922a'; this.style.color='#ffffff'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(255,255,255,0.06)'; this.style.color='rgba(255,255,255,0.8)'; this.style.transform='translateY(0)'" style="background: rgba(255,255,255,0.06); width: 32px; height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center; text-decoration: none; color: rgba(255,255,255,0.8); transition: all 0.2s ease; border: 1px solid rgba(255,255,255,0.05);">
+      <svg style="width: 14px; height: 14px; fill: currentColor;" viewBox="0 0 24 24"><path d="M9 8H7v3h2v9h3v-9h3l.5-3H12V6c0-.88.77-1 1-1h2V2h-3c-3.1 0-4 1.74-4 4v2z"/></svg>
+    </a>
+    
+    <a href="https://www.instagram.com/wasiatku.com.my" target="_blank" rel="noopener" onmouseover="this.style.background='#b8922a'; this.style.color='#ffffff'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(255,255,255,0.06)'; this.style.color='rgba(255,255,255,0.8)'; this.style.transform='translateY(0)'" style="background: rgba(255,255,255,0.06); width: 32px; height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center; text-decoration: none; color: rgba(255,255,255,0.8); transition: all 0.2s ease; border: 1px solid rgba(255,255,255,0.05);">
+      <svg style="width: 14px; height: 14px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+    </a>
+    
+    <a href="https://www.youtube.com/channel/UC4sIsrzxOq_4FgoPdi-83Rw" target="_blank" rel="noopener" onmouseover="this.style.background='#b8922a'; this.style.color='#ffffff'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(255,255,255,0.06)'; this.style.color='rgba(255,255,255,0.8)'; this.style.transform='translateY(0)'" style="background: rgba(255,255,255,0.06); width: 32px; height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center; text-decoration: none; color: rgba(255,255,255,0.8); transition: all 0.2s ease; border: 1px solid rgba(255,255,255,0.05);">
+      <svg style="width: 14px; height: 14px; fill: currentColor;" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+    </a>
+  </div>
+  
+</div>
+</footer>
+<div class="floating-bot-wrapper">
+    
     <div class="chatbot-trigger-container" id="chatTrigger">
       <div class="suri-avatar">
         <img src="assets/suri.gif" alt="Suri SmartWills">
       </div>
-      <a href="https://wa.me/60182209929?text=Hai%20SmartWills,%20saya%20ingin%20bertanya%20mengenai%20perkhidmatan%20wasiat/hibah." 
-         target="_blank" 
-         class="wa-mini-badge" 
-         id="waLink">
-        <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.003 5.372 5.378 0 12.013 0c3.213.001 6.234 1.253 8.507 3.527 2.273 2.274 3.522 5.297 3.521 8.512-.004 6.643-5.379 12.015-12.015 12.015-2.006-.001-3.974-.5-5.764-1.451L0 24zm6.59-4.859c1.62.962 3.377 1.469 5.399 1.47 5.564 0 10.093-4.529 10.096-10.097.002-2.698-1.046-5.234-2.949-7.139C17.23 1.47 14.7.424 12.015.424 6.452.424 1.924 4.953 1.921 10.522c-.001 1.93.499 3.812 1.447 5.462l-.995 3.637 3.72-.976h-.046z"/></svg>
-      </a>
+     <a href="https://wa.me/60182209929?text=Hai%20SmartWills,%20saya%20ingin%20bertanya%20mengenai%20perkhidmatan%20wasiat/hibah." 
+   target="_blank" 
+   class="wa-mini-badge" 
+   id="waLink">
+  <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.003 5.372 5.378 0 12.013 0c3.213.001 6.234 1.253 8.507 3.527 2.273 2.274 3.522 5.297 3.521 8.512-.004 6.643-5.379 12.015-12.015 12.015-2.006-.001-3.974-.5-5.764-1.451L0 24zm6.59-4.859c1.62.962 3.377 1.469 5.399 1.47 5.564 0 10.093-4.529 10.096-10.097.002-2.698-1.046-5.234-2.949-7.139C17.23 1.47 14.7.424 12.015.424 6.452.424 1.924 4.953 1.921 10.522c-.001 1.93.499 3.812 1.447 5.462l-.995 3.637 3.72-.976h-.046z"/></svg>
+</a>
     </div>
 
     <div class="chatbot-window" id="chatWindow">
@@ -799,87 +1141,89 @@
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
         </button>
       </div>
+
+<script>
+    const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+  });
+  // hamburger
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  });
+
+  // scroll animations
+  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.12 });
+    document.querySelectorAll('.anim').forEach(el => observer.observe(el));
+  } else {
+    document.querySelectorAll('.anim').forEach(el => el.classList.add('visible'));
+  }
+  const chatTrigger = document.getElementById('chatTrigger');
+  const chatWindow = document.getElementById('chatWindow');
+  const closeChat = document.getElementById('closeChat');
+  const waLink = document.getElementById('waLink');
+
+  // Klik pada bulatan Suri akan buka/tutup chatbox
+  chatTrigger.addEventListener('click', () => {
+    chatWindow.classList.toggle('open');
+  });
+
+  // Klik pada butang hijau WhatsApp akan direct ke WhatsApp tanpa buka chatbox
+  waLink.addEventListener('click', (e) => {
+    e.stopPropagation(); // Menghalang kotak chatbox Suri daripada terbuka bersama
+  });
+
+  // Butang pangkah untuk tutup chatbox
+  closeChat.addEventListener('click', (e) => {
+    e.stopPropagation(); 
+    chatWindow.classList.remove('open');
+  });
+  // === KOD BARU: DIRECT TERUS KE WHATSAPP SELEPAS TEKAN SEND ===
+  const chatInput = document.querySelector('.chat-input');
+  const chatSendBtn = document.querySelector('.chat-send-btn');
+
+  function sendMessage() {
+    const messageText = chatInput.value.trim();
+    
+    // Jika pengguna tidak taip apa-apa, jangan hantar
+    if (messageText === '') return;
+
+    // 1. Nombor WhatsApp perniagaan anda (pastikan bermula dengan kod negara 60)
+    const phoneNum = "60182209929";
+
+    // 2. Menukar teks taipan menjadi format acuan URL (encode URL)
+    const encodedText = encodeURIComponent(messageText);
+
+    // 3. Bina pautan WhatsApp rasmi
+    const whatsappUrl = `https://wa.me/${phoneNum}?text=${encodedText}`;
+
+    // 4. Buka tab baru dan hantar mesej ke WhatsApp
+    window.open(whatsappUrl, '_blank');
+
+    // 5. Kosongkan semula ruangan input di laman web selepas dihantar
+    chatInput.value = '';
+  }
+
+  // Kekalkan fungsi trigger butang klik & enter yang sedia ada
+  if (chatSendBtn) {
+    chatSendBtn.addEventListener('click', sendMessage);
+  }
+
+  if (chatInput) {
+    chatInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        sendMessage();
+      }
+    });
+  }
+</script>
     </div>
   </div>
-
-  <script>
-    // Pengendali Menu Hamburger Telefon
-    document.getElementById('hamburger').addEventListener('click', () => {
-      document.getElementById('mobileMenu').classList.toggle('open');
-    });
-
-    // Fungsi Pengiraan Kalkulator Keperluan Dana
-    function kiraHibah() {
-      const hutang = parseFloat(document.getElementById('hutang').value) || 0;
-      const belanja = parseFloat(document.getElementById('belanja').value) || 0;
-      
-      // Mengira keperluan sara hidup untuk 5 tahun (60 bulan)
-      const keperluanSaraHidup = belanja * 12 * 5;
-      const total = hutang + keperluanSaraHidup;
-      
-      document.getElementById('total-dana').innerText = 'RM ' + total.toLocaleString('ms-MY');
-      document.getElementById('result').style.display = 'block';
-    }
-
-    const chatTrigger = document.getElementById('chatTrigger');
-    const chatWindow = document.getElementById('chatWindow');
-    const closeChat = document.getElementById('closeChat');
-    const waLink = document.getElementById('waLink');
-
-    // Klik pada bulatan Suri akan buka/tutup chatbox
-    chatTrigger.addEventListener('click', () => {
-      chatWindow.classList.toggle('open');
-    });
-
-    // Klik pada butang hijau WhatsApp akan direct ke WhatsApp tanpa buka chatbox
-    waLink.addEventListener('click', (e) => {
-      e.stopPropagation(); // Menghalang kotak chatbox Suri daripada terbuka bersama
-    });
-
-    // Butang pangkah untuk tutup chatbox
-    closeChat.addEventListener('click', (e) => {
-      e.stopPropagation(); 
-      chatWindow.classList.remove('open');
-    });
-
-    // === DIRECT TERUS KE WHATSAPP SELEPAS TEKAN SEND ===
-    const chatInput = document.querySelector('.chat-input');
-    const chatSendBtn = document.querySelector('.chat-send-btn');
-
-    function sendMessage() {
-      const messageText = chatInput.value.trim();
-      
-      // Jika pengguna tidak taip apa-apa, jangan hantar
-      if (messageText === '') return;
-
-      // 1. Nombor WhatsApp perniagaan anda (pastikan bermula dengan kod negara 60)
-      const phoneNum = "60182209929";
-
-      // 2. Menukar teks taipan menjadi format acuan URL (encode URL)
-      const encodedText = encodeURIComponent(messageText);
-
-      // 3. Bina pautan WhatsApp rasmi
-      const whatsappUrl = `https://wa.me/${phoneNum}?text=${encodedText}`;
-
-      // 4. Buka tab baru dan hantar mesej ke WhatsApp
-      window.open(whatsappUrl, '_blank');
-
-      // 5. Kosongkan semula ruangan input di laman web selepas dihantar
-      chatInput.value = '';
-    }
-
-    // Kekalkan fungsi trigger butang klik & enter yang sedia ada
-    if (chatSendBtn) {
-      chatSendBtn.addEventListener('click', sendMessage);
-    }
-
-    if (chatInput) {
-      chatInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-          sendMessage();
-        }
-      });
-    }
-  </script>
-</body>
+  </body>
 </html>
