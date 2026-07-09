@@ -37,7 +37,7 @@
       line-height: 1.6; 
     }
 
-  /* ── 🛠️ NAV BAR / HEADER STATIK (VERSI LOGO BERSIH TANPA LENGKUNGAN) ── */
+/* ── 🛠️ NAV BAR / HEADER STATIK (VERSI LOGO MENONJOL & RAPAT KIRI) ── */
 .header { 
   position: fixed; 
   top: 0; 
@@ -45,78 +45,66 @@
   width: 100%; 
   background: var(--forest); 
   color: var(--white); 
-  padding: 0 5%; /* Dikembalikan ke 5% kiri & kanan untuk keseimbangan */
+  padding: 0 5% 0 0; /* Pastikan padding kiri ditukar ke 0 supaya logo boleh rapat ke dinding skrin */
   display: flex; 
   justify-content: space-between; 
   align-items: center; 
   z-index: 1000; 
   box-shadow: 0 3px 15px rgba(0,0,0,.2);
   height: 90px;
+  overflow: visible; /* Penting! Supaya logo yang besar tidak terpotong di bawah */
 }
 
 .header-left {
   display: flex;
   align-items: center; 
   gap: 25px;
-  height: 100%; 
+  height: 100%;
+  overflow: visible; /* Membenarkan kandungan dalaman terkeluar */
 }
 
-/* KOTAK LOGO BERSIH TANPA BINGKAI EMAS & PUTIH */
+/* KOTAK LOGO YANG RAPAT KE KIRI & MENONJOL KELUAR KE BAWAH */
 .header-logo-wrapper {
-  background: transparent; /* Tukar ke lutsinar */
-  height: 100%; 
-  padding: 0; /* Buang padding yang menolak keluar */
+  background: var(--white); /* Latar putih dikekalkan khas untuk logo supaya tulisan gelap kekal jelas */
+  height: calc(100% + 25px); /* Menjadikan kotak ini lebih tinggi daripada header (90px + 25px) */
+  position: relative;
+  top: 0; /* Dilekatkan bermula dari siling atas */
+  padding: 10px 25px; /* Memberi ruang bernafas di dalam kotak putih */
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom-right-radius: 0; /* Buang lengkungan */
-  border-right: none; /* Buang garisan emas */
-  box-shadow: none; /* Buang bayang-bayang lama */
+  
+  /* Bentuk potongan kosmetik bawah: rata di kiri (rapat dinding), melengkung sedikit di kanan bawah */
+  border-bottom-right-radius: 16px; 
+  border-bottom-left-radius: 0px; /* Tiada lengkungan di bucu kiri supaya rapat sepenuhnya */
+  
+  /* Bayang-bayang lembut supaya kesan penonjolan ('overlap') nampak realistik & premium */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); 
+  z-index: 1010;
 }
 
+/* SAIZ LOGO DI DALAM KOTAK */
 .header-logo {
-  height: 55px; /* Saiz dinaikkan sedikit ke 55px supaya nampak jelas dan premium */
+  height: 75px; /* Dinaikkan daripada 50px ke 75px supaya menonjol secara fizikal */
   width: auto;
   object-fit: contain;
   display: block;
 }
 
-/* Pautan Navigasi Menu (Kekal Sama) */
-.nav__links { 
-  display: flex; 
-  gap: 1.5rem; 
-  list-style: none; 
-  margin-left: auto; 
-  margin-right: 2rem; 
-}
-
-.nav__links a { 
-  color: rgba(255,255,255,.88); 
-  text-decoration: none; 
-  font-size: .875rem; 
-  font-weight: 500; 
-  transition: color .2s; 
-}
-
-.nav__links a:hover, .nav__links a.active { 
-  color: var(--gold-lt); 
-}
-
-.nav__cta {
-  border: 2px solid var(--white);
-  color: var(--white);
-  background: transparent;
-  padding: .45rem 1.75rem; 
-  border-radius: 25px;
-  font-size: .875rem; 
-  font-weight: 600; 
-  text-decoration: none;
-  transition: all .2s ease;
-}
-
-.nav__cta:hover { 
-  background: var(--white); 
-  color: var(--forest); 
+/* 📱 PENGOPTIMALAN UNTUK PAPARAN TELEFON (MOBILE) */
+@media (max-width: 768px) {
+  .header {
+    height: 70px; /* Ketinggian header mobile biasa anda */
+  }
+  
+  .header-logo-wrapper {
+    height: calc(100% + 20px); /* Kotak logo terkeluar sebanyak 20px pada mobile */
+    padding: 8px 15px;
+  }
+  
+  .header-logo {
+    height: 55px; /* Saiz logo dikecilkan sedikit di mobile agar tidak keterlaluan menutup kandungan skrin */
+  }
 }
     /* ── HERO ── */
     .hero {
