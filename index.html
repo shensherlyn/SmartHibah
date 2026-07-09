@@ -37,7 +37,7 @@
       line-height: 1.6; 
     }
 
-/* ── 🛠️ NAV BAR / HEADER STATIK (VERSI LOGO LUTSINAR & MENONJOL KE BAWAH) ── */
+/* ── 🛠️ NAV BAR / HEADER STATIK (VERSI LOGO PUTIH ASAL & MENONJOL) ── */
 .header { 
   position: fixed; 
   top: 0; 
@@ -45,65 +45,60 @@
   width: 100%; 
   background: var(--forest); 
   color: var(--white); 
-  padding: 0 5% 0 0; /* Padding kiri diletakkan 0 supaya logo melekat rapat ke tepi skrin */
+  padding: 0 5% 0 0; /* 0 di kiri supaya logo rapat ke dinding skrin */
   display: flex; 
   justify-content: space-between; 
   align-items: center; 
   z-index: 1000; 
   box-shadow: 0 3px 15px rgba(0,0,0,.2);
   height: 90px;
-  overflow: visible; /* Penting! Membenarkan gambar logo terkeluar ke bawah tanpa terpotong */
+  overflow: visible; /* Membenarkan logo menjulur ke bawah */
 }
 
 .header-left {
   display: flex;
   align-items: center; 
-  gap: 0px; /* Ditukar ke 0 supaya tiada ruang kosong langsung di sebelah kiri logo */
+  gap: 0px; /* Tiada jarak kosong di bucu kiri */
   height: 100%;
   overflow: visible; 
 }
 
-/* PEMBUNGKUS LOGO (KINI LUTSINAR SEPENUHNYA TANPA KOTAK) */
+/* KOTAK PEMBUNGKUS (KINI LUTSINAR - HANYA BERTINDAK SEBAGAI PEMEGANG) */
 .header-logo-wrapper {
-  background: transparent !important; /* Memastikan tiada langsung kotak latar belakang putih */
+  background: transparent !important; /* Tiada kotak putih luar */
   height: 100%; 
-  padding: 0 15px 0 0; /* Beri sedikit ruang di sebelah kanan sahaja untuk jarak teks navigasi */
+  padding: 0; /* Sifar padding untuk elakkan logo tertolak */
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 0 !important; /* Padam semua bentuk lengkungan lama */
-  border: none !important; /* Padam semua garisan emas/kuning lama */
-  box-shadow: none !important; /* Padam bayang-bayang kotak */
+  border-radius: 0 !important; /* Padam lengkungan luar */
+  border: none !important; /* Padam garisan emas luar */
+  box-shadow: none !important; 
   overflow: visible;
 }
 
-/* IMEJ LOGO SAHAJA YANG MENONJOL MELEBIHI HEADER */
+/* IMEJ LOGO ASAL (PUTIH PADAT & MENONJOL KE BAWAH) */
 .header-logo {
-  height: 120px; /* Saiz imej sengaja dibesarkan (melebihi 90px ketinggian header) supaya menonjol */
+  height: 125px; /* Kekalkan saiz besar (melebihi 90px header) supaya menonjol */
   width: auto;
   object-fit: contain;
   display: block;
   position: relative;
-  top: 10px; /* Menolak kedudukan imej sedikit ke bawah untuk menampakkan kesan terkeluar */
+  top: 12px; /* Menolak logo sedikit ke bawah melewati garisan hijau */
   
-  /* 🪄 MAGIC FILTER: Membuang latar belakang putih pada fail imej secara automatik melalui kod */
-  mix-blend-mode: multiply; 
-  filter: brightness(1) contrast(1.2);
+  /* ── 📝 NOTA: KOD FILTER DI BAWAH TELAH DIBUANG ── */
+  /* Warna putih asal pada imej anda akan kelihatan padat sepenuhnya sekarang */
 }
 
-/* 📱 PENGOPTIMALAN RESPONSif UNTUK PAPARAN TELEFON (MOBILE) */
+/* 📱 PENGOPTIMALAN UNTUK PAPARAN TELEFON (MOBILE) */
 @media (max-width: 768px) {
   .header {
-    height: 70px; /* Ketinggian header pada skrin telefon */
-  }
-  
-  .header-logo-wrapper {
-    padding: 0 10px 0 0;
+    height: 70px; 
   }
   
   .header-logo {
-    height: 95px; /* Saiz imej di telefon dikecilkan sedikit tetapi kekal menonjol melepasi 70px header */
-    top: 10px;
+    height: 100px; /* Saiz logo di mobile, menonjol melepasi 70px header */
+    top: 15px; /* Larasan kedudukan ke bawah sedikit di mobile */
   }
 }
 /* Pautan Navigasi Menu (Kekal Sama) */
