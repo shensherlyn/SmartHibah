@@ -37,88 +37,87 @@
       line-height: 1.6; 
     }
 
-    /* ── 🛠️ NAV BAR / HEADER STATIK (100% SAMA SEPERTI PAKEJ.HTML) ── */
-    .header { 
-      position: fixed; 
-      top: 0; 
-      left: 0; 
-      width: 100%; 
-      background: var(--forest); 
-      color: var(--white); 
-      padding: 0 5% 0 0; 
-      display: flex; 
-      justify-content: space-between; 
-      align-items: center; 
-      z-index: 1000; 
-      box-shadow: 0 3px 15px rgba(0,0,0,.2);
-      height: 90px;
-    }
-    
-    .header-left {
-      display: flex;
-      align-items: center; 
-      gap: 25px;
-      height: 100%; 
-    }
-    
-    /* KOTAK LOGO MELENGKUNG DENGAN GARISAN EMAS */
-    .header-logo-wrapper {
-      background: var(--white);
-      height: 100%; 
-      padding: 0 40px 0 5%; 
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-bottom-right-radius: 90px 100px; 
-      border-right: 5px solid var(--gold);
-      box-shadow: 3px 0 10px rgba(0, 0, 0, 0.1); 
-    }
-    
-    .header-logo {
-      height: 50px; 
-      width: auto;
-      object-fit: contain;
-      display: block;
-    }
+  /* ── 🛠️ NAV BAR / HEADER STATIK (VERSI LOGO BERSIH TANPA LENGKUNGAN) ── */
+.header { 
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  background: var(--forest); 
+  color: var(--white); 
+  padding: 0 5%; /* Dikembalikan ke 5% kiri & kanan untuk keseimbangan */
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  z-index: 1000; 
+  box-shadow: 0 3px 15px rgba(0,0,0,.2);
+  height: 90px;
+}
 
-    /* Pautan Navigasi Menu */
-    .nav__links { 
-      display: flex; 
-      gap: 1.5rem; 
-      list-style: none; 
-      margin-left: auto; 
-      margin-right: 2rem; 
-    }
-    
-    .nav__links a { 
-      color: rgba(255,255,255,.88); 
-      text-decoration: none; 
-      font-size: .875rem; 
-      font-weight: 500; 
-      transition: color .2s; 
-    }
-    
-    .nav__links a:hover, .nav__links a.active { 
-      color: var(--gold-lt); 
-    }
-    
-    .nav__cta {
-      border: 2px solid var(--white);
-      color: var(--white);
-      background: transparent;
-      padding: .45rem 1.75rem; 
-      border-radius: 25px;
-      font-size: .875rem; 
-      font-weight: 600; 
-      text-decoration: none;
-      transition: all .2s ease;
-    }
-    
-    .nav__cta:hover { 
-      background: var(--white); 
-      color: var(--forest); 
-    }
+.header-left {
+  display: flex;
+  align-items: center; 
+  gap: 25px;
+  height: 100%; 
+}
 
+/* KOTAK LOGO BERSIH TANPA BINGKAI EMAS & PUTIH */
+.header-logo-wrapper {
+  background: transparent; /* Tukar ke lutsinar */
+  height: 100%; 
+  padding: 0; /* Buang padding yang menolak keluar */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom-right-radius: 0; /* Buang lengkungan */
+  border-right: none; /* Buang garisan emas */
+  box-shadow: none; /* Buang bayang-bayang lama */
+}
+
+.header-logo {
+  height: 55px; /* Saiz dinaikkan sedikit ke 55px supaya nampak jelas dan premium */
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* Pautan Navigasi Menu (Kekal Sama) */
+.nav__links { 
+  display: flex; 
+  gap: 1.5rem; 
+  list-style: none; 
+  margin-left: auto; 
+  margin-right: 2rem; 
+}
+
+.nav__links a { 
+  color: rgba(255,255,255,.88); 
+  text-decoration: none; 
+  font-size: .875rem; 
+  font-weight: 500; 
+  transition: color .2s; 
+}
+
+.nav__links a:hover, .nav__links a.active { 
+  color: var(--gold-lt); 
+}
+
+.nav__cta {
+  border: 2px solid var(--white);
+  color: var(--white);
+  background: transparent;
+  padding: .45rem 1.75rem; 
+  border-radius: 25px;
+  font-size: .875rem; 
+  font-weight: 600; 
+  text-decoration: none;
+  transition: all .2s ease;
+}
+
+.nav__cta:hover { 
+  background: var(--white); 
+  color: var(--forest); 
+}
     /* ── HERO ── */
     .hero {
       background: linear-gradient(135deg, var(--forest) 0%, var(--forest-md) 55%, #1e4a32 100%);
