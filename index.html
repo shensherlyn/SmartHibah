@@ -106,6 +106,44 @@
     height: 55px; /* Saiz logo dikecilkan sedikit di mobile agar tidak keterlaluan menutup kandungan skrin */
   }
 }
+
+/* Pautan Navigasi Menu (Kekal Sama) */
+.nav__links { 
+  display: flex; 
+  gap: 1.5rem; 
+  list-style: none; 
+  margin-left: auto; 
+  margin-right: 2rem; 
+}
+
+.nav__links a { 
+  color: rgba(255,255,255,.88); 
+  text-decoration: none; 
+  font-size: .875rem; 
+  font-weight: 500; 
+  transition: color .2s; 
+}
+
+.nav__links a:hover, .nav__links a.active { 
+  color: var(--gold-lt); 
+}
+
+.nav__cta {
+  border: 2px solid var(--white);
+  color: var(--white);
+  background: transparent;
+  padding: .45rem 1.75rem; 
+  border-radius: 25px;
+  font-size: .875rem; 
+  font-weight: 600; 
+  text-decoration: none;
+  transition: all .2s ease;
+}
+
+.nav__cta:hover { 
+  background: var(--white); 
+  color: var(--forest); 
+}
     /* ── HERO ── */
     .hero {
       background: linear-gradient(135deg, var(--forest) 0%, var(--forest-md) 55%, #1e4a32 100%);
