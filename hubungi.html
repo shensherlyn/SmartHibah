@@ -36,49 +36,70 @@
       line-height: 1.6; 
     }
     
-    /* ── 🛠️ NAV BAR / HEADER STATIK PREMIUM ── */
-    .header { 
-      position: fixed; 
-      top: 0; 
-      left: 0; 
-      width: 100%; 
-      background: var(--forest); 
-      color: var(--white); 
-      padding: 0 5% 0 0; 
-      display: flex; 
-      justify-content: space-between; 
-      align-items: center; 
-      z-index: 1000; 
-      box-shadow: 0 3px 15px rgba(0,0,0,.2);
-      height: 90px;
-    }
-    
-    .header-left {
-      display: flex;
-      align-items: center; 
-      gap: 25px;
-      height: 100%; 
-    }
-    
-    .header-logo-wrapper {
-      background: var(--white);
-      height: 100%; 
-      padding: 0 40px 0 5%; 
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-bottom-right-radius: 90px 100px; 
-      border-right: 5px solid var(--gold);
-      box-shadow: 3px 0 10px rgba(0, 0, 0, 0.1); 
-    }
-    
-    .header-logo {
-      height: 50px; 
-      width: auto;
-      object-fit: contain;
-      display: block;
-    }
+   /* ── 🛠️ NAV BAR / HEADER STATIK (VERSI LOGO PUTIH ASAL & MENONJOL) ── */
+.header { 
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  background: var(--forest); 
+  color: var(--white); 
+  padding: 0 5% 0 0; /* 0 di kiri supaya logo rapat ke dinding skrin */
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  z-index: 1000; 
+  box-shadow: 0 3px 15px rgba(0,0,0,.2);
+  height: 90px;
+  overflow: visible; /* Membenarkan logo menjulur ke bawah */
+}
 
+.header-left {
+  display: flex;
+  align-items: center; 
+  gap: 0px; /* Tiada jarak kosong di bucu kiri */
+  height: 100%;
+  overflow: visible; 
+}
+
+/* KOTAK PEMBUNGKUS (KINI LUTSINAR - HANYA BERTINDAK SEBAGAI PEMEGANG) */
+.header-logo-wrapper {
+  background: transparent !important; /* Tiada kotak putih luar */
+  height: 100%; 
+  padding: 0; /* Sifar padding untuk elakkan logo tertolak */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 !important; /* Padam lengkungan luar */
+  border: none !important; /* Padam garisan emas luar */
+  box-shadow: none !important; 
+  overflow: visible;
+}
+
+/* IMEJ LOGO ASAL (PUTIH PADAT & MENONJOL KE BAWAH) */
+.header-logo {
+  height: 125px; /* Kekalkan saiz besar (melebihi 90px header) supaya menonjol */
+  width: auto;
+  object-fit: contain;
+  display: block;
+  position: relative;
+  top: 12px; /* Menolak logo sedikit ke bawah melewati garisan hijau */
+  
+  /* ── 📝 NOTA: KOD FILTER DI BAWAH TELAH DIBUANG ── */
+  /* Warna putih asal pada imej anda akan kelihatan padat sepenuhnya sekarang */
+}
+
+/* 📱 PENGOPTIMALAN UNTUK PAPARAN TELEFON (MOBILE) */
+@media (max-width: 768px) {
+  .header {
+    height: 70px; 
+  }
+  
+  .header-logo {
+    height: 100px; /* Saiz logo di mobile, menonjol melepasi 70px header */
+    top: 15px; /* Larasan kedudukan ke bawah sedikit di mobile */
+  }
+}
     .nav__links { 
       display: flex; 
       gap: 1.5rem; 
