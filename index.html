@@ -94,7 +94,7 @@
       top: 12px; /* Menolak logo sedikit ke bawah melewati garisan hijau */
     }
 
-    /* Pautan Navigasi Menu (Kekal Sama) */
+    /* Pautan Navigasi Menu */
     .nav__links { 
       display: flex; 
       gap: 1.5rem; 
@@ -241,7 +241,7 @@
     .why__card h3 { font-size: .95rem; font-weight: 700; color: var(--forest); margin-bottom: .4rem; }
     .why__card p { font-size: .83rem; color: var(--muted); line-height: 1.6; }
 
-    /* ── SERVICES ── */
+    /* ── SERVICES (Desktop) ── */
     .services { 
       background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('assets/bgsw.png') !important;
       background-size: cover !important;
@@ -374,7 +374,7 @@
     .audience__card h3 { font-size: .875rem; font-weight: 700; color: var(--forest); margin-bottom: .3rem; }
     .audience__card p { font-size: .78rem; color: var(--muted); line-height: 1.5; }
 
-    /* ── DOCUMENTS ── */
+    /* ── DOCUMENTS (Desktop) ── */
     .docs { 
       background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('assets/bgsw.png') !important;
       background-size: cover !important;
@@ -548,31 +548,42 @@
     /* ── 🛠️ B. SKRIN TELEFON (max-width: 768px) ── */
     @media (max-width: 768px) {
       
-      /* 🌟 [📦 DIBAIKI]: SETTING BARU UNTUK LATAR BELAKANG MOBILE YANG TAJAM & JELAS 🌟 */
       body {
         background-image: url('assets/bgsw.png') !important;
         background-attachment: scroll !important; /* Elak bug background pecah pada browser iOS/Android */
-        background-size: contain !important;       /* Kekalkan kejelasan asal corak background tanpa meregangkannya */
-        background-position: top center !important;
-        background-repeat: repeat-y !important;    /* Ulangan corak ke bawah dengan lancar mengikut skrin panjang */
+        background-size: cover !important;       
+        background-position: center !important;
+        background-repeat: no-repeat !important;    
       }
 
-      /* 🌟 [📦 DIBAIKI]: BUANG OVERLAY GELAP AGAR KEDUA-DUA SEKSYEN INI LEBIH LUTSINAR DAN JELAS LATER BELAKANGNYA 🌟 */
+      /* 🌟 [UBAHAN UTAMA]: SEMBUNYIKAN SEMUA ELEMEN TEKS, KAD & BUTANG DI DALAM SERVICES & DOCS 🌟 */
+      .services *, .docs * {
+        display: none !important;
+      }
+
+      /* 🌟 [UBAHAN UTAMA]: TUKAR SEKSYEN INI KEPADA KOTAK PAPARAN GAMBAR SAHAJA BERKUALITI TINGGI 🌟 */
       .services, .docs {
-        background: transparent !important;        
-        background-image: none !important;
-        padding: 3.5rem 5%;
+        display: block !important;
+        visibility: visible !important;
+        background-image: url('assets/bgsw.png') !important;
+        background-size: contain !important;       /* Kekalkan kualiti resolusi asal tanpa pecah/tarik */
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        background-attachment: scroll !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 280px;                          /* Ketinggian kawasan paparan imej pada mobile */
+        padding: 0 !important;                      
+        margin: 2rem 0 !important;
       }
 
-      /* 🌟 [📦 DIBAIKI]: JADIKAN SEKSYEN KREAM SEDIKIT LUTSINAR SUPAYA LATAR BELAKANG DAPAT TEMBUS KELIHAN 🌟 */
+      /* 🌟 KEKALKAN KELUTSINARAN SEKSYEN KREAM LAIN 🌟 */
       .why, .audience {
         background: rgba(250, 247, 242, 0.88) !important; 
       }
       
       /* ── LOGO HEADER UNTUK MOBILE ── */
-      .header {
-        height: 70px; 
-      }
+      .header { height: 70px; }
 
       .header-left {
         display: flex !important;  
@@ -654,16 +665,6 @@
         border-radius: 25px;
       }
 
-      /* [KAD PAKEJ MENEGAK UNTUK TELEFON] */
-      .services__grid {
-        grid-template-columns: 1fr !important; 
-        gap: 2rem !important;
-      }
-      .service-card {
-        width: 100% !important;
-        max-width: 100% !important;
-      }
-
       /* [HERO SECTION MOBILE] */
       .hero { grid-template-columns: 1fr; padding: 3rem 5% 2rem; min-height: auto; gap: 2.5rem; }
       .hero__visual { order: -1; }
@@ -685,7 +686,7 @@
       .why__grid { grid-template-columns: 1fr 1fr; }
       .process__steps { grid-template-columns: 1fr 1fr; }
       .audience__grid { grid-template-columns: 1fr 1fr; }
-      .docs__grid { grid-template-columns: 1fr !important; } 
+      .services, .docs { min-height: 200px; } /* Melaraskan nisbah mengikut kelebaran skrin yang lebih kecil */
     }
 
     /* ── 🛠️ D. PREFERS REDUCED MOTION ── */
