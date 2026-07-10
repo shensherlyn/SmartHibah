@@ -267,7 +267,7 @@
       margin: 0 auto;
       align-items: stretch;
     }
-       
+     
     .service-card {
       background: var(--white) !important; 
       border: 1px solid var(--border); 
@@ -543,16 +543,47 @@
     /* ── 🛠️ B. SKRIN TELEFON (max-width: 768px) ── */
     @media (max-width: 768px) {
       
-      body {
+      /* 🌟 PANDUAN PENTING: Membuang terus bayang gambaran desktop fixed bgsw.png pada mobile */
+      html, body {
         background-image: none !important; 
-        background-color: var(--cream) !important;        
+        background: var(--cream) !important;       
+        background-attachment: scroll !important;
       }
 
-      /* 🌟 SEKSYEN PERKHIDMATAN (GAMBAR DIASINGKAN & DIPAKSA PUTIH BERSIH) */
+      /* 🌟 KEMAS KINI HERO: Menukar latar belakang kepada Putih Bersih di telefon pintar */
+      .hero { 
+        grid-template-columns: 1fr; 
+        padding: 3rem 5% 2rem; 
+        min-height: auto; 
+        gap: 2.5rem;
+        background-image: none !important;
+        background: var(--white) !important; 
+        margin-top: 70px;
+      }
+      .hero::before { display: none !important; }
+
+      /* Membetulkan warna teks teks Hero supaya sangat kontra di atas background putih */
+      .hero__h1 { 
+        font-size: 2rem; 
+        color: var(--forest) !important; 
+        text-shadow: none !important; 
+      }
+      .hero__h1 em { 
+        color: var(--gold) !important; 
+        text-shadow: none !important; 
+      }
+      .hero__sub { 
+        font-size: .95rem; 
+        color: var(--text) !important; 
+        text-shadow: none !important; 
+      }
+      .hero__visual { order: -1; }
+
+      /* 🌟 SEKSYEN PERKHIDMATAN (Tukar gambar background kepada putih bersih) */
       .services {
         display: block !important;
         visibility: visible !important;
-        background-image: none !important; /* Membuang melimpah imej fixed desktop */
+        background-image: none !important;
         background: var(--white) !important; 
         padding: 3.5rem 5% !important;
         margin: 0 !important;
@@ -582,11 +613,11 @@
       .services .section-sub { text-shadow: none !important; color: var(--muted) !important; }
 
 
-      /* 🌟 SEKSYEN DOKUMEN (GAMBAR DIASINGKAN & DIPAKSA PUTIH BERSIH) */
+      /* 🌟 SEKSYEN DOKUMEN (Tukar gambar background kepada putih bersih) */
       .docs {
         display: block !important;
         visibility: visible !important;
-        background-image: none !important; /* Membuang melimpah imej fixed desktop */
+        background-image: none !important;
         background: var(--white) !important; 
         padding: 3.5rem 5% !important;
         margin: 0 !important;
@@ -704,11 +735,6 @@
         border-radius: 25px;
       }
 
-      /* [HERO SECTION MOBILE] */
-      .hero { grid-template-columns: 1fr; padding: 3rem 5% 2rem; min-height: auto; gap: 2.5rem; }
-      .hero__visual { order: -1; }
-      .hero__h1 { font-size: 1.8rem; }
-      .hero__sub { font-size: .9rem; }
       .process { padding: 3.5rem 5%; }
       
       /* [FOOTER MOBILE] */
