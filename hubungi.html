@@ -36,7 +36,7 @@
       line-height: 1.6; 
     }
     
-   /* ── 🛠️ NAV BAR / HEADER STATIK (VERSI LOGO PUTIH ASAL & MENONJOL) ── */
+    /* ── 🛠️ NAV BAR / HEADER STATIK (VERSI LOGO PUTIH ASAL & MENONJOL) ── */
 .header { 
   position: fixed; 
   top: 0; 
@@ -434,6 +434,31 @@
     }
    /* ── RESPONSIVE MOBILE (SEPADAN DENGAN JAVASCRIPT ANDA) ── */
     @media (max-width: 768px) {
+      /* ⭐ KOD TAMBAHAN: Paksa latar belakang jadi putih bersih di telefon sahaja */
+      html, body {
+        background-image: none !important; 
+        background: #ffffff !important;        
+        background-attachment: scroll !important;
+      }
+
+      /* ⭐ KOD TAMBAHAN: Laraskan kad utama kanan dan form supaya kemas di atas background putih */
+      .contact-links-card {
+        background: #ffffff !important;
+        border: 1px solid var(--border) !important;
+        box-shadow: 0 4px 15px rgba(3, 43, 29, 0.04) !important;
+        padding: 2rem 1.5rem !important;
+      }
+
+      .contact-form {
+        background: var(--cream) !important;
+        padding: 1.5rem 1rem !important;
+      }
+
+      .grid-links {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+      }
+
       .nav__links, .nav__cta { display: none !important; }
 
       /* MENU HAMBURGER (3 Garisan Putih) */
@@ -634,7 +659,7 @@
   .wa-mini-badge svg { width: 14px; height: 14px; }
   .chatbot-window { width: calc(100vw - 30px); height: 480px; bottom: 100px; }
 }
-  </style>
+</style>
 </head>
 <body>
 
