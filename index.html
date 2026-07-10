@@ -548,37 +548,43 @@
     /* ── 🛠️ B. SKRIN TELEFON (max-width: 768px) ── */
     @media (max-width: 768px) {
       
-      /* 🌟 [📦 DIBAIKI]: PEMBETULAN LATAR BELAKANG KABUR (BACKGROUND MOBILE FIX) 🌟 */
+      /* 🌟 [📦 DIBAIKI]: SETTING BARU UNTUK LATAR BELAKANG MOBILE YANG TAJAM & JELAS 🌟 */
       body {
-        background-attachment: scroll !important; /* Tukar ke scroll untuk atasi bug mobile */
-        background-size: 100% auto !important;     /* Ikut lebar paparan telefon */
+        background-image: url('assets/bgsw.png') !important;
+        background-attachment: scroll !important; /* Elak bug background pecah pada browser iOS/Android */
+        background-size: contain !important;       /* Kekalkan kejelasan asal corak background tanpa meregangkannya */
         background-position: top center !important;
-        background-repeat: repeat-y !important;    /* Latar belakang berulang secara menegak jika teks panjang */
+        background-repeat: repeat-y !important;    /* Ulangan corak ke bawah dengan lancar mengikut skrin panjang */
       }
 
-      /* 🌟 [📦 DIBAIKI]: SEKSYEN DALAMAN YANG MENGGUNAKAN BG KEMBANG 🌟 */
+      /* 🌟 [📦 DIBAIKI]: BUANG OVERLAY GELAP AGAR KEDUA-DUA SEKSYEN INI LEBIH LUTSINAR DAN JELAS LATER BELAKANGNYA 🌟 */
       .services, .docs {
-        background-attachment: scroll !important;
-        background-size: cover !important;
-        background-position: center !important;
+        background: transparent !important;        
+        background-image: none !important;
+        padding: 3.5rem 5%;
+      }
+
+      /* 🌟 [📦 DIBAIKI]: JADIKAN SEKSYEN KREAM SEDIKIT LUTSINAR SUPAYA LATAR BELAKANG DAPAT TEMBUS KELIHAN 🌟 */
+      .why, .audience {
+        background: rgba(250, 247, 242, 0.88) !important; 
       }
       
-      /* 🌟 [Kekal Asal]: LOGO HEADER UNTUK MOBILE - SELARI & MENONJOL 🌟 */
+      /* ── LOGO HEADER UNTUK MOBILE ── */
       .header {
         height: 70px; 
       }
 
       .header-left {
-        display: flex !important;  /* Paksa flex semula supaya sebaris */
+        display: flex !important;  
         gap: 0px !important;         
         height: 100%;
         overflow: visible;
       }
 
       .header-logo-wrapper {
-        background: transparent !important; /* Padam kotak putih di mobile */
+        background: transparent !important; 
         padding: 0 !important; 
-        border-radius: 0 !important; /* Padam lengkungan lama di mobile */
+        border-radius: 0 !important; 
         border: none !important;
         box-shadow: none !important;
         height: 100%;
@@ -589,11 +595,11 @@
       }
 
       .header-logo {
-        height: 100px !important; /* Saiz kekal besar & menonjol di telefon */
-        top: 15px !important; /* Laras sedikit ke bawah melewati bar hijau */
+        height: 100px !important; 
+        top: 15px !important; 
       }
 
-      /* [NAV MENU MOBILE]: Matikan Desktop, Hidupkan Hamburger Dropdown */
+      /* [NAV MENU MOBILE] */
       .nav__links, .nav__cta { display: none !important; }
       
       .nav__hamburger {
@@ -617,7 +623,7 @@
       .nav__mobile {
         display: none; 
         position: fixed;
-        top: 70px; /* Diubah suai ke 70px mengikut tinggi header mobile baharu */
+        top: 70px; 
         left: 0;
         width: 100%;
         background-color: var(--forest-md); 
@@ -663,7 +669,7 @@
       .hero__visual { order: -1; }
       .hero__h1 { font-size: 1.8rem; }
       .hero__sub { font-size: .9rem; }
-      .why, .services, .process, .audience, .docs { padding: 3.5rem 5%; }
+      .process { padding: 3.5rem 5%; }
       
       /* [FOOTER MOBILE] */
       .footer__container { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
