@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
- <style>
+<style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -38,106 +38,100 @@
     }
 
    /* ── 🛠️ NAV BAR / HEADER STATIK (VERSI LOGO PUTIH ASAL & MENONJOL) ── */
-.header { 
-  position: fixed; 
-  top: 0; 
-  left: 0; 
-  width: 100%; 
-  background: var(--forest); 
-  color: var(--white); 
-  padding: 0 5% 0 0; /* 0 di kiri supaya logo rapat ke dinding skrin */
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center; 
-  z-index: 1000; 
-  box-shadow: 0 3px 15px rgba(0,0,0,.2);
-  height: 90px;
-  overflow: visible; /* Membenarkan logo menjulur ke bawah */
-}
+    .header { 
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      background: var(--forest); 
+      color: var(--white); 
+      padding: 0 5% 0 0; /* 0 di kiri supaya logo rapat ke dinding skrin */
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      z-index: 1000; 
+      box-shadow: 0 3px 15px rgba(0,0,0,.2);
+      height: 90px;
+      overflow: visible; /* Membenarkan logo menjulur ke bawah */
+    }
 
-.header-left {
-  display: flex;
-  align-items: center; 
-  gap: 0px; /* Tiada jarak kosong di bucu kiri */
-  height: 100%;
-  overflow: visible; 
-}
+    .header-left {
+      display: flex;
+      align-items: center; 
+      gap: 0px; /* Tiada jarak kosong di bucu kiri */
+      height: 100%;
+      overflow: visible; 
+    }
 
-/* KOTAK PEMBUNGKUS (KINI LUTSINAR - HANYA BERTINDAK SEBAGAI PEMEGANG) */
-.header-logo-wrapper {
-  background: transparent !important; /* Tiada kotak putih luar */
-  height: 100%; 
-  padding: 0; /* Sifar padding untuk elakkan logo tertolak */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0 !important; /* Padam lengkungan luar */
-  border: none !important; /* Padam garisan emas luar */
-  box-shadow: none !important; 
-  overflow: visible;
-}
+    /* KOTAK PEMBUNGKUS (KINI LUTSINAR - HANYA BERTINDAK SEBAGAI PEMEGANG) */
+    .header-logo-wrapper {
+      background: transparent !important; /* Tiada kotak putih luar */
+      height: 100%; 
+      padding: 0; /* Sifar padding untuk elakkan logo tertolak */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0 !important; /* Padam lengkungan luar */
+      border: none !important; /* Padam garisan emas luar */
+      box-shadow: none !important; 
+      overflow: visible;
+    }
 
-/* IMEJ LOGO ASAL (PUTIH PADAT & MENONJOL KE BAWAH) */
-.header-logo {
-  height: 125px; /* Kekalkan saiz besar (melebihi 90px header) supaya menonjol */
-  width: auto;
-  object-fit: contain;
-  display: block;
-  position: relative;
-  top: 12px; /* Menolak logo sedikit ke bawah melewati garisan hijau */
-  
-  /* ── 📝 NOTA: KOD FILTER DI BAWAH TELAH DIBUANG ── */
-  /* Warna putih asal pada imej anda akan kelihatan padat sepenuhnya sekarang */
-}
+    .header-logo-wrapper a {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      overflow: visible;
+    }
 
-/* 📱 PENGOPTIMALAN UNTUK PAPARAN TELEFON (MOBILE) */
-@media (max-width: 768px) {
-  .header {
-    height: 70px; 
-  }
-  
-  .header-logo {
-    height: 100px; /* Saiz logo di mobile, menonjol melepasi 70px header */
-    top: 15px; /* Larasan kedudukan ke bawah sedikit di mobile */
-  }
-}
-/* Pautan Navigasi Menu (Kekal Sama) */
-.nav__links { 
-  display: flex; 
-  gap: 1.5rem; 
-  list-style: none; 
-  margin-left: auto; 
-  margin-right: 2rem; 
-}
+    /* IMEJ LOGO ASAL (PUTIH PADAT & MENONJOL KE BAWAH) */
+    .header-logo {
+      height: 125px; /* Kekalkan saiz besar (melebihi 90px header) supaya menonjol */
+      width: auto;
+      object-fit: contain;
+      display: block;
+      position: relative;
+      top: 12px; /* Menolak logo sedikit ke bawah melewati garisan hijau */
+    }
 
-.nav__links a { 
-  color: rgba(255,255,255,.88); 
-  text-decoration: none; 
-  font-size: .875rem; 
-  font-weight: 500; 
-  transition: color .2s; 
-}
+    /* Pautan Navigasi Menu (Kekal Sama) */
+    .nav__links { 
+      display: flex; 
+      gap: 1.5rem; 
+      list-style: none; 
+      margin-left: auto; 
+      margin-right: 2rem; 
+    }
 
-.nav__links a:hover, .nav__links a.active { 
-  color: var(--gold-lt); 
-}
+    .nav__links a { 
+      color: rgba(255,255,255,.88); 
+      text-decoration: none; 
+      font-size: .875rem; 
+      font-weight: 500; 
+      transition: color .2s; 
+    }
 
-.nav__cta {
-  border: 2px solid var(--white);
-  color: var(--white);
-  background: transparent;
-  padding: .45rem 1.75rem; 
-  border-radius: 25px;
-  font-size: .875rem; 
-  font-weight: 600; 
-  text-decoration: none;
-  transition: all .2s ease;
-}
+    .nav__links a:hover, .nav__links a.active { 
+      color: var(--gold-lt); 
+    }
 
-.nav__cta:hover { 
-  background: var(--white); 
-  color: var(--forest); 
-}
+    .nav__cta {
+      border: 2px solid var(--white);
+      color: var(--white);
+      background: transparent;
+      padding: .45rem 1.75rem; 
+      border-radius: 25px;
+      font-size: .875rem; 
+      font-weight: 600; 
+      text-decoration: none;
+      transition: all .2s ease;
+    }
+
+    .nav__cta:hover { 
+      background: var(--white); 
+      color: var(--forest); 
+    }
+
     /* ── HERO ── */
     .hero {
       background: linear-gradient(135deg, var(--forest) 0%, var(--forest-md) 55%, #1e4a32 100%);
@@ -269,7 +263,6 @@
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9), 0 4px 8px rgba(0, 0, 0, 0.85);
     }
 
-    /* Paparan Laptop: Kekal Melintang Sebaris Bertiga */
     .services__grid {
       display: grid; 
       grid-template-columns: repeat(3, 1fr); 
@@ -555,24 +548,34 @@
     /* ── 🛠️ B. SKRIN TELEFON (max-width: 768px) ── */
     @media (max-width: 768px) {
       
-      /* [LOGO HEADER]: Kekal Premium Mengikut Page Lain */
-      .header-left {
-        display: block !important; 
-        gap: 0 !important;         
-        height: 100%;
+      /* 🌟 [📦 DIBAIKI]: LOGO HEADER UNTUK MOBILE - KINI SELARI & MENONJOL 🌟 */
+      .header {
+        height: 70px; 
       }
+
+      .header-left {
+        display: flex !important;  /* Paksa flex semula supaya sebaris */
+        gap: 0px !important;         
+        height: 100%;
+        overflow: visible;
+      }
+
       .header-logo-wrapper {
-        padding: 0 40px 0 5% !important; 
-        border-bottom-right-radius: 90px 100px !important; 
+        background: transparent !important; /* Padam kotak putih di mobile */
+        padding: 0 !important; 
+        border-radius: 0 !important; /* Padam lengkungan lama di mobile */
+        border: none !important;
+        box-shadow: none !important;
         height: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
+        overflow: visible;
       }
+
       .header-logo {
-        height: 50px; 
-        width: auto;
-        object-fit: contain;
+        height: 100px !important; /* Saiz kekal besar & menonjol di telefon */
+        top: 15px !important; /* Laras sedikit ke bawah melewati bar hijau */
       }
 
       /* [NAV MENU MOBILE]: Matikan Desktop, Hidupkan Hamburger Dropdown */
@@ -599,7 +602,7 @@
       .nav__mobile {
         display: none; 
         position: fixed;
-        top: 90px; 
+        top: 70px; /* Diubah suai ke 70px mengikut tinggi header mobile baharu */
         left: 0;
         width: 100%;
         background-color: var(--forest-md); 
@@ -630,9 +633,9 @@
         border-radius: 25px;
       }
 
-      /* 🌟 [📦 FIX: KAD PAKEJ MENEGAK UNTUK TELEFON] ── */
+      /* [KAD PAKEJ MENEGAK UNTUK TELEFON] */
       .services__grid {
-        grid-template-columns: 1fr !important; /* Tukar 3 Kolum Laptop ke 1 Kolum Telefon */
+        grid-template-columns: 1fr !important; 
         gap: 2rem !important;
       }
       .service-card {
@@ -661,7 +664,7 @@
       .why__grid { grid-template-columns: 1fr 1fr; }
       .process__steps { grid-template-columns: 1fr 1fr; }
       .audience__grid { grid-template-columns: 1fr 1fr; }
-      .docs__grid { grid-template-columns: 1fr !important; } /* Paksa dokumen menegak di telefon kecil */
+      .docs__grid { grid-template-columns: 1fr !important; } 
     }
 
     /* ── 🛠️ D. PREFERS REDUCED MOTION ── */
