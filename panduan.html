@@ -37,7 +37,7 @@
       line-height: 1.6; 
     }
     
-   /* ── 🛠️ NAV BAR / HEADER STATIK (VERSI LOGO PUTIH ASAL & MENONJOL) ── */
+    /* ── 🛠️ NAV BAR / HEADER STATIK (VERSI LOGO PUTIH ASAL & MENONJOL) ── */
 .header { 
   position: fixed; 
   top: 0; 
@@ -393,6 +393,20 @@
 
 /* ── RESPONSIVE MOBILE (SEPADAN DENGAN JAVASCRIPT ANDA) ── */
     @media (max-width: 768px) {
+      /* ⭐ KOD TAMBAHAN: Paksa latar belakang jadi putih bersih di telefon sahaja */
+      html, body {
+        background-image: none !important; 
+        background: #ffffff !important;        
+        background-attachment: scroll !important;
+      }
+
+      /* ⭐ KOD TAMBAHAN: Laraskan kad seksyen supaya tidak kelihatan terlampau gelap atas background putih */
+      .section-card {
+        background: #ffffff !important;
+        border: 1px solid var(--border) !important;
+        box-shadow: 0 4px 12px rgba(3, 43, 29, 0.04) !important;
+      }
+
       .nav__links, .nav__cta { display: none !important; }
 
       /* MENU HAMBURGER (3 Garisan Putih) */
