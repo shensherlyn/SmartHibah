@@ -37,7 +37,7 @@
       line-height: 1.6; 
     }
 
-   /* ── 🛠️ NAV BAR / HEADER STATIK (VERSI LOGO PUTIH ASAL & MENONJOL) ── */
+   /* ── 🛠️ NAV BAR / HEADER STATIK ── */
     .header { 
       position: fixed; 
       top: 0; 
@@ -45,34 +45,33 @@
       width: 100%; 
       background: var(--forest); 
       color: var(--white); 
-      padding: 0 5% 0 0; /* 0 di kiri supaya logo rapat ke dinding skrin */
+      padding: 0 5% 0 0; 
       display: flex; 
       justify-content: space-between; 
       align-items: center; 
       z-index: 1000; 
       box-shadow: 0 3px 15px rgba(0,0,0,.2);
       height: 90px;
-      overflow: visible; /* Membenarkan logo menjulur ke bawah */
+      overflow: visible; 
     }
 
     .header-left {
       display: flex;
       align-items: center; 
-      gap: 0px; /* Tiada jarak kosong di bucu kiri */
+      gap: 0px; 
       height: 100%;
       overflow: visible; 
     }
 
-    /* KOTAK PEMBUNGKUS (KINI LUTSINAR - HANYA BERTINDAK SEBAGAI PEMEGANG) */
     .header-logo-wrapper {
-      background: transparent !important; /* Tiada kotak putih luar */
+      background: transparent !important; 
       height: 100%; 
-      padding: 0; /* Sifar padding untuk elakkan logo tertolak */
+      padding: 0; 
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 0 !important; /* Padam lengkungan luar */
-      border: none !important; /* Padam garisan emas luar */
+      border-radius: 0 !important; 
+      border: none !important; 
       box-shadow: none !important; 
       overflow: visible;
     }
@@ -84,17 +83,15 @@
       overflow: visible;
     }
 
-    /* IMEJ LOGO ASAL (PUTIH PADAT & MENONJOL KE BAWAH) */
     .header-logo {
-      height: 125px; /* Kekalkan saiz besar (melebihi 90px header) supaya menonjol */
+      height: 125px; 
       width: auto;
       object-fit: contain;
       display: block;
       position: relative;
-      top: 12px; /* Menolak logo sedikit ke bawah melewati garisan hijau */
+      top: 12px; 
     }
 
-    /* Pautan Navigasi Menu */
     .nav__links { 
       display: flex; 
       gap: 1.5rem; 
@@ -158,7 +155,6 @@
     }
     .hero__eyebrow::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold-lt); }
 
-    /* ── TULISAN HERO ── */
     .hero__h1 {
       font-size: clamp(2.5rem, 5.5vw, 3.8rem); 
       font-weight: 850; 
@@ -241,7 +237,7 @@
     .why__card h3 { font-size: .95rem; font-weight: 700; color: var(--forest); margin-bottom: .4rem; }
     .why__card p { font-size: .83rem; color: var(--muted); line-height: 1.6; }
 
-    /* ── SERVICES (Desktop) ── */
+    /* ── SERVICES (Desktop dengan Gambar) ── */
     .services { 
       background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('assets/bgsw.png') !important;
       background-size: cover !important;
@@ -281,8 +277,6 @@
       display: flex;
       flex-direction: column;
       box-shadow: 0 10px 30px rgba(3, 43, 29, 0.05); 
-      backdrop-filter: none !important;
-      -webkit-backdrop-filter: none !important;
     }
     .service-card:hover { transform: translateY(-5px); box-shadow: 0 12px 32px rgba(26,58,42,.1); }
     .service-card__head {
@@ -374,7 +368,7 @@
     .audience__card h3 { font-size: .875rem; font-weight: 700; color: var(--forest); margin-bottom: .3rem; }
     .audience__card p { font-size: .78rem; color: var(--muted); line-height: 1.5; }
 
-    /* ── DOCUMENTS (Desktop) ── */
+    /* ── DOCUMENTS (Desktop dengan Gambar) ── */
     .docs { 
       background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('assets/bgsw.png') !important;
       background-size: cover !important;
@@ -549,40 +543,66 @@
     @media (max-width: 768px) {
       
       body {
-        background-image: url('assets/bgsw.png') !important;
-        background-attachment: scroll !important; /* Elak bug background pecah pada browser iOS/Android */
-        background-size: cover !important;       
-        background-position: center !important;
-        background-repeat: no-repeat !important;    
+        background-image: none !important; /* Buang terus background luar pada mobile */
+        background-color: var(--cream) !important;       
       }
 
-      /* 🌟 PADAM TEKS & KAD DALAM SERVICES & DOCS 🌟 */
-      .services *, .docs * {
-        display: none !important;
-      }
-
-      /* 🌟 [KEMAS KINI UTAMA]: KOTAK PAPARAN IMEJ PENUH (FULL-WIDTH) IKUT NISBAH TELEFON 🌟 */
-      .services, .docs {
+      /* 🌟 [KEMAS KINI UTAMA]: MENUKAR SEKSYEN KEPADA WARNA KORPORAT TANPA GAMBAR LATAR 🌟 */
+      .services {
         display: block !important;
         visibility: visible !important;
-        background-image: url('assets/bgsw.png') !important;
-        background-size: cover !important;          /* Memastikan gambar dipotong penuh memenuhi ruang skrin kiri-ke-kanan */
-        background-position: center top !important; /* Memfokuskan kepada wajah atau bahagian atas gambar */
-        background-repeat: no-repeat !important;
-        background-attachment: scroll !important;
-        
+        background: var(--forest) !important;      /* Tukar kepada Hijau Korporat padat */
+        padding: 3.5rem 5% !important;
+        margin: 0 !important;
+      }
+      
+      /* Mengembalikan paparan teks/elemen kad dalam seksyen ini */
+      .services * {
+        display: initial !important; 
+      }
+      .services__grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important;    /* Kad tersusun ke bawah pada mobile */
+        gap: 1.5rem !important;
+      }
+      .services .section-label { text-shadow: none !important; color: var(--gold-lt) !important; }
+      .services .section-title { text-shadow: none !important; color: var(--white) !important; }
+      .services .section-sub { text-shadow: none !important; color: rgba(255,255,255,0.75) !important; }
+
+      .docs {
+        display: block !important;
+        visibility: visible !important;
+        background: var(--cream) !important;       /* Tukar kepada Putih/Krim Korporat padat */
+        padding: 3.5rem 5% !important;
+        margin: 0 !important;
+      }
+      
+      /* Mengembalikan paparan teks/elemen dalam seksyen dokumen */
+      .docs * {
+        display: initial !important;
+      }
+      .docs__grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important;    /* Tersusun ke bawah */
+        gap: 1.25rem !important;
+      }
+      .docs .section-label { text-shadow: none !important; color: var(--gold) !important; }
+      .docs .section-title { text-shadow: none !important; color: var(--forest) !important; }
+      .docs .section-sub { text-shadow: none !important; color: var(--muted) !important; }
+      .docs__note { text-shadow: none !important; color: var(--forest) !important; }
+
+      /* Laraskan ukuran kotak seksyen standard */
+      .services, .docs {
         width: 100% !important;
-        max-width: 100vw !important;                /* Lebar melimpah penuh skrin telefon */
-        height: 65vh !important;                     /* Menggunakan nisbah ketinggian skrin telefon pintar */
-        min-height: 450px !important;                /* Had ketinggian minimum premium */
-        
-        padding: 0 !important;                      /* Membuang padding dalam */
-        margin: 1.5rem 0 !important;                /* Jarak atas bawah yang kemas antara seksyen */
+        max-width: 100vw !important;
+        height: auto !important;
+        min-height: initial !important;
       }
 
-      /* 🌟 KEKALKAN KELUTSINARAN SEKSYEN KREAM LAIN 🌟 */
+      /* 🌟 KEKALKAN SEKSYEN KREAM LAIN 🌟 */
       .why, .audience {
-        background: rgba(250, 247, 242, 0.88) !important; 
+        background: var(--cream) !important; 
+        padding: 3.5rem 5% !important;
       }
       
       /* ── LOGO HEADER UNTUK MOBILE ── */
@@ -689,12 +709,6 @@
       .why__grid { grid-template-columns: 1fr 1fr; }
       .process__steps { grid-template-columns: 1fr 1fr; }
       .audience__grid { grid-template-columns: 1fr 1fr; }
-      
-      /* [KEMAS KINI UTAMA]: Melaraskan semula ketinggian optimum imej untuk skrin paling kecil */
-      .services, .docs { 
-        height: 55vh !important;
-        min-height: 380px !important; 
-      } 
     }
 
     /* ── 🛠️ D. PREFERS REDUCED MOTION ── */
