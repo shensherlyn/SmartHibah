@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pakej Harga - SmartHibah</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
+<style>
     :root {
       --forest:    #032b1d; 
       --forest-md: #0e3d2c;
@@ -380,6 +380,26 @@
 
     /* ── RESPONSIVE MOBILE ── */
     @media (max-width: 768px) {
+      /* ⭐ KOD TAMBAHAN: Paksa background jadi putih bersih di telefon sahaja */
+      html, body {
+        background-image: none !important; 
+        background: #ffffff !important;        
+        background-attachment: scroll !important;
+      }
+
+      /* ⭐ KOD TAMBAHAN: Tukar teks tajuk jadi gelap supaya jelas atas background putih */
+      .section-title {
+        color: var(--forest) !important;
+        text-shadow: none !important;
+      }
+      .section-sub {
+        color: var(--text) !important;
+        text-shadow: none !important;
+      }
+      .section-label {
+        text-shadow: none !important;
+      }
+
       .header .nav__links, .header .nav__cta { display: none !important; }
 
       /* Baiki susunan grid di mobile supaya menjadi 1 lajur vertical */
