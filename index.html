@@ -548,7 +548,22 @@
     /* ── 🛠️ B. SKRIN TELEFON (max-width: 768px) ── */
     @media (max-width: 768px) {
       
-      /* 🌟 [📦 DIBAIKI]: LOGO HEADER UNTUK MOBILE - KINI SELARI & MENONJOL 🌟 */
+      /* 🌟 [📦 DIBAIKI]: PEMBETULAN LATAR BELAKANG KABUR (BACKGROUND MOBILE FIX) 🌟 */
+      body {
+        background-attachment: scroll !important; /* Tukar ke scroll untuk atasi bug mobile */
+        background-size: 100% auto !important;     /* Ikut lebar paparan telefon */
+        background-position: top center !important;
+        background-repeat: repeat-y !important;    /* Latar belakang berulang secara menegak jika teks panjang */
+      }
+
+      /* 🌟 [📦 DIBAIKI]: SEKSYEN DALAMAN YANG MENGGUNAKAN BG KEMBANG 🌟 */
+      .services, .docs {
+        background-attachment: scroll !important;
+        background-size: cover !important;
+        background-position: center !important;
+      }
+      
+      /* 🌟 [Kekal Asal]: LOGO HEADER UNTUK MOBILE - SELARI & MENONJOL 🌟 */
       .header {
         height: 70px; 
       }
