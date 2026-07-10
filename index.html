@@ -267,7 +267,7 @@
       margin: 0 auto;
       align-items: stretch;
     }
-     
+       
     .service-card {
       background: var(--white) !important; 
       border: 1px solid var(--border); 
@@ -545,14 +545,15 @@
       
       body {
         background-image: none !important; 
-        background-color: var(--cream) !important;       
+        background-color: var(--cream) !important;        
       }
 
-      /* 🌟 [KINI DIUBAH]: SEKSYEN PERKHIDMATAN (TUKAR GAMBAR BACKGROUND KEPADA PUTIH) */
+      /* 🌟 SEKSYEN PERKHIDMATAN (GAMBAR DIASINGKAN & DIPAKSA PUTIH BERSIH) */
       .services {
         display: block !important;
         visibility: visible !important;
-        background: var(--white) !important; /* Diubah kepada putih menggantikan bgsw.png */
+        background-image: none !important; /* Membuang melimpah imej fixed desktop */
+        background: var(--white) !important; 
         padding: 3.5rem 5% !important;
         margin: 0 !important;
       }
@@ -563,7 +564,6 @@
         gap: 1.5rem !important;
       }
 
-      /* Kad perkhidmatan kekal putih, ditambah border halus agar kemas di atas background putih */
       .service-card {
         display: flex !important;
         flex-direction: column !important;
@@ -577,17 +577,17 @@
       .service-card__features { display: flex !important; flex-direction: column !important; }
       .service-card__features li { display: flex !important; }
 
-      /* Memastikan teks tajuk kontra & boleh dibaca dengan jelas di background putih */
       .services .section-label { text-shadow: none !important; color: var(--gold) !important; }
       .services .section-title { text-shadow: none !important; color: var(--forest) !important; }
       .services .section-sub { text-shadow: none !important; color: var(--muted) !important; }
 
 
-      /* 🌟 [KINI DIUBAH]: SEKSYEN DOKUMEN (TUKAR GAMBAR BACKGROUND KEPADA PUTIH) */
+      /* 🌟 SEKSYEN DOKUMEN (GAMBAR DIASINGKAN & DIPAKSA PUTIH BERSIH) */
       .docs {
         display: block !important;
         visibility: visible !important;
-        background: var(--white) !important; /* Diubah kepada putih menggantikan bgsw.png */
+        background-image: none !important; /* Membuang melimpah imej fixed desktop */
+        background: var(--white) !important; 
         padding: 3.5rem 5% !important;
         margin: 0 !important;
       }
@@ -598,21 +598,17 @@
         gap: 1.25rem !important;
       }
 
-      /* Kad item dokumen dikekalkan warna hijau korporat (forest) untuk estetika */
       .docs__item {
         display: block !important;
         width: 100% !important;
         background: var(--forest) !important;
       }
 
-      /* Menyesuaikan warna teks tajuk dokumen di atas background putih */
       .docs .section-label { text-shadow: none !important; color: var(--gold) !important; }
       .docs .section-title { text-shadow: none !important; color: var(--forest) !important; }
       .docs .section-sub { text-shadow: none !important; color: var(--muted) !important; }
       .docs__note { text-shadow: none !important; color: var(--forest) !important; }
 
-
-      /* Memastikan layout seksyen muat dengan skrin telefon */
       .services, .docs {
         width: 100% !important;
         max-width: 100vw !important;
