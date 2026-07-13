@@ -9,6 +9,7 @@
     :root {
       --forest:    #032b1d; 
       --forest-md: #0e3d2c;
+      --forest-card: #1c5c44; /* Warna hijau kad tengah */
       --gold:      #bfa15f; 
       --gold-lt:   #d9be7e;
       --cream:     #faf7f2;
@@ -17,6 +18,7 @@
       --muted:     #6b7a6e;
       --border:    #dde8e2;
       --radius:    16px;
+      --bg-card-gray: #f4f5f6; /* Warna latar kad pasif/sisi */
     }
 
     * { 
@@ -36,7 +38,7 @@
       line-height: 1.6; 
     }
     
-/* ── 🛠️ NAV BAR / HEADER STATIK (VERSI LOGO PUTIH ASAL & MENONJOL) ── */
+/* ── 🛠️ NAV BAR / HEADER STATIK ── */
 .header { 
   position: fixed; 
   top: 0; 
@@ -44,61 +46,49 @@
   width: 100%; 
   background: var(--forest); 
   color: var(--white); 
-  padding: 0 5% 0 0; /* 0 di kiri supaya logo rapat ke dinding skrin */
+  padding: 0 5% 0 0; 
   display: flex; 
   justify-content: space-between; 
   align-items: center; 
   z-index: 1000; 
   box-shadow: 0 3px 15px rgba(0,0,0,.2);
   height: 90px;
-  overflow: visible; /* Membenarkan logo menjulur ke bawah */
+  overflow: visible; 
 }
 
 .header-left {
   display: flex;
   align-items: center; 
-  gap: 0px; /* Tiada jarak kosong di bucu kiri */
+  gap: 0px; 
   height: 100%;
   overflow: visible; 
 }
 
-/* KOTAK PEMBUNGKUS (KINI LUTSINAR - HANYA BERTINDAK SEBAGAI PEMEGANG) */
 .header-logo-wrapper {
-  background: transparent !important; /* Tiada kotak putih luar */
+  background: transparent !important; 
   height: 100%; 
-  padding: 0; /* Sifar padding untuk elakkan logo tertolak */
+  padding: 0; 
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 0 !important; /* Padam lengkungan luar */
-  border: none !important; /* Padam garisan emas luar */
+  border-radius: 0 !important; 
+  border: none !important; 
   box-shadow: none !important; 
   overflow: visible;
 }
 
-/* IMEJ LOGO ASAL (PUTIH PADAT & MENONJOL KE BAWAH) */
 .header-logo {
-  height: 125px; /* Kekalkan saiz besar (melebihi 90px header) supaya menonjol */
+  height: 125px; 
   width: auto;
   object-fit: contain;
   display: block;
   position: relative;
-  top: 12px; /* Menolak logo sedikit ke bawah melewati garisan hijau */
-  
-  /* ── 📝 NOTA: KOD FILTER DI BAWAH TELAH DIBUANG ── */
-  /* Warna putih asal pada imej anda akan kelihatan padat sepenuhnya sekarang */
+  top: 12px; 
 }
 
-/* 📱 PENGOPTIMALAN UNTUK PAPARAN TELEFON (MOBILE) */
 @media (max-width: 768px) {
-  .header {
-    height: 70px; 
-  }
-  
-  .header-logo {
-    height: 100px; /* Saiz logo di mobile, menonjol melepasi 70px header */
-    top: 15px; /* Larasan kedudukan ke bawah sedikit di mobile */
-  }
+  .header { height: 70px; }
+  .header-logo { height: 100px; top: 15px; }
 }
 
     .nav__links { 
@@ -191,15 +181,13 @@
       font-weight: 600;
     }
 
-    .nav__mobile.open {
-      display: flex;
-    }
+    .nav__mobile.open { display: flex; }
 
     /* ── 🛠️ MAIN CONTAINER CONTENT ── */
     .container { 
-      max-width: 1100px; 
-      margin: 10rem auto 4rem; 
-      padding: 0 5%; 
+      max-width: 1200px; 
+      margin: 8rem auto 4rem; 
+      padding: 0 2%; 
     }
 
     @keyframes fadeInUp {
@@ -210,7 +198,7 @@
     /* ── 🌟 SEKSYEN UTAMA PERKHIDMATAN ── */
     .services {
       text-align: center;
-      padding: 3rem 2rem;
+      padding: 2rem 1rem;
       border-radius: var(--radius);
     }
 
@@ -225,7 +213,7 @@
     }
 
     .section-title {
-      font-size: 2.5rem;
+      font-size: 2.3rem;
       font-weight: 700;
       color: var(--white);
       margin-bottom: 1rem;
@@ -235,160 +223,197 @@
     .section-sub {
       color: rgba(255, 255, 255, 0.95);
       max-width: 650px;
-      margin: 0 auto 3.5rem;
+      margin: 0 auto 3rem;
       font-size: 1rem;
       text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8); 
     }
 
-    /* Grid Pakej Baharu */
+    /* Grid Pakej Sesuai Imej */
     .services__grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr); 
-      gap: 1.25rem; 
+      gap: 1rem; 
       align-items: stretch;
       width: 100%;
-      max-width: 1200px;
       margin: 0 auto;
     }
 
-    /* Gaya Kad Kontainer (BEM) */
+    /* Gaya Kad Kontainer (Diperkemas Ikut Gambar) */
     .service-card {
-      background: var(--white); 
-      border: 1px solid var(--border); 
-      padding: 2.5rem 1.25rem; 
+      background: var(--bg-card-gray); 
+      border: none; 
+      padding: 3rem 2rem; 
       border-radius: var(--radius);
-      box-shadow: 0 10px 30px rgba(3, 43, 29, 0.06); 
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
       display: flex;
       flex-direction: column;
       text-align: left;
       animation: fadeInUp 0.5s ease-out both;
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
-    }
-
-    .service-card__features li {
-      font-size: 0.85rem;
-      gap: 8px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      color: var(--text);
     }
 
     .service-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 16px 36px rgba(3, 43, 29, 0.15);
-      border-color: var(--gold);
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
     }
 
+    /* Gaya Khas untuk Kad Tengah (SmartHibah Care - Hijau) */
     .service-card--featured {
-      border: 2px solid var(--gold);
-      position: relative;
-    }
-
-    .service-card__badge {
-      display: inline-block;
-      background: rgba(3, 43, 29, 0.08);
-      color: var(--forest);
-      padding: 0.25rem 0.75rem;
-      font-size: 0.75rem;
-      font-weight: 700;
-      border-radius: 20px;
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .service-card--featured .service-card__badge {
-      background: var(--gold);
+      background: var(--forest-card);
       color: var(--white);
     }
 
+    /* Gaya Khas Kad Ketiga (Amanah - Kabur/Muted) */
+    .service-card--disabled {
+      opacity: 0.8;
+    }
+
     .service-card__head h3 {
-      font-size: 1.45rem;
-      color: var(--forest);
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-
-    .service-card__head p {
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.5;
-      margin-bottom: 1.5rem;
-      min-height: 44px;
-    }
-
-    .service-card__features {
-      list-style: none;
-      margin-bottom: 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .service-card__features li {
-      font-size: 0.9rem;
-      color: var(--text);
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      line-height: 1.4;
-    }
-
-    .service-card__features li::before {
-      content: '✓';
-      color: #28a745;
-      font-weight: 700;
-      flex-shrink: 0;
-    }
-
-    .service-card__price {
       font-size: 1.85rem;
       color: var(--forest);
       font-weight: 700;
-      margin-bottom: 1.5rem;
-      margin-top: auto;
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
     }
 
-    .service-card__price span {
-      font-size: 0.85rem;
+    .service-card--featured .service-card__head h3 {
+      color: var(--white);
+    }
+    
+    .service-card--disabled .service-card__head h3 {
+      color: #8c9690;
+    }
+
+    .service-card__head p {
+      font-size: 0.9rem;
       color: var(--muted);
-      font-weight: 400;
+      line-height: 1.5;
+      margin-bottom: 2rem;
+      min-height: 70px;
     }
 
+    .service-card--featured .service-card__head p {
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .service-card__price {
+      font-size: 2.5rem;
+      color: var(--forest);
+      font-weight: 700;
+      margin-bottom: 2rem;
+    }
+
+    .service-card--featured .service-card__price {
+      color: var(--white);
+    }
+
+    .service-card--disabled .service-card__price {
+      color: #8c9690;
+    }
+
+    /* Butang CTA berbentuk Kapsul/Pill */
     .service-card__cta {
       display: block;
       background: var(--forest);
       color: var(--white);
       text-decoration: none;
       text-align: center;
-      padding: 0.8rem;
-      border-radius: 8px;
+      padding: 0.9rem;
+      border-radius: 50px; /* Bentuk bulat penuh */
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       transition: all 0.2s;
+      margin-bottom: 2.5rem;
     }
 
     .service-card__cta:hover {
       background: var(--gold);
-      transform: translateY(-1px);
     }
 
     .service-card--featured .service-card__cta {
-      background: var(--gold);
+      background: var(--white);
+      color: var(--forest);
     }
 
     .service-card--featured .service-card__cta:hover {
-      background: var(--forest);
+      background: var(--gold-lt);
+      color: var(--forest);
     }
 
-    /* Gaya butang untuk pakej tidak aktif / akan datang */
     .service-card__cta--disabled {
-      background: #e0e0e0 !important;
-      color: #888888 !important;
+      background: #b8bdba !important;
+      color: var(--white) !important;
       cursor: not-allowed;
       pointer-events: none;
     }
 
-    .anim { animation-fill-mode: both; }
+    /* Kemaskan Senarai Ciri Teks (Sama Seperti Gambar) */
+    .service-card__features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .service-card__features li {
+      font-size: 0.9rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      line-height: 1.4;
+    }
+
+    .service-card__features .feature-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .service-card__features .feature-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #111;
+    }
+
+    .service-card--featured .service-card__features .feature-title {
+      color: var(--white);
+    }
+
+    .service-card--disabled .service-card__features .feature-title {
+      color: #8c9690;
+    }
+
+    .service-card__features .feature-desc {
+      color: #333;
+      font-size: 0.9rem;
+      margin-top: 2px;
+    }
+
+    .service-card--featured .service-card__features .feature-desc {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .service-card--disabled .service-card__features .feature-desc {
+      color: #8c9690;
+    }
+
+    /* Ikon Semak SVG */
+    .check-icon {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
 
     /* ── RESPONSIVE MOBILE ── */
+    @media (max-width: 992px) {
+      .services__grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .container { margin: 6rem auto 2rem; }
+    }
+
     @media (max-width: 768px) {
       html, body {
         background-image: none !important; 
@@ -396,24 +421,10 @@
         background-attachment: scroll !important;
       }
 
-      .section-title {
-        color: var(--forest) !important;
-        text-shadow: none !important;
-      }
-      .section-sub {
-        color: var(--text) !important;
-        text-shadow: none !important;
-      }
-      .section-label {
-        text-shadow: none !important;
-      }
-
+      .section-title { color: var(--forest) !important; text-shadow: none !important; }
+      .section-sub { color: var(--text) !important; text-shadow: none !important; }
+      .section-label { text-shadow: none !important; }
       .header .nav__links, .header .nav__cta { display: none !important; }
-
-      .services__grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
 
       .nav__hamburger {
         display: flex !important;
@@ -438,7 +449,7 @@
       .nav__mobile {
         display: none;
         position: fixed;
-        top: 90px;
+        top: 70px;
         left: 0;
         width: 100%;
         background-color: var(--forest-md);
@@ -450,10 +461,7 @@
         z-index: 999;
       }
 
-      .nav__mobile.open {
-        display: flex !important;
-      }
-
+      .nav__mobile.open { display: flex !important; }
       .nav__mobile a {
         color: var(--white);
         text-decoration: none;
@@ -462,13 +470,9 @@
         padding-bottom: 0.5rem;
         border-bottom: 1px solid rgba(255,255,255,0.08);
       }
-
-      .nav__mobile a.active {
-        color: var(--gold-lt);
-      }
     }
 
-    /* ── 🤖 CHATBOT & WHATSAPP FLOATING CONTAINER ── */
+    /* ── 🤖 CHATBOT & WHATSAPP CONTAINER ── */
     .floating-bot-wrapper {
       position: fixed;
       bottom: 20px;
@@ -477,7 +481,6 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      font-family: 'Poppins', sans-serif;
     }
 
     .chatbot-trigger-container {
@@ -486,10 +489,7 @@
       transition: transform 0.3s ease;
     }
 
-    .chatbot-trigger-container:hover {
-      transform: scale(1.08);
-    }
-
+    .chatbot-trigger-container:hover { transform: scale(1.08); }
     .suri-avatar {
       width: 110px;        
       height: 110px;       
@@ -499,12 +499,7 @@
       background: #ffffff; 
     }
 
-    .suri-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
+    .suri-avatar img { width: 100%; height: 100%; object-fit: cover; }
     .wa-mini-badge {
       position: absolute;
       bottom: 5px;         
@@ -520,12 +515,7 @@
       box-shadow: 0 3px 8px rgba(0,0,0,0.3);
     }
 
-    .wa-mini-badge svg {
-      width: 18px;         
-      height: 18px;        
-      fill: #fff;
-    }
-
+    .wa-mini-badge svg { width: 18px; height: 18px; fill: #fff; }
     .chatbot-window {
       position: absolute;
       bottom: 125px;      
@@ -544,12 +534,7 @@
       transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
-    .chatbot-window.open {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-      pointer-events: auto;
-    }
-
+    .chatbot-window.open { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
     .chat-header {
       background: #032b1d; 
       color: #ffffff;
@@ -617,77 +602,128 @@
 
   <div class="container">
     <section class="services" id="servis">
-      <p class="section-label anim">Pelan SmartHibah</p>
-      <h2 class="section-title anim">Perancangan Hibah untuk melindungi insan tersayang.</h2>
-      <p class="section-sub anim">SmartHibah membantu anda menyusun pemberian aset kepada keluarga atau penerima pilihan dengan lebih jelas, mudah dan teratur.</p>
+      <p class="section-label">Pelan SmartHibah</p>
+      <h2 class="section-title">Perancangan Hibah untuk melindungi insan tersayang.</h2>
+      <p class="section-sub">SmartHibah membantu anda menyusun pemberian aset kepada keluarga atau penerima pilihan dengan lebih jelas, mudah dan teratur.</p>
       
       <div class="services__grid">
         <!-- PELAN 1: SMARTHIBAH DIRECT -->
-        <article class="service-card anim">
+        <article class="service-card">
           <div class="service-card__head">
-            <div class="service-card__badge">Direct</div>
             <h3>SmartHibah Direct</h3>
             <p>Hibah ringkas untuk satu aset tertentu kepada sehingga empat penerima yang dipilih.</p>
           </div>
           <div class="service-card__body">
-            <ul class="service-card__features">
-              <li><strong>Jumlah Aset:</strong> 1 Aset Sahaja</li>
-              <li><strong>Jenis Aset:</strong> Aset Alih atau Aset Tidak Alih</li>
-              <li><strong>Penerima Hibah:</strong> Sehingga 4 Penerima</li>
-              <li><strong>Kaedah Pembahagian:</strong> Pembahagian Jelas Untuk Satu Aset</li>
-              <li><strong>Dokumen:</strong> Dokumen Hibah Ringkas</li>
-              <li><strong>Sesuai Untuk:</strong> Satu Aset Penting Untuk Insan Tersayang</li>
-            </ul>
             <div class="service-card__price">RM 980</div>
             <a class="service-card__cta" href="https://app.mysmartwills.com/portal/?company_id=4">Mulakan Sekarang</a>
+            
+            <ul class="service-card__features">
+              <li>
+                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#28a745" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <div class="feature-text"><span class="feature-title">Jumlah Aset</span><span class="feature-desc">1 Aset Sahaja</span></div>
+              </li>
+              <li>
+                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#28a745" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <div class="feature-text"><span class="feature-title">Jenis Aset</span><span class="feature-desc">Aset Alih atau Aset Tidak Alih</span></div>
+              </li>
+              <li>
+                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#28a745" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <div class="feature-text"><span class="feature-title">Penerima Hibah</span><span class="feature-desc">Sehingga 4 Penerima</span></div>
+              </li>
+              <li>
+                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#28a745" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <div class="feature-text"><span class="feature-title">Kaedah Pembahagian</span><span class="feature-desc">Pembahagian Jelas Untuk Satu Aset</span></div>
+              </li>
+              <li>
+                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#28a745" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <div class="feature-text"><span class="feature-title">Dokumen</span><span class="feature-desc">Dokumen Hibah Ringkas</span></div>
+              </li>
+              <li>
+                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#28a745" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <div class="feature-text"><span class="feature-title">Sesuai Untuk</span><span class="feature-desc">One Aset Penting Untuk Insan Tersayang</span></div>
+              </li>
+            </ul>
           </div>
         </article>
 
-        <!-- PELAN 2: SMARTHIBAH CARE (POPULAR / FEATURED) -->
-        <article class="service-card service-card--featured anim" style="transition-delay:.1s">
+        <!-- PELAN 2: SMARTHIBAH CARE (HIJAU / POPULAR) -->
+        <article class="service-card service-card--featured">
           <div class="service-card__head">
-            <div class="service-card__badge">Care</div>
             <h3>SmartHibah Care</h3>
             <p>Hibah tersusun untuk beberapa aset, sesuai untuk perancangan keluarga yang lebih seimbang dan jelas.</p>
           </div>
           <div class="service-card__body">
-            <ul class="service-card__features">
-              <li><strong>Jumlah Aset:</strong> Sehingga 3 Aset</li>
-              <li><strong>Jenis Aset:</strong> 1 Aset Tidak Alih + 2 Aset Alih</li>
-              <li><strong>Penerima Hibah:</strong> Sehingga 4 Penerima</li>
-              <li><strong>Kaedah Pembahagian:</strong> Pembahagian Sama Rata</li>
-              <li><strong>Dokumen:</strong> Dokumen Hibah Berstruktur</li>
-              <li><strong>Sesuai Untuk:</strong> Beberapa Aset Keluarga Yang Ingin Disusun Secara Seimbang</li>
-            </ul>
             <div class="service-card__price">RM 1800</div>
             <a class="service-card__cta" href="https://app.mysmartwills.com/portal/?company_id=4">Mulakan Sekarang</a>
+            
+            <ul class="service-card__features">
+              <li>
+                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#bfa15f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <div class="feature-text"><span class="feature-title">Jumlah Aset</span><span class="feature-desc">Sehingga 3 Aset</span></div>
+              </li>
+              <li>
+                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#bfa15f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <div class="feature-text"><span class="feature-title">Jenis Aset</span><span class="feature-desc">1 Aset Tidak Alih + 2 Aset Alih</span></div>
+              </li>
+              <li>
+                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#bfa15f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <div class="feature-text"><span class="feature-title">Penerima Hibah</span><span class="feature-desc">Sehingga 4 Penerima</span></div>
+              </li>
+              <li>
+                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#bfa15f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <div class="feature-text"><span class="feature-title">Kaedah Pembahagian</span><span class="feature-desc">Pembahagian Sama Rata</span></div>
+              </li>
+              <li>
+                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#bfa15f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <div class="feature-text"><span class="feature-title">Dokumen</span><span class="feature-desc">Dokumen Hibah Berstruktur</span></div>
+              </li>
+              <li>
+                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#bfa15f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <div class="feature-text"><span class="feature-title">Sesuai Untuk</span><span class="feature-desc">Beberapa Aset Keluarga Yang Ingin Disusun Secara Seimbang</span></div>
+              </li>
+            </ul>
           </div>
         </article>
 
-        <!-- PELAN 3: SMARTHIBAH AMANAH (AKAN DATANG) -->
-        <article class="service-card anim" style="transition-delay:.2s">
+        <!-- PELAN 3: SMARTHIBAH AMANAH (AKAN DATANG / DISABLED STYLE) -->
+        <article class="service-card service-card--disabled">
           <div class="service-card__head">
-            <div class="service-card__badge">Amanah</div>
             <h3>SmartHibah Amanah</h3>
             <p>Hibah tersusun untuk beberapa aset, sesuai untuk perancangan keluarga yang lebih seimbang dan jelas.</p>
           </div>
           <div class="service-card__body">
-            <ul class="service-card__features">
-              <li><strong>Jumlah Aset:</strong> Sehingga 5 Aset</li>
-              <li><strong>Jenis Aset:</strong> 2 Aset Tidak Alih + 3 Aset Alih</li>
-              <li><strong>Penerima Hibah:</strong> Sehingga 6 Penerima</li>
-              <li><strong>Kaedah Pembahagian:</strong> Pembahagian Lebih Fleksibel</li>
-              <li><strong>Dokumen:</strong> Dokumen Hibah Amanah lengkap</li>
-              <li><strong>Sesuai Untuk:</strong> Keluarga Yang Memerlukan Perancangan Hibah Lebih Menyeluruh</li>
-            </ul>
             <div class="service-card__price">RM 2800</div>
             <a class="service-card__cta service-card__cta--disabled" href="#">Akan Datang</a>
+            
+            <ul class="service-card__features">
+              <li>
+                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#b8bdba" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <div class="feature-text"><span class="feature-title">Jumlah Aset</span><span class="feature-desc">Sehingga 5 Aset</span></div>
+              </li>
+              <li>
+                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#b8bdba" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <div class="feature-text"><span class="feature-title">Jenis Aset</span><span class="feature-desc">2 Aset Tidak Alih + 3 Aset Alih</span></div>
+              </li>
+              <li>
+                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#b8bdba" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <div class="feature-text"><span class="feature-title">Penerima Hibah</span><span class="feature-desc">Sehingga 6 Penerima</span></div>
+              </li>
+              <li>
+                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#b8bdba" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <div class="feature-text"><span class="feature-title">Kaedah Pembahagian</span><span class="feature-desc">Pembahagian Lebih Fleksibel</span></div>
+              </li>
+              <li>
+                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#b8bdba" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <div class="feature-text"><span class="feature-title">Dokumen</span><span class="feature-desc">Dokumen Hibah Amanah lengkap</span></div>
+              </li>
+            </ul>
           </div>
         </article>
       </div>
     </section>
   </div>
 
+  <!-- 🤖 CHATBOT SECTION -->
   <div class="floating-bot-wrapper">
     <div class="chatbot-trigger-container" id="chatTrigger">
       <div class="suri-avatar">
