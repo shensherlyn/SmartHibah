@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hubungi Kami - SmartHibah</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
+<style>
     :root {
       --forest:    #032b1d; 
       --forest-md: #0e3d2c;
@@ -37,69 +37,70 @@
     }
     
     /* ── 🛠️ NAV BAR / HEADER STATIK (VERSI LOGO PUTIH ASAL & MENONJOL) ── */
-.header { 
-  position: fixed; 
-  top: 0; 
-  left: 0; 
-  width: 100%; 
-  background: var(--forest); 
-  color: var(--white); 
-  padding: 0 5% 0 0; /* 0 di kiri supaya logo rapat ke dinding skrin */
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center; 
-  z-index: 1000; 
-  box-shadow: 0 3px 15px rgba(0,0,0,.2);
-  height: 90px;
-  overflow: visible; /* Membenarkan logo menjulur ke bawah */
-}
+    .header { 
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      background: var(--forest); 
+      color: var(--white); 
+      padding: 0 5% 0 0; /* 0 di kiri supaya logo rapat ke dinding skrin */
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      z-index: 1000; 
+      box-shadow: 0 3px 15px rgba(0,0,0,.2);
+      height: 90px;
+      overflow: visible; /* Membenarkan logo menjulur ke bawah */
+    }
 
-.header-left {
-  display: flex;
-  align-items: center; 
-  gap: 0px; /* Tiada jarak kosong di bucu kiri */
-  height: 100%;
-  overflow: visible; 
-}
+    .header-left {
+      display: flex;
+      align-items: center; 
+      gap: 0px; /* Tiada jarak kosong di bucu kiri */
+      height: 100%;
+      overflow: visible; 
+    }
 
-/* KOTAK PEMBUNGKUS (KINI LUTSINAR - HANYA BERTINDAK SEBAGAI PEMEGANG) */
-.header-logo-wrapper {
-  background: transparent !important; /* Tiada kotak putih luar */
-  height: 100%; 
-  padding: 0; /* Sifar padding untuk elakkan logo tertolak */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0 !important; /* Padam lengkungan luar */
-  border: none !important; /* Padam garisan emas luar */
-  box-shadow: none !important; 
-  overflow: visible;
-}
+    /* KOTAK PEMBUNGKUS (KINI LUTSINAR - HANYA BERTINDAK SEBAGAI PEMEGANG) */
+    .header-logo-wrapper {
+      background: transparent !important; /* Tiada kotak putih luar */
+      height: 100%; 
+      padding: 0; /* Sifar padding untuk elakkan logo tertolak */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0 !important; /* Padam lengkungan luar */
+      border: none !important; /* Padam garisan emas luar */
+      box-shadow: none !important; 
+      overflow: visible;
+    }
 
-/* IMEJ LOGO ASAL (PUTIH PADAT & MENONJOL KE BAWAH) */
-.header-logo {
-  height: 125px; /* Kekalkan saiz besar (melebihi 90px header) supaya menonjol */
-  width: auto;
-  object-fit: contain;
-  display: block;
-  position: relative;
-  top: 12px; /* Menolak logo sedikit ke bawah melewati garisan hijau */
-  
-  /* ── 📝 NOTA: KOD FILTER DI BAWAH TELAH DIBUANG ── */
-  /* Warna putih asal pada imej anda akan kelihatan padat sepenuhnya sekarang */
-}
+    /* IMEJ LOGO ASAL (PUTIH PADAT & MENONJOL KE BAWAH) */
+    .header-logo {
+      height: 125px; /* Kekalkan saiz besar (melebihi 90px header) supaya menonjol */
+      width: auto;
+      object-fit: contain;
+      display: block;
+      position: relative;
+      top: 12px; /* Menolak logo sedikit ke bawah melewati garisan hijau */
+      
+      /* ── 📝 NOTA: KOD FILTER DI BAWAH TELAH DIBUANG ── */
+      /* Warna putih asal pada imej anda akan kelihatan padat sepenuhnya sekarang */
+    }
 
-/* 📱 PENGOPTIMALAN UNTUK PAPARAN TELEFON (MOBILE) */
-@media (max-width: 768px) {
-  .header {
-    height: 70px; 
-  }
-  
-  .header-logo {
-    height: 100px; /* Saiz logo di mobile, menonjol melepasi 70px header */
-    top: 15px; /* Larasan kedudukan ke bawah sedikit di mobile */
-  }
-}
+    /* 📱 PENGOPTIMALAN UNTUK PAPARAN TELEFON (MOBILE) */
+    @media (max-width: 768px) {
+      .header {
+        height: 70px; 
+      }
+      
+      .header-logo {
+        height: 100px; /* Saiz logo di mobile, menonjol melepasi 70px header */
+        top: 15px; /* Larasan kedudukan ke bawah sedikit di mobile */
+      }
+    }
+
     .nav__links { 
       display: flex; 
       gap: 1.5rem; 
@@ -209,15 +210,23 @@
       animation: fadeInUp 0.5s ease-out both;
     }
 
+    /* KINI LUTSINAR - CONTAINER PUTIH DI BELAKANG LOGO TELAH DIBUANG sepenuhnya */
     .logo-badge {
-      background: var(--white);
-      padding: 0.75rem 1.25rem;
-      border-radius: 12px;
+      background: transparent !important;
+      padding: 0;
+      margin-bottom: 2rem;
       display: inline-flex;
       align-items: center;
-      gap: 0.85rem;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      margin-bottom: 2rem;
+      box-shadow: none !important;
+    }
+
+    /* MEMBUAT LOGO SMARTWILLS JELAS, BESAR DAN DIBERI GLOW SHADOW EMAS KONTRA */
+    .logo-badge img {
+      height: 65px; 
+      width: auto;
+      object-fit: contain;
+      /* Menukarkan logo gelap asal menjadi warna putih cerah dengan sinaran bayang emas lembut */
+      filter: brightness(0) invert(1) drop-shadow(0 0 10px rgba(217, 190, 126, 0.65));
     }
 
     .company-desc {
@@ -227,7 +236,7 @@
       margin-bottom: 2.5rem;
     }
 
-    /* CSS Baru Untuk Ikon Media Sosial di Kad Kiri */
+    /* CSS Untuk Ikon Media Sosial di Kad Kiri */
     .company-socials {
       display: flex;
       gap: 0.75rem;
@@ -432,16 +441,15 @@
     @media (max-width: 992px) {
       .contact-layout { grid-template-columns: 1fr; gap: 2rem; }
     }
-   /* ── RESPONSIVE MOBILE (SEPADAN DENGAN JAVASCRIPT ANDA) ── */
+
+    /* ── RESPONSIVE MOBILE (SEPADAN DENGAN JAVASCRIPT ANDA) ── */
     @media (max-width: 768px) {
-      /* ⭐ KOD TAMBAHAN: Paksa latar belakang jadi putih bersih di telefon sahaja */
       html, body {
         background-image: none !important; 
         background: #ffffff !important;        
         background-attachment: scroll !important;
       }
 
-      /* ⭐ KOD TAMBAHAN: Laraskan kad utama kanan dan form supaya kemas di atas background putih */
       .contact-links-card {
         background: #ffffff !important;
         border: 1px solid var(--border) !important;
@@ -461,7 +469,6 @@
 
       .nav__links, .nav__cta { display: none !important; }
 
-      /* MENU HAMBURGER (3 Garisan Putih) */
       .nav__hamburger {
         display: flex !important;
         flex-direction: column;
@@ -482,11 +489,10 @@
         transition: all 0.3s ease;
       }
 
-      /* KOTAK MENU MOBIL */
       .nav__mobile {
         display: none;
         position: fixed;
-        top: 90px; /* Sesuai dengan tinggi header anda */
+        top: 90px;
         left: 0;
         width: 100%;
         background-color: var(--forest-md);
@@ -498,7 +504,6 @@
         z-index: 999;
       }
 
-      /* MENGGUNAKAN 'open' SEPERTI DALAM JAVASCRIPT ANDA */
       .nav__mobile.open {
         display: flex !important;
       }
@@ -526,7 +531,6 @@
         border-radius: 25px;
       }
 
-      /* Kod asal Hero & Footer anda (Kekal & Tidak Diusik) */
       .hero { grid-template-columns: 1fr; padding: 3rem 5% 2rem; min-height: auto; gap: 2.5rem; }
       .hero__visual { order: -1; }
       .hero__h1 { font-size: 1.8rem; }
@@ -539,126 +543,121 @@
       .footer__desc { max-width: 100%; }
       .footer__bottom { flex-direction: column; text-align: center; margin-top: 2.5rem; }
     }
- /* ── 🤖 CHATBOT & WHATSAPP FLOATING CONTAINER ── */
-.floating-bot-wrapper {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 9999; /* Memastikan ia sentiasa di atas elemen footer */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: 'Poppins', sans-serif;
-}
 
-/* Gabungan Ikon Suri & Lencana WhatsApp */
-.chatbot-trigger-container {
-  position: relative;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
+    /* ── 🤖 CHATBOT & WHATSAPP FLOATING CONTAINER ── */
+    .floating-bot-wrapper {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 9999; 
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: 'Poppins', sans-serif;
+    }
 
-.chatbot-trigger-container:hover {
-  transform: scale(1.08);
-}
+    .chatbot-trigger-container {
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
 
-/* Avatar Suri Bulat/Sipi - DIUBAH UNTUK MEMBESARKAN GIF */
-.suri-avatar {
-  width: 110px;        /* Asal: 75px -> Ditukar ke 110px */
-  height: 110px;       /* Asal: 75px -> Ditukar ke 110px */
-  border-radius: 50%;
-  overflow: hidden;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-  background: #ffffff; /* Ditukar ke putih supaya latar belakang GIF kelihatan bersih */
-}
+    .chatbot-trigger-container:hover {
+      transform: scale(1.08);
+    }
 
-.suri-avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+    .suri-avatar {
+      width: 110px;        
+      height: 110px;       
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+      background: #ffffff; 
+    }
 
-/* Lencana Mini WhatsApp di Bucu Avatar - DISESUAIKAN IKUT SAIZ BARU */
-.wa-mini-badge {
-  position: absolute;
-  bottom: 5px;         /* Diubah dari 2px ke 5px supaya kedudukan seimbang */
-  right: 5px;          /* Diubah dari 2px ke 5px supaya kedudukan seimbang */
-  width: 35px;         /* Asal: 25px -> Ditukar ke 35px */
-  height: 35px;        /* Asal: 25px -> Ditukar ke 35px */
-  background: #25d366;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 3px solid #fff; /* Ditebalkan sedikit bingkai putih */
-  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
-}
+    .suri-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-.wa-mini-badge svg {
-  width: 18px;         /* Asal: 14px -> Ditukar ke 18px */
-  height: 18px;        /* Asal: 14px -> Ditukar ke 18px */
-  fill: #fff;
-}
+    .wa-mini-badge {
+      position: absolute;
+      bottom: 5px;         
+      right: 5px;          
+      width: 35px;         
+      height: 35px;        
+      background: #25d366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 3px solid #fff; 
+      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+    }
 
-/* ── KOTAK CHAT WINDOW - DIUBAH LEBIH LUAS DAN TINGGI ── */
-.chatbot-window {
-  position: absolute;
-  bottom: 125px;      /* Asal: 85px -> Dinaikkan sikit supaya tidak bertindih dengan bulatan Suri yang besar */
-  right: 0;
-  width: 400px;       /* Asal: 340px -> Ditukar ke 400px (Lebih lebar) */
-  height: 560px;      /* Asal: 460px -> Ditukar ke 560px (Lebih panjang) */
-  background: var(--white, #ffffff);
-  border-radius: 20px; /* Bucu tetingkap dibulatkan sedikit lagi agar sepadan */
-  box-shadow: 0 12px 40px rgba(0,0,0,0.25);
-  border: 1px solid var(--border, #dde8e2);
-  display: flex;
-  flex-direction: column;
-  opacity: 0;
-  transform: translateY(20px) scale(0.95);
-  pointer-events: none;
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
+    .wa-mini-badge svg {
+      width: 18px;         
+      height: 18px;        
+      fill: #fff;
+    }
 
-.chatbot-window.open {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  pointer-events: auto;
-}
+    .chatbot-window {
+      position: absolute;
+      bottom: 125px;      
+      right: 0;
+      width: 400px;       
+      height: 560px;      
+      background: var(--white, #ffffff);
+      border-radius: 20px; 
+      box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+      border: 1px solid var(--border, #dde8e2);
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
 
-/* Elemen Dalaman Chat Window */
-.chat-header {
-  background: #032b1d; /* Warna forest syarikat */
-  color: #ffffff;
-  padding: 14px 18px;  /* Ditambah sedikit padding */
-  border-top-left-radius: 18px;
-  border-top-right-radius: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 3px solid #bfa15f;
-}
+    .chatbot-window.open {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
 
-.chat-profile { display: flex; align-items: center; gap: 12px; }
-.chat-avatar-mini { width: 40px; height: 40px; border-radius: 50%; overflow: hidden; background: #fff; }
-.chat-avatar-mini img { width: 100%; height: 100%; object-fit: cover; }
-.chat-info h4 { font-size: 0.95rem; margin: 0; font-weight: 600; }
-.chat-info span { font-size: 0.75rem; color: #d9be7e; display: flex; align-items: center; gap: 5px; }
-.chat-info span::before { content: ''; width: 6px; height: 6px; background: #22c55e; border-radius: 50%; display: inline-block; }
-.close-chat-btn { background: none; border: none; color: #fff; font-size: 1.6rem; cursor: pointer; line-height: 1; }
-.chat-body { flex: 1; padding: 18px; background: #faf7f2; overflow-y: auto; display: flex; flex-direction: column; gap: 14px; }
-.message.bot { max-width: 85%; padding: 12px 14px; border-radius: 14px; font-size: 0.9rem; background: #fff; color: #1a1a1a; border-top-left-radius: 0; border: 1px solid #dde8e2; line-height: 1.48; }
-.chat-footer { padding: 12px; background: #fff; border-bottom-left-radius: 18px; border-bottom-right-radius: 18px; display: flex; gap: 10px; border-top: 1px solid #dde8e2; }
-.chat-input { flex: 1; padding: 10px 16px; border: 1px solid #dde8e2; border-radius: 24px; outline: none; font-size: 0.9rem; }
-.chat-send-btn { background: #032b1d; color: #fff; border: none; width: 38px; height: 38px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+    .chat-header {
+      background: #032b1d; 
+      color: #ffffff;
+      padding: 14px 18px;  
+      border-top-left-radius: 18px;
+      border-top-right-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 3px solid #bfa15f;
+    }
 
-/* Skrin Kecil Telefon - Mengelakkan Chatbox Terkeluar dari Skrin */
-@media (max-width: 480px) {
-  .floating-bot-wrapper { bottom: 15px; right: 15px; }
-  .suri-avatar { width: 85px; height: 85px; } /* Mengecil sedikit di mobile agar mesra pengguna */
-  .wa-mini-badge { width: 28px; height: 28px; bottom: 2px; right: 2px; }
-  .wa-mini-badge svg { width: 14px; height: 14px; }
-  .chatbot-window { width: calc(100vw - 30px); height: 480px; bottom: 100px; }
-}
+    .chat-profile { display: flex; align-items: center; gap: 12px; }
+    .chat-avatar-mini { width: 40px; height: 40px; border-radius: 50%; overflow: hidden; background: #fff; }
+    .chat-avatar-mini img { width: 100%; height: 100%; object-fit: cover; }
+    .chat-info h4 { font-size: 0.95rem; margin: 0; font-weight: 600; }
+    .chat-info span { font-size: 0.75rem; color: #d9be7e; display: flex; align-items: center; gap: 5px; }
+    .chat-info span::before { content: ''; width: 6px; height: 6px; background: #22c55e; border-radius: 50%; display: inline-block; }
+    .close-chat-btn { background: none; border: none; color: #fff; font-size: 1.6rem; cursor: pointer; line-height: 1; }
+    .chat-body { flex: 1; padding: 18px; background: #faf7f2; overflow-y: auto; display: flex; flex-direction: column; gap: 14px; }
+    .message.bot { max-width: 85%; padding: 12px 14px; border-radius: 14px; font-size: 0.9rem; background: #fff; color: #1a1a1a; border-top-left-radius: 0; border: 1px solid #dde8e2; line-height: 1.48; }
+    .chat-footer { padding: 12px; background: #fff; border-bottom-left-radius: 18px; border-bottom-right-radius: 18px; display: flex; gap: 10px; border-top: 1px solid #dde8e2; }
+    .chat-input { flex: 1; padding: 10px 16px; border: 1px solid #dde8e2; border-radius: 24px; outline: none; font-size: 0.9rem; }
+    .chat-send-btn { background: #032b1d; color: #fff; border: none; width: 38px; height: 38px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+
+    @media (max-width: 480px) {
+      .floating-bot-wrapper { bottom: 15px; right: 15px; }
+      .suri-avatar { width: 85px; height: 85px; } 
+      .wa-mini-badge { width: 28px; height: 28px; bottom: 2px; right: 2px; }
+      .wa-mini-badge svg { width: 14px; height: 14px; }
+      .chatbot-window { width: calc(100vw - 30px); height: 480px; bottom: 100px; }
+    }
 </style>
 </head>
 <body>
@@ -695,11 +694,10 @@
   <div class="container">
     <div class="contact-layout">
       
-      <div class="company-info-card">
-        <div class="logo-badge">
-          <img src="assets/smartwills.png" alt="SmartHibah Logo" style="height: 45px; width: auto; object-fit: contain;">
-          <span style="font-size: 1.2rem; font-weight: 700; color: #032b1d;">SmartHibah</span>
-        </div>
+<div class="company-info-card">
+  <div class="logo-badge">
+    <img src="assets/smartwills(2).png" alt="SmartWills Logo">
+  </div>
         <p class="company-desc">
           Perkhidmatan Hibah digital yang mudah, pantas dan sah. Diuruskan sepenuhnya oleh ekosistem pengurusan harta undang-undang Islam bersepadu.
         </p> 
