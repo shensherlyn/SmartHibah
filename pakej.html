@@ -326,14 +326,16 @@
       font-size: 0.9rem;
       color: var(--text);
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 10px;
+      line-height: 1.4;
     }
 
     .service-card__features li::before {
       content: '✓';
       color: #28a745;
       font-weight: 700;
+      flex-shrink: 0;
     }
 
     .service-card__price {
@@ -376,18 +378,24 @@
       background: var(--forest);
     }
 
+    /* Gaya butang untuk pakej tidak aktif / akan datang */
+    .service-card__cta--disabled {
+      background: #e0e0e0 !important;
+      color: #888888 !important;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
     .anim { animation-fill-mode: both; }
 
     /* ── RESPONSIVE MOBILE ── */
     @media (max-width: 768px) {
-      /* ⭐ KOD TAMBAHAN: Paksa background jadi putih bersih di telefon sahaja */
       html, body {
         background-image: none !important; 
         background: #ffffff !important;        
         background-attachment: scroll !important;
       }
 
-      /* ⭐ KOD TAMBAHAN: Tukar teks tajuk jadi gelap supaya jelas atas background putih */
       .section-title {
         color: var(--forest) !important;
         text-shadow: none !important;
@@ -402,7 +410,6 @@
 
       .header .nav__links, .header .nav__cta { display: none !important; }
 
-      /* Baiki susunan grid di mobile supaya menjadi 1 lajur vertical */
       .services__grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
@@ -575,7 +582,7 @@
       .wa-mini-badge svg { width: 14px; height: 14px; }
       .chatbot-window { width: calc(100vw - 30px); height: 480px; bottom: 100px; }
     }
-  </style>
+</style>
 </head>
 <body>
 
@@ -610,63 +617,71 @@
 
   <div class="container">
     <section class="services" id="servis">
-      <p class="section-label anim">Pilihan Pakej</p>
-      <h2 class="section-title anim">Pilih Perkhidmatan Hibah</h2>
-      <p class="section-sub anim">Solusi menyeluruh dari penetapan harta sehingga penyediaan dokumen fizikal.</p>
+      <p class="section-label anim">Pelan SmartHibah</p>
+      <h2 class="section-title anim">Perancangan Hibah untuk melindungi insan tersayang.</h2>
+      <p class="section-sub anim">SmartHibah membantu anda menyusun pemberian aset kepada keluarga atau penerima pilihan dengan lebih jelas, mudah dan teratur.</p>
       
       <div class="services__grid">
+        <!-- PELAN 1: SMARTHIBAH DIRECT -->
         <article class="service-card anim">
           <div class="service-card__head">
-            <div class="service-card__badge">Asas</div>
-            <h3>SmartHibah Asas</h3>
-            <p>Penyediaan dokumen Hibah asas untuk aset terpilih.</p>
+            <div class="service-card__badge">Direct</div>
+            <h3>SmartHibah Direct</h3>
+            <p>Hibah ringkas untuk satu aset tertentu kepada sehingga empat penerima yang dipilih.</p>
           </div>
           <div class="service-card__body">
             <ul class="service-card__features">
-              <li>Kenal pasti aset untuk dihibahkan</li>
-              <li>Semakan kelayakan penerima</li>
-              <li>Nasihat ringkas agihan</li>
-              <li>Draf asas Deklarasi Hibah</li>
+              <li><strong>Jumlah Aset:</strong> 1 Aset Sahaja</li>
+              <li><strong>Jenis Aset:</strong> Aset Alih atau Aset Tidak Alih</li>
+              <li><strong>Penerima Hibah:</strong> Sehingga 4 Penerima</li>
+              <li><strong>Kaedah Pembahagian:</strong> Pembahagian Jelas Untuk Satu Aset</li>
+              <li><strong>Dokumen:</strong> Dokumen Hibah Ringkas</li>
+              <li><strong>Sesuai Untuk:</strong> Satu Aset Penting Untuk Insan Tersayang</li>
             </ul>
-            <div class="service-card__price">RM 380 <span>/ dokumen</span></div>
-            <a class="service-card__cta" href="https://app.mysmartwills.com/portal/?company_id=4">Pilih Pakej</a>
+            <div class="service-card__price">RM 980</div>
+            <a class="service-card__cta" href="https://app.mysmartwills.com/portal/?company_id=4">Mulakan Sekarang</a>
           </div>
         </article>
 
+        <!-- PELAN 2: SMARTHIBAH CARE (POPULAR / FEATURED) -->
         <article class="service-card service-card--featured anim" style="transition-delay:.1s">
           <div class="service-card__head">
-            <div class="service-card__badge">Popular</div>
-            <h3>SmartHibah Lengkap</h3>
-            <p>Pengurusan menyeluruh termasuk sokongan penuh dan dokumentasi rasmi.</p>
+            <div class="service-card__badge">Care</div>
+            <h3>SmartHibah Care</h3>
+            <p>Hibah tersusun untuk beberapa aset, sesuai untuk perancangan keluarga yang lebih seimbang dan jelas.</p>
           </div>
           <div class="service-card__body">
             <ul class="service-card__features">
-              <li>Semua dalam pakej Asas +</li>
-              <li>Penyediaan Dokumen Hibah penuh</li>
-              <li>Sesi semakan bersama pakar</li>
-              <li>Akuan berkanun dan tandatangan saksi</li>
-              <li>Panduan proses turun milik aset</li>
+              <li><strong>Jumlah Aset:</strong> Sehingga 3 Aset</li>
+              <li><strong>Jenis Aset:</strong> 1 Aset Tidak Alih + 2 Aset Alih</li>
+              <li><strong>Penerima Hibah:</strong> Sehingga 4 Penerima</li>
+              <li><strong>Kaedah Pembahagian:</strong> Pembahagian Sama Rata</li>
+              <li><strong>Dokumen:</strong> Dokumen Hibah Berstruktur</li>
+              <li><strong>Sesuai Untuk:</strong> Beberapa Aset Keluarga Yang Ingin Disusun Secara Seimbang</li>
             </ul>
-            <div class="service-card__price">RM 680 <span>/ dokumen</span></div>
-            <a class="service-card__cta" href="https://app.mysmartwills.com/portal/?company_id=4">Pilih Pakej</a>
+            <div class="service-card__price">RM 1800</div>
+            <a class="service-card__cta" href="https://app.mysmartwills.com/portal/?company_id=4">Mulakan Sekarang</a>
           </div>
         </article>
 
+        <!-- PELAN 3: SMARTHIBAH AMANAH (AKAN DATANG) -->
         <article class="service-card anim" style="transition-delay:.2s">
           <div class="service-card__head">
-            <div class="service-card__badge">Korporat / Bisnes</div>
-            <h3>SmartHibah Korporat</h3>
-            <p>Hibah khusus untuk syer perniagaan atau pelaburan kompleks.</p>
+            <div class="service-card__badge">Amanah</div>
+            <h3>SmartHibah Amanah</h3>
+            <p>Hibah tersusun untuk beberapa aset, sesuai untuk perancangan keluarga yang lebih seimbang dan jelas.</p>
           </div>
           <div class="service-card__body">
             <ul class="service-card__features">
-              <li>Semua dalam pakej Lengkap +</li>
-              <li>Penilaian syer syarikat/perniagaan</li>
-              <li>Struktur perlindungan rakan kongsi</li>
-              <li>Pegawai perancang harta khusus</li>
+              <li><strong>Jumlah Aset:</strong> Sehingga 5 Aset</li>
+              <li><strong>Jenis Aset:</strong> 2 Aset Tidak Alih + 3 Aset Alih</li>
+              <li><strong>Penerima Hibah:</strong> Sehingga 6 Penerima</li>
+              <li><strong>Kaedah Pembahagian:</strong> Pembahagian Lebih Fleksibel</li>
+              <li><strong>Dokumen:</strong> Dokumen Hibah Amanah lengkap</li>
+              <li><strong>Sesuai Untuk:</strong> Keluarga Yang Memerlukan Perancangan Hibah Lebih Menyeluruh</li>
             </ul>
-            <div class="service-card__price">Hubungi Kami <span></span></div>
-            <a class="service-card__cta" href="http://wa.me/60182209929">Hubungi Penasihat</a>
+            <div class="service-card__price">RM 2800</div>
+            <a class="service-card__cta service-card__cta--disabled" href="#">Akan Datang</a>
           </div>
         </article>
       </div>
