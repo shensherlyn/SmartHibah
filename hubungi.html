@@ -220,15 +220,19 @@
       box-shadow: none !important;
     }
 
-    /* MEMBUAT LOGO SMARTWILLS JELAS, BESAR DAN DIBERI GLOW SHADOW EMAS KONTRA */
+/* MEMBUAT LOGO SMARTWILLS JELAS DENGAN BAYANG GELAP PREMIUM DI BELAKANGNYA */
     .logo-badge img {
       height: 65px; 
       width: auto;
       object-fit: contain;
-      /* Menukarkan logo gelap asal menjadi warna putih cerah dengan sinaran bayang emas lembut */
-      filter: brightness(0) invert(1) drop-shadow(0 0 10px rgba(217, 190, 126, 0.65));
+      
+      /* Menukarkan logo menjadi putih cerah */
+      filter: brightness(0) invert(1) 
+              /* Lapisan bayang 1: Bayang tajam untuk menegaskan garisan tepi logo */
+              drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6)) 
+              /* Lapisan bayang 2: Bayang lembut/luas untuk memberi impak timbul (3D) */
+              drop-shadow(0 8px 16px rgba(0, 0, 0, 0.45));
     }
-
     .company-desc {
       color: rgba(255, 255, 255, 0.85);
       font-size: 0.95rem;
