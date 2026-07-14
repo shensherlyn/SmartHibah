@@ -1,938 +1,1197 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SmartHibah - Lindungi Masa Depan Insan Tersayang</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    /* ── 🎨 SYSTEM DESIGN TOKENS & RESET ── */
-    :root {
-      --primary: #032b1d;
-      --primary-light: #05402c;
-      --gold: #b8922a;
-      --gold-lt: #d9be7e;
-      --gold-accent: #bfa15f;
-      --white: #ffffff;
-      --bg-light: #faf7f2;
-      --text-dark: #1a1a1a;
-      --text-muted: #555555;
-      --border: #dde8e2;
-      --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
-      --shadow-md: 0 8px 24px rgba(3,43,29,0.08);
-      --shadow-lg: 0 16px 40px rgba(3,43,29,0.12);
-      --radius-sm: 8px;
-      --radius-md: 12px;
-      --radius-lg: 20px;
-      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--white);
-      color: var(--text-dark);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    /* ── ⚡ ANIMATION ENGINE (SCROLL REVEAL) ── */
-    .anim {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .anim.appear {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ── 🧱 SHARED UTILITIES & COMPONENTS ── */
-    .section-label {
-      font-family: 'Poppins', sans-serif;
-      color: var(--gold);
-      font-weight: 700;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      margin-bottom: 0.75rem;
-      text-align: center;
-      display: block;
-    }
-
-    .section-title {
-      font-family: 'Poppins', sans-serif;
-      font-size: 2.25rem;
-      color: var(--primary);
-      font-weight: 700;
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto 1rem;
-      line-height: 1.3;
-    }
-
-    @media (max-width: 768px) {
-      .section-title { font-size: 1.75rem; }
-    }
-
-    .section-sub {
-      font-size: 1.05rem;
-      color: var(--text-muted);
-      text-align: center;
-      max-width: 600px;
-      margin: 0 auto 3rem;
-    }
-
-    /* BUTTONS */
-    .btn-gold, .btn-white, .btn-outline, .btn-outline-white {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.85rem 2rem;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      font-size: 0.95rem;
-      border-radius: 50px;
-      text-decoration: none;
-      transition: var(--transition);
-      cursor: pointer;
-    }
-
-    .btn-gold {
-      background: var(--gold);
-      color: var(--white);
-      border: none;
-      box-shadow: 0 4px 14px rgba(184,146,42,0.3);
-    }
-    .btn-gold:hover {
-      background: #a37f22;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(184,146,42,0.4);
-    }
-
-    .btn-white {
-      background: var(--white);
-      color: var(--primary);
-      border: none;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
-    }
-    .btn-white:hover {
-      background: var(--bg-light);
-      transform: translateY(-2px);
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--white);
-      border: 2px solid var(--white);
-    }
-    .btn-outline:hover {
-      background: var(--white);
-      color: var(--primary);
-      transform: translateY(-2px);
-    }
-
-    .btn-outline-white {
-      background: transparent;
-      color: var(--white);
-      border: 2px solid rgba(255,255,255,0.4);
-    }
-    .btn-outline-white:hover {
-      border-color: var(--white);
-      background: rgba(255,255,255,0.1);
-      transform: translateY(-2px);
-    }
-
-    /* ── 🧭 NAVIGATION HEADER ── */
-    .header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 5%;
-      height: 80px;
-      transition: var(--transition);
-    }
-
-    .header-logo-wrapper {
-      display: flex;
-      align-items: center;
-    }
-
-    .header-logo {
-      height: 50px;
-      width: auto;
-      object-fit: contain;
-    }
-
-    .nav__links {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-      align-items: center;
-    }
-
-    .nav__links a {
-      text-decoration: none;
-      color: var(--primary);
-      font-weight: 500;
-      font-size: 0.95rem;
-      font-family: 'Poppins', sans-serif;
-      transition: var(--transition);
-      position: relative;
-    }
-
-    .nav__links a:hover, .nav__links a.active {
-      color: var(--gold);
-    }
-
-    .nav__links a::after {
-      content: '';
-      position: absolute;
-      bottom: -6px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--gold);
-      transition: var(--transition);
-    }
-
-    .nav__links a:hover::after, .nav__links a.active::after {
-      width: 100%;
-    }
-
-    .nav__cta {
-      background: var(--primary);
-      color: var(--white) !important;
-      padding: 0.65rem 1.75rem;
-      border-radius: 50px;
-      font-weight: 600;
-      font-family: 'Poppins', sans-serif;
-      font-size: 0.9rem;
-      text-decoration: none;
-      transition: var(--transition);
-      border: 2px solid var(--primary);
-    }
-
-    .nav__cta:hover {
-      background: transparent;
-      color: var(--primary) !important;
-    }
-
-    .nav__cta::after { display: none !important; }
-
-    .nav__hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 6px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 4px;
-      z-index: 1001;
-    }
-
-    .nav__hamburger span {
-      width: 28px;
-      height: 3px;
-      background: var(--primary);
-      border-radius: 2px;
-      transition: var(--transition);
-    }
-
-    /* MOBILE INTERFACE */
-    .nav__mobile {
-      position: fixed;
-      top: 0;
-      right: -100%;
-      width: 280px;
-      height: 100vh;
-      background: var(--white);
-      box-shadow: -10px 0 30px rgba(0,0,0,0.1);
-      z-index: 999;
-      display: flex;
-      flex-direction: column;
-      padding: 100px 2rem 2rem;
-      gap: 1.5rem;
-      transition: var(--transition);
-    }
-
-    .nav__mobile.open {
-      right: 0;
-    }
-
-    .nav__mobile a {
-      text-decoration: none;
-      color: var(--primary);
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      font-size: 1.1rem;
-      padding: 0.5rem 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav__mobile .nav__cta {
-      background: var(--primary);
-      color: var(--white);
-      text-align: center;
-      border-radius: 50px;
-      margin-top: 1rem;
-      border: none;
-    }
-
-    @media (max-width: 992px) {
-      .nav__links, header > .nav__cta { display: none; }
-      .nav__hamburger { display: flex; }
-    }
-
-    /* ── 🌅 HERO DISPLAY ── */
-    .hero {
-      padding: 160px 5% 100px;
-      min-height: 90vh;
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 4rem;
-      align-items: center;
-      position: relative;
-    }
-
-    .hero__eyebrow {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      font-size: 0.85rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero__h1 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 3.5rem;
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero__sub {
-      font-size: 1.15rem;
-      line-height: 1.6;
-      margin-bottom: 2.5rem;
-      max-width: 620px;
-    }
-
-    .hero__actions {
-      display: flex;
-      gap: 1.25rem;
-      flex-wrap: wrap;
-    }
-
-    .hero__visual {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-    }
-
-    @media (max-width: 1024px) {
-      .hero {
-        grid-template-columns: 1fr;
-        padding-top: 130px;
-        gap: 3rem;
-        text-align: center;
-      }
-      .hero__sub { margin-left: auto; margin-right: auto; }
-      .hero__actions { justify-content: center; }
-      .hero__visual { justify-content: center; }
-    }
-
-    @media (max-width: 576px) {
-      .hero__h1 { font-size: 2.5rem; }
-      .hero__sub { font-size: 1rem; }
-    }
-
-    /* ── 💎 WHY SECTION (BENEFITS GRID) ── */
-    .why {
-      padding: 100px 5%;
-      background: var(--bg-light);
-    }
-
-    .why__grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .why__card {
-      background: var(--white);
-      padding: 2.5rem 2rem;
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-sm);
-      border: 1px solid var(--border);
-      transition: var(--transition);
-    }
-
-    .why__card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-md);
-      border-color: var(--gold-lt);
-    }
-
-    .why__icon {
-      width: 55px;
-      height: 55px;
-      background: rgba(3, 43, 29, 0.05);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1.5rem;
-    }
-
-    .why__icon svg {
-      width: 28px;
-      height: 28px;
-      fill: var(--primary);
-    }
-
-    .why__card h3 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.25rem;
-      color: var(--primary);
-      font-weight: 700;
-      margin-bottom: 0.75rem;
-    }
-
-    .why__card p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      line-height: 1.5;
-    }
-
-    /* ── 📦 SERVICES SECTION (PRICING & PACKAGES) ── */
-    .services {
-      padding: 100px 5%;
-      background: var(--white);
-    }
-
-    .services__grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2.5rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      align-items: stretch;
-    }
-
-    .service-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 3rem 2.25rem;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      transition: var(--transition);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .service-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .service-card h3 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.6rem;
-      color: var(--primary);
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-
-    .card-desc {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      margin-bottom: 2rem;
-      min-height: 48px;
-    }
-
-    .service-card__price {
-      font-family: 'Poppins', sans-serif;
-      font-size: 2.75rem;
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 2rem;
-      display: flex;
-      align-items: baseline;
-    }
-
-    .service-card__cta {
-      display: block;
-      text-align: center;
-      padding: 0.95rem 1.5rem;
-      background: transparent;
-      color: var(--primary);
-      border: 2px solid var(--primary);
-      border-radius: 50px;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      text-decoration: none;
-      margin-bottom: 2.5rem;
-      transition: var(--transition);
-    }
-
-    .service-card__cta:hover {
-      background: var(--primary);
-      color: var(--white);
-    }
-
-    /* PREMIUM SPECIAL CONFIGURATIONS FOR CARD FEATURED */
-    .service-card--featured {
-      background: var(--primary);
-      border-color: var(--primary);
-      color: var(--white);
-    }
-
-    .service-card--featured h3,
-    .service-card--featured .service-card__price {
-      color: var(--white);
-    }
-
-    .service-card--featured .card-desc {
-      color: rgba(255,255,255,0.75);
-    }
-
-    .service-card--featured .service-card__cta {
-      background: var(--gold);
-      color: var(--white);
-      border-color: var(--gold);
-      box-shadow: 0 4px 15px rgba(184,146,42,0.35);
-    }
-
-    .service-card--featured .service-card__cta:hover {
-      background: #a37f22;
-      border-color: #a37f22;
-      transform: translateY(-2px);
-    }
-
-    /* INACTIVE PLAN OPTIONS */
-    .service-card--disabled {
-      opacity: 0.7;
-      background: #fdfdfd;
-    }
-
-    .service-card--disabled .service-card__cta--disabled {
-      background: #e2e8f0;
-      color: #94a3b8;
-      border-color: #e2e8f0;
-      cursor: not-allowed;
-    }
-
-    .service-card--disabled .service-card__cta--disabled:hover {
-      background: #e2e8f0;
-      color: #94a3b8;
-      transform: none;
-    }
-
-    /* DYNAMIC MINI TICK HANDLER DEFINITION */
-    .service-card__features {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-      margin-top: auto;
-    }
-
-    .service-card__features li {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.85rem;
-    }
-
-    /* FORCE PACK AND SHRINK STRIP COMPONENT */
-    .check-icon {
-      width: 14px !important;
-      height: 14px !important;
-      flex-shrink: 0 !important;
-      margin-top: 5px;
-    }
-
-    .feature-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.4;
-    }
-
-    .feature-title {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-weight: 700;
-      opacity: 0.6;
-      margin-bottom: 0.15rem;
-    }
-
-    .service-card--featured .feature-title {
-      color: var(--gold-lt);
-      opacity: 0.9;
-    }
-
-    .feature-desc {
-      font-size: 0.95rem;
-      font-weight: 500;
-    }
-
-    /* ── 🛠️ PROCESS SECTION (STEPS) ── */
-    .process {
-      padding: 100px 5%;
-      background: var(--bg-light);
-    }
-
-    .process__steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 2.5rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      position: relative;
-    }
-
-    .process__step {
-      background: var(--white);
-      padding: 3rem 2rem;
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border);
-      position: relative;
-      text-align: center;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .process__num {
-      width: 45px;
-      height: 45px;
-      background: var(--primary);
-      color: var(--white);
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      font-size: 1.2rem;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: -4.5rem auto 1.5rem;
-      border: 4px solid var(--white);
-      box-shadow: 0 4px 10px rgba(3,43,29,0.2);
-    }
-
-    .process__step h3 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.15rem;
-      color: var(--primary);
-      font-weight: 700;
-      margin-bottom: 0.75rem;
-    }
-
-    .process__step p {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      line-height: 1.5;
-    }
-
-    @media (max-width: 768px) {
-      .process__steps { gap: 4rem; margin-top: 2rem; }
-    }
-
-    /* ── 👥 AUDIENCE SECTION ── */
-    .audience {
-      padding: 100px 5%;
-      background: var(--white);
-    }
-
-    .audience__grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .audience__card {
-      display: flex;
-      gap: 1.5rem;
-      background: var(--bg-light);
-      padding: 2rem;
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border);
-      align-items: flex-start;
-      transition: var(--transition);
-    }
-
-    .audience__card:hover {
-      background: var(--white);
-      border-color: var(--gold-lt);
-      box-shadow: var(--shadow-md);
-    }
-
-    .audience__icon {
-      width: 50px;
-      height: 50px;
-      background: var(--primary);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .audience__icon svg {
-      width: 24px;
-      height: 24px;
-      fill: var(--white);
-    }
-
-    .audience__card h3 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.15rem;
-      color: var(--primary);
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-
-    .audience__card p {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      line-height: 1.5;
-    }
-
-    /* ── 📄 DOCUMENTS SECTION ── */
-    .docs {
-      padding: 100px 5%;
-      background: var(--bg-light);
-      text-align: center;
-    }
-
-    .docs__grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 0 auto 2.5rem;
-      text-align: left;
-    }
-
-    .docs__item {
-      background: var(--white);
-      padding: 2rem;
-      border-radius: var(--radius-sm);
-      border-left: 4px solid var(--gold);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .docs__item h3 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.1rem;
-      color: var(--primary);
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-
-    .docs__item p {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      line-height: 1.5;
-    }
-
-    .docs__note {
-      font-size: 0.95rem;
-      color: var(--primary);
-      font-style: italic;
-      font-weight: 500;
-    }
-
-    /* ── 📢 CTA BANNER ── */
-    .cta-banner {
-      padding: 100px 5%;
-      background: linear-gradient(135deg, #032b1d 0%, #05402c 100%);
-      color: var(--white);
-      text-align: center;
-      position: relative;
-    }
-
-    .cta-banner h2 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 2.5rem;
-      font-weight: 700;
-      line-height: 1.3;
-      margin-bottom: 1rem;
-    }
-
-    .cta-banner p {
-      font-size: 1.1rem;
-      color: rgba(255,255,255,0.85);
-      margin-bottom: 2.5rem;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .cta-banner__actions {
-      display: flex;
-      gap: 1.5rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    @media (max-width: 576px) {
-      .cta-banner h2 { font-size: 1.85rem; }
-    }
-
-    /* ── 🤖 CHATBOT & WHATSAPP FLOATING CONTAINER ── */
-    .floating-bot-wrapper {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 9999; 
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    .chatbot-trigger-container {
-      position: relative;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-
-    .chatbot-trigger-container:hover {
-      transform: scale(1.08);
-    }
-
-    .suri-avatar {
-      width: 110px;        
-      height: 110px;        
-      border-radius: 50%;
-      overflow: hidden;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-      background: #ffffff; 
-    }
-
-    .suri-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .wa-mini-badge {
-      position: absolute;
-      bottom: 5px;         
-      right: 5px;          
-      width: 35px;         
-      height: 35px;        
-      background: #25d366;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 3px solid #fff; 
-      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
-    }
-
-    .wa-mini-badge svg {
-      width: 18px;         
-      height: 18px;        
-      fill: #fff;
-    }
-
-    .chatbot-window {
-      position: absolute;
-      bottom: 125px;      
-      right: 0;
-      width: 400px;       
-      height: 560px;      
-      background: var(--white, #ffffff);
-      border-radius: 20px; 
-      box-shadow: 0 12px 40px rgba(0,0,0,0.25);
-      border: 1px solid var(--border, #dde8e2);
-      display: flex;
-      flex-direction: column;
-      opacity: 0;
-      transform: translateY(20px) scale(0.95);
-      pointer-events: none;
-      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    .chatbot-window.open {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-      pointer-events: auto;
-    }
-
-    .chat-header {
-      background: #032b1d; 
-      color: #ffffff;
-      padding: 14px 18px;  
-      border-top-left-radius: 18px;
-      border-top-right-radius: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 3px solid #bfa15f;
-    }
-
-    .chat-profile { display: flex; align-items: center; gap: 12px; }
-    .chat-avatar-mini { width: 40px; height: 40px; border-radius: 50%; overflow: hidden; background: #fff; }
-    .chat-avatar-mini img { width: 100%; height: 100%; object-fit: cover; }
-    .chat-info h4 { font-size: 0.95rem; margin: 0; font-weight: 600; }
-    .chat-info span { font-size: 0.75rem; color: #d9be7e; display: flex; align-items: center; gap: 5px; }
-    .chat-info span::before { content: ''; width: 6px; height: 6px; background: #22c55e; border-radius: 50%; display: inline-block; }
-    .close-chat-btn { background: none; border: none; color: #fff; font-size: 1.6rem; cursor: pointer; line-height: 1; }
-    .chat-body { flex: 1; padding: 18px; background: #faf7f2; overflow-y: auto; display: flex; flex-direction: column; gap: 14px; }
-    .message.bot { max-width: 85%; padding: 12px 14px; border-radius: 14px; font-size: 0.9rem; background: #fff; color: #1a1a1a; border-top-left-radius: 0; border: 1px solid #dde8e2; line-height: 1.48; }
-    .chat-footer { padding: 12px; background: #fff; border-bottom-left-radius: 18px; border-bottom-right-radius: 18px; display: flex; gap: 10px; border-top: 1px solid #dde8e2; }
-    .chat-input { flex: 1; padding: 10px 16px; border: 1px solid #dde8e2; border-radius: 24px; outline: none; font-size: 0.9rem; }
-    .chat-send-btn { background: #032b1d; color: #fff; border: none; width: 38px; height: 38px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-
-    /* Skrin Kecil Telefon (Chatbox mobile friendly) */
-    @media (max-width: 480px) {
-      .floating-bot-wrapper { bottom: 15px; right: 15px; }
-      .suri-avatar { width: 85px; height: 85px; } 
-      .wa-mini-badge { width: 28px; height: 28px; bottom: 2px; right: 2px; }
-      .wa-mini-badge svg { width: 14px; height: 14px; }
-      .chatbot-window { width: calc(100vw - 30px); height: 480px; bottom: 100px; }
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartHibah – Deklarasi Hibah Online</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+    /* ── 🌟 RESET & GLOBAL STYLES ── */
+    *, *::before, *::after { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+    }
+
+    :root {
+      --forest:     #032b1d; 
+      --forest-md: #0e3d2c;
+      --forest-lt: #2e6347;
+      --gold:      #bfa15f; 
+      --gold-lt:   #d9be7e;
+      --gold-pale: #f5e9c8;
+      --cream:     #faf7f2;
+      --white:     #ffffff;
+      --text:      #1a1a1a;
+      --muted:     #6b7a6e;
+      --border:    #dde8e2;
+      --radius:    16px;
+    }
+
+    html { 
+      scroll-behavior: smooth; 
+    }
+    
+    body { 
+      font-family: 'Poppins', sans-serif;
+      background-image: url('assets/bgsw.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      color: var(--text); 
+      line-height: 1.6; 
+    }
+
+    /* ── 🛠️ NAV BAR / HEADER STATIK ── */
+    .header { 
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      background: var(--forest); 
+      color: var(--white); 
+      padding: 0 5% 0 0; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      z-index: 1000; 
+      box-shadow: 0 3px 15px rgba(0,0,0,.2);
+      height: 90px;
+      overflow: visible; 
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center; 
+      gap: 0px; 
+      height: 100%;
+      overflow: visible; 
+    }
+
+    .header-logo-wrapper {
+      background: transparent !important; 
+      height: 100%; 
+      padding: 0; 
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0 !important; 
+      border: none !important; 
+      box-shadow: none !important; 
+      overflow: visible;
+    }
+
+    .header-logo {
+      height: 125px; 
+      width: auto;
+      object-fit: contain;
+      display: block;
+      position: relative;
+      top: 12px; 
+    }
+
+    .nav__links { 
+      display: flex; 
+      gap: 1.5rem; 
+      list-style: none; 
+      margin-left: auto; 
+      margin-right: 2rem; 
+    }
+    
+    .nav__links a { 
+      color: rgba(255,255,255,.88); 
+      text-decoration: none; 
+      font-size: .875rem; 
+      font-weight: 500; 
+      transition: color .2s; 
+    }
+    
+    .nav__links a:hover, .nav__links a.active { 
+      color: var(--gold-lt); 
+    }
+    
+    .nav__cta {
+      border: 2px solid var(--white);
+      color: var(--white);
+      background: transparent;
+      padding: .45rem 1.75rem; 
+      border-radius: 25px;
+      font-size: .875rem; 
+      font-weight: 600; 
+      text-decoration: none;
+      transition: all .2s ease;
+    }
+    
+    .nav__cta:hover { 
+      background: var(--white); 
+      color: var(--forest); 
+    }
+
+    .nav__hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      margin-left: auto;
+    }
+
+    .nav__hamburger span {
+      display: block;
+      width: 26px;
+      height: 3px;
+      background: var(--white);
+      border-radius: 2px;
+    }
+
+    .nav__mobile {
+      position: fixed;
+      top: 90px;
+      left: 0;
+      width: 100%;
+      background: var(--forest-md);
+      display: none;
+      flex-direction: column;
+      padding: 1.5rem 5%;
+      gap: 1.25rem;
+      z-index: 999;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .nav__mobile a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    .nav__mobile.open, .nav__mobile.active { 
+      display: flex !important; 
+    }
+
+    /* ── 🛠️ MAIN CONTAINER CONTENT ── */
+    .container { 
+      max-width: 1200px; 
+      margin: 8rem auto 4rem; 
+      padding: 0 2%; 
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── HERO SECTION ── */
+    .hero {
+      background: linear-gradient(135deg, var(--forest) 0%, var(--forest-md) 55%, #1e4a32 100%);
+      min-height: calc(100vh - 90px);
+      margin-top: 90px; 
+      display: grid; 
+      grid-template-columns: 1fr 1fr; 
+      align-items: center;
+      padding: 5% 5% 4%;
+      gap: 3rem;
+      position: relative; 
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 70% at 80% 50%, rgba(184,146,42,.12), transparent);
+      pointer-events: none;
+    }
+
+    .hero__eyebrow {
+      display: inline-flex; 
+      align-items: center; 
+      gap: .5rem;
+      background: rgba(184,146,42,.18);
+      color: var(--gold-lt);
+      padding: .35rem .9rem; 
+      border-radius: 20px;
+      font-size: .78rem; 
+      font-weight: 600; 
+      letter-spacing: .06em; 
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero__eyebrow::before { 
+      content: ''; 
+      width: 6px; 
+      height: 6px; 
+      border-radius: 50%; 
+      background: var(--gold-lt); 
+    }
+
+    .hero__h1 {
+      font-size: clamp(2.5rem, 5.5vw, 3.8rem); 
+      font-weight: 850; 
+      color: var(--white); 
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    .hero__h1 em { 
+      color: var(--gold-lt); 
+      font-style: normal; 
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero__sub {
+      color: rgba(255, 255, 255, 0.95); 
+      font-size: 1.2rem; 
+      font-weight: 500; 
+      max-width: 700px;
+      margin: 0 auto 2.5rem; 
+      line-height: 1.7;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero__actions { 
+      display: flex; 
+      gap: 1rem; 
+      flex-wrap: wrap; 
+    }
+
+    .btn-gold {
+      background: var(--gold); 
+      color: var(--white);
+      padding: .8rem 1.75rem; 
+      border-radius: 10px;
+      font-size: .95rem; 
+      font-weight: 600; 
+      text-decoration: none;
+      transition: background .2s, transform .15s; 
+      display: inline-block;
+    }
+
+    .btn-gold:hover { 
+      background: var(--gold-lt); 
+      transform: translateY(-2px); 
+    }
+
+    .btn-outline {
+      border: 2px solid rgba(255,255,255,.4); 
+      color: var(--white);
+      padding: .75rem 1.6rem; 
+      border-radius: 10px;
+      font-size: .95rem; 
+      font-weight: 500; 
+      text-decoration: none;
+      transition: border-color .2s, transform .15s; 
+      display: inline-block;
+    }
+
+    .btn-outline:hover { 
+      border-color: var(--gold-lt); 
+      color: var(--gold-lt); 
+      transform: translateY(-2px); 
+    }
+
+    .hero__visual {
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+      position: relative;
+    }
+
+    /* ── WHY SECTION ── */
+    .why {
+      background: var(--cream);
+      padding: 5rem 5%;
+    }
+
+    .section-label {
+      text-align: center;
+      font-size: .75rem; 
+      font-weight: 600; 
+      letter-spacing: .1em; 
+      text-transform: uppercase;
+      color: var(--gold); 
+      margin-bottom: .6rem;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(1.5rem, 3vw, 2.2rem); 
+      font-weight: 700;
+      color: var(--forest); 
+      margin-bottom: .75rem; 
+      line-height: 1.25;
+    }
+
+    .section-sub {
+      text-align: center; 
+      color: var(--muted); 
+      max-width: 540px; 
+      margin: 0 auto 3rem;
+      font-size: .95rem;
+    }
+
+    .why__grid {
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem; 
+      max-width: 900px; 
+      margin: 0 auto;
+    }
+
+    .why__card {
+      background: var(--white); 
+      border-radius: var(--radius);
+      padding: 1.75rem 1.5rem; 
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(26,58,42,.06);
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .why__card:hover { 
+      transform: translateY(-4px); 
+      box-shadow: 0 8px 24px rgba(26,58,42,.12); 
+    }
+
+    .why__icon {
+      width: 56px; 
+      height: 56px; 
+      border-radius: 14px;
+      background: var(--gold-pale); 
+      margin: 0 auto 1rem;
+      display: grid; 
+      place-items: center;
+    }
+
+    .why__icon svg { 
+      width: 28px; 
+      height: 28px; 
+      fill: var(--gold); 
+    }
+
+    .why__card h3 { 
+      font-size: .95rem; 
+      font-weight: 700; 
+      color: var(--forest); 
+      margin-bottom: .4rem; 
+    }
+
+    .why__card p { 
+      font-size: .83rem; 
+      color: var(--muted); 
+      line-height: 1.6; 
+    }
+
+    /* ── SERVICES SECTION (BAHAGIAN PAKEJ YANG DIKEMAS KINI) ── */
+    .services { 
+      background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('assets/bgsw.png') !important;
+      background-size: cover !important;
+      background-position: center !important;
+      background-repeat: no-repeat !important;
+      background-attachment: fixed !important;
+      padding: 5rem 5%; 
+    }
+    
+    .services .section-label {
+      color: var(--gold-pale) !important;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9), 0 4px 10px rgba(0, 0, 0, 0.9);
+    }
+
+    .services .section-title {
+      color: var(--white) !important;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.95), 0 4px 15px rgba(0, 0, 0, 0.9);
+    }
+
+    .services .section-sub {
+      color: rgba(255, 255, 255, 0.95) !important;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9), 0 4px 8px rgba(0, 0, 0, 0.85);
+    }
+
+    .services__grid {
+      display: grid; 
+      grid-template-columns: repeat(3, 1fr); 
+      gap: 1.25rem; 
+      max-width: 1200px; 
+      margin: 0 auto;
+      align-items: stretch;
+    }
+    
+    .service-card {
+      background: var(--white) !important; 
+      border: 1px solid var(--border); 
+      border-radius: var(--radius);
+      overflow: hidden; 
+      transition: transform .2s, box-shadow .2s;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 30px rgba(3, 43, 29, 0.05); 
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+    }
+
+    .service-card:hover { 
+      transform: translateY(-5px); 
+      box-shadow: 0 12px 32px rgba(26,58,42,.1); 
+    }
+
+    .service-card__head {
+      background: var(--forest); 
+      padding: 2rem 1.75rem 1.5rem;
+      position: relative; 
+      overflow: hidden;
+    }
+
+    .service-card__head::after {
+      content: ''; 
+      position: absolute; bottom: -20px; right: -20px;
+      width: 100px; height: 100px; border-radius: 50%;
+      background: rgba(184,146,42,.15); 
+      pointer-events: none;
+    }
+
+    .service-card__badge {
+      display: inline-block;
+      background: rgba(184,146,42,.2); 
+      color: var(--gold-lt);
+      font-size: .7rem; 
+      font-weight: 600; 
+      letter-spacing: .06em; 
+      text-transform: uppercase;
+      padding: .25rem .7rem; 
+      border-radius: 20px; 
+      margin-bottom: .75rem;
+    }
+
+    .service-card__head h3 { 
+      color: var(--white); 
+      font-size: 1.2rem; 
+      font-weight: 700; 
+    }
+
+    .service-card__head p { 
+      color: rgba(255,255,255,.7); 
+      font-size: .85rem; 
+      margin-top: .4rem; 
+      line-height: 1.5; 
+    }
+
+    .service-card__body { 
+      padding: 1.5rem 1.75rem; 
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .service-card__features { 
+      list-style: none; 
+      display: flex; 
+      flex-direction: column; 
+      gap: 1rem; 
+      margin-bottom: auto; /* Memastikan butang tolak ke bawah dengan sekata */
+    }
+
+    .service-card__features li {
+      display: flex !important; 
+      align-items: flex-start !important; 
+      gap: 0.85rem !important;
+      width: 100%;
+      position: relative;
+      font-size: .875rem; 
+      color: var(--text);
+    }
+
+    .service-card__features li::before {
+      display: none !important;
+    }
+
+    .service-card__price { 
+      font-size: 1.5rem; 
+      font-weight: 800; 
+      color: var(--forest); 
+      margin-top: 1.5rem;
+      margin-bottom: 1rem; 
+    }
+
+    .service-card__price span { 
+      font-size: .85rem; 
+      font-weight: 400; 
+      color: var(--muted); 
+    }
+
+    .service-card__cta {
+      display: block; 
+      text-align: center;
+      background: var(--gold); 
+      color: var(--white);
+      padding: .75rem; 
+      border-radius: 10px;
+      font-weight: 600; 
+      font-size: .9rem; 
+      text-decoration: none;
+      transition: background .2s;
+      margin-bottom: 0.5rem;
+    }
+
+    .service-card__cta:hover { 
+      background: var(--gold-lt); 
+    }
+
+    .service-card--featured .service-card__head { 
+      background: linear-gradient(135deg, var(--gold) 0%, #9a7520 100%); 
+    }
+
+    .service-card--featured .service-card__badge { 
+      background: rgba(255,255,255,.2); 
+      color: var(--white); 
+    }
+
+    /* Pembungkus Ikon Tanda Semak (Diperbaiki saiznya agar premium) */
+    .big-check-wrapper {
+      flex-shrink: 0;
+      width: 28px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 3px;
+    }
+
+    .big-check-icon {
+      width: 22px;
+      height: auto;
+      filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.05));
+    }
+
+    .icon-green { stroke: #28a745 !important; stroke-width: 3.5px; }
+    .icon-gold { stroke: #bfa15f !important; stroke-width: 3.5px; }
+    .icon-grey { stroke: #a0aec0 !important; stroke-width: 3.5px; }
+
+    /* Ruang Teks Spesifikasi Pakej */
+    .feature-rows {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .feature-row-item {
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1px dashed rgba(0,0,0,0.08);
+      padding-bottom: 0.6rem;
+    }
+
+    .service-card__features li:last-child .feature-row-item {
+      border-bottom: none; /* Buang garisan bawah pada item terakhir */
+    }
+
+    .feature-title {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #8c9b90;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .feature-desc {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--forest);
+      margin-top: 1px;
+      line-height: 1.35;
+    }
+   .service-card__cta--disabled {
+      background: #cbd5e1 !important;
+      color: #718096 !important;
+      opacity: 0.8;
+      cursor: not-allowed;
+    }
+
+    /* ── PROCESS SECTION ── */
+    .process { 
+      background: var(--forest); 
+      padding: 5rem 5%; 
+    }
+
+    .process .section-title { color: var(--white); }
+    .process .section-label { color: var(--gold-lt); }
+    .process .section-sub { color: rgba(255,255,255,.65); }
+
+    .process__steps {
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem; 
+      max-width: 960px; 
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .process__step {
+      background: rgba(255,255,255,.05); 
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--radius); 
+      padding: 2rem 1.5rem; 
+      text-align: center;
+      position: relative;
+    }
+
+    .process__num {
+      width: 44px; 
+      height: 44px; 
+      border-radius: 50%;
+      background: var(--gold); 
+      color: var(--white);
+      font-weight: 800; 
+      font-size: 1rem;
+      display: grid; 
+      place-items: center; 
+      margin: 0 auto 1rem;
+    }
+
+    .process__step h3 { 
+      color: var(--white); 
+      font-size: .95rem; 
+      font-weight: 700; 
+      margin-bottom: .5rem; 
+    }
+
+    .process__step p { 
+      color: rgba(255,255,255,.6); 
+      font-size: .83rem; 
+      line-height: 1.6; 
+    }
+
+    /* ── AUDIENCE SECTION ── */
+    .audience { 
+      padding: 5rem 5%; 
+      background: var(--cream); 
+    }
+
+    .audience__grid {
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1.2rem; 
+      max-width: 900px; 
+      margin: 0 auto;
+    }
+
+    .audience__card {
+      background: var(--white); 
+      border-radius: var(--radius);
+      padding: 1.5rem 1rem; 
+      text-align: center;
+      border: 1.5px solid var(--border);
+      transition: border-color .2s, transform .2s;
+    }
+
+    .audience__card:hover { 
+      border-color: var(--gold); 
+      transform: translateY(-3px); 
+    }
+
+    .audience__icon {
+      width: 52px; 
+      height: 52px; 
+      background: var(--gold-pale);
+      border-radius: 50%; 
+      display: grid; 
+      place-items: center; 
+      margin: 0 auto .75rem;
+    }
+
+    .audience__icon svg { 
+      width: 26px; 
+      height: 26px; 
+      fill: var(--gold); 
+    }
+
+    .audience__card h3 { 
+      font-size: .875rem; 
+      font-weight: 700; 
+      color: var(--forest); 
+      margin-bottom: .3rem; 
+    }
+
+    .audience__card p { 
+      font-size: .78rem; 
+      color: var(--muted); 
+      line-height: 1.5; 
+    }
+
+    /* ── DOCUMENTS SECTION ── */
+    .docs { 
+      background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('assets/bgsw.png') !important;
+      background-size: cover !important;
+      background-position: center !important;
+      background-repeat: no-repeat !important;
+      background-attachment: fixed !important;
+      padding: 5rem 5%; 
+    }
+    
+    .docs .section-label {
+      color: var(--gold-pale) !important;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9), 0 4px 10px rgba(0, 0, 0, 0.9);
+    }
+
+    .docs .section-title {
+      color: var(--white) !important;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.95), 0 4px 15px rgba(0, 0, 0, 0.9);
+    }
+
+    .docs .section-sub {
+      color: rgba(255, 255, 255, 0.95) !important;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9), 0 4px 8px rgba(0, 0, 0, 0.85);
+    }
+
+    .docs__grid {
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem; 
+      max-width: 900px; 
+      margin: 0 auto;
+    }
+
+    .docs__item {
+      background: var(--forest); 
+      border-radius: var(--radius);
+      padding: 1.5rem; 
+      color: var(--white);
+    }
+
+    .docs__item h3 { 
+      font-size: .9rem; 
+      font-weight: 700; 
+      color: var(--gold-lt); 
+      margin-bottom: .5rem; 
+    }
+
+    .docs__item p { 
+      font-size: .83rem; 
+      color: rgba(255,255,255,.75); 
+      line-height: 1.6; 
+    }
+    
+    .docs__note {
+      text-align: center; 
+      margin-top: 1.5rem;
+      font-size: .95rem; 
+      font-weight: 600;
+      color: var(--white) !important;
+      max-width: 600px; 
+      margin-left: auto; 
+      margin-right: auto;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 1), 0 4px 12px rgba(0, 0, 0, 1);
+    }
+
+    /* ── CTA BANNER SECTION ── */
+    .cta-banner {
+      background: linear-gradient(120deg, var(--gold) 0%, #9a7520 100%);
+      padding: 4.5rem 5%; 
+      text-align: center;
+    }
+
+    .cta-banner h2 { 
+      font-size: clamp(1.5rem, 3vw, 2.2rem); 
+      font-weight: 800; 
+      color: var(--white); 
+      margin-bottom: 1rem; 
+      line-height: 1.25; 
+    }
+
+    .cta-banner p { 
+      color: rgba(255,255,255,.85); 
+      max-width: 500px; 
+      margin: 0 auto 2rem; 
+      font-size: .95rem; 
+    }
+
+    .cta-banner__actions { 
+      display: flex; 
+      gap: 1rem; 
+      justify-content: center; 
+      flex-wrap: wrap; 
+    }
+
+    .btn-white {
+      background: var(--white); 
+      color: var(--gold);
+      padding: .8rem 2rem; 
+      border-radius: 10px;
+      font-weight: 700; 
+      font-size: .95rem; 
+      text-decoration: none;
+      transition: transform .15s, box-shadow .15s; 
+      display: inline-block;
+    }
+
+    .btn-white:hover { 
+      transform: translateY(-2px); 
+      box-shadow: 0 6px 20px rgba(0,0,0,.15); 
+    }
+
+    .btn-outline-white {
+      border: 2px solid rgba(255,255,255,.7); 
+      color: var(--white);
+      padding: .75rem 1.75rem; 
+      border-radius: 10px;
+      font-weight: 500; 
+      font-size: .95rem; 
+      text-decoration: none;
+      transition: border-color .2s; 
+      display: inline-block;
+    }
+
+    .btn-outline-white:hover { 
+      border-color: var(--white); 
+    }
+
+    /* ── FOOTER GREEN-WHITE THEME ── */
+    .footer {
+      background: var(--white);
+      color: var(--text);
+      padding: 4.5rem 5% 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer__container {
+      max-width: 1140px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr repeat(3, 1fr);
+      gap: 2.5rem;
+    }
+
+    .footer__brand {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .footer__logo {
+      height: 48px;
+      width: auto;
+      align-self: flex-start;
+      object-fit: contain;
+    }
+
+    .footer__desc {
+      font-size: .875rem;
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 320px;
+    }
+
+    .footer__column h4 {
+      color: var(--forest);
+      font-size: .95rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      text-transform: uppercase;
+      letter-spacing: .03em;
+    }
+
+    .footer__list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+    }
+
+    .footer__list a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: .875rem;
+      transition: color .2s ease;
+    }
+
+    .footer__list a:hover {
+      color: var(--gold);
+    }
+
+    .footer__bottom {
+      max-width: 1140px;
+      margin: 3.5rem auto 0;
+      padding-top: 1.75rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: flex-start; 
+      align-items: center;
+    }
+
+    .footer__left-block {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem; 
+      flex-wrap: wrap;
+    }
+
+    .footer__copyright {
+      font-size: .82rem;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .footer__socials {
+      display: flex;
+      gap: .75rem;
+    }
+
+    .footer__social-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--cream);
+      color: var(--forest);
+      display: grid;
+      place-items: center;
+      text-decoration: none;
+      transition: all .2s ease;
+      border: 1px solid transparent;
+    }
+
+    .footer__social-icon:hover {
+      background: var(--white);
+      color: var(--gold);
+      border-color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    /* ── 📱 MEDIA QUERIES / RESPONSIVE DESIGN ── */
+    @media (max-width: 992px) {
+      .header-logo-wrapper { padding-right: 20px; }
+      .nav__links { gap: 1rem; }
+      .services__grid { grid-template-columns: repeat(2, 1fr); }
+      .footer__container { grid-template-columns: 1.5fr repeat(3, 1fr); gap: 1.5rem; }
+    }
+
+    @media (max-width: 768px) {
+      .header { height: 70px; }
+      .header-logo { height: 100px; top: 15px; }
+      
+      .nav__links, .nav__cta { display: none !important; }
+
+      .nav__hamburger {
+        display: flex !important;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 24px;
+        height: 18px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        margin-right: 5%; 
+      }
+
+      .nav__hamburger span {
+        width: 100%;
+        height: 2px;
+        background-color: var(--white);
+        transition: all 0.3s ease;
+      }
+
+      .nav__mobile {
+        top: 70px;
+        padding: 1.5rem;
+        box-sizing: border-box;
+        gap: 1.25rem;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        z-index: 999;
+      }
+
+      .nav__mobile a {
+        color: var(--white);
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: 500;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+      }
+
+      .nav__mobile a.active {
+        color: var(--gold-lt);
+      }
+
+      .nav__mobile .nav__cta {
+        display: block !important;
+        text-align: center;
+        background: var(--gold);
+        border: none;
+        margin-top: 0.5rem;
+        padding: 0.75rem;
+        border-radius: 25px;
+        color: var(--white);
+      }
+
+      .hero { 
+        grid-template-columns: 1fr; 
+        padding: 3rem 5% 2rem; 
+        min-height: auto; 
+        gap: 2.5rem; 
+        margin-top: 70px;
+      }
+      .hero__visual { order: -1; }
+      .hero__h1 { font-size: 1.8rem; }
+      .hero__sub { font-size: .9rem; }
+      
+      .why, .services, .process, .audience, .docs { padding: 3.5rem 5%; }
+      .services__grid { grid-template-columns: 1fr; }
+      
+      .footer__container { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
+      .footer__brand { align-items: center; }
+      .footer__logo { align-self: center; }
+      .footer__desc { max-width: 100%; }
+      .footer__bottom { flex-direction: column; text-align: center; margin-top: 2.5rem; }
+      .footer__left-block { flex-direction: column; align-items: center; gap: 1rem; }
+    }
+
+    @media (max-width: 480px) {
+      .why__grid, .process__steps, .audience__grid { grid-template-columns: 1fr; }
+      .footer__left-block { flex-direction: column; align-items: center; gap: 1rem; }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .anim { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
+      .anim.visible { opacity: 1; transform: none; }
+    }
+  .floating-bot-wrapper {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999; /* Memastikan ia sentiasa di atas elemen footer */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Gabungan Ikon Suri & Lencana WhatsApp */
+.chatbot-trigger-container {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.chatbot-trigger-container:hover {
+  transform: scale(1.08);
+}
+
+/* Avatar Suri Bulat/Sipi - DIUBAH UNTUK MEMBESARKAN GIF */
+.suri-avatar {
+  width: 110px;        /* Asal: 75px -> Ditukar ke 110px */
+  height: 110px;       /* Asal: 75px -> Ditukar ke 110px */
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  background: #ffffff; /* Ditukar ke putih supaya latar belakang GIF kelihatan bersih */
+}
+
+.suri-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Lencana Mini WhatsApp di Bucu Avatar - DISESUAIKAN IKUT SAIZ BARU */
+.wa-mini-badge {
+  position: absolute;
+  bottom: 5px;         /* Diubah dari 2px ke 5px supaya kedudukan seimbang */
+  right: 5px;          /* Diubah dari 2px ke 5px supaya kedudukan seimbang */
+  width: 35px;         /* Asal: 25px -> Ditukar ke 35px */
+  height: 35px;        /* Asal: 25px -> Ditukar ke 35px */
+  background: #25d366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #fff; /* Ditebalkan sedikit bingkai putih */
+  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+}
+
+.wa-mini-badge svg {
+  width: 18px;         /* Asal: 14px -> Ditukar ke 18px */
+  height: 18px;        /* Asal: 14px -> Ditukar ke 18px */
+  fill: #fff;
+}
+
+/* ── KOTAK CHAT WINDOW - DIUBAH LEBIH LUAS DAN TINGGI ── */
+.chatbot-window {
+  position: absolute;
+  bottom: 125px;      /* Asal: 85px -> Dinaikkan sikit supaya tidak bertindih dengan bulatan Suri yang besar */
+  right: 0;
+  width: 400px;       /* Asal: 340px -> Ditukar ke 400px (Lebih lebar) */
+  height: 560px;      /* Asal: 460px -> Ditukar ke 560px (Lebih panjang) */
+  background: var(--white, #ffffff);
+  border-radius: 20px; /* Bucu tetingkap dibulatkan sedikit lagi agar sepadan */
+  box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+  border: 1px solid var(--border, #dde8e2);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.chatbot-window.open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* Elemen Dalaman Chat Window */
+.chat-header {
+  background: #032b1d; /* Warna forest syarikat */
+  color: #ffffff;
+  padding: 14px 18px;  /* Ditambah sedikit padding */
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 3px solid #bfa15f;
+}
+
+.chat-profile { display: flex; align-items: center; gap: 12px; }
+.chat-avatar-mini { width: 40px; height: 40px; border-radius: 50%; overflow: hidden; background: #fff; }
+.chat-avatar-mini img { width: 100%; height: 100%; object-fit: cover; }
+.chat-info h4 { font-size: 0.95rem; margin: 0; font-weight: 600; }
+.chat-info span { font-size: 0.75rem; color: #d9be7e; display: flex; align-items: center; gap: 5px; }
+.chat-info span::before { content: ''; width: 6px; height: 6px; background: #22c55e; border-radius: 50%; display: inline-block; }
+.close-chat-btn { background: none; border: none; color: #fff; font-size: 1.6rem; cursor: pointer; line-height: 1; }
+.chat-body { flex: 1; padding: 18px; background: #faf7f2; overflow-y: auto; display: flex; flex-direction: column; gap: 14px; }
+.message.bot { max-width: 85%; padding: 12px 14px; border-radius: 14px; font-size: 0.9rem; background: #fff; color: #1a1a1a; border-top-left-radius: 0; border: 1px solid #dde8e2; line-height: 1.48; }
+.chat-footer { padding: 12px; background: #fff; border-bottom-left-radius: 18px; border-bottom-right-radius: 18px; display: flex; gap: 10px; border-top: 1px solid #dde8e2; }
+.chat-input { flex: 1; padding: 10px 16px; border: 1px solid #dde8e2; border-radius: 24px; outline: none; font-size: 0.9rem; }
+.chat-send-btn { background: #032b1d; color: #fff; border: none; width: 38px; height: 38px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+
+/* Skrin Kecil Telefon - Mengelakkan Chatbox Terkeluar dari Skrin */
+@media (max-width: 480px) {
+  .floating-bot-wrapper { bottom: 15px; right: 15px; }
+  .suri-avatar { width: 85px; height: 85px; } /* Mengecil sedikit di mobile agar mesra pengguna */
+  .wa-mini-badge { width: 28px; height: 28px; bottom: 2px; right: 2px; }
+  .wa-mini-badge svg { width: 14px; height: 14px; }
+  .chatbot-window { width: calc(100vw - 30px); height: 480px; bottom: 100px; }
+}
+</style>
 </head>
 <body>
 
 <header class="header">
   <div class="header-left">
     <div class="header-logo-wrapper">
-      <a href="index.html">
+      <a href="home.html">
         <img src="assets/smarthibah1.png" alt="SmartHibah" class="header-logo" />
       </a>
     </div>
   </div>
   
-  <ul class="nav__links">
+<ul class="nav__links">
     <li><a href="index.html" class="active">Laman Utama</a></li>
     <li><a href="pakej.html">Pakej</a></li>
     <li><a href="panduan.html">Panduan</a></li>
@@ -971,8 +1230,8 @@
       SmartHibah membantu anda menyusun pemberian aset kepada keluarga atau penerima pilihan dengan lebih jelas, mudah dan teratur. Elakkan waris anda daripada terbeban dengan proses yang rumit.
     </p>
     <div class="hero__actions anim" style="transition-delay: .24s;">
-      <a href="https://app.mysmartwills.com/portal/?company_id=4" class="btn-gold">Mohon Sekarang</a>
-      <a href="#kenapa" class="btn-outline" style="background: rgba(3, 43, 29, 0.7); backdrop-filter: blur(4px);">Ketahui Lebih Lanjut</a>
+      <a href="#" class="btn-gold">Mohon Sekarang</a>
+      <a href="#" class="btn-outline" style="background: rgba(3, 43, 29, 0.7); backdrop-filter: blur(4px);">Ketahui Lebih Lanjut</a>
     </div>
   </div>
 
@@ -1046,77 +1305,63 @@
 </section>
 
 <section class="services" id="servis">
-  <p class="section-label">Pelan SmartHibah</p>
-  <h2 class="section-title">Perancangan Hibah untuk melindungi insan tersayang.</h2>
-  <p class="section-sub">SmartHibah membantu anda menyusun pemberian aset kepada keluarga atau penerima pilihan dengan lebih jelas, mudah dan teratur.</p>
-  
+  <p class="section-label anim">Pilihan Pakej</p>
+  <h2 class="section-title anim">Pilih Perkhidmatan Hibah</h2>
+  <p class="section-sub anim">Solusi menyeluruh dari penetapan harta sehingga penyediaan dokumen fizikal.</p>
   <div class="services__grid">
-    <!-- PELAN 1: SMARTHIBAH DIRECT -->
-    <article class="service-card">
-      <h3>SmartHibah Direct</h3>
-      <p class="card-desc">Hibah ringkas untuk satu aset tertentu kepada sehingga empat penerima yang dipilih.</p>
-      
-      <div class="service-card__price">RM 980</div>
-      <a class="service-card__cta" href="https://app.mysmartwills.com/portal/?company_id=4">Mulakan Sekarang</a>
-      
-      <ul class="service-card__features">
-        <li>
-          <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#28a745" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          <div class="feature-text"><span class="feature-title">Jumlah Aset</span><span class="feature-desc">1 Aset Sahaja</span></div>
-        </li>
-        <li>
-          <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#28a745" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          <div class="feature-text"><span class="feature-title">Jenis Aset</span><span class="feature-desc">Aset Alih atau Aset Tidak Alih</span></div>
-        </li>
-        <li>
-          <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#28a745" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          <div class="feature-text"><span class="feature-title">Penerima Hibah</span><span class="feature-desc">Sehingga 4 Penerima</span></div>
-        </li>
-      </ul>
+    <article class="service-card anim">
+      <div class="service-card__head">
+        <div class="service-card__badge">Asas</div>
+        <h3>SmartHibah Asas</h3>
+        <p>Penyediaan dokumen Hibah asas untuk aset terpilih.</p>
+      </div>
+      <div class="service-card__body">
+        <ul class="service-card__features">
+          <li>Kenal pasti aset untuk dihibahkan</li>
+          <li>Semakan kelayakan penerima</li>
+          <li>Nasihat ringkas agihan</li>
+          <li>Draf asas Deklarasi Hibah</li>
+        </ul>
+        <div class="service-card__price">RM 380 <span>/ dokumen</span></div>
+        <a class="service-card__cta" href="https://app.mysmartwills.com/portal/?company_id=4">Pilih Pakej</a>
+      </div>
     </article>
 
-    <!-- PELAN 2: SMARTHIBAH CARE (HIJAU SEPENUHNYA / POPULAR) -->
-    <article class="service-card service-card--featured">
-      <h3>SmartHibah Care</h3>
-      <p class="card-desc">Hibah tersusun untuk beberapa aset, sesuai untuk perancangan keluarga yang lebih seimbang dan jelas.</p>
-      
-      <div class="service-card__price">RM 1800</div>
-      <a class="service-card__cta" href="https://app.mysmartwills.com/portal/?company_id=4">Mulakan Sekarang</a>
-      
-      <ul class="service-card__features">
-        <li>
-          <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#bfa15f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          <div class="feature-text"><span class="feature-title">Jumlah Aset</span><span class="feature-desc">Sehingga 3 Aset</span></div>
-        </li>
-        <li>
-          <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#bfa15f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          <div class="feature-text"><span class="feature-title">Jenis Aset</span><span class="feature-desc">1 Aset Tidak Alih + 2 Aset Alih</span></div>
-        </li>
-        <li>
-          <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#bfa15f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          <div class="feature-text"><span class="feature-title">Penerima Hibah</span><span class="feature-desc">Sehingga 4 Penerima</span></div>
-        </li>
-      </ul>
+    <article class="service-card service-card--featured anim" style="transition-delay:.1s">
+      <div class="service-card__head">
+        <div class="service-card__badge">Popular</div>
+        <h3>SmartHibah Lengkap</h3>
+        <p>Pengurusan menyeluruh termasuk sokongan penuh dan dokumentasi rasmi.</p>
+      </div>
+      <div class="service-card__body">
+        <ul class="service-card__features">
+          <li>Semua dalam pakej Asas +</li>
+          <li>Penyediaan Dokumen Hibah penuh</li>
+          <li>Sesi semakan bersama pakar</li>
+          <li>Akuan berkanun dan tandatangan saksi</li>
+          <li>Panduan proses turun milik aset</li>
+        </ul>
+        <div class="service-card__price">RM 680 <span>/ dokumen</span></div>
+        <a class="service-card__cta" href="https://app.mysmartwills.com/portal/?company_id=4">Pilih Pakej</a>
+      </div>
     </article>
 
-    <!-- PELAN 3: SMARTHIBAH AMANAH (AKAN DATANG / DISABLED) -->
-    <article class="service-card service-card--disabled">
-      <h3>SmartHibah Amanah</h3>
-      <p class="card-desc">Hibah tersusun untuk beberapa aset, sesuai untuk perancangan keluarga yang lebih seimbang dan jelas.</p>
-      
-      <div class="service-card__price">RM 2800</div>
-      <a class="service-card__cta service-card__cta--disabled" href="#">Akan Datang</a>
-      
-      <ul class="service-card__features">
-        <li>
-          <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#b8bdba" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          <div class="feature-text"><span class="feature-title">Jumlah Aset</span><span class="feature-desc">Sehingga 5 Aset</span></div>
-        </li>
-        <li>
-          <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#b8bdba" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          <div class="feature-text"><span class="feature-title">Jenis Aset</span><span class="feature-desc">2 Aset Tidak Alih + 3 Aset Alih</span></div>
-        </li>
-      </ul>
+    <article class="service-card anim" style="transition-delay:.2s">
+      <div class="service-card__head">
+        <div class="service-card__badge">Korporat / Bisnes</div>
+        <h3>SmartHibah Korporat</h3>
+        <p>Hibah khusus untuk syer perniagaan atau pelaburan kompleks.</p>
+      </div>
+      <div class="service-card__body">
+        <ul class="service-card__features">
+          <li>Semua dalam pakej Lengkap +</li>
+          <li>Penilaian syer syarikat/perniagaan</li>
+          <li>Struktur perlindungan rakan kongsi</li>
+          <li>Pegawai perancang harta khusus</li>
+        </ul>
+        <div class="service-card__price">Hubungi Kami <span></span></div>
+        <a class="service-card__cta" href="http://wa.me/60182209929">Hubungi Penasihat</a>
+      </div>
     </article>
   </div>
 </section>
@@ -1158,46 +1403,36 @@
       <div class="audience__icon">
         <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
       </div>
-      <div>
-        <h3>Pasangan Suami Isteri</h3>
-        <p>Melindungi rumah tangga dari tuntutan waris jauh</p>
-      </div>
+      <h3>Pasangan Suami Isteri</h3>
+      <p>Melindungi rumah tangga dari tuntutan waris jauh</p>
     </div>
     <div class="audience__card anim" style="transition-delay:.07s">
       <div class="audience__icon">
         <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
       </div>
-      <div>
-        <h3>Anak Perempuan Sahaja</h3>
-        <p>Mengelak harta terpaksa dibahagi kepada waris asabah</p>
-      </div>
+      <h3>Anak Perempuan Sahaja</h3>
+      <p>Mengelak harta terpaksa dibahagi kepada waris asabah</p>
     </div>
     <div class="audience__card anim" style="transition-delay:.14s">
       <div class="audience__icon">
         <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
       </div>
-      <div>
-        <h3>Anak Angkat/Tiri</h3>
-        <p>Mereka yang tiada hak untuk menuntut Faraid secara sah</p>
-      </div>
+      <h3>Anak Angkat/Tiri</h3>
+      <p>Mereka yang tiada hak untuk menuntut Faraid secara sah</p>
     </div>
     <div class="audience__card anim" style="transition-delay:.21s">
       <div class="audience__icon">
         <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg>
       </div>
-      <div>
-        <h3>Golongan Mualaf</h3>
-        <p>Membantu memelihara kebajikan ahli keluarga yang belum Islam</p>
-      </div>
+      <h3>Golongan Mualaf</h3>
+      <p>Membantu memelihara kebajikan ahli keluarga yang belum Islam</p>
     </div>
     <div class="audience__card anim" style="transition-delay:.28s">
       <div class="audience__icon">
         <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
       </div>
-      <div>
-        <h3>Pemilik Perniagaan</h3>
-        <p>Mengelak krisis pemilikan syer dengan rakan kongsi selepas ketiadaan anda</p>
-      </div>
+      <h3>Pemilik Perniagaan</h3>
+      <p>Mengelak krisis pemilikan syer dengan rakan kongsi selepas ketiadaan anda</p>
     </div>
   </div>
 </section>
@@ -1263,20 +1498,20 @@
       </div>
     </div>
 
-    <div>
-      <h4 style="font-size: 0.90rem; font-weight: 700; margin-top: 0; margin-bottom: 1.25rem; color: #b8922a; letter-spacing: 0.5px; text-transform: uppercase;">Waktu Pejabat</h4>
-      <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem; color: rgba(255, 255, 255, 0.65); font-size: 0.88rem;">
-        <li style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 4px;">
-          <span>Isnin - Jumaat:</span>
-          <span style="color: #ffffff; font-weight: 500;">9:00 AM - 5:30 PM</span>
-        </li>
-      
-        <li style="display: flex; justify-content: space-between; padding-bottom: 4px;">
-          <span>Sabtu & Ahad:</span>
-          <span style="color: #e63946; font-weight: 500;">Pejabat Tutup</span>
-        </li>
-      </ul>
-    </div>
+  <div>
+  <h4 style="font-size: 0.90rem; font-weight: 700; margin-top: 0; margin-bottom: 1.25rem; color: #b8922a; letter-spacing: 0.5px; text-transform: uppercase;">Waktu Pejabat</h4>
+  <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem; color: rgba(255, 255, 255, 0.65); font-size: 0.88rem;">
+    <li style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 4px;">
+      <span>Isnin - Jumaat:</span>
+      <span style="color: #ffffff; font-weight: 500;">9:00 AM - 5:30 PM</span>
+    </li>
+  
+    <li style="display: flex; justify-content: space-between; padding-bottom: 4px;">
+      <span>Sabtu & Ahad:</span>
+      <span style="color: #e63946; font-weight: 500;">Pejabat Tutup</span>
+    </li>
+  </ul>
+</div>
 
     <div>
       <h4 style="font-size: 0.90rem; font-weight: 700; margin-top: 0; margin-bottom: 1.25rem; color: #b8922a; letter-spacing: 0.5px; text-transform: uppercase;">Hubungi Kami</h4>
@@ -1288,168 +1523,144 @@
     </div>
 
   </div>
-  <div style="max-width: 1200px; margin: 0 auto; padding-top: 1.5rem; display: flex; align-items: center; justify-content: flex-start; flex-wrap: wrap; gap: 1.25rem;">
-    
-    <div style="color: rgba(255, 255, 255, 0.5); font-size: 0.82rem; letter-spacing: 0.2px; margin: 0;">
-      © 2023–2026 All rights reserved | WasiatKu.com.my
-    </div>
-    
-    <div style="display: flex; gap: 0.5rem; align-items: center;">
-      <a href="https://www.facebook.com/wasiatku.com.my/" target="_blank" rel="noopener" onmouseover="this.style.background='#b8922a'; this.style.color='#ffffff'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(255,255,255,0.06)'; this.style.color='rgba(255,255,255,0.8)'; this.style.transform='translateY(0)'" style="background: rgba(255,255,255,0.06); width: 32px; height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center; text-decoration: none; color: rgba(255,255,255,0.8); transition: all 0.2s ease; border: 1px solid rgba(255,255,255,0.05);">
-        <svg style="width: 14px; height: 14px; fill: currentColor;" viewBox="0 0 24 24"><path d="M9 8H7v3h2v9h3v-9h3l.5-3H12V6c0-.88.77-1 1-1h2V2h-3c-3.1 0-4 1.74-4 4v2z"/></svg>
-      </a>
-      
-      <a href="https://www.instagram.com/wasiatku.com.my" target="_blank" rel="noopener" onmouseover="this.style.background='#b8922a'; this.style.color='#ffffff'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(255,255,255,0.06)'; this.style.color='rgba(255,255,255,0.8)'; this.style.transform='translateY(0)'" style="background: rgba(255,255,255,0.06); width: 32px; height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center; text-decoration: none; color: rgba(255,255,255,0.8); transition: all 0.2s ease; border: 1px solid rgba(255,255,255,0.05);">
-        <svg style="width: 14px; height: 14px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-      </a>
-      
-      <a href="https://www.youtube.com/channel/UC4sIsrzxOq_4FgoPdi-83Rw" target="_blank" rel="noopener" onmouseover="this.style.background='#b8922a'; this.style.color='#ffffff'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(255,255,255,0.06)'; this.style.color='rgba(255,255,255,0.8)'; this.style.transform='translateY(0)'" style="background: rgba(255,255,255,0.06); width: 32px; height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center; text-decoration: none; color: rgba(255,255,255,0.8); transition: all 0.2s ease; border: 1px solid rgba(255,255,255,0.05);">
-        <svg style="width: 14px; height: 14px; fill: currentColor;" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-      </a>
-    </div>
-    
+<div style="max-width: 1200px; margin: 0 auto; padding-top: 1.5rem; display: flex; align-items: center; justify-content: flex-start; flex-wrap: wrap; gap: 1.25rem;">
+  
+  <div style="color: rgba(255, 255, 255, 0.5); font-size: 0.82rem; letter-spacing: 0.2px; margin: 0;">
+    © 2023–2026 All rights reserved | WasiatKu.com.my
   </div>
-</footer>
-
-<div class="floating-bot-wrapper">
-  <div class="chatbot-trigger-container" id="chatTrigger">
-    <div class="suri-avatar">
-      <img src="assets/suri.gif" alt="Suri SmartWills">
-    </div>
-    <a href="https://wa.me/60182209929?text=Hai%20SmartWills,%20saya%20ingin%20bertanya%20mengenai%20perkhidmatan%20wasiat/hibah." 
-       target="_blank" 
-       class="wa-mini-badge" 
-       id="waLink">
-      <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.003 5.372 5.378 0 12.013 0c3.213.001 6.234 1.253 8.507 3.527 2.273 2.274 3.522 5.297 3.521 8.512-.004 6.643-5.379 12.015-12.015 12.015-2.006-.001-3.974-.5-5.764-1.451L0 24zm6.59-4.859c1.62.962 3.377 1.469 5.399 1.47 5.564 0 10.093-4.529 10.096-10.097.002-2.698-1.046-5.234-2.949-7.139C17.23 1.47 14.7.424 12.015.424 6.452.424 1.924 4.953 1.921 10.522c-.001 1.93.499 3.812 1.447 5.462l-.995 3.637 3.72-.976h-.046z"/></svg>
+  
+  <div style="display: flex; gap: 0.5rem; align-items: center;">
+    <a href="https://www.facebook.com/wasiatku.com.my/" target="_blank" rel="noopener" onmouseover="this.style.background='#b8922a'; this.style.color='#ffffff'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(255,255,255,0.06)'; this.style.color='rgba(255,255,255,0.8)'; this.style.transform='translateY(0)'" style="background: rgba(255,255,255,0.06); width: 32px; height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center; text-decoration: none; color: rgba(255,255,255,0.8); transition: all 0.2s ease; border: 1px solid rgba(255,255,255,0.05);">
+      <svg style="width: 14px; height: 14px; fill: currentColor;" viewBox="0 0 24 24"><path d="M9 8H7v3h2v9h3v-9h3l.5-3H12V6c0-.88.77-1 1-1h2V2h-3c-3.1 0-4 1.74-4 4v2z"/></svg>
+    </a>
+    
+    <a href="https://www.instagram.com/wasiatku.com.my" target="_blank" rel="noopener" onmouseover="this.style.background='#b8922a'; this.style.color='#ffffff'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(255,255,255,0.06)'; this.style.color='rgba(255,255,255,0.8)'; this.style.transform='translateY(0)'" style="background: rgba(255,255,255,0.06); width: 32px; height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center; text-decoration: none; color: rgba(255,255,255,0.8); transition: all 0.2s ease; border: 1px solid rgba(255,255,255,0.05);">
+      <svg style="width: 14px; height: 14px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+    </a>
+    
+    <a href="https://www.youtube.com/channel/UC4sIsrzxOq_4FgoPdi-83Rw" target="_blank" rel="noopener" onmouseover="this.style.background='#b8922a'; this.style.color='#ffffff'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(255,255,255,0.06)'; this.style.color='rgba(255,255,255,0.8)'; this.style.transform='translateY(0)'" style="background: rgba(255,255,255,0.06); width: 32px; height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center; text-decoration: none; color: rgba(255,255,255,0.8); transition: all 0.2s ease; border: 1px solid rgba(255,255,255,0.05);">
+      <svg style="width: 14px; height: 14px; fill: currentColor;" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
     </a>
   </div>
-
-  <div class="chatbot-window" id="chatWindow">
-    <div class="chat-header">
-      <div class="chat-profile">
-        <div class="chat-avatar-mini">
-          <img src="assets/suri.gif" alt="Suri mini">
-        </div>
-        <div class="chat-info">
-          <h4>Suri 🤖</h4>
-          <span>Dalam Talian</span>
-        </div>
-      </div>
-      <button class="close-chat-btn" id="closeChat">&times;</button>
-    </div>
-    <div class="chat-body" id="chatBody">
-      <div class="message bot">
-        Hai! Saya Suri, pembantu maya anda. Ada apa-apa yang boleh saya bantu mengenai pengurusan SmartHibah hari ini? 😊
-      </div>
-    </div>
-    <div class="chat-footer">
-      <input type="text" class="chat-input" id="chatInput" placeholder="Taip mesej anda di sini...">
-      <button class="chat-send-btn" id="sendChat">
-        <svg width="16" height="16" fill="white" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
-      </button>
-    </div>
-  </div>
+  
 </div>
+</footer>
+<div class="floating-bot-wrapper">
+    
+    <div class="chatbot-trigger-container" id="chatTrigger">
+      <div class="suri-avatar">
+        <img src="assets/suri.gif" alt="Suri SmartWills">
+      </div>
+     <a href="https://wa.me/60182209929?text=Hai%20SmartWills,%20saya%20ingin%20bertanya%20mengenai%20perkhidmatan%20wasiat/hibah." 
+   target="_blank" 
+   class="wa-mini-badge" 
+   id="waLink">
+  <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.003 5.372 5.378 0 12.013 0c3.213.001 6.234 1.253 8.507 3.527 2.273 2.274 3.522 5.297 3.521 8.512-.004 6.643-5.379 12.015-12.015 12.015-2.006-.001-3.974-.5-5.764-1.451L0 24zm6.59-4.859c1.62.962 3.377 1.469 5.399 1.47 5.564 0 10.093-4.529 10.096-10.097.002-2.698-1.046-5.234-2.949-7.139C17.23 1.47 14.7.424 12.015.424 6.452.424 1.924 4.953 1.921 10.522c-.001 1.93.499 3.812 1.447 5.462l-.995 3.637 3.72-.976h-.046z"/></svg>
+</a>
+    </div>
+
+    <div class="chatbot-window" id="chatWindow">
+      <div class="chat-header">
+        <div class="chat-profile">
+          <div class="chat-avatar-mini">
+            <img src="assets/suri.gif" alt="Suri">
+          </div>
+          <div class="chat-info">
+            <h4>Suri</h4>
+            <span>Sedia Membantu</span>
+          </div>
+        </div>
+        <button class="close-chat-btn" id="closeChat">&times;</button>
+      </div>
+
+      <div class="chat-body">
+        <div class="message bot">
+          Hai! Saya Suri, pembantu maya SmartWills. Ada apa-apa soalan mengenai penyediaan draf dokumen hibah atau perancangan harta yang boleh saya bantu? 😊
+        </div>
+      </div>
+
+      <div class="chat-footer">
+        <input type="text" class="chat-input" placeholder="Tulis mesej di sini...">
+        <button class="chat-send-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+        </button>
+      </div>
 
 <script>
-  /* ── 📱 MOBILE HAMBURGER CONTROL ── */
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
+  // hamburger
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  });
 
-  if(hamburger && mobileMenu) {
-    hamburger.addEventListener('click', () => {
-      mobileMenu.classList.toggle('open');
-      hamburger.classList.toggle('active');
-    });
-    
-    // Tutup menu jika pengguna tekan pautan luar
-    document.querySelectorAll('#mobileMenu a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.remove('open');
-        hamburger.classList.remove('active');
-      });
-    });
+  // scroll animations
+  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.12 });
+    document.querySelectorAll('.anim').forEach(el => observer.observe(el));
+  } else {
+    document.querySelectorAll('.anim').forEach(el => el.classList.add('visible'));
   }
-
-  /* ── 🤖 CHATBOT TOGGLE MECHANICAL ── */
   const chatTrigger = document.getElementById('chatTrigger');
   const chatWindow = document.getElementById('chatWindow');
   const closeChat = document.getElementById('closeChat');
-  const sendChat = document.getElementById('sendChat');
-  const chatInput = document.getElementById('chatInput');
-  const chatBody = document.getElementById('chatBody');
+  const waLink = document.getElementById('waLink');
 
-  if(chatTrigger && chatWindow && closeChat) {
-    chatTrigger.addEventListener('click', (e) => {
-      // Pastikan klik pada logo mikro WhatsApp tidak mengganggu bukaan chatbox
-      if(e.target.closest('#waLink')) return;
-      chatWindow.classList.toggle('open');
-    });
+  // Klik pada bulatan Suri akan buka/tutup chatbox
+  chatTrigger.addEventListener('click', () => {
+    chatWindow.classList.toggle('open');
+  });
 
-    closeChat.addEventListener('click', (e) => {
-      e.stopPropagation();
-      chatWindow.classList.remove('open');
-    });
+  // Klik pada butang hijau WhatsApp akan direct ke WhatsApp tanpa buka chatbox
+  waLink.addEventListener('click', (e) => {
+    e.stopPropagation(); // Menghalang kotak chatbox Suri daripada terbuka bersama
+  });
+
+  // Butang pangkah untuk tutup chatbox
+  closeChat.addEventListener('click', (e) => {
+    e.stopPropagation(); 
+    chatWindow.classList.remove('open');
+  });
+  // === KOD BARU: DIRECT TERUS KE WHATSAPP SELEPAS TEKAN SEND ===
+  const chatInput = document.querySelector('.chat-input');
+  const chatSendBtn = document.querySelector('.chat-send-btn');
+
+  function sendMessage() {
+    const messageText = chatInput.value.trim();
+    
+    // Jika pengguna tidak taip apa-apa, jangan hantar
+    if (messageText === '') return;
+
+    // 1. Nombor WhatsApp perniagaan anda (pastikan bermula dengan kod negara 60)
+    const phoneNum = "60182209929";
+
+    // 2. Menukar teks taipan menjadi format acuan URL (encode URL)
+    const encodedText = encodeURIComponent(messageText);
+
+    // 3. Bina pautan WhatsApp rasmi
+    const whatsappUrl = `https://wa.me/${phoneNum}?text=${encodedText}`;
+
+    // 4. Buka tab baru dan hantar mesej ke WhatsApp
+    window.open(whatsappUrl, '_blank');
+
+    // 5. Kosongkan semula ruangan input di laman web selepas dihantar
+    chatInput.value = '';
   }
 
-  // Pengendali input penghantaran mesej dummy chatbot
-  if(sendChat && chatInput && chatBody) {
-    const handleSendMessage = () => {
-      const text = chatInput.value.trim();
-      if(!text) return;
+  // Kekalkan fungsi trigger butang klik & enter yang sedia ada
+  if (chatSendBtn) {
+    chatSendBtn.addEventListener('click', sendMessage);
+  }
 
-      // Mesej Pengguna
-      const userDiv = document.createElement('div');
-      userDiv.className = 'message user';
-      userDiv.style.alignSelf = 'flex-end';
-      userDiv.style.background = '#032b1d';
-      userDiv.style.color = '#fff';
-      userDiv.style.padding = '12px 14px';
-      userDiv.style.borderRadius = '14px';
-      userDiv.style.borderTopRightRadius = '0';
-      userDiv.style.fontSize = '0.9rem';
-      userDiv.style.maxWidth = '85%';
-      userDiv.style.lineHeight = '1.48';
-      userDiv.innerText = text;
-      chatBody.appendChild(userDiv);
-
-      chatInput.value = '';
-      chatBody.scrollTop = chatBody.scrollHeight;
-
-      // Balasan Automatik Dummy Suri
-      setTimeout(() => {
-        const botDiv = document.createElement('div');
-        botDiv.className = 'message bot';
-        botDiv.innerText = "Terima kasih atas pertanyaan anda. Untuk bantuan segera yang lebih tepat, anda boleh terus menekan butang logo WhatsApp hijau di bucu ikon saya untuk bersembang dengan pegawai khidmat pelanggan kami.";
-        chatBody.appendChild(botDiv);
-        chatBody.scrollTop = chatBody.scrollHeight;
-      }, 1000);
-    };
-
-    sendChat.addEventListener('click', handleSendMessage);
+  if (chatInput) {
     chatInput.addEventListener('keypress', (e) => {
-      if(e.key === 'Enter') handleSendMessage();
-    });
-  }
-
-  /* ── 🚀 SCROLL INTERSECTION OBSERVER ENGINE ── */
-  const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.15
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('appear');
+      if (e.key === 'Enter') {
+        sendMessage();
       }
     });
-  }, observerOptions);
-
-  document.querySelectorAll('.anim').forEach(element => {
-    observer.observe(element);
-  });
+  }
 </script>
-</body>
+    </div>
+  </div>
+  </body>
 </html>
