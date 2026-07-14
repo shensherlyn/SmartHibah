@@ -37,51 +37,58 @@
       line-height: 1.6; 
     }
 
-    /* ── 🛠️ NAV BAR / HEADER STATIK (100% SAMA SEPERTI PAKEJ.HTML) ── */
-    .header { 
-      position: fixed; 
-      top: 0; 
-      left: 0; 
-      width: 100%; 
-      background: var(--forest); 
-      color: var(--white); 
-      padding: 0 5% 0 0; 
-      display: flex; 
-      justify-content: space-between; 
-      align-items: center; 
-      z-index: 1000; 
-      box-shadow: 0 3px 15px rgba(0,0,0,.2);
-      height: 90px;
-    }
-    
-    .header-left {
-      display: flex;
-      align-items: center; 
-      gap: 25px;
-      height: 100%; 
-    }
-    
-    /* KOTAK LOGO MELENGKUNG DENGAN GARISAN EMAS */
-    .header-logo-wrapper {
-      background: var(--white);
-      height: 100%; 
-      padding: 0 40px 0 5%; 
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-bottom-right-radius: 90px 100px; 
-      border-right: 5px solid var(--gold);
-      box-shadow: 3px 0 10px rgba(0, 0, 0, 0.1); 
-    }
-    
-    .header-logo {
-      height: 50px; 
-      width: auto;
-      object-fit: contain;
-      display: block;
-    }
+   .header { 
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  background: var(--forest); 
+  color: var(--white); 
+  padding: 0 5% 0 0; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  z-index: 1000; 
+  box-shadow: 0 3px 15px rgba(0,0,0,.2);
+  height: 90px;
+  overflow: visible; 
+}
 
-    /* Pautan Navigasi Menu */
+.header-left {
+  display: flex;
+  align-items: center; 
+  gap: 0px; 
+  height: 100%;
+  overflow: visible; 
+}
+
+.header-logo-wrapper {
+  background: transparent !important; 
+  height: 100%; 
+  padding: 0; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 !important; 
+  border: none !important; 
+  box-shadow: none !important; 
+  overflow: visible;
+}
+
+.header-logo {
+  height: 125px; 
+  width: auto;
+  object-fit: contain;
+  display: block;
+  position: relative;
+  top: 12px; 
+}
+
+@media (max-width: 768px) {
+  .header { height: 70px; }
+  .header-logo { height: 100px; top: 15px; }
+}
+
     .nav__links { 
       display: flex; 
       gap: 1.5rem; 
@@ -118,6 +125,61 @@
       background: var(--white); 
       color: var(--forest); 
     }
+
+    .nav__hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      margin-left: auto;
+    }
+
+    .nav__hamburger span {
+      display: block;
+      width: 26px;
+      height: 3px;
+      background: var(--white);
+      border-radius: 2px;
+    }
+
+    .nav__mobile {
+      position: fixed;
+      top: 90px;
+      left: 0;
+      width: 100%;
+      background: var(--forest-md);
+      display: none;
+      flex-direction: column;
+      padding: 1.5rem 5%;
+      gap: 1.25rem;
+      z-index: 999;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .nav__mobile a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    .nav__mobile .nav__cta-mobile {
+      text-align: center;
+      margin-top: 0.5rem;
+      display: block;
+      background: var(--gold);
+      color: var(--white);
+      padding: 0.75rem;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .nav__mobile.open { display: flex; }
 
     /* ── HERO (DILARASKAN SUPAYA TIDAK TERTUTUP HEADER) ── */
     .hero {
