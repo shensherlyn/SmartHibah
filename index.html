@@ -255,7 +255,7 @@
       font-size: 1rem;
     }
 
-    /* Selekasi Why */
+    /* Seksyen Why */
     .why {
       padding: 5rem 5%;
       background: var(--cream);
@@ -1036,7 +1036,6 @@
     <a class="nav__cta" href="https://app.mysmartwills.com/portal/?company_id=4">Log Masuk</a>
   </div>
 
-  <!-- 🌟 DISETIAPKAN TANDAPENUTUP KOD </section> DI SINI -->
   <section class="hero" style="
     background-image: url('assets/bgsw.png');
     background-size: cover;
@@ -1061,7 +1060,6 @@
 
     <div class="hero__visual">
       <div class="hero__video-wrapper">
-        <!-- 🌟 DIBAIKI: Dibuang fail .mp4 daripada tag poster imej -->
         <video controls autoplay muted loop playsinline>
           <source src="assets/smarthibah.mp4" type="video/mp4">
           Pelayar anda tidak menyokong paparan video HTML5.
@@ -1387,7 +1385,6 @@
     </div>
   </div>
 
-  <!-- 🌟 LOGIK JAVASCRIPT DISUSUN DENGAN BETUL SEBELUM PENUTUP BODY -->
   <script>
     // hamburger
     document.getElementById('hamburger').addEventListener('click', () => {
@@ -1409,23 +1406,19 @@
     const closeChat = document.getElementById('closeChat');
     const waLink = document.getElementById('waLink');
 
-    // Klik pada bulatan Suri akan buka/tutup chatbox
     chatTrigger.addEventListener('click', () => {
       chatWindow.classList.toggle('open');
     });
 
-    // Klik pada butang hijau WhatsApp akan direct ke WhatsApp tanpa buka chatbox
     waLink.addEventListener('click', (e) => {
       e.stopPropagation(); 
     });
 
-    // Butang pangkah untuk tutup chatbox
     closeChat.addEventListener('click', (e) => {
       e.stopPropagation(); 
       chatWindow.classList.remove('open');
     });
 
-    // DIRECT TERUS KE WHATSAPP SELEPAS TEKAN SEND
     const chatInput = document.querySelector('.chat-input');
     const chatSendBtn = document.querySelector('.chat-send-btn');
 
