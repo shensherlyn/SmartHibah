@@ -422,6 +422,9 @@
       align-items: stretch;
     }
     
+  /* ==========================================================================
+       SERVIC CARD STYLING (LAMA + BAHARU GABUNGAN PENUH)
+       ========================================================================== */
     .service-card {
       background: var(--white) !important; 
       border: 1px solid var(--border); 
@@ -493,21 +496,20 @@
       margin-bottom: 1.5rem; 
     }
 
+    /* KOD DIKEMAS KINI: Menukar li menjadi pembungkus flex utama */
     .service-card__features li {
-      display: flex; 
-      align-items: flex-start; 
-      gap: .6rem;
+      display: flex !important; 
+      align-items: flex-start !important; 
+      gap: 1.5rem !important;
+      width: 100%;
+      position: relative;
       font-size: .875rem; 
       color: var(--text);
     }
 
+    /* KOD DIKEMAS KINI: Mematikan bulatan kecil pembawa ikon lama */
     .service-card__features li::before {
-      content: '';
-      flex-shrink: 0; width: 18px; height: 18px; border-radius: 50%;
-      background: var(--gold-pale);
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 8l3.5 3.5L13 5' stroke='%23b8922a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat; background-size: 14px; background-position: center;
-      margin-top: 2px;
+      display: none !important;
     }
 
     .service-card__price { 
@@ -534,6 +536,7 @@
       font-size: .9rem; 
       text-decoration: none;
       transition: background .2s;
+      margin-bottom: 1.5rem; /* Menambah ruang di bawah butang sebelum masuk list */
     }
 
     .service-card__cta:hover { 
@@ -547,6 +550,69 @@
     .service-card--featured .service-card__badge { 
       background: rgba(255,255,255,.2); 
       color: var(--white); 
+    }
+
+    /* ==========================================================================
+       TAMBAHAN CSS BAHARU (UNTUK MENYAMAKAN STRUKTUR DENGAN GAMBAR)
+       ========================================================================== */
+
+    /* Kotak Khas Ikon Tanda Semak Besar Sebelah Kiri */
+    .big-check-wrapper {
+      flex-shrink: 0;
+      width: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 10px;
+    }
+
+    .big-check-icon {
+      width: 90px;
+      height: auto;
+      filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.05));
+    }
+
+    /* Warna Tanda Semak Spesifik mengikut warna Pelan */
+    .icon-green { stroke: #28a745 !important; }
+    .icon-gold { stroke: #c5a86d !important; }
+    .icon-grey { stroke: #bdc3c7 !important; }
+
+    /* Kawasan Susunan Teks di Sebelah Kanan */
+    .feature-rows {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem; /* Jarak antara baris ciri */
+    }
+
+    .feature-row-item {
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1px dashed rgba(0,0,0,0.05);
+      padding-bottom: 0.5rem;
+    }
+
+    .feature-title {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .feature-desc {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-top: 2px;
+      line-height: 1.3;
+    }
+
+    /* Membetulkan warna butang jika kad tersebut disabled (Akan Datang) */
+    .service-card__cta--disabled {
+      background: #bfa15f !important;
+      opacity: 0.7;
+      cursor: not-allowed;
     }
 
     /* ── PROCESS SECTION ── */
@@ -1238,7 +1304,7 @@
   </div>
 </section>
 
-  <section class="services" id="servis">
+ <section class="services" id="servis">
   <p class="section-label">Pelan SmartHibah</p>
   <h2 class="section-title">Perancangan Hibah untuk melindungi insan tersayang.</h2>
   <p class="section-sub">SmartHibah membantu anda menyusun pemberian aset kepada keluarga atau penerima pilihan dengan lebih jelas, mudah dan teratur.</p>
@@ -1256,36 +1322,45 @@
         
         <ul class="service-card__features">
           <li>
-            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#28a745" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <div class="feature-text"><span class="feature-title">Jumlah Aset</span><span class="feature-desc">1 Aset Sahaja</span></div>
-          </li>
-          <li>
-            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#28a745" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <div class="feature-text"><span class="feature-title">Jenis Aset</span><span class="feature-desc">Aset Alih atau Aset Tidak Alih</span></div>
-          </li>
-          <li>
-            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#28a745" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <div class="feature-text"><span class="feature-title">Penerima Hibah</span><span class="feature-desc">Sehingga 4 Penerima</span></div>
-          </li>
-          <li>
-            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#28a745" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <div class="feature-text"><span class="feature-title">Kaedah Pembahagian</span><span class="feature-desc">Pembahagian Jelas Untuk Satu Aset</span></div>
-          </li>
-          <li>
-            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#28a745" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <div class="feature-text"><span class="feature-title">Dokumen</span><span class="feature-desc">Dokumen Hibah Ringkas</span></div>
-          </li>
-          <li>
-            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#28a745" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <div class="feature-text"><span class="feature-title">Sesuai Untuk</span><span class="feature-desc">One Aset Penting Untuk Insan Tersayang</span></div>
+            <!-- Ikon Tanda Semak Gergasi -->
+            <div class="big-check-wrapper">
+              <svg class="big-check-icon icon-green" viewBox="0 0 24 24" fill="none" stroke="#28a745" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <!-- Kandungan Teks Ciri -->
+            <div class="feature-rows">
+              <div class="feature-row-item">
+                <span class="feature-title">Jumlah Aset</span>
+                <span class="feature-desc">1 Aset Sahaja</span>
+              </div>
+              <div class="feature-row-item">
+                <span class="feature-title">Jenis Aset</span>
+                <span class="feature-desc">Aset Alih atau Aset Tidak Alih</span>
+              </div>
+              <div class="feature-row-item">
+                <span class="feature-title">Penerima Hibah</span>
+                <span class="feature-desc">Sehingga 4 Penerima</span>
+              </div>
+              <div class="feature-row-item">
+                <span class="feature-title">Kaedah Pembahagian</span>
+                <span class="feature-desc">Pembahagian Jelas Untuk Satu Aset</span>
+              </div>
+              <div class="feature-row-item">
+                <span class="feature-title">Dokumen</span>
+                <span class="feature-desc">Dokumen Hibah Ringkas</span>
+              </div>
+              <div class="feature-row-item">
+                <span class="feature-title">Sesuai Untuk</span>
+                <span class="feature-desc">One Aset Penting Untuk Insan Tersayang</span>
+              </div>
+            </div>
           </li>
         </ul>
       </div>
     </article>
 
-    <!-- PELAN 2: SMARTHIBAH CARE -->
+    <!-- PELAN 2: SMARTHIBAH CARE (Warna Kepala Emas) -->
     <article class="service-card service-card--featured">
-      <div class="service-card__head">
+      <div class="service-card__head" style="background: #bfa15f !important;">
         <h3>SmartHibah Care</h3>
         <p>Hibah tersusun untuk beberapa aset, sesuai untuk perancangan keluarga yang lebih seimbang dan jelas.</p>
       </div>
@@ -1295,34 +1370,43 @@
         
         <ul class="service-card__features">
           <li>
-            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#bfa15f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <div class="feature-text"><span class="feature-title">Jumlah Aset</span><span class="feature-desc">Sehingga 3 Aset</span></div>
-          </li>
-          <li>
-            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#bfa15f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <div class="feature-text"><span class="feature-title">Jenis Aset</span><span class="feature-desc">1 Aset Tidak Alih + 2 Aset Alih</span></div>
-          </li>
-          <li>
-            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#bfa15f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <div class="feature-text"><span class="feature-title">Penerima Hibah</span><span class="feature-desc">Sehingga 4 Penerima</span></div>
-          </li>
-          <li>
-            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#bfa15f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <div class="feature-text"><span class="feature-title">Kaedah Pembahagian</span><span class="feature-desc">Pembahagian Sama Rata</span></div>
-          </li>
-          <li>
-            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#bfa15f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <div class="feature-text"><span class="feature-title">Dokumen</span><span class="feature-desc">Dokumen Hibah Berstruktur</span></div>
-          </li>
-          <li>
-            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#bfa15f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <div class="feature-text"><span class="feature-title">Sesuai Untuk</span><span class="feature-desc">Beberapa Aset Keluarga Yang Ingin Disusun Secara Seimbang</span></div>
+            <!-- Ikon Tanda Semak Gergasi -->
+            <div class="big-check-wrapper">
+              <svg class="big-check-icon icon-gold" viewBox="0 0 24 24" fill="none" stroke="#bfa15f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <!-- Kandungan Teks Ciri -->
+            <div class="feature-rows">
+              <div class="feature-row-item">
+                <span class="feature-title">Jumlah Aset</span>
+                <span class="feature-desc">Sehingga 3 Aset</span>
+              </div>
+              <div class="feature-row-item">
+                <span class="feature-title">Jenis Aset</span>
+                <span class="feature-desc">1 Aset Tidak Alih + 2 Aset Alih</span>
+              </div>
+              <div class="feature-row-item">
+                <span class="feature-title">Penerima Hibah</span>
+                <span class="feature-desc">Sehingga 4 Penerima</span>
+              </div>
+              <div class="feature-row-item">
+                <span class="feature-title">Kaedah Pembahagian</span>
+                <span class="feature-desc">Pembahagian Sama Rata</span>
+              </div>
+              <div class="feature-row-item">
+                <span class="feature-title">Dokumen</span>
+                <span class="feature-desc">Dokumen Hibah Berstruktur</span>
+              </div>
+              <div class="feature-row-item">
+                <span class="feature-title">Sesuai Untuk</span>
+                <span class="feature-desc">Beberapa Aset Keluarga Yang Ingin Disusun Secara Seimbang</span>
+              </div>
+            </div>
           </li>
         </ul>
       </div>
     </article>
 
-    <!-- PELAN 3: SMARTHIBAH AMANAH -->
+    <!-- PELAN 3: SMARTHIBAH AMANAH (Akan Datang) -->
     <article class="service-card service-card--disabled">
       <div class="service-card__head">
         <h3>SmartHibah Amanah</h3>
@@ -1330,28 +1414,37 @@
       </div>
       <div class="service-card__body">
         <div class="service-card__price">RM 2800</div>
-        <a class="service-card__cta service-card__cta--disabled" href="#">Akan Datang</a>
+        <a class="service-card__cta service-card__cta--disabled" href="#" style="background: #bfa15f !important; opacity: 0.7;">Akan Datang</a>
         
         <ul class="service-card__features">
           <li>
-            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#b8bdba" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <div class="feature-text"><span class="feature-title">Jumlah Aset</span><span class="feature-desc">Sehingga 5 Aset</span></div>
-          </li>
-          <li>
-            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#b8bdba" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <div class="feature-text"><span class="feature-title">Jenis Aset</span><span class="feature-desc">2 Aset Tidak Alih + 3 Aset Alih</span></div>
-          </li>
-          <li>
-            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#b8bdba" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <div class="feature-text"><span class="feature-title">Penerima Hibah</span><span class="feature-desc">Sehingga 6 Penerima</span></div>
-          </li>
-          <li>
-            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#b8bdba" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <div class="feature-text"><span class="feature-title">Kaedah Pembahagian</span><span class="feature-desc">Pembahagian Lebih Fleksibel</span></div>
-          </li>
-          <li>
-            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#b8bdba" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <div class="feature-text"><span class="feature-title">Dokumen</span><span class="feature-desc">Dokumen Hibah Amanah lengkap</span></div>
+            <!-- Ikon Tanda Semak Gergasi -->
+            <div class="big-check-wrapper">
+              <svg class="big-check-icon icon-grey" viewBox="0 0 24 24" fill="none" stroke="#b8bdba" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <!-- Kandungan Teks Ciri -->
+            <div class="feature-rows">
+              <div class="feature-row-item">
+                <span class="feature-title">Jumlah Aset</span>
+                <span class="feature-desc">Sehingga 5 Aset</span>
+              </div>
+              <div class="feature-row-item">
+                <span class="feature-title">Jenis Aset</span>
+                <span class="feature-desc">2 Aset Tidak Alih + 3 Aset Alih</span>
+              </div>
+              <div class="feature-row-item">
+                <span class="feature-title">Penerima Hibah</span>
+                <span class="feature-desc">Sehingga 6 Penerima</span>
+              </div>
+              <div class="feature-row-item">
+                <span class="feature-title">Kaedah Pembahagian</span>
+                <span class="feature-desc">Pembahagian Lebih Fleksibel</span>
+              </div>
+              <div class="feature-row-item">
+                <span class="feature-title">Dokumen</span>
+                <span class="feature-desc">Dokumen Hibah Amanah lengkap</span>
+              </div>
+            </div>
           </li>
         </ul>
       </div>
