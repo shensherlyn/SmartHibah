@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Panduan SmartHibah</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
+ <style>
     :root {
       --forest:     #032b1d; 
       --forest-md: #0e3d2c;
@@ -85,9 +85,6 @@
   display: block;
   position: relative;
   top: 12px; /* Menolak logo sedikit ke bawah melewati garisan hijau */
-  
-  /* ── 📝 NOTA: KOD FILTER DI BAWAH TELAH DIBUANG ── */
-  /* Warna putih asal pada imej anda akan kelihatan padat sepenuhnya sekarang */
 }
 
 /* 📱 PENGOPTIMALAN UNTUK PAPARAN TELEFON (MOBILE) */
@@ -393,14 +390,12 @@
 
 /* ── RESPONSIVE MOBILE (SEPADAN DENGAN JAVASCRIPT ANDA) ── */
     @media (max-width: 768px) {
-      /* ⭐ KOD TAMBAHAN: Paksa latar belakang jadi putih bersih di telefon sahaja */
       html, body {
         background-image: none !important; 
         background: #ffffff !important;        
         background-attachment: scroll !important;
       }
 
-      /* ⭐ KOD TAMBAHAN: Laraskan kad seksyen supaya tidak kelihatan terlampau gelap atas background putih */
       .section-card {
         background: #ffffff !important;
         border: 1px solid var(--border) !important;
@@ -434,7 +429,7 @@
       .nav__mobile {
         display: none;
         position: fixed;
-        top: 90px; /* Sesuai dengan tinggi header anda */
+        top: 90px; 
         left: 0;
         width: 100%;
         background-color: var(--forest-md);
@@ -446,7 +441,6 @@
         z-index: 999;
       }
 
-      /* MENGGUNAKAN 'open' SEPERTI DALAM JAVASCRIPT ANDA */
       .nav__mobile.open {
         display: flex !important;
       }
@@ -473,18 +467,11 @@
         padding: 0.75rem;
         border-radius: 25px;
       }
-  /* Kod asal Hero & Footer anda (Kekal & Tidak Diusik) */
       .hero { grid-template-columns: 1fr; padding: 3rem 5% 2rem; min-height: auto; gap: 2.5rem; }
       .hero__visual { order: -1; }
       .hero__h1 { font-size: 1.8rem; }
       .hero__sub { font-size: .9rem; }
       .why, .services, .process, .audience, .docs { padding: 3.5rem 5%; }
-      
-      .footer__container { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
-      .footer__brand { align-items: center; }
-      .footer__logo { align-self: center; }
-      .footer__desc { max-width: 100%; }
-      .footer__bottom { flex-direction: column; text-align: center; margin-top: 2.5rem; }
     }
       
     /* ── RESPONSIVE RESPONSIVENESS ── */
@@ -492,7 +479,93 @@
       .header-logo-wrapper { padding-right: 20px; }
       .nav__links { gap: 1rem; }
       .services__grid { grid-template-columns: repeat(2, 1fr); }
-      .footer__container { grid-template-columns: 1.5fr repeat(3, 1fr); gap: 1.5rem; }
+    }
+    
+    /* ============ 🌟 NEW FOOTER V2 STYLING (INTEGRATED) ============ */
+    .site-footer {
+      position: relative;
+      background: linear-gradient(160deg, #00543d 0%, #004F38 45%, #014a35 100%);
+      color: rgba(255,255,255,.85);
+      padding: 3.5rem 5% 2rem;
+      overflow: hidden;
+    }
+    .site-footer__wave {
+      position: absolute; left: 0; right: 0; top: 230px; height: 220px;
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,0));
+      clip-path: ellipse(75% 60% at 30% 0%);
+      pointer-events: none;
+    }
+    .site-footer__inner { max-width: 1280px; margin: 0 auto; position: relative; z-index: 1; }
+
+    .site-footer__top {
+      display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .site-footer__brand { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
+    .site-footer__brand-mark { width: auto; height: 80px; flex-shrink: 0; object-fit: contain; }
+    .site-footer__brand-text { display: flex; flex-direction: column; line-height: 1.2; }
+    .site-footer__brand-text strong { color: var(--white); font-size: 1.25rem; font-weight: 800; }
+    .site-footer__brand-text small { color: rgba(255,255,255,.75); font-size: .7rem; font-weight: 600; letter-spacing: .12em; }
+
+    .site-footer__tagline { text-align: right; }
+    .site-footer__tagline img { height: 56px; width: auto; object-fit: contain; }
+
+    .site-footer__company { margin-bottom: 2.5rem; }
+    .site-footer__company h2 { color: var(--white); font-size: 1.3rem; font-weight: 800; }
+    .site-footer__company-id { font-size: .85rem; color: rgba(255,255,255,.6); font-style: italic; margin-top: .15rem; }
+
+    .site-footer__info { display: flex; gap: 3.5rem; flex-wrap: wrap; margin-bottom: 3rem; }
+    .site-footer__contact { display: flex; flex-direction: column; gap: 1.5rem; }
+    .site-footer__contact h3, .site-footer__address h3 {
+      color: var(--gold-lt); font-size: .95rem; font-weight: 700; margin-bottom: .5rem;
+    }
+    .site-footer__contact a { color: var(--white); text-decoration: none; font-size: .92rem; }
+    .site-footer__contact a:hover { color: var(--gold-lt); }
+    .site-footer__address p { font-size: .88rem; line-height: 1.65; color: rgba(255,255,255,.85); margin-bottom: .85rem; }
+    .site-footer__map {
+      display: inline-flex; align-items: center; gap: .5rem;
+      border: 1.5px solid rgba(255,255,255,.5); border-radius: 24px;
+      padding: .5rem 1.1rem; color: var(--white); text-decoration: none; font-size: .85rem; font-weight: 500;
+      transition: border-color .2s, background .2s;
+    }
+    .site-footer__map svg { width: 15px; height: 15px; fill: var(--white); }
+    .site-footer__map:hover { border-color: var(--gold-lt); background: rgba(255,255,255,.06); }
+
+    .site-footer__bottom {
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;
+      padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,.12);
+    }
+    .site-footer__legal { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+    .site-footer__legal p { font-size: .82rem; color: rgba(255,255,255,.75); }
+    .site-footer__socials { display: flex; gap: .65rem; }
+    .site-footer__socials a {
+      width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,.95);
+      display: grid; place-items: center; transition: transform .2s, background .2s;
+    }
+    .site-footer__socials a svg { width: 16px; height: 16px; fill: var(--forest); }
+    .site-footer__socials a:hover { transform: translateY(-2px); background: var(--gold-lt); }
+
+    .site-footer__badges { display: flex; align-items: center; gap: .85rem; flex-wrap: wrap; }
+    .site-footer__badges img { height: 36px; width: auto; border-radius: 4px; background: rgba(255,255,255,.92); padding: 3px 6px; }
+    .site-footer__badges img.badge--achieve { height: 56px; background: none; padding: 0; border-radius: 0; }
+
+    /* List Waktu Operasi Custom Layout */
+    .waktu-list {
+      list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem;
+      color: rgba(255, 255, 255, 0.75); font-size: 0.88rem;
+    }
+    .waktu-list li { display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 4px; }
+
+    @media (max-width: 860px) {
+      .site-footer__top { flex-direction: column; }
+      .site-footer__tagline { text-align: left; }
+      .site-footer__tagline img { margin-top: .5rem; }
+    }
+    @media (max-width: 600px) {
+      .site-footer__info { gap: 2rem; }
+      .site-footer__bottom { flex-direction: column; align-items: flex-start; }
+      .site-footer__badges img { height: 30px; }
+      .site-footer__badges img.badge--achieve { height: 48px; }
     }
     
     /* ── 🤖 CHATBOT & WHATSAPP FLOATING CONTAINER ── */
