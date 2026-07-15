@@ -496,117 +496,85 @@
     }
     .btn-outline-white:hover { border-color: var(--white); }
 
-    /* ── FOOTER ── */
-    .footer {
-      background: var(--white);
-      color: var(--text);
-      padding: 4.5rem 5% 2rem;
-      border-top: 1px solid var(--border);
-    }
+   /* ============ FOOTER v2 (matches WasiatKu reference) ============ */
+.site-footer {
+  position: relative;
+  background: linear-gradient(160deg, #00543d 0%, #004F38 45%, #014a35 100%);
+  color: rgba(255,255,255,.85);
+  padding: 3.5rem 5% 2rem;
+  overflow: hidden;
+}
+.site-footer__wave {
+  position: absolute; left: 0; right: 0; top: 230px; height: 220px;
+  background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,0));
+  clip-path: ellipse(75% 60% at 30% 0%);
+  pointer-events: none;
+}
+.site-footer__inner { max-width: 1280px; margin: 0 auto; position: relative; z-index: 1; }
 
-    .footer__container {
-      max-width: 1140px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 2fr repeat(3, 1fr);
-      gap: 2.5rem;
-    }
+.site-footer__top {
+  display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+.site-footer__brand { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
+.site-footer__brand-mark { width: auto; height: 80px; flex-shrink: 0; object-fit: contain; }
+.site-footer__brand-text { display: flex; flex-direction: column; line-height: 1.2; }
+.site-footer__brand-text strong { color: var(--white); font-size: 1.25rem; font-weight: 800; }
+.site-footer__brand-text small { color: rgba(255,255,255,.75); font-size: .7rem; font-weight: 600; letter-spacing: .12em; }
 
-    .footer__brand {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
+.site-footer__tagline { text-align: right; }
+.site-footer__tagline img { height: 56px; width: auto; object-fit: contain; }
 
-    .footer__logo {
-      height: 48px;
-      width: auto;
-      align-self: flex-start;
-      object-fit: contain;
-    }
+.site-footer__company { margin-bottom: 2.5rem; }
+.site-footer__company h2 { color: var(--white); font-size: 1.3rem; font-weight: 800; }
+.site-footer__company-id { font-size: .85rem; color: rgba(255,255,255,.6); font-style: italic; margin-top: .15rem; }
 
-    .footer__desc {
-      font-size: .875rem;
-      color: var(--muted);
-      line-height: 1.6;
-      max-width: 320px;
-    }
+.site-footer__info { display: flex; gap: 3.5rem; flex-wrap: wrap; margin-bottom: 3rem; }
+.site-footer__contact { display: flex; flex-direction: column; gap: 1.5rem; }
+.site-footer__contact h3, .site-footer__address h3 {
+  color: var(--gold-light); font-size: .95rem; font-weight: 700; margin-bottom: .5rem;
+}
+.site-footer__contact a { color: var(--white); text-decoration: none; font-size: .92rem; }
+.site-footer__contact a:hover { color: var(--gold-light); }
+.site-footer__address p { font-size: .88rem; line-height: 1.65; color: rgba(255,255,255,.85); margin-bottom: .85rem; }
+.site-footer__map {
+  display: inline-flex; align-items: center; gap: .5rem;
+  border: 1.5px solid rgba(255,255,255,.5); border-radius: 24px;
+  padding: .5rem 1.1rem; color: var(--white); text-decoration: none; font-size: .85rem; font-weight: 500;
+  transition: border-color .2s, background .2s;
+}
+.site-footer__map svg { width: 15px; height: 15px; fill: var(--white); }
+.site-footer__map:hover { border-color: var(--gold-light); background: rgba(255,255,255,.06); }
 
-    .footer__column h4 {
-      color: var(--forest);
-      font-size: .95rem;
-      font-weight: 700;
-      margin-bottom: 1.25rem;
-      text-transform: uppercase;
-      letter-spacing: .03em;
-    }
+.site-footer__bottom {
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;
+  padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,.12);
+}
+.site-footer__legal { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+.site-footer__legal p { font-size: .82rem; color: rgba(255,255,255,.75); }
+.site-footer__socials { display: flex; gap: .65rem; }
+.site-footer__socials a {
+  width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,.95);
+  display: grid; place-items: center; transition: transform .2s, background .2s;
+}
+.site-footer__socials a svg { width: 16px; height: 16px; fill: var(--green); }
+.site-footer__socials a:hover { transform: translateY(-2px); background: var(--gold-light); }
 
-    .footer__list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: .75rem;
-    }
+.site-footer__badges { display: flex; align-items: center; gap: .85rem; flex-wrap: wrap; }
+.site-footer__badges img { height: 36px; width: auto; border-radius: 4px; background: rgba(255,255,255,.92); padding: 3px 6px; }
+.site-footer__badges img.badge--achieve { height: 56px; background: none; padding: 0; border-radius: 0; }
 
-    .footer__list a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: .875rem;
-      transition: color .2s ease;
-    }
-
-    .footer__list a:hover {
-      color: var(--gold);
-    }
-
-    .footer__bottom {
-      max-width: 1140px;
-      margin: 3.5rem auto 0;
-      padding-top: 1.75rem;
-      border-top: 1px solid var(--border);
-      display: flex;
-      justify-content: flex-start; 
-      align-items: center;
-    }
-
-    .footer__left-block {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem; 
-      flex-wrap: wrap;
-    }
-
-    .footer__copyright {
-      font-size: .82rem;
-      color: var(--muted);
-      margin: 0;
-    }
-
-    .footer__socials {
-      display: flex;
-      gap: .75rem;
-    }
-
-    .footer__social-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
-      background: var(--cream);
-      color: var(--forest);
-      display: grid;
-      place-items: center;
-      text-decoration: none;
-      transition: all .2s ease;
-      border: 1px solid transparent;
-    }
-
-    .footer__social-icon:hover {
-      background: var(--white);
-      color: var(--gold);
-      border-color: var(--gold);
-      transform: translateY(-2px);
-    }
-
+@media (max-width: 860px) {
+  .site-footer__top { flex-direction: column; }
+  .site-footer__tagline { text-align: left; }
+  .site-footer__tagline img { margin-top: .5rem; }
+}
+@media (max-width: 600px) {
+  .site-footer__info { gap: 2rem; }
+  .site-footer__bottom { flex-direction: column; align-items: flex-start; }
+  .site-footer__badges img { height: 30px; }
+  .site-footer__badges img.badge--achieve { height: 48px; }
+}
     /* ── RESPONSIVE RESPONSIVENESS ── */
     @media (max-width: 992px) {
       .header-logo-wrapper { padding-right: 20px; }
@@ -1103,76 +1071,77 @@
   </div>
 </section>
 
-<footer style="background-color: #032b1d; color: #ffffff; padding: 4rem 2rem 2rem; font-family: 'Inter', sans-serif; border-top: 1px solid rgba(255,255,255,0.05);">
-  <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2.5rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
-    
-  <div style="display: flex; flex-direction: column; gap: 1.25rem;">
-  <img src="assets/footer_logo.png" alt="SmartHibah Logo" style="height: 48px; width: auto; object-fit: contain; align-self: flex-start;">
-      <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.88rem; line-height: 1.6; margin: 0; font-weight: 400; max-width: 260px;">
-        Perkhidmatan Hibah digital yang mudah, pantas dan sah. Oleh WasiatKu Fintech Sdn. Bhd. (202301043968)
-      </p>  
-    </div>
 
-    <div>
-      <h4 style="font-size: 0.90rem; font-weight: 700; margin-top: 0; margin-bottom: 1.25rem; color: #b8922a; letter-spacing: 0.5px; text-transform: uppercase;">Lokasi Kami</h4>
-      <p style="color: rgba(255, 255, 255, 0.65); font-size: 0.88rem; margin-bottom: 1rem; line-height: 1.6;">
-        No. 46A (1st Floor), Jalan Ambong 1,<br>
-        Kepong Baru, 52100 Kuala Lumpur,<br>
-        Wilayah Persekutuan Kuala Lumpur
-      </p>
-      <div style="display: flex; gap: 10px;">
-        <a href="https://maps.app.goo.gl/nN117hmaCHs7i4g59" target="_blank" rel="noopener" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'" style="display: inline-flex; align-items: center; gap: 6px; color: #ffffff; text-decoration: none; font-size: 0.82rem; background: rgba(255,255,255,0.08); padding: 6px 12px; border-radius: 6px; transition: background 0.2s; border: 1px solid rgba(255,255,255,0.1);">
-          📍 Google Maps
+  <footer class="site-footer" aria-label="Footer">
+    <div class="site-footer__wave"></div>
+    <div class="site-footer__inner">
+      <div class="site-footer__top">
+        <a class="site-footer__brand" href="index.html" aria-label="WasiatKu home">
+          <img src="assets/footer_logo.png" alt="SmartWills" class="site-footer__brand-mark" />
         </a>
+        <div class="site-footer__tagline">
+          <img src="assets/slogan.png" alt="Cara paling PINTAR dan PANTAS" />
+        </div>
+      </div>
+
+      <div class="site-footer__company">
+        <h2>WasiatKu Fintech Sdn. Bhd.</h2>
+        <p class="site-footer__company-id">(202301043968)</p>
+      </div>
+
+      <div class="site-footer__info">
+        <div class="site-footer__contact">
+          <section>
+            <h3>Perkhidmatan Pelanggan</h3>
+            <a href="tel:+60182209929">+6018-220 9929</a>
+          </section>
+          <section>
+            <h3>Emel</h3>
+            <a href="mailto:enquiry@wasiatku.com.my">enquiry@wasiatku.com.my</a>
+          </section>
+        </div>
+
+        <section class="site-footer__address">
+          <h3>Alamat - Ibu Pejabat</h3>
+          <p>No 46A (First Floor), Jalan Ambong 1,<br />Kepong Baru 52100, Kuala Lumpur, Malaysia</p>
+          <a class="site-footer__map" href="https://maps.app.goo.gl/bdPqnX4pgEkWG3TC8" aria-label="Open office address in Google Maps">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <span>Google Maps</span>
+          </a>
+        </section>
+
+        <section class="site-footer__address">
+          <h3>Alamat - Pusat Latihan</h3>
+          <p>
+            B-2-19, Blok Bougainvilla, 10 Boulevard,<br />
+            Lebuhraya Sprint, PJU6A, 47400 Petaling Jaya,<br />
+            Selangor, Malaysia
+          </p>
+        </section>
+      </div>
+
+      <div class="site-footer__bottom">
+        <div class="site-footer__legal">
+          <p>© 2023 - 2026 All rights reserved | WasiatKu.com.my</p>
+          <div class="site-footer__socials" aria-label="Social media links">
+            <a href="https://www.facebook.com/wasiatku.com.my/" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+            <a href="https://www.youtube.com/channel/UC4sIsrzxOq_4FgoPdi-83Rw" aria-label="Youtube">
+              <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/wasiatku.com.my" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="site-footer__badges" aria-label="Certifications">
+          <img src="assets/achieve.png" alt="Achievements" class="badge--achieve" onerror="this.style.display='none'" />
+        </div>
       </div>
     </div>
-
-    <div>
-      <h4 style="font-size: 0.90rem; font-weight: 700; margin-top: 0; margin-bottom: 1.25rem; color: #b8922a; letter-spacing: 0.5px; text-transform: uppercase;">Waktu Pejabat</h4>
-      <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem; color: rgba(255, 255, 255, 0.65); font-size: 0.88rem;">
-        <li style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 4px;">
-          <span>Isnin - Jumaat:</span>
-          <span style="color: #ffffff; font-weight: 500;">9:00 AM - 5:30 PM</span>
-        </li>
-      
-        <li style="display: flex; justify-content: space-between; padding-bottom: 4px;">
-          <span>Sabtu & Ahad:</span>
-          <span style="color: #e63946; font-weight: 500;">Pejabat Tutup</span>
-        </li>
-      </ul>
-    </div>
-
-    <div>
-      <h4 style="font-size: 0.90rem; font-weight: 700; margin-top: 0; margin-bottom: 1.25rem; color: #b8922a; letter-spacing: 0.5px; text-transform: uppercase;">Hubungi Kami</h4>
-      <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem;">
-        <li><a href="tel:+60182209929" onmouseover="this.style.color='#ffffff'; this.style.transform='translateX(3px)'" onmouseout="this.style.color='rgba(255, 255, 255, 0.65)'; this.style.transform='translateX(0)'" style="color: rgba(255, 255, 255, 0.65); text-decoration: none; font-size: 0.88rem; transition: all 0.2s ease; display: inline-block;">📞 +6018-220 9929</a></li>
-        <li><a href="mailto:enquiry@wasiatku.com.my" onmouseover="this.style.color='#ffffff'; this.style.transform='translateX(3px)'" onmouseout="this.style.color='rgba(255, 255, 255, 0.65)'; this.style.transform='translateX(0)'" style="color: rgba(255, 255, 255, 0.65); text-decoration: none; font-size: 0.88rem; transition: all 0.2s ease; display: inline-block;">✉️ enquiry@wasiatku.com.my</a></li>
-        <li><a href="https://wa.me/60182209929" target="_blank" rel="noopener" onmouseover="this.style.color='#ffffff'; this.style.transform='translateX(3px)'" onmouseout="this.style.color='rgba(255, 255, 255, 0.65)'; this.style.transform='translateX(0)'" style="color: rgba(255, 255, 255, 0.65); text-decoration: none; font-size: 0.88rem; transition: all 0.2s ease; display: inline-block;">💬 WhatsApp Chat</a></li>
-      </ul>
-    </div>
-
-  </div>
-  <div style="max-width: 1200px; margin: 0 auto; padding-top: 1.5rem; display: flex; align-items: center; justify-content: flex-start; flex-wrap: wrap; gap: 1.25rem;">
-    
-    <div style="color: rgba(255, 255, 255, 0.5); font-size: 0.82rem; letter-spacing: 0.2px; margin: 0;">
-      © 2023–2026 All rights reserved | WasiatKu.com.my
-    </div>
-    
-    <div style="display: flex; gap: 0.5rem; align-items: center;">
-      <a href="https://www.facebook.com/wasiatku.com.my/" target="_blank" rel="noopener" onmouseover="this.style.background='#b8922a'; this.style.color='#ffffff'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(255,255,255,0.06)'; this.style.color='rgba(255,255,255,0.8)'; this.style.transform='translateY(0)'" style="background: rgba(255,255,255,0.06); width: 32px; height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center; text-decoration: none; color: rgba(255,255,255,0.8); transition: all 0.2s ease; border: 1px solid rgba(255,255,255,0.05);">
-        <svg style="width: 14px; height: 14px; fill: currentColor;" viewBox="0 0 24 24"><path d="M9 8H7v3h2v9h3v-9h3l.5-3H12V6c0-.88.77-1 1-1h2V2h-3c-3.1 0-4 1.74-4 4v2z"/></svg>
-      </a>
-      
-      <a href="https://www.instagram.com/wasiatku.com.my" target="_blank" rel="noopener" onmouseover="this.style.background='#b8922a'; this.style.color='#ffffff'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(255,255,255,0.06)'; this.style.color='rgba(255,255,255,0.8)'; this.style.transform='translateY(0)'" style="background: rgba(255,255,255,0.06); width: 32px; height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center; text-decoration: none; color: rgba(255,255,255,0.8); transition: all 0.2s ease; border: 1px solid rgba(255,255,255,0.05);">
-        <svg style="width: 14px; height: 14px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-      </a>
-      
-      <a href="https://www.youtube.com/channel/UC4sIsrzxOq_4FgoPdi-83Rw" target="_blank" rel="noopener" onmouseover="this.style.background='#b8922a'; this.style.color='#ffffff'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(255,255,255,0.06)'; this.style.color='rgba(255,255,255,0.8)'; this.style.transform='translateY(0)'" style="background: rgba(255,255,255,0.06); width: 32px; height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center; text-decoration: none; color: rgba(255,255,255,0.8); transition: all 0.2s ease; border: 1px solid rgba(255,255,255,0.05);">
-        <svg style="width: 14px; height: 14px; fill: currentColor;" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-      </a>
-    </div>
-  </div>
-</footer>
+  </footer>
 
 <div class="floating-bot-wrapper">
   <div class="chatbot-trigger-container" id="chatTrigger">
