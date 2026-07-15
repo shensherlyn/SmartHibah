@@ -6,13 +6,10 @@
   <title>Pakej Harga - SmartHibah</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --forest:     #032b1d; 
       --forest-md: #0e3d2c;
-      --forest-lt: #2e6347;
-      --gold:      #bfa15f; 
+      --gold:       #bfa15f; 
       --gold-lt:   #d9be7e;
       --gold-pale: #f5e9c8;
       --cream:     #faf7f2;
@@ -23,9 +20,14 @@
       --radius:    16px;
     }
 
-    html { scroll-behavior: smooth; }
+    * { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+      font-family: 'Poppins', sans-serif; 
+    }
+    
     body { 
-      font-family: 'Poppins', sans-serif;
       background-image: url('assets/bgsw.png');
       background-size: cover;
       background-position: center;
@@ -34,8 +36,9 @@
       color: var(--text); 
       line-height: 1.6; 
     }
-
-  .header { 
+    
+    /* ── 🛠️ NAV BAR / HEADER STATIK (VERSI LOGO PUTIH ASAL & MENONJOL) ── */
+.header { 
   position: fixed; 
   top: 0; 
   left: 0; 
@@ -569,7 +572,8 @@
       .site-footer__badges img { height: 30px; }
       .site-footer__badges img.badge--achieve { height: 48px; }
     }
-    /* ── CHATBOT & WHATSAPP FLOATING CONTAINER ── */
+    
+    /* ── 🤖 CHATBOT & WHATSAPP FLOATING CONTAINER ── */
     .floating-bot-wrapper {
       position: fixed;
       bottom: 20px;
