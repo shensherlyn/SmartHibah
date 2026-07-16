@@ -1069,6 +1069,17 @@
         chatWindow.classList.remove('open');
       });
     }
+      <script>
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const name = document.getElementById('cf-name').value.trim();
+      const email = document.getElementById('cf-email').value.trim();
+      const message = document.getElementById('cf-message').value.trim();
+      const body = `name=${name}\nemail=${email}\nmessage=${message}\n\n`;
+      const mailtoUrl = `mailto:enquiry@wasiatku.com.my?subject=${encodeURIComponent('Pertanyaan dari Laman Web SmartFaraid')}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailtoUrl;
+    });
+  </script>
   </script>
 </body>
 </html>
