@@ -345,7 +345,7 @@
     .service-card--featured .service-card__head { background: linear-gradient(135deg, var(--gold) 0%, #9a7520 100%); }
     .service-card--featured .service-card__badge { background: rgba(255,255,255,.2); color: var(--white); }
 
-   /* ============ FOOTER v2 (matches WasiatKu reference) ============ */
+ /* ============ FOOTER v2 (matches WasiatKu reference) ============ */
 .site-footer {
   position: relative;
   background: linear-gradient(160deg, #00543d 0%, #004F38 45%, #014a35 100%);
@@ -522,8 +522,7 @@
     @media (prefers-reduced-motion: no-preference) {
       .anim { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
       .anim.visible { opacity: 1; transform: none; }
-    } 
-
+    }
     /* ── CHATBOT & WHATSAPP FLOATING CONTAINER ── */
     .floating-bot-wrapper {
       position: fixed;
@@ -671,14 +670,13 @@
     <a href="login.html" class="nav__cta-mobile">Login</a>
   </div>
 
-<!-- ================= SEKSYEN PILIHAN PAKEJ ================= -->
-<section class="services" id="servis">
+<!-- Tambah style padding-top untuk elak bertindih dengan fixed header -->
+<section class="services" id="servis" style="padding-top: 120px;">
   <div style="text-align: center; margin-bottom: 3rem;">
     <p class="section-label">Pilihan Pakej</p>
     <h2 class="section-title">Pilih Perkhidmatan Hibah</h2>
     <p class="section-sub">Solusi menyeluruh dari penetapan harta sehingga penyediaan dokumen fizikal.</p>
   </div>
-
   <div class="services__grid">
     
     <!-- Pakej 1: SmartHibah Direct -->
@@ -746,7 +744,8 @@
   </div>
 </section>
 
-  <footer class="site-footer" aria-label="Footer">
+ <footer class="site-footer" aria-label="Footer">
+    <div class="site-footer__wave"></div>
     <div class="site-footer__inner">
       <div class="site-footer__top">
         <a class="site-footer__brand" href="index.html" aria-label="WasiatKu home">
@@ -793,7 +792,7 @@
         </section>
       </div>
 
-      <div class="site-footer__bottom">
+       <div class="site-footer__bottom">
         <div class="site-footer__legal">
           <p>© 2023 - 2026 All rights reserved | WasiatKu.com.my</p>
           <div class="site-footer__socials" aria-label="Social media links">
@@ -801,11 +800,13 @@
               <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
             </a>
             <a href="https://www.youtube.com/channel/UC4sIsrzxOq_4FgoPdi-83Rw" aria-label="Youtube">
-              <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg>
             </a>
-            <a href="https://www.instagram.com/wasiatku.com.my" target="_blank" rel="noopener" aria-label="Instagram">
-              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204 0.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-            </a>
+          <a href="https://www.instagram.com/wasiatku.com.my" target="_blank" rel="noopener" aria-label="Instagram">
+  <svg viewBox="0 0 24 24">
+    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204 0.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+  </svg>
+</a>
           </div>
         </div>
 
