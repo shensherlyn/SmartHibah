@@ -174,6 +174,66 @@
     }
 
     .nav__mobile.open { display: flex; }
+    /* ==========================================
+   TAMBAHAN CSS UNTUK BUTANG BAHASA (BM/EN)
+   ========================================== */
+
+/* Menyusun kedudukan item bahasa dalam senarai menu */
+.lang-switcher-item {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Bekas (wrapper) butang bahasa */
+.lang-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Garis pembahagi "|" */
+.lang-switcher span {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.875rem;
+  user-select: none;
+}
+
+/* Gaya asas butang BM dan EN */
+.lang-switcher button {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.8); /* Warna putih lutsinar sama seperti menu lain */
+  font-family: inherit;
+  font-size: 0.875rem; /* Saiz font sama dengan menu anda */
+  font-weight: 500;
+  cursor: pointer;
+  padding: 2px 4px;
+  transition: color 0.2s, border-color 0.2s;
+  outline: none;
+  border-bottom: 2px solid transparent; /* Sediakan tapak untuk garisan bawah */
+}
+
+/* Apabila tetikus lalu di atas butang (hover) */
+.lang-switcher button:hover {
+  color: var(--gold-lt); /* Warna bertukar emas */
+}
+
+/* Gaya untuk bahasa yang sedang aktif/dipilih */
+.lang-switcher button.active-lang {
+  color: var(--gold-lt); /* Warna emas */
+  font-weight: 600;
+  border-bottom: 2px solid var(--gold-lt); /* Garis bawah emas */
+}
+
+/* Penyesuaian untuk paparan skrin telefon (Mobile) */
+@media (max-width: 768px) {
+  .lang-switcher-item {
+    margin-top: 0.5rem; /* Jarakkan sedikit daripada menu atas dalam paparan mobile */
+  }
+  .lang-switcher button {
+    font-size: 1rem; /* Besarkan sedikit tulisan butang di telefon pintar */
+  }
+}
 
     /* ── 🛠 Main Container Layout ── */
     .container { 
@@ -858,33 +918,42 @@
 </head>
 <body>
 
-  <header class="header">
-    <div class="header-left">
-      <div class="header-logo-wrapper">
-        <img src="assets/smarthibah1.png" alt="SmartHibah Logo" class="header-logo">
-      </div>
+ <header class="header">
+  <div class="header-left">
+    <div class="header-logo-wrapper">
+      <a href="home.html">
+        <img src="assets/smarthibah1.png" alt="SmartHibah" class="header-logo" />
+      </a>
     </div>
-    
-    <ul class="nav__links">
-      <li><a href="index.html">Laman Utama</a></li>
-      <li><a href="pakej.html">Pakej</a></li>
-      <li><a href="panduan.html">Panduan</a></li>
-      <li><a href="hubungi.html" class="active">Hubungi Kami</a></li>
-    </ul>
-    
-   <a class="nav__cta" href="https://app.mysmartwills.com/portal/?company_id=4">Login</a>
+  </div>
+  
+  <ul class="nav__links">
+    <li><a href="index.html" class="active" data-i18n="nav_home">Laman Utama</a></li>
+    <li><a href="pakej.html" data-i18n="nav_pakej">Pakej</a></li>
+    <li><a href="panduan.html" data-i18n="nav_panduan">Panduan</a></li>
+    <li><a href="hubungi.html" data-i18n="nav_hubungi">Hubungi Kami</a></li>
+    <li class="lang-switcher-item">
+      <div class="lang-switcher">
+        <button onclick="setLanguage('bm')" id="btn-bm" class="active-lang">BM</button>
+        <span>|</span>
+        <button onclick="setLanguage('en')" id="btn-en">EN</button>
+      </div>
+    </li>
+  </ul>
 
-    <button class="nav__hamburger" id="hamburger">
-      <span></span><span></span><span></span>
-    </button>
-  </header>
+  <a class="nav__cta" href="https://app.mysmartwills.com/portal/?company_id=4" data-i18n="nav_login">Login</a>
+
+  <button class="nav__hamburger" id="hamburger" aria-label="Buka menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
 
   <div class="nav__mobile" id="mobileMenu">
-    <a href="index.html">Laman Utama</a>
-    <a href="pakej.html">Pakej</a>
-    <a href="panduan.html">Panduan</a>
-    <a href="hubungi.html">Hubungi Kami</a>
-    <a href="login.html" class="nav__cta">Login</a>
+    <a href="index.html" data-i18n="nav_home">Laman Utama</a>
+    <a href="pakej.html" data-i18n="nav_pakej">Pakej</a>
+    <a href="panduan.html" data-i18n="nav_panduan">Panduan</a>
+    <a href="hubungi.html" data-i18n="nav_hubungi">Hubungi Kami</a>
+    <a href="login.html" class="nav__cta" data-i18n="nav_login_mobile">Login</a>
   </div>
 
   <div class="container">
@@ -892,33 +961,32 @@
       
       <!-- KAWASAN BAHAWI: PREMIUM SPLIT GRID FORM MENGIKUT GAMBAR RUJUKAN -->
       <section class="premium-form-section">
-        <!-- Cari bahagian ini dalam HTML dan gantikan -->
-<div class="form-visual-side" style="overflow: hidden; display: flex; align-items: center; justify-content: center;">
-  <img src="assets/contact_person.png" alt="Pegawai Khidmat Pelanggan" style="width: 100%; height: 100%; object-fit: cover;">
-</div>
+        <div class="form-visual-side" style="overflow: hidden; display: flex; align-items: center; justify-content: center;">
+          <img src="assets/contact_person.png" alt="Pegawai Khidmat Pelanggan" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
         <div class="form-content-side">
-          <h2>Hubungi Kami</h2>
-          <p class="form-subtitle">Jika anda mempunyai sebarang soalan tentang perkhidmatan, harga, atau perkara lain, pasukan kami sedia menjawab semua pertanyaan anda.</p>
+          <h2 data-i18n="contact_title">Hubungi Kami</h2>
+          <p class="form-subtitle" data-i18n="contact_sub">Jika anda mempunyai sebarang soalan tentang perkhidmatan, harga, atau perkara lain, pasukan kami sedia menjawab semua pertanyaan anda.</p>
           
           <form action="#" method="POST" id="contactForm">
             <div class="form-row-two">
               <div class="premium-group">
-                <label for="formName">Nama <span>*</span></label>
-                <input type="text" id="formName" class="premium-control" placeholder="Nama Penuh" required>
+                <label for="formName"><span data-i18n="form_name_label">Nama</span> <span>*</span></label>
+                <input type="text" id="formName" class="premium-control" data-i18n-placeholder="form_name_placeholder" placeholder="Nama Penuh" required>
               </div>
               <div class="premium-group">
-                <label for="formEmail">Emel <span>*</span></label>
-                <input type="email" id="formEmail" class="premium-control" placeholder="Alamat E-mel" required>
+                <label for="formEmail"><span data-i18n="form_email_label">Emel</span> <span>*</span></label>
+                <input type="email" id="formEmail" class="premium-control" data-i18n-placeholder="form_email_placeholder" placeholder="Alamat E-mel" required>
               </div>
             </div>
             
             <div class="premium-group">
-              <label for="formMessage">Soalan <span>*</span></label>
-              <textarea id="formMessage" class="premium-control" placeholder="Tulis soalan anda di sini..." required></textarea>
+              <label for="formMessage"><span data-i18n="form_msg_label">Soalan</span> <span>*</span></label>
+              <textarea id="formMessage" class="premium-control" data-i18n-placeholder="form_msg_placeholder" placeholder="Tulis soalan anda di sini..." required></textarea>
             </div>
             
-            <button type="submit" class="premium-submit-btn">Send Message</button>
-            <p class="form-footer-notice">Borang ini akan membuka aplikasi emel anda dengan maklumat yang telah diisi.</p>
+            <button type="submit" class="premium-submit-btn" data-i18n="form_btn_send">Send Message</button>
+            <p class="form-footer-notice" data-i18n="form_footer_notice">Borang ini akan membuka aplikasi emel anda dengan maklumat yang telah diisi.</p>
           </form>
         </div>
       </section>
@@ -945,18 +1013,18 @@
       <div class="site-footer__info">
         <div class="site-footer__contact">
           <section>
-            <h3>Perkhidmatan Pelanggan</h3>
+            <h3 data-i18n="footer_cs">Perkhidmatan Pelanggan</h3>
             <a href="tel:+60182209929">+6018-220 9929</a>
           </section>
           <section>
-            <h3>Emel</h3>
+            <h3 data-i18n="footer_email">Emel</h3>
             <a href="mailto:enquiry@wasiatku.com.my">enquiry@wasiatku.com.my</a>
           </section>
         </div>
 
         <section class="site-footer__address">
-          <h3>Alamat - Ibu Pejabat</h3>
-          <p>No 46A (First Floor), Jalan Ambong 1,<br />Kepong Baru 52100, Kuala Lumpur, Malaysia</p>
+          <h3 data-i18n="footer_hq">Alamat - Ibu Pejabat</h3>
+          <p data-i18n="footer_hq_addr">No 46A (First Floor), Jalan Ambong 1,<br />Kepong Baru 52100, Kuala Lumpur, Malaysia</p>
           <a class="site-footer__map" href="https://maps.app.goo.gl/bdPqnX4pgEkWG3TC8" aria-label="Open office address in Google Maps">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
             <span>Google Maps</span>
@@ -964,8 +1032,8 @@
         </section>
 
         <section class="site-footer__address">
-          <h3>Alamat - Pusat Latihan</h3>
-          <p>
+          <h3 data-i18n="footer_tc">Alamat - Pusat Latihan</h3>
+          <p data-i18n="footer_tc_addr">
             B-2-19, Blok Bougainvilla, 10 Boulevard,<br />
             Lebuhraya Sprint, PJU6A, 47400 Petaling Jaya,<br />
             Selangor, Malaysia
@@ -975,7 +1043,7 @@
 
        <div class="site-footer__bottom">
         <div class="site-footer__legal">
-          <p>© 2023 - 2026 All rights reserved | WasiatKu.com.my</p>
+          <p data-i18n="footer_rights">© 2023 - 2026 All rights reserved | WasiatKu.com.my</p>
           <div class="site-footer__socials" aria-label="Social media links">
             <a href="https://www.facebook.com/wasiatku.com.my/" aria-label="Facebook">
               <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
@@ -983,11 +1051,11 @@
             <a href="https://www.youtube.com/channel/UC4sIsrzxOq_4FgoPdi-83Rw" aria-label="Youtube">
               <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg>
             </a>
-          <a href="https://www.instagram.com/wasiatku.com.my" target="_blank" rel="noopener" aria-label="Instagram">
-  <svg viewBox="0 0 24 24">
-    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204 0.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
-  </svg>
-</a>
+            <a href="https://www.instagram.com/wasiatku.com.my" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204 0.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+              </svg>
+            </a>
           </div>
         </div>
 
@@ -997,6 +1065,7 @@
       </div>
     </div>
   </footer>
+
   <!-- SURI FLOATING COMPONENT -->
   <div class="floating-bot-wrapper">
     <div class="chatbot-trigger-container" id="chatTrigger">
@@ -1019,14 +1088,14 @@
           </div>
           <div class="chat-info">
             <h4>Suri</h4>
-            <span>Sedia Membantu</span>
+            <span data-i18n="chat_status">Sedia Membantu</span>
           </div>
         </div>
         <button class="close-chat-btn" id="closeChat">&times;</button>
       </div>
 
       <div class="chat-body">
-        <div class="message bot">
+        <div class="message bot" data-i18n="chat_welcome">
           Hai! Saya Suri, pembantu maya SmartWills. Ada apa-apa soalan mengenai penyediaan draf dokumen hibah atau perancangan harta yang boleh saya bantu? 😊
         </div>
       </div>
@@ -1041,79 +1110,32 @@
   </div>
 
   <script>
-      document.getElementById('hamburger').addEventListener('click', () => {
-    document.getElementById('mobileMenu').classList.toggle('active');
-  });
+    // Script ringkas untuk fungsi hamburger menu pada mobile jika diperlukan
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if(hamburger && mobileMenu) {
+      hamburger.addEventListener('click', () => {
+        mobileMenu.classList.toggle('open');
+      });
+    }
 
-  // scroll animations
-  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.12 });
-    document.querySelectorAll('.anim').forEach(el => observer.observe(el));
-  } else {
-    document.querySelectorAll('.anim').forEach(el => el.classList.add('visible'));
-  }
+    // Script untuk buka/tutup chatbot Suri
+    const chatTrigger = document.getElementById('chatTrigger');
+    const chatWindow = document.getElementById('chatWindow');
+    const closeChat = document.getElementById('closeChat');
 
-  const chatTrigger = document.getElementById('chatTrigger');
-  const chatWindow = document.getElementById('chatWindow');
-  const closeChat = document.getElementById('closeChat');
-  const waLink = document.getElementById('waLink');
+    if(chatTrigger && chatWindow && closeChat) {
+      chatTrigger.addEventListener('click', (e) => {
+        if (e.target.closest('#waLink')) return;
+        chatWindow.classList.toggle('open');
+      });
 
-  // Klik pada bulatan Suri akan buka/tutup chatbox
-  chatTrigger.addEventListener('click', () => {
-    chatWindow.classList.toggle('open');
-  });
-
-  // Klik pada butang hijau WhatsApp akan direct ke WhatsApp tanpa buka chatbox
-  waLink.addEventListener('click', (e) => {
-    e.stopPropagation(); 
-  });
-
-  // Butang pangkah untuk tutup chatbox
-  closeChat.addEventListener('click', (e) => {
-    e.stopPropagation(); 
-    chatWindow.classList.remove('open');
-  });
-
-  // DIRECT TERUS KE WHATSAPP SELEPAS TEKAN SEND
-  const chatInput = document.querySelector('.chat-input');
-  const chatSendBtn = document.querySelector('.chat-send-btn');
-
-  function sendMessage() {
-    const messageText = chatInput.value.trim();
-    if (messageText === '') return;
-
-    const phoneNum = "60182209929";
-    const encodedText = encodeURIComponent(messageText);
-    const whatsappUrl = `https://wa.me/${phoneNum}?text=${encodedText}`;
-
-    window.open(whatsappUrl, '_blank');
-    chatInput.value = '';
-  }
-
-  if (chatSendBtn) {
-    chatSendBtn.addEventListener('click', sendMessage);
-  }
-
-  if (chatInput) {
-    chatInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
-        sendMessage();
-      }
-    });
-  }
-    
-    document.getElementById('contactForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-      const name = document.getElementById('cf-name').value.trim();
-      const email = document.getElementById('cf-email').value.trim();
-      const message = document.getElementById('cf-message').value.trim();
-      const body = `name=${name}\nemail=${email}\nmessage=${message}\n\n`;
-      const mailtoUrl = `mailto:enquiry@wasiatku.com.my?subject=${encodeURIComponent('Pertanyaan dari Laman Web SmartFaraid')}&body=${encodeURIComponent(body)}`;
-      window.location.href = mailtoUrl;
-    });
-
+      closeChat.addEventListener('click', (e) => {
+        e.stopPropagation();
+        chatWindow.classList.remove('open');
+      });
+    }
   </script>
+  <script src="script.js"></script>
 </body>
 </html>
