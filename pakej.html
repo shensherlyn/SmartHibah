@@ -180,6 +180,66 @@
     }
 
     .nav__mobile.open { display: flex; }
+    /* ==========================================
+   TAMBAHAN CSS UNTUK BUTANG BAHASA (BM/EN)
+   ========================================== */
+
+/* Menyusun kedudukan item bahasa dalam senarai menu */
+.lang-switcher-item {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Bekas (wrapper) butang bahasa */
+.lang-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Garis pembahagi "|" */
+.lang-switcher span {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.875rem;
+  user-select: none;
+}
+
+/* Gaya asas butang BM dan EN */
+.lang-switcher button {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.8); /* Warna putih lutsinar sama seperti menu lain */
+  font-family: inherit;
+  font-size: 0.875rem; /* Saiz font sama dengan menu anda */
+  font-weight: 500;
+  cursor: pointer;
+  padding: 2px 4px;
+  transition: color 0.2s, border-color 0.2s;
+  outline: none;
+  border-bottom: 2px solid transparent; /* Sediakan tapak untuk garisan bawah */
+}
+
+/* Apabila tetikus lalu di atas butang (hover) */
+.lang-switcher button:hover {
+  color: var(--gold-lt); /* Warna bertukar emas */
+}
+
+/* Gaya untuk bahasa yang sedang aktif/dipilih */
+.lang-switcher button.active-lang {
+  color: var(--gold-lt); /* Warna emas */
+  font-weight: 600;
+  border-bottom: 2px solid var(--gold-lt); /* Garis bawah emas */
+}
+
+/* Penyesuaian untuk paparan skrin telefon (Mobile) */
+@media (max-width: 768px) {
+  .lang-switcher-item {
+    margin-top: 0.5rem; /* Jarakkan sedikit daripada menu atas dalam paparan mobile */
+  }
+  .lang-switcher button {
+    font-size: 1rem; /* Besarkan sedikit tulisan butang di telefon pintar */
+  }
+}
 
     /* ── HERO ── */
     .hero {
@@ -496,6 +556,7 @@
         padding: 0.75rem;
         border-radius: 25px;
       }
+      
 
       .hero { grid-template-columns: 1fr; padding: 3rem 5% 2rem; min-height: auto; gap: 2.5rem; }
       .hero__visual { order: -1; }
@@ -642,102 +703,111 @@
 <body>
 
   <header class="header">
-    <div class="header-left">
-      <div class="header-logo-wrapper">
-        <img src="assets/smarthibah1.png" alt="SmartHibah Logo" class="header-logo">
-      </div>
+  <div class="header-left">
+    <div class="header-logo-wrapper">
+      <a href="home.html">
+        <img src="assets/smarthibah1.png" alt="SmartHibah" class="header-logo" />
+      </a>
     </div>
-    
-    <ul class="nav__links">
-      <li><a href="index.html">Laman Utama</a></li>
-      <li><a href="pakej.html" class="active">Pakej</a></li>
-      <li><a href="panduan.html">Panduan</a></li>
-      <li><a href="hubungi.html">Hubungi Kami</a></li>
-    </ul>
-    
-    <a class="nav__cta" href="https://app.mysmartwills.com/portal/?company_id=4">Login</a>
+  </div>
+  
+  <ul class="nav__links">
+    <li><a href="index.html" class="active" data-i18n="nav_home">Laman Utama</a></li>
+    <li><a href="pakej.html" data-i18n="nav_pakej">Pakej</a></li>
+    <li><a href="panduan.html" data-i18n="nav_panduan">Panduan</a></li>
+    <li><a href="hubungi.html" data-i18n="nav_hubungi">Hubungi Kami</a></li>
+    <li class="lang-switcher-item">
+      <div class="lang-switcher">
+        <button onclick="setLanguage('bm')" id="btn-bm" class="active-lang">BM</button>
+        <span>|</span>
+        <button onclick="setLanguage('en')" id="btn-en">EN</button>
+      </div>
+    </li>
+  </ul>
 
-    <button class="nav__hamburger" id="hamburger">
-      <span></span><span></span><span></span>
-    </button>
-  </header>
+  <a class="nav__cta" href="https://app.mysmartwills.com/portal/?company_id=4" data-i18n="nav_login">Login</a>
+
+  <button class="nav__hamburger" id="hamburger" aria-label="Buka menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
 
   <div class="nav__mobile" id="mobileMenu">
-    <a href="index.html">Laman Utama</a>
-    <a href="pakej.html">Pakej</a>
-    <a href="panduan.html">Panduan</a>
-    <a href="hubungi.html">Hubungi Kami</a>
-    <a href="login.html" class="nav__cta-mobile">Login</a>
+    <a href="index.html" data-i18n="nav_home">Laman Utama</a>
+    <a href="pakej.html" data-i18n="nav_pakej">Pakej</a>
+    <a href="panduan.html" data-i18n="nav_panduan">Panduan</a>
+    <a href="hubungi.html" data-i18n="nav_hubungi">Hubungi Kami</a>
+    <a href="login.html" class="nav__cta-mobile" data-i18n="nav_login_mobile">Login</a>
   </div>
 
 <!-- Tambah style padding-top untuk elak bertindih dengan fixed header -->
 <section class="services" id="servis" style="padding-top: 120px;">
   <div style="text-align: center; margin-bottom: 3rem;">
-    <p class="section-label">Pilihan Pakej</p>
-    <h2 class="section-title">Pilih Perkhidmatan Hibah</h2>
-    <p class="section-sub">Solusi menyeluruh dari penetapan harta sehingga penyediaan dokumen fizikal.</p>
+    <p class="section-label" data-i18n="svc_label">Pilihan Pakej</p>
+    <h2 class="section-title" data-i18n="svc_title">Pilih Perkhidmatan Hibah</h2>
+    <p class="section-sub" data-i18n="svc_sub">Solusi menyeluruh dari penetapan harta sehingga penyediaan dokumen fizikal.</p>
   </div>
   <div class="services__grid">
     
     <!-- Pakej 1: SmartHibah Direct -->
     <article class="service-card">
       <div class="service-card__head">
-        <div class="service-card__badge">Asas</div>
+        <div class="service-card__badge" data-i18n="svc_badge1">Asas</div>
         <h3>SmartHibah Direct</h3>
-        <p>Hibah ringkas untuk satu aset tertentu kepada sehingga empat penerima yang dipilih.</p>
+        <p data-i18n="svc_card1_desc">Hibah ringkas untuk satu aset tertentu kepada sehingga empat penerima yang dipilih.</p>
       </div>
       <div class="service-card__body">
         <ul class="service-card__features">
-          <li>Jumlah Aset: 1 Aset Sahaja</li>
-          <li>Jenis Aset: Aset Alih atau Aset Tidak Alih</li>
-          <li>Penerima Hibah: Sehingga 4 Penerima</li>
-          <li>Kaedah Pembahagian: Pembahagian Jelas Untuk Satu Aset</li>
-          <li>Dokumen: Dokumen Hibah Ringkas</li>
-          <li>Sesuai Untuk: One Aset Penting Untuk Insan Tersayang</li>
+          <li data-i18n="svc_card1_f1">Jumlah Aset: 1 Aset Sahaja</li>
+          <li data-i18n="svc_card1_f2">Jenis Aset: Aset Alih atau Aset Tidak Alih</li>
+          <li data-i18n="svc_card1_f3">Penerima Hibah: Sehingga 4 Penerima</li>
+          <li data-i18n="svc_card1_f4">Kaedah Pembahagian: Pembahagian Jelas Untuk Satu Aset</li>
+          <li data-i18n="svc_card1_f5">Dokumen: Dokumen Hibah Ringkas</li>
+          <li data-i18n="svc_card1_f6">Sesuai Untuk: One Aset Penting Untuk Insan Tersayang</li>
         </ul>
         <div class="service-card__price">RM 980 <span></span></div>
-        <a class="service-card__cta" href="https://app.mysmartwills.com/portal/?company_id=4">Pilih Pakej</a>
+        <a class="service-card__cta" href="https://app.mysmartwills.com/portal/?company_id=4" data-i18n="svc_btn">Pilih Pakej</a>
       </div>
     </article>
 
     <!-- Pakej 2: SmartHibah Care -->
     <article class="service-card service-card--featured" style="transition-delay:.1s">
       <div class="service-card__head">
-        <div class="service-card__badge">Popular</div>
+        <div class="service-card__badge" data-i18n="svc_badge2">Popular</div>
         <h3>SmartHibah Care</h3>
-        <p>Hibah tersusun untuk beberapa aset, sesuai untuk perancangan keluarga yang lebih seimbang dan jelas.</p>
+        <p data-i18n="svc_card2_desc">Hibah tersusun untuk beberapa aset, sesuai untuk perancangan keluarga yang lebih seimbang dan jelas.</p>
       </div>
       <div class="service-card__body">
         <ul class="service-card__features">
-          <li>Jumlah Aset: Sehingga 3 Aset</li>
-          <li>Jenis Aset: 1 Aset Tidak Alih + 2 Aset Alih</li>
-          <li>Penerima Hibah: Sehingga 4 Penerima</li>
-          <li>Kaedah Pembahagian: Pembahagian Sama Rata</li>
-          <li>Dokumen: Dokumen Hibah Berstruktur</li>
-          <li>Sesuai Untuk: Beberapa Aset Keluarga Yang Ingin Disusun Secara Seimbang</li>
+          <li data-i18n="svc_card2_f1">Jumlah Aset: Sehingga 3 Aset</li>
+          <li data-i18n="svc_card2_f2">Jenis Aset: 1 Aset Tidak Alih + 2 Aset Alih</li>
+          <li data-i18n="svc_card2_f3">Penerima Hibah: Sehingga 4 Penerima</li>
+          <li data-i18n="svc_card2_f4">Kaedah Pembahagian: Pembahagian Sama Rata</li>
+          <li data-i18n="svc_card2_f5">Dokumen: Dokumen Hibah Berstruktur</li>
+          <li data-i18n="svc_card2_f6">Sesuai Untuk: Beberapa Aset Keluarga Yang Ingin Disusun Secara Seimbang</li>
         </ul>
         <div class="service-card__price">RM 1800 <span></span></div>
-        <a class="service-card__cta" href="https://app.mysmartwills.com/portal/?company_id=4">Pilih Pakej</a>
+        <a class="service-card__cta" href="https://app.mysmartwills.com/portal/?company_id=4" data-i18n="svc_btn">Pilih Pakej</a>
       </div>
     </article>
 
     <!-- Pakej 3: SmartHibah Amanah -->
     <article class="service-card" style="transition-delay:.2s; opacity: 0.7;">
       <div class="service-card__head" style="background: #555;">
-        <div class="service-card__badge" style="background: rgba(255,255,255,0.2); color: #fff;">Akan Datang</div>
+        <div class="service-card__badge" style="background: rgba(255,255,255,0.2); color: #fff;" data-i18n="svc_badge3">Akan Datang</div>
         <h3>SmartHibah Amanah</h3>
-        <p>Hibah tersusun untuk beberapa aset, sesuai untuk perancangan keluarga yang lebih seimbang dan jelas.</p>
+        <p data-i18n="svc_card3_desc">Hibah tersusun untuk beberapa aset, sesuai untuk perancangan keluarga yang lebih seimbang dan jelas.</p>
       </div>
       <div class="service-card__body">
         <ul class="service-card__features">
-          <li>Jumlah Aset: Sehingga 5 Aset</li>
-          <li>Jenis Aset: 2 Aset Tidak Alih + 3 Aset Alih</li>
-          <li>Penerima Hibah: Sehingga 6 Penerima</li>
-          <li>Kaedah Pembahagian: Pembahagian Lebih Fleksibel</li>
-          <li>Dokumen: Dokumen Hibah Amanah lengkap</li>
+          <li data-i18n="svc_card3_f1">Jumlah Aset: Sehingga 5 Aset</li>
+          <li data-i18n="svc_card3_f2">Jenis Aset: 2 Aset Tidak Alih + 3 Aset Alih</li>
+          <li data-i18n="svc_card3_f3">Penerima Hibah: Sehingga 6 Penerima</li>
+          <li data-i18n="svc_card3_f4">Kaedah Pembahagian: Pembahagian Lebih Fleksibel</li>
+          <li data-i18n="svc_card3_f5">Dokumen: Dokumen Hibah Amanah lengkap</li>
         </ul>
         <div class="service-card__price">RM 2800 <span></span></div>
-        <a class="service-card__cta service-card__cta--disabled" href="#">Akan Datang</a>
+        <a class="service-card__cta service-card__cta--disabled" href="#" data-i18n="svc_btn_coming">Akan Datang</a>
       </div>
     </article>
 
@@ -764,18 +834,18 @@
       <div class="site-footer__info">
         <div class="site-footer__contact">
           <section>
-            <h3>Perkhidmatan Pelanggan</h3>
+            <h3 data-i18n="footer_cs">Perkhidmatan Pelanggan</h3>
             <a href="tel:+60182209929">+6018-220 9929</a>
           </section>
           <section>
-            <h3>Emel</h3>
+            <h3 data-i18n="footer_email">Emel</h3>
             <a href="mailto:enquiry@wasiatku.com.my">enquiry@wasiatku.com.my</a>
           </section>
         </div>
 
         <section class="site-footer__address">
-          <h3>Alamat - Ibu Pejabat</h3>
-          <p>No 46A (First Floor), Jalan Ambong 1,<br />Kepong Baru 52100, Kuala Lumpur, Malaysia</p>
+          <h3 data-i18n="footer_hq">Alamat - Ibu Pejabat</h3>
+          <p data-i18n="footer_hq_val">No 46A (First Floor), Jalan Ambong 1,<br />Kepong Baru 52100, Kuala Lumpur, Malaysia</p>
           <a class="site-footer__map" href="https://maps.app.goo.gl/bdPqnX4pgEkWG3TC8" aria-label="Open office address in Google Maps">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
             <span>Google Maps</span>
@@ -783,8 +853,8 @@
         </section>
 
         <section class="site-footer__address">
-          <h3>Alamat - Pusat Latihan</h3>
-          <p>
+          <h3 data-i18n="footer_tc">Alamat - Pusat Latihan</h3>
+          <p data-i18n="footer_tc_val">
             B-2-19, Blok Bougainvilla, 10 Boulevard,<br />
             Lebuhraya Sprint, PJU6A, 47400 Petaling Jaya,<br />
             Selangor, Malaysia
@@ -794,7 +864,7 @@
 
        <div class="site-footer__bottom">
         <div class="site-footer__legal">
-          <p>© 2023 - 2026 All rights reserved | WasiatKu.com.my</p>
+          <p data-i18n="footer_rights">© 2023 - 2026 All rights reserved | WasiatKu.com.my</p>
           <div class="site-footer__socials" aria-label="Social media links">
             <a href="https://www.facebook.com/wasiatku.com.my/" aria-label="Facebook">
               <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
@@ -839,14 +909,14 @@
           </div>
           <div class="chat-info">
             <h4>Suri</h4>
-            <span>Sedia Membantu</span>
+            <span data-i18n="chat_status">Sedia Membantu</span>
           </div>
         </div>
         <button class="close-chat-btn" id="closeChat">&times;</button>
       </div>
 
       <div class="chat-body">
-        <div class="message bot">
+        <div class="message bot" data-i18n="chat_welcome">
           Hai! Saya Suri, pembantu maya SmartWills. Ada apa-apa soalan mengenai penyediaan draf dokumen hibah atau perancangan harta yang boleh saya bantu? 😊
         </div>
       </div>
@@ -910,6 +980,6 @@
       });
     }
   </script>
-
+<script src="script.js"></script>
 </body>
 </html>
