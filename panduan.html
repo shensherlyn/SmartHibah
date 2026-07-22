@@ -37,7 +37,7 @@ body {
   line-height: 1.6; 
 }
 
-/* ── 🛠️ NAV BAR / HEADER STATIK (VERSI LOGO PUTIH ASAL & MENONJOL) ── */
+/* ── 🛠️ NAV BAR / HEADER STATIK ── */
 .header { 
   position: fixed; 
   top: 0; 
@@ -45,66 +45,54 @@ body {
   width: 100%; 
   background: var(--forest); 
   color: var(--white); 
-  padding: 0 5% 0 0; /* 0 di kiri supaya logo rapat ke dinding skrin */
+  padding: 0 5% 0 0; 
   display: flex; 
   justify-content: space-between; 
   align-items: center; 
   z-index: 1000; 
   box-shadow: 0 3px 15px rgba(0,0,0,.2);
   height: 90px;
-  overflow: visible; /* Membenarkan logo menjulur ke bawah */
+  overflow: visible; 
 }
 
 .header-left {
   display: flex;
   align-items: center; 
-  gap: 0px; /* Tiada jarak kosong di bucu kiri */
+  gap: 0px; 
   height: 100%;
   overflow: visible; 
 }
 
-/* KOTAK PEMBUNGKUS (KINI LUTSINAR - HANYA BERTINDAK SEBAGAI PEMEGANG) */
 .header-logo-wrapper {
-  background: transparent !important; /* Tiada kotak putih luar */
+  background: transparent !important; 
   height: 100%; 
-  padding: 0; /* Sifar padding untuk elakkan logo tertolak */
+  padding: 0; 
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 0 !important; /* Padam lengkungan luar */
-  border: none !important; /* Padam garisan emas luar */
+  border-radius: 0 !important; 
+  border: none !important; 
   box-shadow: none !important; 
   overflow: visible;
 }
 
-/* IMEJ LOGO ASAL (PUTIH PADAT & MENONJOL KE BAWAH) */
 .header-logo {
-  height: 125px; /* Kekalkan saiz besar (melebihi 90px header) supaya menonjol */
+  height: 125px; 
   width: auto;
   object-fit: contain;
   display: block;
   position: relative;
-  top: 12px; /* Menolak logo sedikit ke bawah melewati garisan hijau */
+  top: 12px; 
 }
 
-/* 📱 PENGOPTIMALAN UNTUK PAPARAN TELEFON (MOBILE) */
-@media (max-width: 768px) {
-  .header {
-    height: 70px; 
-  }
-  
-  .header-logo {
-    height: 100px; /* Saiz logo di mobile, menonjol melepasi 70px header */
-    top: 15px; /* Larasan kedudukan ke bawah sedikit di mobile */
-  }
-}
-
+/* ── NAVIGASI DESKTOP ── */
 .nav__links { 
   display: flex; 
   gap: 1.5rem; 
   list-style: none; 
   margin-left: auto; 
   margin-right: 2rem; 
+  align-items: center;
 }
 
 .nav__links a { 
@@ -136,6 +124,54 @@ body {
   color: var(--forest); 
 }
 
+/* ── SWITCH BAHASA (DESKTOP & UMUM) ── */
+.lang-switcher-item {
+  display: inline-flex;
+  align-items: center;
+}
+
+.lang-switcher,
+.mobile-lang-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.lang-switcher span,
+.mobile-lang-wrapper span {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.875rem;
+  user-select: none;
+}
+
+.lang-switcher button,
+.mobile-lang-wrapper button {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 2px 6px;
+  transition: color 0.2s, border-color 0.2s;
+  outline: none;
+  border-bottom: 2px solid transparent;
+}
+
+.lang-switcher button:hover,
+.mobile-lang-wrapper button:hover {
+  color: var(--gold-lt);
+}
+
+.lang-switcher button.active-lang,
+.mobile-lang-wrapper button.active-lang {
+  color: var(--gold-lt);
+  font-weight: 600;
+  border-bottom: 2px solid var(--gold-lt);
+}
+
+/* ── NAV HAMBURGER ── */
 .nav__hamburger {
   display: none;
   flex-direction: column;
@@ -155,6 +191,7 @@ body {
   border-radius: 2px;
 }
 
+/* ── MENU MOBILE ── */
 .nav__mobile {
   position: fixed;
   top: 90px;
@@ -186,63 +223,47 @@ body {
 .nav__mobile.open {
   display: flex;
 }
-/* Menyusun kedudukan item bahasa dalam senarai menu */
-.lang-switcher-item {
-  display: inline-flex;
-  align-items: center;
-}
 
-/* Bekas (wrapper) butang bahasa */
-.lang-switcher {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-/* Garis pembahagi "|" */
-.lang-switcher span {
-  color: rgba(255, 255, 255, 0.4);
-  font-size: 0.875rem;
-  user-select: none;
-}
-
-/* Gaya asas butang BM dan EN */
-.lang-switcher button {
-  background: none;
-  border: none;
-  color: rgba(255, 255, 255, 0.8); /* Warna putih lutsinar sama seperti menu lain */
-  font-family: inherit;
-  font-size: 0.875rem; /* Saiz font sama dengan menu anda */
-  font-weight: 500;
-  cursor: pointer;
-  padding: 2px 4px;
-  transition: color 0.2s, border-color 0.2s;
-  outline: none;
-  border-bottom: 2px solid transparent; /* Sediakan tapak untuk garisan bawah */
-}
-
-/* Apabila tetikus lalu di atas butang (hover) */
-.lang-switcher button:hover {
-  color: var(--gold-lt); /* Warna bertukar emas */
-}
-
-/* Gaya untuk bahasa yang sedang aktif/dipilih */
-.lang-switcher button.active-lang {
-  color: var(--gold-lt); /* Warna emas */
-  font-weight: 600;
-  border-bottom: 2px solid var(--gold-lt); /* Garis bawah emas */
-}
-
-/* Penyesuaian untuk paparan skrin telefon (Mobile) */
+/* 📱 🌟 PENGOPTIMALAN KHAS UNTUK TELEFON (MOBILE) */
 @media (max-width: 768px) {
-  .lang-switcher-item {
-    margin-top: 0.5rem; /* Jarakkan sedikit daripada menu atas dalam paparan mobile */
+  .header {
+    height: 70px; 
   }
-  .lang-switcher button {
-    font-size: 1rem; /* Besarkan sedikit tulisan butang di telefon pintar */
+  
+  .header-logo {
+    height: 100px; 
+    top: 15px; 
+  }
+
+  /* Sembunyikan menu desktop */
+  .nav__links {
+    display: none;
+  }
+
+  /* Tunjukkan butang hamburger */
+  .nav__hamburger {
+    display: flex;
+  }
+
+  /* Selaraskan tinggi menu mobile mengikut header 70px */
+  .nav__mobile {
+    top: 70px;
+  }
+
+  /* Gaya penyerlah switch bahasa di dalam menu mobile */
+  .mobile-lang-wrapper {
+    display: flex !important;
+    justify-content: center;
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .mobile-lang-wrapper button {
+    font-size: 1rem;
+    padding: 4px 8px;
   }
 }
-
 /* ── 🛠️ MAIN CONTAINER CONTENT ── */
 .container { 
   max-width: 1100px; 
