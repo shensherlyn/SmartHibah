@@ -179,132 +179,58 @@
       font-weight: 600;
     }
 
-    .nav__mobile.open { display: flex; }
-    /* ==========================================
-   TAMBAHAN CSS UNTUK BUTANG BAHASA (BM/EN)
-   ========================================== */
+    .nav__mobile.active { display: flex; }
 
-.lang-switcher-item {
-  display: inline-flex;
-  align-items: center;
-}
-
-.lang-switcher {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.lang-switcher span {
-  color: rgba(255, 255, 255, 0.4);
-  font-size: 0.875rem;
-  user-select: none;
-}
-
-.lang-switcher button {
-  background: none;
-  border: none;
-  color: rgba(255, 255, 255, 0.8);
-  font-family: inherit;
-  font-size: 0.875rem;
-  font-weight: 500;
-  cursor: pointer;
-  padding: 2px 4px;
-  transition: color 0.2s, border-color 0.2s;
-  outline: none;
-  border-bottom: 2px solid transparent;
-}
-
-.lang-switcher button:hover {
-  color: var(--gold-lt);
-}
-
-.lang-switcher button.active-lang {
-  color: var(--gold-lt);
-  font-weight: 600;
-  border-bottom: 2px solid var(--gold-lt);
-}
-
-@media (max-width: 768px) {
-  .lang-switcher-item {
-    margin-top: 0.5rem;
-  }
-  .lang-switcher button {
-    font-size: 1rem;
-  }
-}
-
-    /* ── HERO ── */
-    .hero {
-      background: linear-gradient(135deg, var(--forest) 0%, var(--forest-md) 55%, #1e4a32 100%);
-      min-height: calc(100vh - 90px);
-      margin-top: 90px; 
-      display: grid; grid-template-columns: 1fr 1fr; align-items: center;
-      padding: 5% 5% 4%;
-      gap: 3rem;
-      position: relative; overflow: hidden;
+    /* ── LANG SWITCHER ── */
+    .lang-switcher-item {
+      display: inline-flex;
+      align-items: center;
     }
-    .hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse 60% 70% at 80% 50%, rgba(184,146,42,.12), transparent);
-      pointer-events: none;
+
+    .lang-switcher {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
     }
-    .hero__eyebrow {
-      display: inline-flex; align-items: center; gap: .5rem;
-      background: rgba(184,146,42,.18);
+
+    .lang-switcher span {
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 0.875rem;
+      user-select: none;
+    }
+
+    .lang-switcher button {
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, 0.8);
+      font-family: inherit;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 2px 4px;
+      transition: color 0.2s, border-color 0.2s;
+      outline: none;
+      border-bottom: 2px solid transparent;
+    }
+
+    .lang-switcher button:hover {
       color: var(--gold-lt);
-      padding: .35rem .9rem; border-radius: 20px;
-      font-size: .78rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
-      margin-bottom: 1.25rem;
-    }
-    .hero__eyebrow::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold-lt); }
-
-    .hero__h1 {
-      font-size: clamp(2.5rem, 5.5vw, 3.8rem); 
-      font-weight: 850; 
-      color: var(--white); 
-      line-height: 1.2;
-      margin-bottom: 1.5rem;
-      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.4);
     }
 
-    .hero__h1 em { 
-      color: var(--gold-lt); 
-      font-style: normal; 
-      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    .lang-switcher button.active-lang {
+      color: var(--gold-lt);
+      font-weight: 600;
+      border-bottom: 2px solid var(--gold-lt);
     }
 
-    .hero__sub {
-      color: rgba(255, 255, 255, 0.95); 
-      font-size: 1.2rem; 
-      font-weight: 500; 
-      max-width: 700px;
-      margin: 0 auto 2.5rem; 
-      line-height: 1.7;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    @media (max-width: 768px) {
+      .lang-switcher-item {
+        margin-top: 0.5rem;
+      }
+      .lang-switcher button {
+        font-size: 1rem;
+      }
     }
-    .hero__actions { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .btn-gold {
-      background: var(--gold); color: var(--white);
-      padding: .8rem 1.75rem; border-radius: 10px;
-      font-size: .95rem; font-weight: 600; text-decoration: none;
-      transition: background .2s, transform .15s; display: inline-block;
-    }
-    .btn-gold:hover { background: var(--gold-lt); transform: translateY(-2px); }
-    .btn-outline {
-      border: 2px solid rgba(255,255,255,.4); color: var(--white);
-      padding: .75rem 1.6rem; border-radius: 10px;
-      font-size: .95rem; font-weight: 500; text-decoration: none;
-      transition: border-color .2s, transform .15s; display: inline-block;
-    }
-    .btn-outline:hover { border-color: var(--gold-lt); color: var(--gold-lt); transform: translateY(-2px); }
-
-    .hero__visual {
-      display: flex; align-items: center; justify-content: center;
-      position: relative;
-    }
-
 
     /* ── SERVICES ── */
     .services { 
@@ -398,91 +324,87 @@
     .service-card--featured .service-card__head { background: linear-gradient(135deg, var(--gold) 0%, #9a7520 100%); }
     .service-card--featured .service-card__badge { background: rgba(255,255,255,.2); color: var(--white); }
 
- /* ============ FOOTER v2 (matches WasiatKu reference) ============ */
-.site-footer {
-  position: relative;
-  background: linear-gradient(160deg, #00543d 0%, #004F38 45%, #014a35 100%);
-  color: rgba(255,255,255,.85);
-  padding: 3.5rem 5% 2rem;
-  overflow: hidden;
-}
-.site-footer__wave {
-  position: absolute; left: 0; right: 0; top: 230px; height: 220px;
-  background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,0));
-  clip-path: ellipse(75% 60% at 30% 0%);
-  pointer-events: none;
-}
-.site-footer__inner { max-width: 1280px; margin: 0 auto; position: relative; z-index: 1; }
+    /* ============ FOOTER v2 ============ */
+    .site-footer {
+      position: relative;
+      background: linear-gradient(160deg, #00543d 0%, #004F38 45%, #014a35 100%);
+      color: rgba(255,255,255,.85);
+      padding: 3.5rem 5% 2rem;
+      overflow: hidden;
+    }
+    .site-footer__wave {
+      position: absolute; left: 0; right: 0; top: 230px; height: 220px;
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,0));
+      clip-path: ellipse(75% 60% at 30% 0%);
+      pointer-events: none;
+    }
+    .site-footer__inner { max-width: 1280px; margin: 0 auto; position: relative; z-index: 1; }
 
-.site-footer__top {
-  display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1.5rem;
-  margin-bottom: 2rem;
-}
-.site-footer__brand { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
-.site-footer__brand-mark { width: auto; height: 80px; flex-shrink: 0; object-fit: contain; }
-.site-footer__brand-text { display: flex; flex-direction: column; line-height: 1.2; }
-.site-footer__brand-text strong { color: var(--white); font-size: 1.25rem; font-weight: 800; }
-.site-footer__brand-text small { color: rgba(255,255,255,.75); font-size: .7rem; font-weight: 600; letter-spacing: .12em; }
+    .site-footer__top {
+      display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .site-footer__brand { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
+    .site-footer__brand-mark { width: auto; height: 80px; flex-shrink: 0; object-fit: contain; }
+    .site-footer__tagline { text-align: right; }
+    .site-footer__tagline img { height: 56px; width: auto; object-fit: contain; }
 
-.site-footer__tagline { text-align: right; }
-.site-footer__tagline img { height: 56px; width: auto; object-fit: contain; }
+    .site-footer__company { margin-bottom: 2.5rem; }
+    .site-footer__company h2 { color: var(--white); font-size: 1.3rem; font-weight: 800; }
+    .site-footer__company-id { font-size: .85rem; color: rgba(255,255,255,.6); font-style: italic; margin-top: .15rem; }
 
-.site-footer__company { margin-bottom: 2.5rem; }
-.site-footer__company h2 { color: var(--white); font-size: 1.3rem; font-weight: 800; }
-.site-footer__company-id { font-size: .85rem; color: rgba(255,255,255,.6); font-style: italic; margin-top: .15rem; }
+    .site-footer__info { display: flex; gap: 3.5rem; flex-wrap: wrap; margin-bottom: 3rem; }
+    .site-footer__contact { display: flex; flex-direction: column; gap: 1.5rem; }
+    .site-footer__contact h3, .site-footer__address h3 {
+      color: var(--gold-light); font-size: .95rem; font-weight: 700; margin-bottom: .5rem;
+    }
+    .site-footer__contact a { color: var(--white); text-decoration: none; font-size: .92rem; }
+    .site-footer__contact a:hover { color: var(--gold-light); }
+    .site-footer__address p { font-size: .88rem; line-height: 1.65; color: rgba(255,255,255,.85); margin-bottom: .85rem; }
+    .site-footer__map {
+      display: inline-flex; align-items: center; gap: .5rem;
+      border: 1.5px solid rgba(255,255,255,.5); border-radius: 24px;
+      padding: .5rem 1.1rem; color: var(--white); text-decoration: none; font-size: .85rem; font-weight: 500;
+      transition: border-color .2s, background .2s;
+    }
+    .site-footer__map svg { width: 15px; height: 15px; fill: var(--white); }
+    .site-footer__map:hover { border-color: var(--gold-light); background: rgba(255,255,255,.06); }
 
-.site-footer__info { display: flex; gap: 3.5rem; flex-wrap: wrap; margin-bottom: 3rem; }
-.site-footer__contact { display: flex; flex-direction: column; gap: 1.5rem; }
-.site-footer__contact h3, .site-footer__address h3 {
-  color: var(--gold-light); font-size: .95rem; font-weight: 700; margin-bottom: .5rem;
-}
-.site-footer__contact a { color: var(--white); text-decoration: none; font-size: .92rem; }
-.site-footer__contact a:hover { color: var(--gold-light); }
-.site-footer__address p { font-size: .88rem; line-height: 1.65; color: rgba(255,255,255,.85); margin-bottom: .85rem; }
-.site-footer__map {
-  display: inline-flex; align-items: center; gap: .5rem;
-  border: 1.5px solid rgba(255,255,255,.5); border-radius: 24px;
-  padding: .5rem 1.1rem; color: var(--white); text-decoration: none; font-size: .85rem; font-weight: 500;
-  transition: border-color .2s, background .2s;
-}
-.site-footer__map svg { width: 15px; height: 15px; fill: var(--white); }
-.site-footer__map:hover { border-color: var(--gold-light); background: rgba(255,255,255,.06); }
+    .site-footer__bottom {
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;
+      padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,.12);
+    }
+    .site-footer__legal { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+    .site-footer__legal p { font-size: .82rem; color: rgba(255,255,255,.75); }
+    .site-footer__socials { display: flex; gap: .65rem; }
+    .site-footer__socials a {
+      width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,.95);
+      display: grid; place-items: center; transition: transform .2s, background .2s;
+    }
+    .site-footer__socials a svg { width: 16px; height: 16px; fill: var(--green); }
+    .site-footer__socials a:hover { transform: translateY(-2px); background: var(--gold-light); }
 
-.site-footer__bottom {
-  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;
-  padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,.12);
-}
-.site-footer__legal { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
-.site-footer__legal p { font-size: .82rem; color: rgba(255,255,255,.75); }
-.site-footer__socials { display: flex; gap: .65rem; }
-.site-footer__socials a {
-  width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,.95);
-  display: grid; place-items: center; transition: transform .2s, background .2s;
-}
-.site-footer__socials a svg { width: 16px; height: 16px; fill: var(--green); }
-.site-footer__socials a:hover { transform: translateY(-2px); background: var(--gold-light); }
+    .site-footer__badges { display: flex; align-items: center; gap: .85rem; flex-wrap: wrap; }
+    .site-footer__badges img { height: 36px; width: auto; border-radius: 4px; background: rgba(255,255,255,.92); padding: 3px 6px; }
+    .site-footer__badges img.badge--achieve { height: 56px; background: none; padding: 0; border-radius: 0; }
 
-.site-footer__badges { display: flex; align-items: center; gap: .85rem; flex-wrap: wrap; }
-.site-footer__badges img { height: 36px; width: auto; border-radius: 4px; background: rgba(255,255,255,.92); padding: 3px 6px; }
-.site-footer__badges img.badge--achieve { height: 56px; background: none; padding: 0; border-radius: 0; }
+    @media (max-width: 860px) {
+      .site-footer__top { flex-direction: column; }
+      .site-footer__tagline { text-align: left; }
+      .site-footer__tagline img { margin-top: .5rem; }
+    }
+    @media (max-width: 600px) {
+      .site-footer__info { gap: 2rem; }
+      .site-footer__bottom { flex-direction: column; align-items: flex-start; }
+      .site-footer__badges img { height: 30px; }
+      .site-footer__badges img.badge--achieve { height: 48px; }
+    }
 
-@media (max-width: 860px) {
-  .site-footer__top { flex-direction: column; }
-  .site-footer__tagline { text-align: left; }
-  .site-footer__tagline img { margin-top: .5rem; }
-}
-@media (max-width: 600px) {
-  .site-footer__info { gap: 2rem; }
-  .site-footer__bottom { flex-direction: column; align-items: flex-start; }
-  .site-footer__badges img { height: 30px; }
-  .site-footer__badges img.badge--achieve { height: 48px; }
-}
-    /* ── RESPONSIVE RESPONSIVENESS ── */
+    /* ── RESPONSIVE ── */
     @media (max-width: 992px) {
       .header-logo-wrapper { padding-right: 20px; }
       .nav__links { gap: 1rem; }
       .services__grid { grid-template-columns: repeat(2, 1fr); }
-      .footer__container { grid-template-columns: 1.5fr repeat(3, 1fr); gap: 1.5rem; }
     }
 
     @media (max-width: 768px) {
@@ -549,35 +471,16 @@
         padding: 0.75rem;
         border-radius: 25px;
       }
-      
 
-      .hero { grid-template-columns: 1fr; padding: 3rem 5% 2rem; min-height: auto; gap: 2.5rem; }
-      .hero__visual { order: -1; }
-      .hero__h1 { font-size: 1.8rem; }
-      .hero__sub { font-size: .9rem; }
-      .why, .services, .process, .audience, .docs { padding: 3.5rem 5%; }
       .services__grid { grid-template-columns: 1fr; }
-      
-      .footer__container { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
-      .footer__brand { align-items: center; }
-      .footer__logo { align-self: center; }
-      .footer__desc { max-width: 100%; }
-      .footer__bottom { flex-direction: column; text-align: center; margin-top: 2.5rem; }
-      .footer__left-block { flex-direction: column; align-items: flex-start; gap: 1rem; }
-    }
-
-    @media (max-width: 480px) {
-      .why__grid { grid-template-columns: 1fr 1fr; }
-      .process__steps { grid-template-columns: 1fr 1fr; }
-      .audience__grid { grid-template-columns: 1fr 1fr; }
-      .footer__left-block { flex-direction: column; align-items: flex-start; gap: 1rem; }
     }
 
     @media (prefers-reduced-motion: no-preference) {
       .anim { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
       .anim.visible { opacity: 1; transform: none; }
     }
-        /* ── 🤖 CHATBOT & WHATSAPP FLOATING CONTAINER ── */
+
+    /* ── CHATBOT & WHATSAPP ── */
     .floating-bot-wrapper {
       position: fixed;
       bottom: 20px;
@@ -741,12 +644,12 @@
       </div>
       <div class="service-card__body">
         <ul class="service-card__features">
-          <li data-i18n="svc_card1_f1">Jumlah Aset: 1 Aset Sahaja</li>
-          <li data-i18n="svc_card1_f2">Jenis Aset: Aset Alih atau Aset Tidak Alih</li>
-          <li data-i18n="svc_card1_f3">Penerima Hibah: Sehingga 4 Penerima</li>
-          <li data-i18n="svc_card1_f4">Kaedah Pembahagian: Pembahagian Jelas Untuk Satu Aset</li>
-          <li data-i18n="svc_card1_f5">Dokumen: Dokumen Hibah Ringkas</li>
-          <li data-i18n="svc_card1_f6">Sesuai Untuk: One Aset Penting Untuk Insan Tersayang</li>
+          <li data-i18n="pkg_card1_f1">Jumlah Aset: 1 Aset Sahaja</li>
+          <li data-i18n="pkg_card1_f2">Jenis Aset: Aset Alih atau Aset Tidak Alih</li>
+          <li data-i18n="pkg_card1_f3">Penerima Hibah: Sehingga 4 Penerima</li>
+          <li data-i18n="pkg_card1_f4">Kaedah Pembahagian: Pembahagian Jelas Untuk Satu Aset</li>
+          <li data-i18n="pkg_card1_f5">Dokumen: Dokumen Hibah Ringkas</li>
+          <li data-i18n="pkg_card1_f6">Sesuai Untuk: Satu Aset Penting Untuk Insan Tersayang</li>
         </ul>
         <div class="service-card__price">RM 980 <span></span></div>
         <a class="service-card__cta" href="https://app.mysmartwills.com/portal/?company_id=4" data-i18n="svc_btn">Pilih Pakej</a>
@@ -761,12 +664,12 @@
       </div>
       <div class="service-card__body">
         <ul class="service-card__features">
-          <li data-i18n="svc_card2_f1">Jumlah Aset: Sehingga 3 Aset</li>
-          <li data-i18n="svc_card2_f2">Jenis Aset: 1 Aset Tidak Alih + 2 Aset Alih</li>
-          <li data-i18n="svc_card2_f3">Penerima Hibah: Sehingga 4 Penerima</li>
-          <li data-i18n="svc_card2_f4">Kaedah Pembahagian: Pembahagian Sama Rata</li>
-          <li data-i18n="svc_card2_f5">Dokumen: Dokumen Hibah Berstruktur</li>
-          <li data-i18n="svc_card2_f6">Sesuai Untuk: Beberapa Aset Keluarga Yang Ingin Disusun Secara Seimbang</li>
+          <li data-i18n="pkg_card2_f1">Jumlah Aset: Sehingga 3 Aset</li>
+          <li data-i18n="pkg_card2_f2">Jenis Aset: 1 Aset Tidak Alih + 2 Aset Alih</li>
+          <li data-i18n="pkg_card2_f3">Penerima Hibah: Sehingga 4 Penerima</li>
+          <li data-i18n="pkg_card2_f4">Kaedah Pembahagian: Pembahagian Sama Rata</li>
+          <li data-i18n="pkg_card2_f5">Dokumen: Dokumen Hibah Berstruktur</li>
+          <li data-i18n="pkg_card2_f6">Sesuai Untuk: Beberapa Aset Keluarga Yang Ingin Disusun Secara Seimbang</li>
         </ul>
         <div class="service-card__price">RM 1800 <span></span></div>
         <a class="service-card__cta" href="https://app.mysmartwills.com/portal/?company_id=4" data-i18n="svc_btn">Pilih Pakej</a>
@@ -781,11 +684,11 @@
       </div>
       <div class="service-card__body">
         <ul class="service-card__features">
-          <li data-i18n="svc_card3_f1">Jumlah Aset: Sehingga 5 Aset</li>
-          <li data-i18n="svc_card3_f2">Jenis Aset: 2 Aset Tidak Alih + 3 Aset Alih</li>
-          <li data-i18n="svc_card3_f3">Penerima Hibah: Sehingga 6 Penerima</li>
-          <li data-i18n="svc_card3_f4">Kaedah Pembahagian: Pembahagian Lebih Fleksibel</li>
-          <li data-i18n="svc_card3_f5">Dokumen: Dokumen Hibah Amanah lengkap</li>
+          <li data-i18n="pkg_card3_f1">Jumlah Aset: Sehingga 5 Aset</li>
+          <li data-i18n="pkg_card3_f2">Jenis Aset: 2 Aset Tidak Alih + 3 Aset Alih</li>
+          <li data-i18n="pkg_card3_f3">Penerima Hibah: Sehingga 6 Penerima</li>
+          <li data-i18n="pkg_card3_f4">Kaedah Pembahagian: Pembahagian Lebih Fleksibel</li>
+          <li data-i18n="pkg_card3_f5">Dokumen: Dokumen Hibah Amanah lengkap</li>
         </ul>
         <div class="service-card__price">RM 2800 <span></span></div>
         <a class="service-card__cta service-card__cta--disabled" href="#" data-i18n="svc_btn_coming">Akan Datang</a>
@@ -904,127 +807,7 @@
     </div>
   </div>
 </div>
-<script>
-  /* ============================================
-     1) MENU MOBILE (hamburger)
-     ============================================ */
-  const hamburgerBtn = document.getElementById('hamburger');
-  if (hamburgerBtn) {
-    hamburgerBtn.addEventListener('click', () => {
-      const mobileNav = document.getElementById('navMobile') || document.getElementById('mobileMenu');
-      if (mobileNav) {
-        mobileNav.classList.toggle('active');
-      }
-    });
-  }
 
-  /* ============================================
-     2) CHATBOT SURI & WHATSAPP
-     ============================================ */
-  const chatTrigger = document.getElementById('chatTrigger');
-  const chatWindow = document.getElementById('chatWindow');
-  const closeChat = document.getElementById('closeChat');
-
-  if (chatTrigger && chatWindow) {
-    chatTrigger.addEventListener('click', () => {
-      chatWindow.classList.toggle('open');
-    });
-  }
-
-  if (closeChat && chatWindow) {
-    closeChat.addEventListener('click', (e) => {
-      e.stopPropagation();
-      chatWindow.classList.remove('open');
-    });
-  }
-
-  const chatInput = document.querySelector('.chat-input');
-  const chatSendBtn = document.querySelector('.chat-send-btn');
-
-  function sendMessage() {
-    if (!chatInput) return;
-    const messageText = chatInput.value.trim();
-    if (messageText === '') return;
-
-    const phoneNum = "60182209929";
-    const encodedText = encodeURIComponent(messageText);
-    const whatsappUrl = `https://wa.me/${phoneNum}?text=${encodedText}`;
-
-    window.open(whatsappUrl, '_blank');
-    chatInput.value = '';
-  }
-
-  if (chatSendBtn) {
-    chatSendBtn.addEventListener('click', sendMessage);
-  }
-
-  if (chatInput) {
-    chatInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
-        sendMessage();
-      }
-    });
-  }
-
-  /* ============================================
-     3) SWITCH BAHASA (BM/EN) - FIX UNTUK PAKEJ.HTML
-     ============================================ */
-  function setLanguage(lang) {
-    // Menyemak kewujudan 'translations' daripada script.js
-    if (typeof translations === 'undefined' || !translations[lang]) return;
-
-    const dict = translations[lang];
-
-    // Kemaskini teks elemen yang ada data-i18n
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const key = el.getAttribute('data-i18n');
-      if (dict[key] !== undefined) {
-        const val = dict[key];
-        // Jika nilai mengandungi HTML (contoh: tag <br>), guna innerHTML
-        if (key === 'footer_hq_val' || key === 'footer_tc_val' || (typeof val === 'string' && val.includes('<br'))) {
-          el.innerHTML = val;
-        } else {
-          el.textContent = val;
-        }
-      }
-    });
-
-    // Kemaskini status butang aktif (Desktop & Mobile)
-    document.querySelectorAll('.lang-switcher button').forEach(btn => {
-      btn.classList.remove('active-lang');
-    });
-
-    const idsToActivate = lang === 'bm'
-      ? ['btn-bm', 'btn-bm-mobile']
-      : ['btn-en', 'btn-en-mobile'];
-
-    idsToActivate.forEach(id => {
-      const btn = document.getElementById(id);
-      if (btn) btn.classList.add('active-lang');
-    });
-
-    // Setkan atribut HTML lang
-    document.documentElement.setAttribute('lang', lang === 'bm' ? 'ms' : 'en');
-
-    // 🌟 DUA-DUA KEY DISIMPAN UNTUK KESERASIAN FAIL PAKEJ.HTML & FAIL LAIN
-    try { 
-      localStorage.setItem('site_lang', lang); 
-      localStorage.setItem('preferredLang', lang); 
-    } catch (e) {}
-  }
-
-  // Auto-load bahasa pilihan apabila halaman siap dimuatkan
-  document.addEventListener('DOMContentLoaded', () => {
-    let savedLang = 'bm';
-    try {
-      // Semak kedua-dua key supaya tidak terlepas bahasa pilihan
-      savedLang = localStorage.getItem('site_lang') || localStorage.getItem('preferredLang') || 'bm';
-    } catch (e) {}
-    
-    // Jalankan penukaran bahasa
-    setLanguage(savedLang);
-  });
-</script>
   <script src="script.js"></script>
 </body>
 </html>
