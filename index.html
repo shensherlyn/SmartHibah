@@ -1237,12 +1237,57 @@
     </div>
   </div>
 </div>
- <script>
+<script>
+  // 0️⃣ DICTIONARY BAHASA & SISTEM SETLANGUAGE (SELAMAT)
+  const translations = {
+    bm: {
+      nav_home: "Laman Utama",
+      nav_pakej: "Pakej",
+      nav_panduan: "Panduan",
+      nav_hubungi: "Hubungi Kami",
+      // Tambah translation key baru anda di sini mengikut keperluan
+    },
+    en: {
+      nav_home: "Home",
+      nav_pakej: "Packages",
+      nav_panduan: "Guide",
+      nav_hubungi: "Contact Us",
+      // Tambah translation key baru anda di sini mengikut keperluan
+    }
+  };
+
+  function setLanguage(lang) {
+    // Simpan pilihan pengguna
+    localStorage.setItem('preferredLang', lang);
+
+    const isBm = lang === 'bm';
+
+    // Kemaskini butang aktif di Desktop & Mobile
+    document.getElementById('btn-bm')?.classList.toggle('active-lang', isBm);
+    document.getElementById('btn-en')?.classList.toggle('active-lang', !isBm);
+    document.getElementById('btn-bm-mobile')?.classList.toggle('active-lang', isBm);
+    document.getElementById('btn-en-mobile')?.classList.toggle('active-lang', !isBm);
+
+    // 🛡️ PERLINDUNGAN: Hanya tukar teks JIKA key wujud di dalam translations
+    // Jika key tiada, ia KEKALKAN teks asal HTML (elak teks utama hilang)
+    document.querySelectorAll('[data-i18n]').forEach(element => {
+      const key = element.getAttribute('data-i18n');
+      if (translations[lang] && translations[lang][key]) {
+        element.textContent = translations[lang][key];
+      }
+    });
+  }
+
+  // Muat turun bahasa pilihan apabila laman dibuka
+  document.addEventListener('DOMContentLoaded', () => {
+    const savedLang = localStorage.getItem('preferredLang') || 'bm';
+    setLanguage(savedLang);
+  });
+
   // 1️⃣ Pengendali Menu Hamburger (Diperkemas untuk navMobile)
   const hamburgerBtn = document.getElementById('hamburger');
   if (hamburgerBtn) {
     hamburgerBtn.addEventListener('click', () => {
-      // Menyokong navMobile (standard baru) atau mobileMenu (versi lama)
       const mobileNav = document.getElementById('navMobile') || document.getElementById('mobileMenu');
       if (mobileNav) {
         mobileNav.classList.toggle('open');
