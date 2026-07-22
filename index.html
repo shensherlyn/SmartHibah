@@ -1239,6 +1239,20 @@
 </div>
 
   <script>
+    // Reveal elemen .anim bila ia masuk dalam viewport semasa scroll
+document.addEventListener('DOMContentLoaded', () => {
+  const animElements = document.querySelectorAll('.anim');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target); // reveal sekali sahaja
+      }
+    });
+  }, { threshold: 0.1 });
+
+  animElements.forEach(el => observer.observe(el));
+});
   // 1️⃣ Pengendali Menu Hamburger (Diperkemas untuk navMobile)
   const hamburgerBtn = document.getElementById('hamburger');
   if (hamburgerBtn) {
