@@ -59,3 +59,1248 @@ body {
   display: flex;
   align-items: center; 
   gap: 0px; 
+  height: 100%;
+  overflow: visible; 
+}
+
+.header-logo-wrapper {
+  background: transparent !important; 
+  height: 100%; 
+  padding: 0; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 !important; 
+  border: none !important; 
+  box-shadow: none !important; 
+  overflow: visible;
+}
+
+.header-logo {
+  height: 125px; 
+  width: auto;
+  object-fit: contain;
+  display: block;
+  position: relative;
+  top: 12px; 
+}
+
+/* ── NAVIGASI DESKTOP ── */
+.nav__links { 
+  display: flex; 
+  gap: 1.5rem; 
+  list-style: none; 
+  margin-left: auto; 
+  margin-right: 2rem; 
+  align-items: center;
+}
+
+.nav__links a { 
+  color: rgba(255,255,255,.88); 
+  text-decoration: none; 
+  font-size: .875rem; 
+  font-weight: 500; 
+  transition: color .2s; 
+}
+
+.nav__links a:hover, .nav__links a.active { 
+  color: var(--gold-lt); 
+}
+
+.nav__cta {
+  border: 2px solid var(--white);
+  color: var(--white);
+  background: transparent;
+  padding: .45rem 1.75rem; 
+  border-radius: 25px;
+  font-size: .875rem; 
+  font-weight: 600; 
+  text-decoration: none;
+  transition: all .2s ease;
+}
+
+.nav__cta:hover { 
+  background: var(--white); 
+  color: var(--forest); 
+}
+
+/* ── SWITCH BAHASA (DESKTOP & UMUM) ── */
+.lang-switcher-item {
+  display: inline-flex;
+  align-items: center;
+}
+
+.lang-switcher,
+.mobile-lang-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.lang-switcher span,
+.mobile-lang-wrapper span {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.875rem;
+  user-select: none;
+}
+
+.lang-switcher button,
+.mobile-lang-wrapper button {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 2px 6px;
+  transition: color 0.2s, border-color 0.2s;
+  outline: none;
+  border-bottom: 2px solid transparent;
+}
+
+.lang-switcher button:hover,
+.mobile-lang-wrapper button:hover {
+  color: var(--gold-lt);
+}
+
+.lang-switcher button.active-lang,
+.mobile-lang-wrapper button.active-lang {
+  color: var(--gold-lt);
+  font-weight: 600;
+  border-bottom: 2px solid var(--gold-lt);
+}
+
+/* ── NAV HAMBURGER ── */
+.nav__hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-left: auto;
+}
+
+.nav__hamburger span {
+  display: block;
+  width: 26px;
+  height: 3px;
+  background: var(--white);
+  border-radius: 2px;
+}
+
+/* ── MENU MOBILE ── */
+.nav__mobile {
+  position: fixed;
+  top: 90px;
+  left: 0;
+  width: 100%;
+  background: var(--forest-md);
+  display: none;
+  flex-direction: column;
+  padding: 1.5rem 5%;
+  gap: 1.25rem;
+  z-index: 999;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.nav__mobile a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.nav__mobile .nav__cta {
+  text-align: center;
+  margin-top: 0.5rem;
+  display: block;
+}
+
+.nav__mobile.open {
+  display: flex;
+}
+
+/* 📱 🌟 PENGOPTIMALAN KHAS UNTUK TELEFON (MOBILE) */
+@media (max-width: 768px) {
+  .header {
+    height: 70px; 
+  }
+  
+  .header-logo {
+    height: 100px; 
+    top: 15px; 
+  }
+
+  /* Sembunyikan menu desktop */
+  .nav__links {
+    display: none;
+  }
+
+  /* Tunjukkan butang hamburger */
+  .nav__hamburger {
+    display: flex;
+  }
+
+  /* Selaraskan tinggi menu mobile mengikut header 70px */
+  .nav__mobile {
+    top: 70px;
+  }
+
+  /* Gaya penyerlah switch bahasa di dalam menu mobile */
+  .mobile-lang-wrapper {
+    display: flex !important;
+    justify-content: center;
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .mobile-lang-wrapper button {
+    font-size: 1rem;
+    padding: 4px 8px;
+  }
+}
+/* ── 🛠️ MAIN CONTAINER CONTENT ── */
+.container { 
+  max-width: 1100px; 
+  margin: 10rem auto 4rem; 
+  padding: 0 5%; 
+  display: flex; 
+  flex-direction: column; 
+  gap: 3.5rem; 
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Card Section Style */
+.section-card { 
+  background: rgba(255, 255, 255, 0.97); 
+  padding: 3rem 2.5rem; 
+  border-radius: var(--radius); 
+  border: 1px solid rgba(255, 255, 255, 0.6); 
+  backdrop-filter: blur(16px); 
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 15px 35px rgba(3, 43, 29, 0.05); 
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.section-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(3, 43, 29, 0.12);
+  border-color: var(--gold);
+}
+
+.section-card h2 { color: var(--forest); font-size: 1.6rem; font-weight: 700; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 12px; }
+.section-card h2::before { content: ''; display: inline-block; width: 6px; height: 26px; background: var(--gold); border-radius: 3px; }
+
+.section-card > p {
+  color: #333;
+  font-size: 1.05rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Sub-grid Maklumat Dalaman (Premium List) */
+.info-list-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.info-list-card {
+  background: var(--cream);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+.info-list-card h3 {
+  color: var(--forest);
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.info-list-card h3::before {
+  content: '✓';
+  color: var(--gold);
+  font-weight: bold;
+}
+
+.info-list-card ul {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.info-list-card ul li {
+  font-size: 0.9rem;
+  color: #4a5568;
+  position: relative;
+  padding-left: 14px;
+}
+
+.info-list-card ul li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+}
+
+/* Grid untuk Proses */
+.steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin-top: 1.5rem; }
+.step-item { background: rgba(250, 247, 242, 0.8); padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--forest); transition: all 0.25s ease; border-top: 1px solid var(--border); border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.step-item:hover { transform: translateY(-4px); background: var(--white); box-shadow: 0 8px 20px rgba(3, 43, 29, 0.08); border-color: var(--gold); }
+.step-item h4 { color: var(--forest); margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 700; }
+
+/* Jadual Korporat */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+.comparison-table th {
+  background: var(--forest);
+  color: var(--white);
+  padding: 1rem;
+  font-weight: 600;
+}
+
+.comparison-table td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--white);
+  color: #333;
+}
+
+.comparison-table tr:nth-child(even) td {
+  background: var(--cream);
+}
+
+.comparison-table tr:last-child td {
+  border-bottom: none;
+}
+
+.highlight-td {
+  font-weight: 600;
+  color: var(--forest) !important;
+  background-color: rgba(191, 161, 95, 0.08) !important;
+}
+
+/* Style Kalkulator */
+.calc-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .calc-layout { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+
+.calc-box { width: 100%; background: var(--cream); padding: 2rem; border-radius: 12px; border: 1px solid var(--border); box-shadow: inset 0 2px 4px rgba(0,0,0,0.02); }
+.form-group { margin-bottom: 1.5rem; }
+.form-group label { display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--forest); }
+.form-group input { width: 100%; padding: 0.85rem; border: 1px solid var(--border); border-radius: 8px; font-size: 1rem; outline: none; transition: all 0.2s; background: var(--white); box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+.form-group input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(191, 161, 95, 0.2); }
+.calc-btn { background: var(--forest); color: var(--white); border: none; width: 100%; padding: 0.9rem; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 1rem; transition: all 0.2s; text-transform: uppercase; letter-spacing: 0.05em; }
+.calc-btn:hover { background: var(--forest-md); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(3, 43, 29, 0.15); }
+
+.calc-info-pane {
+  background: rgba(191, 161, 95, 0.06);
+  border: 1px dashed var(--gold);
+  padding: 2rem;
+  border-radius: 12px;
+  height: 100%;
+}
+
+.calc-info-pane h3 { color: var(--forest); font-size: 1.2rem; margin-bottom: 0.75rem; }
+.calc-info-pane p { font-size: 0.9rem; color: var(--muted); margin-bottom: 1rem; }
+
+.calc-result { margin-top: 1.25rem; padding: 1.5rem; background: var(--white); border-radius: 8px; border-left: 5px solid #28a745; display: none; box-shadow: 0 4px 15px rgba(0,0,0,0.05); animation: fadeInUp 0.4s ease-out; }
+.calc-result h4 { color: #28a745; font-size: 1.1rem; margin-bottom: 0.25rem; }
+.calc-result .total-val { font-size: 1.8rem; font-weight: 800; color: var(--forest); margin-top: 0.25rem; }
+
+/* Accordion FAQ */
+  details { background: rgba(250, 247, 242, 0.8); margin-bottom: 1rem; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); transition: all 0.3s ease; }
+  details[open] { border-color: var(--gold); background: var(--white); box-shadow: 0 4px 12px rgba(3, 43, 29, 0.04); }
+  summary { padding: 1.15rem; font-weight: 600; color: var(--forest); cursor: pointer; outline: none; display: flex; justify-content: space-between; align-items: center; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: '+'; font-size: 1.3rem; color: var(--gold); font-weight: bold; }
+  details[open] summary::after { content: '−'; }
+.faq-content { padding: 1.25rem; background: var(--white); border-top: 1px solid var(--border); font-size: 0.92rem; color: #4a5568; line-height: 1.7; }
+
+/* Premium Quote / Note block */
+.premium-note {
+  background: var(--forest);
+  color: var(--white);
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-top: 1.5rem;
+  border-right: 4px solid var(--gold);
+}
+.premium-note p { font-size: 0.9rem; color: var(--gold-pale); }
+
+/* ── RESPONSIVE MOBILE (SEPADAN DENGAN JAVASCRIPT ANDA) ── */
+@media (max-width: 768px) {
+  html, body {
+    background-image: none !important; 
+    background: #ffffff !important;        
+    background-attachment: scroll !important;
+  }
+
+  .section-card {
+    background: #ffffff !important;
+    border: 1px solid var(--border) !important;
+    box-shadow: 0 4px 12px rgba(3, 43, 29, 0.04) !important;
+  }
+
+  .nav__links, .nav__cta { display: none !important; }
+
+  /* MENU HAMBURGER (3 Garisan Putih) */
+  .nav__hamburger {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-right: 5%;
+  }
+
+  .nav__hamburger span {
+    width: 100%;
+    height: 2px;
+    background-color: var(--white);
+    transition: all 0.3s ease;
+  }
+
+  /* KOTAK MENU MOBIL */
+  .nav__mobile {
+    display: none;
+    position: fixed;
+    top: 90px; 
+    left: 0;
+    width: 100%;
+    background-color: var(--forest-md);
+    padding: 1.5rem;
+    box-sizing: border-box;
+    flex-direction: column;
+    gap: 1.25rem;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    z-index: 999;
+  }
+
+  .nav__mobile.open {
+    display: flex !important;
+  }
+
+  .nav__mobile a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .nav__mobile a.active {
+    color: var(--gold-lt);
+  }
+
+  .nav__mobile .nav__cta {
+    display: block !important;
+    text-align: center;
+    background: var(--gold);
+    border: none;
+    margin-top: 0.5rem;
+    padding: 0.75rem;
+    border-radius: 25px;
+  }
+  
+  .hero { grid-template-columns: 1fr; padding: 3rem 5% 2rem; min-height: auto; gap: 2.5rem; }
+  .hero__visual { order: -1; }
+  .hero__h1 { font-size: 1.8rem; }
+  .hero__sub { font-size: .9rem; }
+  .why, .services, .process, .audience, .docs { padding: 3.5rem 5%; }
+}
+      
+/* ============ FOOTER v2 (matches WasiatKu reference) ============ */
+.site-footer {
+  position: relative;
+  background: linear-gradient(160deg, #00543d 0%, #004F38 45%, #014a35 100%);
+  color: rgba(255,255,255,.85);
+  padding: 3.5rem 5% 2rem;
+  overflow: hidden;
+}
+.site-footer__wave {
+  position: absolute; left: 0; right: 0; top: 230px; height: 220px;
+  background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,0));
+  clip-path: ellipse(75% 60% at 30% 0%);
+  pointer-events: none;
+}
+.site-footer__inner { max-width: 1280px; margin: 0 auto; position: relative; z-index: 1; }
+
+.site-footer__top {
+  display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+.site-footer__brand { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
+.site-footer__brand-mark { width: auto; height: 80px; flex-shrink: 0; object-fit: contain; }
+.site-footer__brand-text { display: flex; flex-direction: column; line-height: 1.2; }
+.site-footer__brand-text strong { color: var(--white); font-size: 1.25rem; font-weight: 800; }
+.site-footer__brand-text small { color: rgba(255,255,255,.75); font-size: .7rem; font-weight: 600; letter-spacing: .12em; }
+
+.site-footer__tagline { text-align: right; }
+.site-footer__tagline img { height: 56px; width: auto; object-fit: contain; }
+
+.site-footer__company { margin-bottom: 2.5rem; }
+.site-footer__company h2 { color: var(--white); font-size: 1.3rem; font-weight: 800; }
+.site-footer__company-id { font-size: .85rem; color: rgba(255,255,255,.6); font-style: italic; margin-top: .15rem; }
+
+.site-footer__info { display: flex; gap: 3.5rem; flex-wrap: wrap; margin-bottom: 3rem; }
+.site-footer__contact { display: flex; flex-direction: column; gap: 1.5rem; }
+.site-footer__contact h3, .site-footer__address h3 {
+  color: var(--gold-light); font-size: .95rem; font-weight: 700; margin-bottom: .5rem;
+}
+.site-footer__contact a { color: var(--white); text-decoration: none; font-size: .92rem; }
+.site-footer__contact a:hover { color: var(--gold-light); }
+.site-footer__address p { font-size: .88rem; line-height: 1.65; color: rgba(255,255,255,.85); margin-bottom: .85rem; }
+.site-footer__map {
+  display: inline-flex; align-items: center; gap: .5rem;
+  border: 1.5px solid rgba(255,255,255,.5); border-radius: 24px;
+  padding: .5rem 1.1rem; color: var(--white); text-decoration: none; font-size: .85rem; font-weight: 500;
+  transition: border-color .2s, background .2s;
+}
+.site-footer__map svg { width: 15px; height: 15px; fill: var(--white); }
+.site-footer__map:hover { border-color: var(--gold-light); background: rgba(255,255,255,.06); }
+
+.site-footer__bottom {
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;
+  padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,.12);
+}
+.site-footer__legal { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+.site-footer__legal p { font-size: .82rem; color: rgba(255,255,255,.75); }
+.site-footer__socials { display: flex; gap: .65rem; }
+.site-footer__socials a {
+  width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,.95);
+  display: grid; place-items: center; transition: transform .2s, background .2s;
+}
+.site-footer__socials a svg { width: 16px; height: 16px; fill: var(--green); }
+.site-footer__socials a:hover { transform: translateY(-2px); background: var(--gold-light); }
+
+.site-footer__badges { display: flex; align-items: center; gap: .85rem; flex-wrap: wrap; }
+.site-footer__badges img { height: 36px; width: auto; border-radius: 4px; background: rgba(255,255,255,.92); padding: 3px 6px; }
+.site-footer__badges img.badge--achieve { height: 56px; background: none; padding: 0; border-radius: 0; }
+
+@media (max-width: 860px) {
+  .site-footer__top { flex-direction: column; }
+  .site-footer__tagline { text-align: left; }
+  .site-footer__tagline img { margin-top: .5rem; }
+}
+@media (max-width: 600px) {
+  .site-footer__info { gap: 2rem; }
+  .site-footer__bottom { flex-direction: column; align-items: flex-start; }
+  .site-footer__badges img { height: 30px; }
+  .site-footer__badges img.badge--achieve { height: 48px; }
+}
+
+/* ── RESPONSIVE RESPONSIVENESS ── */
+@media (max-width: 992px) {
+  .header-logo-wrapper { padding-right: 20px; }
+  .nav__links { gap: 1rem; }
+  .services__grid { grid-template-columns: repeat(2, 1fr); }
+  .footer__container { grid-template-columns: 1.5fr repeat(3, 1fr); gap: 1.5rem; }
+}
+
+@media (max-width: 768px) {
+  .nav__links, .nav__cta { display: none !important; }
+
+  .nav__hamburger {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-right: 5%; 
+  }
+
+  .nav__hamburger span {
+    width: 100%;
+    height: 2px;
+    background-color: var(--white);
+    transition: all 0.3s ease;
+  }
+
+  .nav__mobile {
+    display: none; 
+    position: fixed;
+    top: 90px; 
+    left: 0;
+    width: 100%;
+    background-color: var(--forest-md); 
+    padding: 1.5rem;
+    box-sizing: border-box;
+    flex-direction: column;
+    gap: 1.25rem;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    z-index: 999;
+  }
+
+  .nav__mobile.active {
+    display: flex !important;
+  }
+
+  .nav__mobile a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .nav__mobile a.active {
+    color: var(--gold-lt);
+  }
+
+  .nav__mobile .nav__cta {
+    display: block !important;
+    text-align: center;
+    background: var(--gold);
+    border: none;
+    margin-top: 0.5rem;
+    padding: 0.75rem;
+    border-radius: 25px;
+  }
+
+  .hero { grid-template-columns: 1fr; padding: 3rem 5% 2rem; min-height: auto; gap: 2.5rem; }
+  .hero__visual { order: -1; }
+  .hero__h1 { font-size: 1.8rem; }
+  .hero__sub { font-size: .9rem; }
+  .why, .services, .process, .audience, .docs { padding: 3.5rem 5%; }
+  .services__grid { grid-template-columns: 1fr; }
+  
+  .footer__container { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
+  .footer__brand { align-items: center; }
+  .footer__logo { align-self: center; }
+  .footer__desc { max-width: 100%; }
+  .footer__bottom { flex-direction: column; text-align: center; margin-top: 2.5rem; }
+  .footer__left-block { flex-direction: column; align-items: flex-start; gap: 1rem; }
+}
+
+@media (max-width: 480px) {
+  .why__grid { grid-template-columns: 1fr 1fr; }
+  .process__steps { grid-template-columns: 1fr 1fr; }
+  .audience__grid { grid-template-columns: 1fr 1fr; }
+  .footer__left-block { flex-direction: column; align-items: flex-start; gap: 1rem; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .anim { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
+  .anim.visible { opacity: 1; transform: none; }
+}
+
+    /* ── 🤖 CHATBOT & WHATSAPP FLOATING CONTAINER ── */
+    .floating-bot-wrapper {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 9999; 
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .chatbot-trigger-container {
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      display: inline-block;
+    }
+
+    .chatbot-trigger-container:hover {
+      transform: scale(1.08);
+    }
+
+    /* 🌟 Suri Avatar (Tanpa bulatan & tanpa latar belakang) */
+    .suri-avatar {
+      width: 110px;        
+      height: 110px;       
+      border-radius: 0;       
+      overflow: visible;     
+      background: transparent;
+      box-shadow: none;       
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .suri-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;   
+      filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.2)); 
+    }
+
+    /* ── Tetingkap Chatbot ── */
+    .chatbot-window {
+      position: absolute;
+      bottom: 125px;      
+      right: 0;
+      width: 400px;       
+      height: 560px;      
+      background: var(--white, #ffffff);
+      border-radius: 20px; 
+      box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+      border: 1px solid var(--border, #dde8e2);
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .chatbot-window.open {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+
+    .chat-header {
+      background: #032b1d; 
+      color: #ffffff;
+      padding: 14px 18px;  
+      border-top-left-radius: 18px;
+      border-top-right-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 3px solid #bfa15f;
+    }
+
+    .chat-profile { display: flex; align-items: center; gap: 12px; }
+    .chat-avatar-mini { width: 40px; height: 40px; border-radius: 50%; overflow: hidden; background: #fff; }
+    .chat-avatar-mini img { width: 100%; height: 100%; object-fit: cover; }
+    .chat-info h4 { font-size: 0.95rem; margin: 0; font-weight: 600; }
+    .chat-info span { font-size: 0.75rem; color: #d9be7e; display: flex; align-items: center; gap: 5px; }
+    .chat-info span::before { content: ''; width: 6px; height: 6px; background: #22c55e; border-radius: 50%; display: inline-block; }
+    .close-chat-btn { background: none; border: none; color: #fff; font-size: 1.6rem; cursor: pointer; line-height: 1; }
+    .chat-body { flex: 1; padding: 18px; background: #faf7f2; overflow-y: auto; display: flex; flex-direction: column; gap: 14px; }
+    .message.bot { max-width: 85%; padding: 12px 14px; border-radius: 14px; font-size: 0.9rem; background: #fff; color: #1a1a1a; border-top-left-radius: 0; border: 1px solid #dde8e2; line-height: 1.48; }
+    .chat-footer { padding: 12px; background: #fff; border-bottom-left-radius: 18px; border-bottom-right-radius: 18px; display: flex; gap: 10px; border-top: 1px solid #dde8e2; }
+    .chat-input { flex: 1; padding: 10px 16px; border: 1px solid #dde8e2; border-radius: 24px; outline: none; font-size: 0.9rem; }
+    .chat-send-btn { background: #032b1d; color: #fff; border: none; width: 38px; height: 38px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+
+    /* Responsif Telefon */
+    @media (max-width: 480px) {
+      .floating-bot-wrapper { bottom: 15px; right: 15px; }
+      .suri-avatar { width: 90px; height: 90px; } 
+      .chatbot-window { width: calc(100vw - 30px); height: 480px; bottom: 105px; }
+    }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-left">
+    <div class="header-logo-wrapper">
+      <!-- 🌟 Diubah daripada "home.html" kepada URL laman web wasiatku.com -->
+      <a href="https://wasiatku.com.my" target="_blank" rel="noopener noreferrer">
+        <img src="assets/logo.png" alt="SmartHibah" class="header-logo" />
+      </a>
+    </div>
+  </div>
+  
+  <ul class="nav__links">
+    <li><a href="index.html" data-i18n="nav_home">Laman Utama</a></li>
+    <li><a href="pakej.html" data-i18n="nav_pakej">Pakej</a></li>
+    <li><a href="panduan.html" class="active" data-i18n="nav_panduan">Panduan</a></li>
+    <li><a href="hubungi.html" data-i18n="nav_hubungi">Hubungi Kami</a></li>
+    <!-- AMBIL PERHATIAN: Ini butang baru yang kita tambah -->
+    <li class="lang-switcher-item">
+      <div class="lang-switcher">
+        <button onclick="setLanguage('bm')" id="btn-bm" class="active-lang">BM</button>
+        <span>|</span>
+        <button onclick="setLanguage('en')" id="btn-en">EN</button>
+      </div>
+    </li>
+  </ul>
+
+  <a class="nav__cta" href="https://app.mysmartwills.com/portal/?company_id=4" data-i18n="nav_login">Login</a>
+
+  <button class="nav__hamburger" id="hamburger" aria-label="Buka menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+  <div class="nav__mobile" id="mobileMenu">
+    <a href="index.html" data-i18n="nav_home">Laman Utama</a>
+    <a href="pakej.html" data-i18n="nav_pakej">Pakej</a>
+    <a href="panduan.html" data-i18n="nav_panduan">Panduan</a>
+    <a href="hubungi.html" data-i18n="nav_hubungi">Hubungi Kami</a>
+    <a href="login.html" class="nav__cta" data-i18n="nav_login_mobile">Login</a>
+  </div>
+
+  <div class="container">
+
+<section class="section-card">
+      <h2 data-i18n="sec1_title">Definisi & Rukun Sah Hibah</h2>
+      <p data-i18n="sec1_desc">Dari segi bahasa, <strong>Hibah</strong> bermaksud pemberian hadiah. Manakala dari segi istilah undang-undang Syariah, ia merujuk kepada suatu akad pemindahan hak milik harta secara sukarela oleh pemilik (Pemberi) kepada pihak lain (Penerima) semasa hidupnya tanpa mengharapkan sebarang balasan (iwad).</p>
+      
+      <h3 style="color: var(--forest); font-size: 1.15rem; margin-top: 1.5rem; margin-bottom: 0.75rem; font-weight:600;" data-i18n="sec1_subtitle">4 Rukun Wajib Hibah (Syarat Sah Syarak)</h3>
+      <div class="info-list-grid">
+        <div class="info-list-card">
+          <h3 data-i18n="r1_title">Pemberi Hibah (Al-Wahib)</h3>
+          <p style="font-size: 0.88rem; color:#555;" data-i18n="r1_desc">Pemilik mutlak harta, berakal sihat, baligh, dan bertindak secara sukarela tanpa sebarang paksaan.</p>
+        </div>
+        <div class="info-list-card">
+          <h3 data-i18n="r2_title">Penerima Hibah (Al-Mawhub lahu)</h3>
+          <p style="font-size: 0.88rem; color:#555;" data-i18n="r2_desc">Sesiapa sahaja yang dipilih (Waris Faraid atau bukan waris). Bagi penerima di bawah umur 18 tahun, ia akan diwakili oleh Pemegang Amanah atau Wali yang sah.</p>
+        </div>
+        <div class="info-list-card">
+          <h3 data-i18n="r3_title">Harta Dihibahkan (Al-Mawhub)</h3>
+          <p style="font-size: 0.88rem; color:#555;" data-i18n="r3_desc">Harta yang bernilai, halal, wujud secara nyata sewaktu akad dibuat, dan bebas daripada sekatan hutang yang tidak dilindungi.</p>
+        </div>
+        <div class="info-list-card">
+          <h3 data-i18n="r4_title">Lafaz Akad (Sighah Bertulis)</h3>
+          <p style="font-size: 0.88rem; color:#555;" data-i18n="r4_desc">Dokumen pengisytiharan yang mengandungi penawaran (Ijab) dan penerimaan (Qabul) secara rasmi bertulis dan bertandatangan.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-card">
+      <h2 data-i18n="sec2_title">Matlamat Perlindungan & Analisis Perbandingan</h2>
+      <p data-i18n="sec2_desc">Berbeza dengan pengurusan Faraid atau Wasiat biasa, perancangan melalui SmartHibah memainkan peranan kritikal dalam sistem kewangan keluarga dengan objektif utama untuk mengelakkan pembekuan harta selepas kematian:</p>
+      <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.75rem; list-style-type: none;">
+        <li style="position:relative; padding-left: 20px;"><span style="color:var(--gold); position:absolute; left:0;">✦</span><strong data-i18n="sec2_l1_bold">Mengelakkan Pembekuan Harta:</strong> <span data-i18n="sec2_l1_text">Aset yang dihibahkan akan terus dipindahkan hak milik kepada penerima tanpa perlu melalui fasa pembekuan di institusi kewangan atau agensi pusaka.</span></li>
+        <li style="position:relative; padding-left: 20px;"><span style="color:var(--gold); position:absolute; left:0;">✦</span><strong data-i18n="sec2_l2_bold">Melindungi Waris Tanggungan:</strong> <span data-i18n="sec2_l2_text">Sangat membantu bagi situasi pasangan yang tiada anak lelaki, bapa tunggal, keluarga angkat, mahupun pemberian khas kepada anak istimewa.</span></li>
+        <li style="position:relative; padding-left: 20px;"><span style="color:var(--gold); position:absolute; left:0;">✦</span><strong data-i18n="sec2_l3_bold">Menjamin Keharmonian Keluarga:</strong> <span data-i18n="sec2_l3_text">Membantu meminimumkan risiko perbalahan, tuntutan bertindih, atau perebutan harta antara ahli keluarga terdekat selepas ketiadaan anda.</span></li>
+      </ul>
+
+      <h3 style="color: var(--forest); font-size: 1.15rem; margin-top: 2rem; font-weight:600;" data-i18n="sec2_subtitle">Jadual Perbandingan Ciri-Ciri Instrumen Pewarisan Harta</h3>
+      <div class="table-responsive">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th data-i18n="th_features">Ciri-Ciri Utama</th>
+              <th>SmartHibah</th>
+              <th data-i18n="th_wasiat">Wasiat Am</th>
+              <th data-i18n="th_faraid">Hukum Faraid</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong data-i18n="td_r1_f">Penerima Harta</strong></td>
+              <td class="highlight-td" data-i18n="td_r1_h">Sesiapa sahaja (Bebas)</td>
+              <td data-i18n="td_r1_w">Bukan waris sahaja (Maksimum 1/3)</td>
+              <td data-i18n="td_r1_far">Waris sah sahaja</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="td_r2_f">Kadar Agihan</strong></td>
+              <td class="highlight-td" data-i18n="td_r2_h">Ditentukan pemilik (0-100%)</td>
+              <td data-i18n="td_r2_w">Terhad kepada kadar wasiat</td>
+              <td data-i18n="td_r2_far">Mengikut ketetapan Syarak</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="td_r3_f">Persetujuan Waris</strong></td>
+              <td class="highlight-td" data-i18n="td_r3_h">Tidak Perlu (Hak Mutlak)</td>
+              <td data-i18n="td_r3_w">Perlu jika melebihi had 1/3</td>
+              <td data-i18n="td_r3_far">Mutlak mengikut hukum asal</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="td_r4_f">Kelajuan Proses</strong></td>
+              <td class="highlight-td" data-i18n="td_r4_h">Sangat Pantas & Terus</td>
+              <td data-i18n="td_r4_w">Melalui Prosedur Probet (Memakan Masa)</td>
+              <td data-i18n="td_r4_far">Mengambil masa (Sijil Faraid)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section-card">
+      <h2 data-i18n="sec3_title">Klasifikasi Jenis Harta</h2>
+      <p data-i18n="sec3_desc">Pastikan aset yang ingin dirancang dikategorikan dengan betul bagi melancarkan proses pengesahan dokumentasi:</p>
+      <div class="info-list-grid">
+        <div class="info-list-card" style="background:#fff; border-top: 3px solid var(--gold);">
+          <h3 style="color:var(--forest);" data-i18n="sec3_c1_title">A. Harta Tak Alih (Hartanah)</h3>
+          <ul>
+            <li data-i18n="sec3_c1_l1">Rumah kediaman (Teres, Kondominium, Pangsapuri, Flat) sama ada masih bercagar atau telah bebas hutang.</li>
+            <li data-i18n="sec3_c1_l2">Tanah persendirian (Pertanian, Kedai, Komersial) atau tanah lot.</li>
+            <li data-i18n="sec3_c1_l3">*Nota: Status geran individu atau strata mestilah sah dan berdaftar.</li>
+          </ul>
+        </div>
+        <div class="info-list-card" style="background:#fff; border-top: 3px solid var(--forest);">
+          <h3 style="color:var(--forest);" data-i18n="sec3_c2_title">B. Harta Alih (Kewangan & Fizikal)</h3>
+          <ul>
+            <li data-i18n="sec3_c2_l1">Akaun simpanan/semasa di institusi perbankan (Simpanan, Tabung Haji, ASB).</li>
+            <li data-i18n="sec3_c2_l2">Portfolio saham tersenarai, Unit Amanah (Unit Trust), dan dana pelaburan patuh syariah.</li>
+            <li data-i18n="sec3_c2_l3">Emas fizikal, emas digital, barangan berharga, serta kenderaan yang telah bebas hutang.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-card">
+      <h2 data-i18n="sec4_title">Prosedur Pelaksanaan & Protokol Tuntutan</h2>
+      <p data-i18n="sec4_desc">Proses penyediaan dokumentasi digital bersama kami kini dipermudahkan melalui 4 fasa utama berikut:</p>
+      <div class="steps-grid">
+        <div class="step-item">
+          <h4 data-i18n="step1_title">Langkah 1 (Kemasukan Data)</h4>
+          <p style="font-size: 0.85rem; color: var(--muted);" data-i18n="step1_desc">Penyediaan dan pengisian maklumat peribadi pemberi, penerima, serta muat naik dokumen bukti hak milik aset.</p>
+        </div>
+        <div class="step-item">
+          <h4 data-i18n="step2_title">Langkah 2 (Penjanaan Dokumen)</h4>
+          <p style="font-size: 0.85rem; color: var(--muted);" data-i18n="step2_desc">Sistem akan menstrukturkan dan menjana draf dokumen pengisytiharan yang menepati ketetapan hukum Syariah.</p>
+        </div>
+        <div class="step-item">
+          <h4 data-i18n="step3_title">Langkah 3 (Semakan Pakar)</h4>
+          <p style="font-size: 0.85rem; color: var(--muted);" data-i18n="step3_desc">Semakan ketulenan maklumat, integriti rukun hibah, dan pengesahan dokumen oleh panel pakar perunding kami.</p>
+        </div>
+        <div class="step-item">
+          <h4 data-i18n="step4_title">Langkah 4 (Pengesahan)</h4>
+          <p style="font-size: 0.85rem; color: var(--muted);" data-i18n="step4_desc">Pencetakan serta penandatanganan dokumen fizikal di hadapan 2 orang saksi lelaki Muslim yang layak.</p>
+        </div>
+      </div>
+
+      <h3 style="color: var(--forest); font-size: 1.15rem; margin-top: 2rem; font-weight:600; margin-bottom:0.5rem;" data-i18n="sec4_subtitle">Prosedur Tuntutan Apabila Berlaku Kematian Pemberi</h3>
+      <p style="font-size:0.9rem; color:#4a5568; margin-bottom:1rem;" data-i18n="sec4_subdesc">Apabila berlaku kematian pemberi hibah, penerima hanya perlu mengikut langkah mudah ini untuk urusan pindah milik aset:</p>
+      <ol style="margin-left: 1.25rem; font-size: 0.9rem; color: #4a5568; display:flex; flex-direction:column; gap:0.4rem;">
+        <li data-i18n="claim_l1"><strong>Pemberitahuan:</strong> Kemukakan Sijil Kematian rasmi kepada pihak pentadbir SmartHibah.</li>
+        <li data-i18n="claim_l2"><strong>Pengesahan Dokumen:</strong> Pihak kami akan mengeluarkan Dokumen Deklarasi asal yang telah disahkan.</li>
+        <li data-i18n="claim_l3"><strong>Pindah Milik Aset:</strong> Dokumen tersebut dibawa ke agensi berkaitan (Pejabat Tanah atau Bank) untuk penukaran nama secara terus tanpa melalui proses pembekuan harta pusaka.</li>
+      </ol>
+    </section>
+
+    <section class="section-card">
+      <h2 data-i18n="sec5_title">Senarai Dokumen Sokongan Pemfailan</h2>
+      <p data-i18n="sec5_desc">Untuk melancarkan pengesahan draf deklarasi hibah, sila sediakan senarai semak dokumen bukti hak milik yang wajib dimuat naik mengikut kategori harta:</p>
+      <ul style="margin-left: 1.5rem; font-size: 0.95rem; display:flex; flex-direction:column; gap:0.5rem; color:#333;">
+        <li data-i18n="doc_l1"><strong>Kategori Hartanah:</strong> Salinan Geran Hakmilik Sempurna, Perjanjian Jual Beli (SPA), dan Penyata Baki Pembiayaan Perumahan beserta bukti perlindungan MRTT/MLTT.</li>
+        <li data-i18n="doc_l2"><strong>Kategori Kewangan:</strong> Salinan buku bank atau penyata akaun rasmi yang memaparkan nombor akaun pemilik dengan jelas.</li>
+        <li data-i18n="doc_l3"><strong>Kategori Waris Bawah Umur:</strong> Salinan MyKid/Sijil Kelahiran penerima berserta Kad Pengenalan Pemegang Amanah (Pemegang Amanah) berdaftar yang dilantik.</li>
+      </ul>
+    </section>
+
+    <section class="section-card">
+      <h2 data-i18n="sec6_title">Arkib Soalan Lazim (FAQ) & Bidang Kuasa Undang-Undang</h2>
+      
+      <details>
+        <summary data-i18n="q1">Adakah hibah boleh ditarik balik?</summary>
+        <div class="faq-content" data-i18n="a1">
+          Secara umumnya, ketetapan hukum menetapkan bahawa hibah yang sudah diserahkan (Qabd) tidak boleh ditarik balik KECUALI hibah yang dibuat oleh ibu, bapa, datuk, atau nenek kepada anak atau cucu kandung mereka.
+        </div>
+      </details>
+      
+      <details>
+        <summary data-i18n="q2">Apakah syarat sah barang atau aset yang ingin dihibahkan?</summary>
+        <div class="faq-content" data-i18n="a2">
+          Aset mestilah wujud semasa akad dilakukan, merupakan milik mutlak pemberi hibah, tidak terikat dengan sebarang tuntutan mahkamah atau sekatan undang-undang, serta mempunyai nilai komersial or manfaat menurut syarak.
+        </div>
+      </details>
+      
+      <details>
+        <summary data-i18n="q3">Bolehkah rumah yang masih dalam pinjaman bank dihibahkan?</summary>
+        <div class="faq-content" data-i18n="a3">
+          Boleh (atas status harta bercagar), dengan syarat pembiayaan perumahan tersebut dilindungi oleh polisi insurans atau takaful seperti MRTT atau MLTT yang akan melunaskan baki hutang secara automatik sekiranya berlaku kematian pemilik.
+        </div>
+      </details>
+
+      <details>
+        <summary data-i18n="q4">Bolehkah membuat dokumen hibah kepada anak angkat atau anak tiri?</summary>
+        <div class="faq-content" data-i18n="a4">
+          <strong>Boleh dan amat digalakkan.</strong> Di bawah hukum Faraid, anak angkat dan anak tiri tidak dikategorikan sebagai waris mutlak (tiada hubungan darah), maka mereka tidak akan mendapat sebarang bahagian harta secara automatik. Melalui perancangan SmartHibah, anda mempunyai hak mutlak untuk menghibahkan sehingga 100% aset anda kepada mereka semasa anda masih hidup.
+        </div>
+      </details>
+
+      <details>
+        <summary data-i18n="q5">Apakah perbezaan antara dokumen draf Hibah dengan dokumen Wasiat?</summary>
+        <div class="faq-content" data-i18n="a5">
+          Wasiat hanya berkuat kuasa <strong>selepas kematian</strong> pemilik harta, kadarnya terhad kepada maksimum 1/3 daripada baki harta, dan <em>hanya boleh diberikan kepada bukan waris Faraid</em>. Manakala Hibah dibuat dan berkuat kuasa <strong>semasa pemilik masih hidup</strong>, tiada had kadar agihan (0% - 100%), serta bebas diberikan kepada sesiapa sahaja.
+        </div>
+      </details>
+
+      <details>
+        <summary data-i18n="q6">Adakah penerima hibah yang masih bayi atau belum berumur 18 tahun boleh menerima aset?</summary>
+        <div class="faq-content" data-i18n="a6">
+          <strong>Boleh.</strong> Bagi memenuhi syarat rukun Qabd (penerimaan atau kawalan harta), pengisytiharan hibah bagi waris di bawah umur (bawah 18 tahun) atau waris kurang upaya (OKU) wajib melantik seorang <strong>Pemegang Amanah</strong> yang akan menguruskan aset tersebut bagi pihak penerima sehingga mereka mencapai umur matang.
+        </div>
+      </details>
+
+      <details>
+        <summary data-i18n="q7">Bagaimana status dokumen hibah sekiranya penerima meninggal dunia terlebih dahulu sebelum pemberi?</summary>
+        <div class="faq-content" data-i18n="a7">
+          Apabila akad hibah telah sempurna dimetrai (berlakunya penyerahan atau Qabd), aset tersebut secara rasminya telah bertukar hak milik kepada penerima. Sekiranya penerima meninggal dunia dahulu, aset tersebut akan dikategorikan sebagai harta pusaka penerima dan akan dibahagikan kepada waris-waris penerima mengikut hukum Faraid. Ia tidak akan kembali kepada pemberi asal (melainkan melibatkan hibah daripada ibu bapa kepada anak).
+        </div>
+      </details>
+
+      <details>
+        <summary data-i18n="q8">Adakah aset yang berada di luar negara boleh dimasukkan ke dalam sistem SmartHibah?</summary>
+        <div class="faq-content" data-i18n="a8">
+          Sistem SmartHibah dirancang khusus berpandukan kepada Enakmen Hibah Kelantan 2022<strong>di dalam Malaysia sahaja</strong>. Bagi aset di luar negara, ia tertakluk kepada undang-undang dan perlaksanaan di negara terbabit.
+        </div>
+      </details>
+
+      <details>
+        <summary data-i18n="q9">Adakah simpanan akaun bersama (Joint Account) di bank boleh dihibahkan?</summary>
+        <div class="faq-content" data-i18n="a9">
+          Bagi akaun bersama, pemilik hanya dibenarkan menghibahkan kadar bahagian milikan beliau sahaja (biasanya dikira berasaskan anggaran 50% daripada jumlah baki simpanan, melainkan terdapat perjanjian bertulis yang lain). Proses ini memerlukan penelitian draf yang lebih spesifik bagi mengelakkan pertikaian hak milik dengan pihak bank.
+        </div>
+      </details>
+
+      <details>
+        <summary data-i18n="q10">Bolehkah saya membuat hibah sekiranya saya disahkan menghidap penyakit kritikal?</summary>
+        <div class="faq-content" data-i18n="a10">
+          Sekiranya pemberi berada dalam fasa penyakit kritikal yang tenat atau fasa <em>Marad al-Mawt</em> (sakit yang membawa kepada kematian), kesahihan akad hibah boleh dicabar di Mahkamah Syariah kerana rukun kesihatan akal dan kesukarelaan pemberi boleh diragui. Oleh itu, perancangan ini amat digalakkan untuk dibuat sewaktu tubuh badan masih sihat.
+        </div>
+      </details>
+
+      <details>
+        <summary data-i18n="q11">Adakah dokumen deklarasi hibah digital ini perlu disahkan oleh Mahkamah Syariah dengan segera?</summary>
+        <div class="faq-content" data-i18n="a11">
+          Dokumen deklarasi bertulis yang ditandatangani bersama 2 saksi Muslim yang adil sudah sah di sisi Syarak sebagai bukti niat dan akad. Proses pengesahan (isbat) di Mahkamah Syariah biasanya hanya akan dilakukan oleh penerima manfaat <strong>selepas berlakunya kematian pemberi</strong> (sebagai dokumen sokongan untuk perintah pindah milik agensi).
+        </div>
+      </details>
+
+      <details>
+        <summary data-i18n="q12">Apakah peranan 2 orang saksi lelaki Muslim di dalam Langkah 4 proses pelaksanaan?</summary>
+        <div class="faq-content" data-i18n="a12">
+          Dua orang saksi berfungsi sebagai ejen pengesahan luaran. Mereka bertanggungjawab menyaksikan bahawa proses penawaran (Ijab) dan penerimaan (Qabul) dokumen berlaku tanpa paksaan, pemberi berada dalam keadaan sihat mental, serta tiada pemalsuan maklumat berlaku sewaktu cetakan fizikal ditandatangani.
+        </div>
+      </details>
+      
+      <div class="premium-note">
+        <p data-i18n="disclaimer_text"><strong>Nota Penafian Sempadan Perundangan:</strong> Senarai undang-undang khusus dan keperluan pengisytiharan rasmi adalah tertakluk kepada keputusan Mahkamah Syariah negeri masing-masing. Pihak SmartHibah menyediakan draf bertaraf profesional berdasarkan standard perundangan terkini dengan nota penafian bidang kuasa mutlak mahkamah tersebut.</p>
+      </div>
+    </section>
+
+  </div>
+
+ <footer class="site-footer" aria-label="Footer">
+    <div class="site-footer__wave"></div>
+    <div class="site-footer__inner">
+      <div class="site-footer__top">
+        <a class="site-footer__brand" href="index.html" aria-label="WasiatKu home">
+          <img src="assets/footer_logo.png" alt="SmartWills" class="site-footer__brand-mark" />
+        </a>
+        <div class="site-footer__tagline">
+          <img src="assets/slogan.png" alt="Cara paling PINTAR dan PANTAS" />
+        </div>
+      </div>
+
+      <div class="site-footer__company">
+        <h2>WasiatKu Fintech Sdn. Bhd.</h2>
+        <p class="site-footer__company-id">(202301043968)</p>
+      </div>
+
+      <div class="site-footer__info">
+        <div class="site-footer__contact">
+          <section>
+            <h3 data-i18n="footer_cs">Perkhidmatan Pelanggan</h3>
+            <a href="tel:+60182209929">+6018-220 9929</a>
+          </section>
+          <section>
+            <h3 data-i18n="footer_email">Emel</h3>
+            <a href="mailto:enquiry@wasiatku.com.my">enquiry@wasiatku.com.my</a>
+          </section>
+        </div>
+
+        <section class="site-footer__address">
+          <h3 data-i18n="footer_hq">Alamat - Ibu Pejabat</h3>
+          <p data-i18n="footer_hq_addr">No 46A (First Floor), Jalan Ambong 1,<br />Kepong Baru 52100, Kuala Lumpur, Malaysia</p>
+          <a class="site-footer__map" href="https://maps.app.goo.gl/bdPqnX4pgEkWG3TC8" aria-label="Open office address in Google Maps">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <span>Google Maps</span>
+          </a>
+        </section>
+
+        <section class="site-footer__address">
+          <h3 data-i18n="footer_tc">Alamat - Pusat Latihan</h3>
+          <p data-i18n="footer_tc_addr">
+            B-2-19, Blok Bougainvilla, 10 Boulevard,<br />
+            Lebuhraya Sprint, PJU6A, 47400 Petaling Jaya,<br />
+            Selangor, Malaysia
+          </p>
+        </section>
+      </div>
+
+       <div class="site-footer__bottom">
+        <div class="site-footer__legal">
+          <p data-i18n="footer_rights">© 2023 - 2026 All rights reserved | WasiatKu.com.my</p>
+          <div class="site-footer__socials" aria-label="Social media links">
+            <a href="https://www.facebook.com/wasiatku.com.my/" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+            <a href="https://www.youtube.com/channel/UC4sIsrzxOq_4FgoPdi-83Rw" aria-label="Youtube">
+              <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg>
+            </a>
+          <a href="https://www.instagram.com/wasiatku.com.my" target="_blank" rel="noopener" aria-label="Instagram">
+  <svg viewBox="0 0 24 24">
+    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204 0.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+  </svg>
+</a>
+          </div>
+        </div>
+
+        <div class="site-footer__badges" aria-label="Certifications">
+          <img src="assets/achieve.png" alt="Achievements" class="badge--achieve" onerror="this.style.display='none'" />
+        </div>
+      </div>
+    </div>
+  </footer>
+
+    <!-- SURI FLOATING COMPONENT -->
+ <div class="floating-bot-wrapper">
+  <div class="chatbot-trigger-container" id="chatTrigger">
+    <div class="suri-avatar">
+      <img src="assets/suri.gif" alt="Suri SmartWills">
+    </div>
+    <!-- 🌟 wa-mini-badge dan SVG telah dipadam di sini -->
+  </div>
+
+  <div class="chatbot-window" id="chatWindow">
+    <div class="chat-header">
+      <div class="chat-profile">
+        <div class="chat-avatar-mini">
+          <img src="assets/suri.gif" alt="Suri">
+        </div>
+        <div class="chat-info">
+          <h4>Suri</h4>
+          <span data-i18n="chat_status">Sedia Membantu</span>
+        </div>
+      </div>
+      <button class="close-chat-btn" id="closeChat">&times;</button>
+    </div>
+
+    <div class="chat-body">
+      <div class="message bot" data-i18n="chat_welcome">
+        Hai! Saya Suri, pembantu maya SmartWills. Ada apa-apa soalan mengenai penyediaan draf dokumen hibah atau perancangan harta yang boleh saya bantu? 😊
+      </div>
+    </div>
+
+    <div class="chat-footer">
+      <input type="text" class="chat-input" placeholder="Tulis mesej di sini...">
+      <button class="chat-send-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+  <script src="translation.js"></script>
+  <script>
+    // Pengendali Menu Hamburger Telefon
+    document.getElementById('hamburger').addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    });
+
+    // Fungsi Pengiraan Kalkulator Keperluan Dana
+    function kiraHibah() {
+      const hutang = parseFloat(document.getElementById('hutang').value) || 0;
+      const belanja = parseFloat(document.getElementById('belanja').value) || 0;
+      
+      // Mengira keperluan sara hidup untuk 5 tahun (60 bulan)
+      const keperluanSaraHidup = belanja * 12 * 5;
+      const total = hutang + keperluanSaraHidup;
+      
+      document.getElementById('total-dana').innerText = 'RM ' + total.toLocaleString('ms-MY');
+      document.getElementById('result').style.display = 'block';
+    }
+
+    const chatTrigger = document.getElementById('chatTrigger');
+    const chatWindow = document.getElementById('chatWindow');
+    const closeChat = document.getElementById('closeChat');
+    const waLink = document.getElementById('waLink');
+
+    // Klik pada bulatan Suri akan buka/tutup chatbox
+    chatTrigger.addEventListener('click', () => {
+      chatWindow.classList.toggle('open');
+    });
+
+    // Klik pada butang hijau WhatsApp akan direct ke WhatsApp tanpa buka chatbox
+    waLink.addEventListener('click', (e) => {
+      e.stopPropagation(); // Menghalang kotak chatbox Suri daripada terbuka bersama
+    });
+
+    // Butang pangkah untuk tutup chatbox
+    closeChat.addEventListener('click', (e) => {
+      e.stopPropagation(); 
+      chatWindow.classList.remove('open');
+    });
+
+    // === DIRECT TERUS KE WHATSAPP SELEPAS TEKAN SEND ===
+    const chatInput = document.querySelector('.chat-input');
+    const chatSendBtn = document.querySelector('.chat-send-btn');
+
+    function sendMessage() {
+      const messageText = chatInput.value.trim();
+      
+      // Jika pengguna tidak taip apa-apa, jangan hantar
+      if (messageText === '') return;
+
+      // 1. Nombor WhatsApp perniagaan anda (pastikan bermula dengan kod negara 60)
+      const phoneNum = "60182209929";
+
+      // 2. Menukar teks taipan menjadi format acuan URL (encode URL)
+      const encodedText = encodeURIComponent(messageText);
+
+      // 3. Bina pautan WhatsApp rasmi
+      const whatsappUrl = `https://wa.me/${phoneNum}?text=${encodedText}`;
+
+      // 4. Buka tab baru dan hantar mesej ke WhatsApp
+      window.open(whatsappUrl, '_blank');
+
+      // 5. Kosongkan semula ruangan input di laman web selepas dihantar
+      chatInput.value = '';
+    }
+
+    // Kekalkan fungsi trigger butang klik & enter yang sedia ada
+    if (chatSendBtn) {
+      chatSendBtn.addEventListener('click', sendMessage);
+    }
+
+    if (chatInput) {
+      chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          sendMessage();
+        }
+      });
+    }
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
