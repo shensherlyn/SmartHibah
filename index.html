@@ -37,210 +37,233 @@
       line-height: 1.6; 
     }
 
-    .header { 
-      position: fixed; 
-      top: 0; 
-      left: 0; 
-      width: 100%; 
-      background: var(--forest); 
-      color: var(--white); 
-      padding: 0 5% 0 0; 
-      display: flex; 
-      justify-content: space-between; 
-      align-items: center; 
-      z-index: 1000; 
-      box-shadow: 0 3px 15px rgba(0,0,0,.2);
-      height: 90px;
-      overflow: visible; 
-    }
+    /* ── 🛠️ NAV BAR / HEADER STATIK ── */
+.header { 
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  background: var(--forest); 
+  color: var(--white); 
+  padding: 0 5% 0 0; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  z-index: 1000; 
+  box-shadow: 0 3px 15px rgba(0,0,0,.2);
+  height: 90px;
+  overflow: visible; 
+}
 
-    .header-left {
-      display: flex;
-      align-items: center; 
-      gap: 0px; 
-      height: 100%;
-      overflow: visible; 
-    }
+.header-left {
+  display: flex;
+  align-items: center; 
+  gap: 0px; 
+  height: 100%;
+  overflow: visible; 
+}
 
-    .header-logo-wrapper {
-      background: transparent !important; 
-      height: 100%; 
-      padding: 0; 
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 0 !important; 
-      border: none !important; 
-      box-shadow: none !important; 
-      overflow: visible;
-    }
+.header-logo-wrapper {
+  background: transparent !important; 
+  height: 100%; 
+  padding: 0; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 !important; 
+  border: none !important; 
+  box-shadow: none !important; 
+  overflow: visible;
+}
 
-    .header-logo {
-      height: 125px; 
-      width: auto;
-      object-fit: contain;
-      display: block;
-      position: relative;
-      top: 12px; 
-    }
+.header-logo {
+  height: 125px; 
+  width: auto;
+  object-fit: contain;
+  display: block;
+  position: relative;
+  top: 12px; 
+}
 
-    @media (max-width: 768px) {
-      .header { height: 70px; }
-      .header-logo { height: 100px; top: 15px; }
-    }
+/* ── NAVIGASI DESKTOP ── */
+.nav__links { 
+  display: flex; 
+  gap: 1.5rem; 
+  list-style: none; 
+  margin-left: auto; 
+  margin-right: 2rem; 
+  align-items: center;
+}
 
-    .nav__links { 
-      display: flex; 
-      gap: 1.5rem; 
-      list-style: none; 
-      margin-left: auto; 
-      margin-right: 2rem; 
-    }
-    
-    .nav__links a { 
-      color: rgba(255,255,255,.88); 
-      text-decoration: none; 
-      font-size: .875rem; 
-      font-weight: 500; 
-      transition: color .2s; 
-    }
-    
-    .nav__links a:hover, .nav__links a.active { 
-      color: var(--gold-lt); 
-    }
-    
-    .nav__cta {
-      border: 2px solid var(--white);
-      color: var(--white);
-      background: transparent;
-      padding: .45rem 1.75rem; 
-      border-radius: 25px;
-      font-size: .875rem; 
-      font-weight: 600; 
-      text-decoration: none;
-      transition: all .2s ease;
-    }
-    
-    .nav__cta:hover { 
-      background: var(--white); 
-      color: var(--forest); 
-    }
+.nav__links a { 
+  color: rgba(255,255,255,.88); 
+  text-decoration: none; 
+  font-size: .875rem; 
+  font-weight: 500; 
+  transition: color .2s; 
+}
 
-    .nav__hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 6px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0.5rem;
-      margin-left: auto;
-    }
+.nav__links a:hover, .nav__links a.active { 
+  color: var(--gold-lt); 
+}
 
-    .nav__hamburger span {
-      display: block;
-      width: 26px;
-      height: 3px;
-      background: var(--white);
-      border-radius: 2px;
-    }
+.nav__cta {
+  border: 2px solid var(--white);
+  color: var(--white);
+  background: transparent;
+  padding: .45rem 1.75rem; 
+  border-radius: 25px;
+  font-size: .875rem; 
+  font-weight: 600; 
+  text-decoration: none;
+  transition: all .2s ease;
+}
 
-    .nav__mobile {
-      position: fixed;
-      top: 90px;
-      left: 0;
-      width: 100%;
-      background: var(--forest-md);
-      display: none;
-      flex-direction: column;
-      padding: 1.5rem 5%;
-      gap: 1.25rem;
-      z-index: 999;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-      border-top: 1px solid rgba(255,255,255,0.05);
-    }
+.nav__cta:hover { 
+  background: var(--white); 
+  color: var(--forest); 
+}
 
-    .nav__mobile a {
-      color: var(--white);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 1rem;
-    }
-
-    .nav__mobile .nav__cta-mobile {
-      text-align: center;
-      margin-top: 0.5rem;
-      display: block;
-      background: var(--gold);
-      color: var(--white);
-      padding: 0.75rem;
-      border-radius: 25px; 
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .nav__mobile.open { display: flex; }
-    /* ==========================================
-   TAMBAHAN CSS UNTUK BUTANG BAHASA (BM/EN)
-   ========================================== */
-
-/* Menyusun kedudukan item bahasa dalam senarai menu */
+/* ── SWITCH BAHASA (DESKTOP & UMUM) ── */
 .lang-switcher-item {
   display: inline-flex;
   align-items: center;
 }
 
-/* Bekas (wrapper) butang bahasa */
-.lang-switcher {
+.lang-switcher,
+.mobile-lang-wrapper {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
 }
 
-/* Garis pembahagi "|" */
-.lang-switcher span {
+.lang-switcher span,
+.mobile-lang-wrapper span {
   color: rgba(255, 255, 255, 0.4);
   font-size: 0.875rem;
   user-select: none;
 }
 
-/* Gaya asas butang BM dan EN */
-.lang-switcher button {
+.lang-switcher button,
+.mobile-lang-wrapper button {
   background: none;
   border: none;
-  color: rgba(255, 255, 255, 0.8); /* Warna putih lutsinar sama seperti menu lain */
+  color: rgba(255, 255, 255, 0.8);
   font-family: inherit;
-  font-size: 0.875rem; /* Saiz font sama dengan menu anda */
+  font-size: 0.875rem;
   font-weight: 500;
   cursor: pointer;
-  padding: 2px 4px;
+  padding: 2px 6px;
   transition: color 0.2s, border-color 0.2s;
   outline: none;
-  border-bottom: 2px solid transparent; /* Sediakan tapak untuk garisan bawah */
+  border-bottom: 2px solid transparent;
 }
 
-/* Apabila tetikus lalu di atas butang (hover) */
-.lang-switcher button:hover {
-  color: var(--gold-lt); /* Warna bertukar emas */
+.lang-switcher button:hover,
+.mobile-lang-wrapper button:hover {
+  color: var(--gold-lt);
 }
 
-/* Gaya untuk bahasa yang sedang aktif/dipilih */
-.lang-switcher button.active-lang {
-  color: var(--gold-lt); /* Warna emas */
+.lang-switcher button.active-lang,
+.mobile-lang-wrapper button.active-lang {
+  color: var(--gold-lt);
   font-weight: 600;
-  border-bottom: 2px solid var(--gold-lt); /* Garis bawah emas */
+  border-bottom: 2px solid var(--gold-lt);
 }
 
-/* Penyesuaian untuk paparan skrin telefon (Mobile) */
+/* ── NAV HAMBURGER ── */
+.nav__hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-left: auto;
+}
+
+.nav__hamburger span {
+  display: block;
+  width: 26px;
+  height: 3px;
+  background: var(--white);
+  border-radius: 2px;
+}
+
+/* ── MENU MOBILE ── */
+.nav__mobile {
+  position: fixed;
+  top: 90px;
+  left: 0;
+  width: 100%;
+  background: var(--forest-md);
+  display: none;
+  flex-direction: column;
+  padding: 1.5rem 5%;
+  gap: 1.25rem;
+  z-index: 999;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.nav__mobile a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.nav__mobile .nav__cta {
+  text-align: center;
+  margin-top: 0.5rem;
+  display: block;
+}
+
+.nav__mobile.open {
+  display: flex;
+}
+
+/* 📱 🌟 PENGOPTIMALAN KHAS UNTUK TELEFON (MOBILE) */
 @media (max-width: 768px) {
-  .lang-switcher-item {
-    margin-top: 0.5rem; /* Jarakkan sedikit daripada menu atas dalam paparan mobile */
+  .header {
+    height: 70px; 
   }
-  .lang-switcher button {
-    font-size: 1rem; /* Besarkan sedikit tulisan butang di telefon pintar */
+  
+  .header-logo {
+    height: 100px; 
+    top: 15px; 
+  }
+
+  /* Sembunyikan menu desktop */
+  .nav__links {
+    display: none;
+  }
+
+  /* Tunjukkan butang hamburger */
+  .nav__hamburger {
+    display: flex;
+  }
+
+  /* Selaraskan tinggi menu mobile mengikut header 70px */
+  .nav__mobile {
+    top: 70px;
+  }
+
+  /* Gaya penyerlah switch bahasa di dalam menu mobile */
+  .mobile-lang-wrapper {
+    display: flex !important;
+    justify-content: center;
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .mobile-lang-wrapper button {
+    font-size: 1rem;
+    padding: 4px 8px;
   }
 }
-
     /* ── HERO ── */
     .hero {
       background: linear-gradient(135deg, var(--forest) 0%, var(--forest-md) 55%, #1e4a32 100%);
