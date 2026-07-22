@@ -815,49 +815,35 @@
     .chatbot-trigger-container {
       position: relative;
       cursor: pointer;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      display: inline-block;
     }
 
     .chatbot-trigger-container:hover {
       transform: scale(1.08);
     }
 
+    /* 🌟 Suri Avatar (Tanpa bulatan & tanpa latar belakang) */
     .suri-avatar {
       width: 110px;        
       height: 110px;       
-      border-radius: 50%;
-      overflow: hidden;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-      background: #ffffff; 
+      border-radius: 0;       
+      overflow: visible;     
+      background: transparent;
+      box-shadow: none;       
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .suri-avatar img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;   
+      filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.2)); 
     }
 
-    .wa-mini-badge {
-      position: absolute;
-      bottom: 5px;         
-      right: 5px;          
-      width: 35px;         
-      height: 35px;        
-      background: #25d366;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 3px solid #fff; 
-      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
-    }
-
-    .wa-mini-badge svg {
-      width: 18px;         
-      height: 18px;        
-      fill: #fff;
-    }
-
+    /* ── Tetingkap Chatbot ── */
     .chatbot-window {
       position: absolute;
       bottom: 125px;      
@@ -907,12 +893,11 @@
     .chat-input { flex: 1; padding: 10px 16px; border: 1px solid #dde8e2; border-radius: 24px; outline: none; font-size: 0.9rem; }
     .chat-send-btn { background: #032b1d; color: #fff; border: none; width: 38px; height: 38px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
 
+    /* Responsif Telefon */
     @media (max-width: 480px) {
       .floating-bot-wrapper { bottom: 15px; right: 15px; }
-      .suri-avatar { width: 85px; height: 85px; } 
-      .wa-mini-badge { width: 28px; height: 28px; bottom: 2px; right: 2px; }
-      .wa-mini-badge svg { width: 14px; height: 14px; }
-      .chatbot-window { width: calc(100vw - 30px); height: 480px; bottom: 100px; }
+      .suri-avatar { width: 90px; height: 90px; } 
+      .chatbot-window { width: calc(100vw - 30px); height: 480px; bottom: 105px; }
     }
 </style>
 </head>
@@ -1068,47 +1053,42 @@
   </footer>
 
   <!-- SURI FLOATING COMPONENT -->
-  <div class="floating-bot-wrapper">
-    <div class="chatbot-trigger-container" id="chatTrigger">
-      <div class="suri-avatar">
-        <img src="assets/suri.gif" alt="Suri SmartWills">
+ <div class="floating-bot-wrapper">
+  <div class="chatbot-trigger-container" id="chatTrigger">
+    <div class="suri-avatar">
+      <img src="assets/suri.gif" alt="Suri SmartWills">
+    </div>
+    <!-- 🌟 wa-mini-badge dan SVG telah dipadam di sini -->
+  </div>
+
+  <div class="chatbot-window" id="chatWindow">
+    <div class="chat-header">
+      <div class="chat-profile">
+        <div class="chat-avatar-mini">
+          <img src="assets/suri.gif" alt="Suri">
+        </div>
+        <div class="chat-info">
+          <h4>Suri</h4>
+          <span data-i18n="chat_status">Sedia Membantu</span>
+        </div>
       </div>
-      <a href="https://wa.me/60182209929?text=Hai%20SmartWills,%20saya%20ingin%20bertanya%20mengenai%20perkhidmatan%20wasiat/hibah." 
-         target="_blank" 
-         class="wa-mini-badge" 
-         id="waLink">
-        <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.003 5.372 5.378 0 12.013 0c3.213.001 6.234 1.253 8.507 3.527 2.273 2.274 3.522 5.297 3.521 8.512-.004 6.643-5.379 12.015-12.015 12.015-2.006-.001-3.974-.5-5.764-1.451L0 24zm6.59-4.859c1.62.962 3.377 1.469 5.399 1.47 5.564 0 10.093-4.529 10.096-10.097.002-2.698-1.046-5.234-2.949-7.139C17.23 1.47 14.7.424 12.015.424 6.452.424 1.924 4.953 1.921 10.522c-.001 1.93.499 3.812 1.447 5.462l-.995 3.637 3.72-.976h-.046z"/></svg>
-      </a>
+      <button class="close-chat-btn" id="closeChat">&times;</button>
     </div>
 
-    <div class="chatbot-window" id="chatWindow">
-      <div class="chat-header">
-        <div class="chat-profile">
-          <div class="chat-avatar-mini">
-            <img src="assets/suri.gif" alt="Suri">
-          </div>
-          <div class="chat-info">
-            <h4>Suri</h4>
-            <span data-i18n="chat_status">Sedia Membantu</span>
-          </div>
-        </div>
-        <button class="close-chat-btn" id="closeChat">&times;</button>
+    <div class="chat-body">
+      <div class="message bot" data-i18n="chat_welcome">
+        Hai! Saya Suri, pembantu maya SmartWills. Ada apa-apa soalan mengenai penyediaan draf dokumen hibah atau perancangan harta yang boleh saya bantu? 😊
       </div>
+    </div>
 
-      <div class="chat-body">
-        <div class="message bot" data-i18n="chat_welcome">
-          Hai! Saya Suri, pembantu maya SmartWills. Ada apa-apa soalan mengenai penyediaan draf dokumen hibah atau perancangan harta yang boleh saya bantu? 😊
-        </div>
-      </div>
-
-      <div class="chat-footer">
-        <input type="text" class="chat-input" placeholder="Tulis mesej di sini...">
-        <button class="chat-send-btn">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-        </button>
-      </div>
+    <div class="chat-footer">
+      <input type="text" class="chat-input" placeholder="Tulis mesej di sini...">
+      <button class="chat-send-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+      </button>
     </div>
   </div>
+</div>
 
   <script>
     // Script ringkas untuk fungsi hamburger menu pada mobile jika diperlukan
