@@ -1237,148 +1237,56 @@
     </div>
   </div>
 </div>
-<script>
-  // 0️⃣ DICTIONARY BAHASA & SISTEM SETLANGUAGE (SELAMAT)
-  const translations = {
-    bm: {
-      nav_home: "Laman Utama",
-      nav_pakej: "Pakej",
-      nav_panduan: "Panduan",
-      nav_hubungi: "Hubungi Kami",
-      // Tambah translation key baru anda di sini mengikut keperluan
-    },
-    en: {
-      nav_home: "Home",
-      nav_pakej: "Packages",
-      nav_panduan: "Guide",
-      nav_hubungi: "Contact Us",
-      // Tambah translation key baru anda di sini mengikut keperluan
-    }
-  };
-
-  function setLanguage(lang) {
-    // Simpan pilihan pengguna
-    localStorage.setItem('preferredLang', lang);
-
-    const isBm = lang === 'bm';
-
-    // Kemaskini butang aktif di Desktop & Mobile
-    document.getElementById('btn-bm')?.classList.toggle('active-lang', isBm);
-    document.getElementById('btn-en')?.classList.toggle('active-lang', !isBm);
-    document.getElementById('btn-bm-mobile')?.classList.toggle('active-lang', isBm);
-    document.getElementById('btn-en-mobile')?.classList.toggle('active-lang', !isBm);
-
-    // 🛡️ PERLINDUNGAN: Hanya tukar teks JIKA key wujud di dalam translations
-    // Jika key tiada, ia KEKALKAN teks asal HTML (elak teks utama hilang)
-    document.querySelectorAll('[data-i18n]').forEach(element => {
-      const key = element.getAttribute('data-i18n');
-      if (translations[lang] && translations[lang][key]) {
-        element.textContent = translations[lang][key];
-      }
+ <script>
+    document.getElementById('hamburger').addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.toggle('active');
     });
-  }
 
-  // Muat turun bahasa pilihan apabila laman dibuka
-  document.addEventListener('DOMContentLoaded', () => {
-    const savedLang = localStorage.getItem('preferredLang') || 'bm';
-    setLanguage(savedLang);
-  });
+    const chatTrigger = document.getElementById('chatTrigger');
+    const chatWindow = document.getElementById('chatWindow');
+    const closeChat = document.getElementById('closeChat');
+    const waLink = document.getElementById('waLink');
 
-  // 1️⃣ Pengendali Menu Hamburger (Diperkemas untuk navMobile)
-  const hamburgerBtn = document.getElementById('hamburger');
-  if (hamburgerBtn) {
-    hamburgerBtn.addEventListener('click', () => {
-      const mobileNav = document.getElementById('navMobile') || document.getElementById('mobileMenu');
-      if (mobileNav) {
-        mobileNav.classList.toggle('open');
-      }
-    });
-  }
-
-  // 2️⃣ Fungsi Pengiraan Kalkulator Keperluan Dana (Kekal Asal)
-  function kiraHibah() {
-    const hutang = parseFloat(document.getElementById('hutang')?.value) || 0;
-    const belanja = parseFloat(document.getElementById('belanja')?.value) || 0;
-    
-    // Mengira keperluan sara hidup untuk 5 tahun (60 bulan)
-    const keperluanSaraHidup = belanja * 12 * 5;
-    const total = hutang + keperluanSaraHidup;
-    
-    const totalDanaEl = document.getElementById('total-dana');
-    const resultEl = document.getElementById('result');
-
-    if (totalDanaEl) totalDanaEl.innerText = 'RM ' + total.toLocaleString('ms-MY');
-    if (resultEl) resultEl.style.display = 'block';
-  }
-
-  // 3️⃣ Pengendali Chatbot Suri & WhatsApp
-  const chatTrigger = document.getElementById('chatTrigger');
-  const chatWindow = document.getElementById('chatWindow');
-  const closeChat = document.getElementById('closeChat');
-  const waLink = document.getElementById('waLink');
-
-  // Klik pada bulatan Suri akan buka/tutup chatbox
-  if (chatTrigger && chatWindow) {
     chatTrigger.addEventListener('click', () => {
       chatWindow.classList.toggle('open');
     });
-  }
 
-  // Klik pada WhatsApp badge (sekiranya wujud)
-  if (waLink) {
     waLink.addEventListener('click', (e) => {
-      e.stopPropagation(); // Menghalang kotak chatbox Suri daripada terbuka bersama
+      e.stopPropagation(); 
     });
-  }
 
-  // Butang pangkah untuk tutup chatbox
-  if (closeChat && chatWindow) {
     closeChat.addEventListener('click', (e) => {
       e.stopPropagation(); 
       chatWindow.classList.remove('open');
     });
-  }
 
-  // 4️⃣ Direct Terus Ke WhatsApp Selepas Tekan Send
-  const chatInput = document.querySelector('.chat-input');
-  const chatSendBtn = document.querySelector('.chat-send-btn');
+    const chatInput = document.querySelector('.chat-input');
+    const chatSendBtn = document.querySelector('.chat-send-btn');
 
-  function sendMessage() {
-    if (!chatInput) return;
-    const messageText = chatInput.value.trim();
-    
-    // Jika pengguna tidak taip apa-apa, jangan hantar
-    if (messageText === '') return;
+    function sendMessage() {
+      const messageText = chatInput.value.trim();
+      if (messageText === '') return;
 
-    // Nombor WhatsApp perniagaan
-    const phoneNum = "60182209929";
+      const phoneNum = "60182209929";
+      const encodedText = encodeURIComponent(messageText);
+      const whatsappUrl = `https://wa.me/${phoneNum}?text=${encodedText}`;
 
-    // Menukar teks taipan menjadi format acuan URL (encode URL)
-    const encodedText = encodeURIComponent(messageText);
+      window.open(whatsappUrl, '_blank');
+      chatInput.value = '';
+    }
 
-    // Bina pautan WhatsApp rasmi
-    const whatsappUrl = `https://wa.me/${phoneNum}?text=${encodedText}`;
+    if (chatSendBtn) {
+      chatSendBtn.addEventListener('click', sendMessage);
+    }
 
-    // Buka tab baru dan hantar mesej ke WhatsApp
-    window.open(whatsappUrl, '_blank');
-
-    // Kosongkan semula ruangan input
-    chatInput.value = '';
-  }
-
-  // Event listener untuk butang Hantar & Kekunci Enter
-  if (chatSendBtn) {
-    chatSendBtn.addEventListener('click', sendMessage);
-  }
-
-  if (chatInput) {
-    chatInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
-        sendMessage();
-      }
-    });
-  }
-</script>
+    if (chatInput) {
+      chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          sendMessage();
+        }
+      });
+    }
+  </script>
 <script src="script.js"></script>
 </body>
 </html>
