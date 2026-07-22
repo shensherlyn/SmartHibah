@@ -36,7 +36,6 @@
       line-height: 1.6; 
     }
     
-    /* ── 🛠️ NAV BAR / HEADER STATIK ── */
     .header { 
       position: fixed; 
       top: 0; 
@@ -85,14 +84,8 @@
     }
 
     @media (max-width: 768px) {
-      .header {
-        height: 70px; 
-      }
-      
-      .header-logo {
-        height: 100px; 
-        top: 15px; 
-      }
+      .header { height: 70px; }
+      .header-logo { height: 100px; top: 15px; }
     }
 
     .nav__links { 
@@ -173,68 +166,72 @@
       font-size: 1rem;
     }
 
+    .nav__mobile .nav__cta-mobile {
+      text-align: center;
+      margin-top: 0.5rem;
+      display: block;
+      background: var(--gold);
+      color: var(--white);
+      padding: 0.75rem;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
     .nav__mobile.open { display: flex; }
     /* ==========================================
    TAMBAHAN CSS UNTUK BUTANG BAHASA (BM/EN)
    ========================================== */
 
-/* Menyusun kedudukan item bahasa dalam senarai menu */
 .lang-switcher-item {
   display: inline-flex;
   align-items: center;
 }
 
-/* Bekas (wrapper) butang bahasa */
 .lang-switcher {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
 }
 
-/* Garis pembahagi "|" */
 .lang-switcher span {
   color: rgba(255, 255, 255, 0.4);
   font-size: 0.875rem;
   user-select: none;
 }
 
-/* Gaya asas butang BM dan EN */
 .lang-switcher button {
   background: none;
   border: none;
-  color: rgba(255, 255, 255, 0.8); /* Warna putih lutsinar sama seperti menu lain */
+  color: rgba(255, 255, 255, 0.8);
   font-family: inherit;
-  font-size: 0.875rem; /* Saiz font sama dengan menu anda */
+  font-size: 0.875rem;
   font-weight: 500;
   cursor: pointer;
   padding: 2px 4px;
   transition: color 0.2s, border-color 0.2s;
   outline: none;
-  border-bottom: 2px solid transparent; /* Sediakan tapak untuk garisan bawah */
+  border-bottom: 2px solid transparent;
 }
 
-/* Apabila tetikus lalu di atas butang (hover) */
 .lang-switcher button:hover {
-  color: var(--gold-lt); /* Warna bertukar emas */
+  color: var(--gold-lt);
 }
 
-/* Gaya untuk bahasa yang sedang aktif/dipilih */
 .lang-switcher button.active-lang {
-  color: var(--gold-lt); /* Warna emas */
+  color: var(--gold-lt);
   font-weight: 600;
-  border-bottom: 2px solid var(--gold-lt); /* Garis bawah emas */
+  border-bottom: 2px solid var(--gold-lt);
 }
 
-/* Penyesuaian untuk paparan skrin telefon (Mobile) */
 @media (max-width: 768px) {
   .lang-switcher-item {
-    margin-top: 0.5rem; /* Jarakkan sedikit daripada menu atas dalam paparan mobile */
+    margin-top: 0.5rem;
   }
   .lang-switcher button {
-    font-size: 1rem; /* Besarkan sedikit tulisan butang di telefon pintar */
+    font-size: 1rem;
   }
 }
-
     /* ── 🛠 Main Container Layout ── */
     .container { 
       max-width: 1140px; 
