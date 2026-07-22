@@ -1209,84 +1209,102 @@ body {
 
   <script src="translation.js"></script>
   <script>
-    // Pengendali Menu Hamburger Telefon
-    document.getElementById('hamburger').addEventListener('click', () => {
-      document.getElementById('mobileMenu').classList.toggle('open');
+  // 1️⃣ Pengendali Menu Hamburger (Diperkemas untuk navMobile)
+  const hamburgerBtn = document.getElementById('hamburger');
+  if (hamburgerBtn) {
+    hamburgerBtn.addEventListener('click', () => {
+      // Menyokong navMobile (standard baru) atau mobileMenu (versi lama)
+      const mobileNav = document.getElementById('navMobile') || document.getElementById('mobileMenu');
+      if (mobileNav) {
+        mobileNav.classList.toggle('open');
+      }
     });
+  }
 
-    // Fungsi Pengiraan Kalkulator Keperluan Dana
-    function kiraHibah() {
-      const hutang = parseFloat(document.getElementById('hutang').value) || 0;
-      const belanja = parseFloat(document.getElementById('belanja').value) || 0;
-      
-      // Mengira keperluan sara hidup untuk 5 tahun (60 bulan)
-      const keperluanSaraHidup = belanja * 12 * 5;
-      const total = hutang + keperluanSaraHidup;
-      
-      document.getElementById('total-dana').innerText = 'RM ' + total.toLocaleString('ms-MY');
-      document.getElementById('result').style.display = 'block';
-    }
+  // 2️⃣ Fungsi Pengiraan Kalkulator Keperluan Dana (Kekal Asal)
+  function kiraHibah() {
+    const hutang = parseFloat(document.getElementById('hutang')?.value) || 0;
+    const belanja = parseFloat(document.getElementById('belanja')?.value) || 0;
+    
+    // Mengira keperluan sara hidup untuk 5 tahun (60 bulan)
+    const keperluanSaraHidup = belanja * 12 * 5;
+    const total = hutang + keperluanSaraHidup;
+    
+    const totalDanaEl = document.getElementById('total-dana');
+    const resultEl = document.getElementById('result');
 
-    const chatTrigger = document.getElementById('chatTrigger');
-    const chatWindow = document.getElementById('chatWindow');
-    const closeChat = document.getElementById('closeChat');
-    const waLink = document.getElementById('waLink');
+    if (totalDanaEl) totalDanaEl.innerText = 'RM ' + total.toLocaleString('ms-MY');
+    if (resultEl) resultEl.style.display = 'block';
+  }
 
-    // Klik pada bulatan Suri akan buka/tutup chatbox
+  // 3️⃣ Pengendali Chatbot Suri & WhatsApp
+  const chatTrigger = document.getElementById('chatTrigger');
+  const chatWindow = document.getElementById('chatWindow');
+  const closeChat = document.getElementById('closeChat');
+  const waLink = document.getElementById('waLink');
+
+  // Klik pada bulatan Suri akan buka/tutup chatbox
+  if (chatTrigger && chatWindow) {
     chatTrigger.addEventListener('click', () => {
       chatWindow.classList.toggle('open');
     });
+  }
 
-    // Klik pada butang hijau WhatsApp akan direct ke WhatsApp tanpa buka chatbox
+  // Klik pada WhatsApp badge (sekiranya wujud)
+  if (waLink) {
     waLink.addEventListener('click', (e) => {
       e.stopPropagation(); // Menghalang kotak chatbox Suri daripada terbuka bersama
     });
+  }
 
-    // Butang pangkah untuk tutup chatbox
+  // Butang pangkah untuk tutup chatbox
+  if (closeChat && chatWindow) {
     closeChat.addEventListener('click', (e) => {
       e.stopPropagation(); 
       chatWindow.classList.remove('open');
     });
+  }
 
-    // === DIRECT TERUS KE WHATSAPP SELEPAS TEKAN SEND ===
-    const chatInput = document.querySelector('.chat-input');
-    const chatSendBtn = document.querySelector('.chat-send-btn');
+  // 4️⃣ Direct Terus Ke WhatsApp Selepas Tekan Send
+  const chatInput = document.querySelector('.chat-input');
+  const chatSendBtn = document.querySelector('.chat-send-btn');
 
-    function sendMessage() {
-      const messageText = chatInput.value.trim();
-      
-      // Jika pengguna tidak taip apa-apa, jangan hantar
-      if (messageText === '') return;
+  function sendMessage() {
+    if (!chatInput) return;
+    const messageText = chatInput.value.trim();
+    
+    // Jika pengguna tidak taip apa-apa, jangan hantar
+    if (messageText === '') return;
 
-      // 1. Nombor WhatsApp perniagaan anda (pastikan bermula dengan kod negara 60)
-      const phoneNum = "60182209929";
+    // Nombor WhatsApp perniagaan
+    const phoneNum = "60182209929";
 
-      // 2. Menukar teks taipan menjadi format acuan URL (encode URL)
-      const encodedText = encodeURIComponent(messageText);
+    // Menukar teks taipan menjadi format acuan URL (encode URL)
+    const encodedText = encodeURIComponent(messageText);
 
-      // 3. Bina pautan WhatsApp rasmi
-      const whatsappUrl = `https://wa.me/${phoneNum}?text=${encodedText}`;
+    // Bina pautan WhatsApp rasmi
+    const whatsappUrl = `https://wa.me/${phoneNum}?text=${encodedText}`;
 
-      // 4. Buka tab baru dan hantar mesej ke WhatsApp
-      window.open(whatsappUrl, '_blank');
+    // Buka tab baru dan hantar mesej ke WhatsApp
+    window.open(whatsappUrl, '_blank');
 
-      // 5. Kosongkan semula ruangan input di laman web selepas dihantar
-      chatInput.value = '';
-    }
+    // Kosongkan semula ruangan input
+    chatInput.value = '';
+  }
 
-    // Kekalkan fungsi trigger butang klik & enter yang sedia ada
-    if (chatSendBtn) {
-      chatSendBtn.addEventListener('click', sendMessage);
-    }
+  // Event listener untuk butang Hantar & Kekunci Enter
+  if (chatSendBtn) {
+    chatSendBtn.addEventListener('click', sendMessage);
+  }
 
-    if (chatInput) {
-      chatInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-          sendMessage();
-        }
-      });
-    }
-  </script>
+  if (chatInput) {
+    chatInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        sendMessage();
+      }
+    });
+  }
+</script>
   <script src="script.js"></script>
 </body>
 </html>
