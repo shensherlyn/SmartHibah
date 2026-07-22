@@ -1237,56 +1237,71 @@
     </div>
   </div>
 </div>
- <script>
-    document.getElementById('hamburger').addEventListener('click', () => {
-      document.getElementById('mobileMenu').classList.toggle('active');
+<script>
+  // hamburger menu mobile toggle
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.toggle('active');
+  });
+
+  // scroll animations
+  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.12 });
+    document.querySelectorAll('.anim').forEach(el => observer.observe(el));
+  } else {
+    document.querySelectorAll('.anim').forEach(el => el.classList.add('visible'));
+  }
+
+  const chatTrigger = document.getElementById('chatTrigger');
+  const chatWindow = document.getElementById('chatWindow');
+  const closeChat = document.getElementById('closeChat');
+  const waLink = document.getElementById('waLink');
+
+  // Klik pada bulatan Suri akan buka/tutup chatbox
+  chatTrigger.addEventListener('click', () => {
+    chatWindow.classList.toggle('open');
+  });
+
+  // Klik pada butang hijau WhatsApp akan direct ke WhatsApp tanpa buka chatbox
+  waLink.addEventListener('click', (e) => {
+    e.stopPropagation(); 
+  });
+
+  // Butang pangkah untuk tutup chatbox
+  closeChat.addEventListener('click', (e) => {
+    e.stopPropagation(); 
+    chatWindow.classList.remove('open');
+  });
+
+  // DIRECT TERUS KE WHATSAPP SELEPAS TEKAN SEND
+  const chatInput = document.querySelector('.chat-input');
+  const chatSendBtn = document.querySelector('.chat-send-btn');
+
+  function sendMessage() {
+    const messageText = chatInput.value.trim();
+    if (messageText === '') return;
+
+    const phoneNum = "60182209929";
+    const encodedText = encodeURIComponent(messageText);
+    const whatsappUrl = `https://wa.me/${phoneNum}?text=${encodedText}`;
+
+    window.open(whatsappUrl, '_blank');
+    chatInput.value = '';
+  }
+
+  if (chatSendBtn) {
+    chatSendBtn.addEventListener('click', sendMessage);
+  }
+
+  if (chatInput) {
+    chatInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        sendMessage();
+      }
     });
-
-    const chatTrigger = document.getElementById('chatTrigger');
-    const chatWindow = document.getElementById('chatWindow');
-    const closeChat = document.getElementById('closeChat');
-    const waLink = document.getElementById('waLink');
-
-    chatTrigger.addEventListener('click', () => {
-      chatWindow.classList.toggle('open');
-    });
-
-    waLink.addEventListener('click', (e) => {
-      e.stopPropagation(); 
-    });
-
-    closeChat.addEventListener('click', (e) => {
-      e.stopPropagation(); 
-      chatWindow.classList.remove('open');
-    });
-
-    const chatInput = document.querySelector('.chat-input');
-    const chatSendBtn = document.querySelector('.chat-send-btn');
-
-    function sendMessage() {
-      const messageText = chatInput.value.trim();
-      if (messageText === '') return;
-
-      const phoneNum = "60182209929";
-      const encodedText = encodeURIComponent(messageText);
-      const whatsappUrl = `https://wa.me/${phoneNum}?text=${encodedText}`;
-
-      window.open(whatsappUrl, '_blank');
-      chatInput.value = '';
-    }
-
-    if (chatSendBtn) {
-      chatSendBtn.addEventListener('click', sendMessage);
-    }
-
-    if (chatInput) {
-      chatInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-          sendMessage();
-        }
-      });
-    }
-  </script>
+  }
+</script>
 <script src="script.js"></script>
 </body>
 </html>
