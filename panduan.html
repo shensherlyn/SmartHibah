@@ -37,7 +37,6 @@ body {
   line-height: 1.6; 
 }
 
-/* ── 🛠️ NAV BAR / HEADER STATIK ── */
 .header { 
   position: fixed; 
   top: 0; 
@@ -85,7 +84,6 @@ body {
   top: 12px; 
 }
 
-/* ── NAVIGASI DESKTOP ── */
 .nav__links { 
   display: flex; 
   gap: 1.5rem; 
@@ -124,7 +122,6 @@ body {
   color: var(--forest); 
 }
 
-/* ── SWITCH BAHASA (DESKTOP & UMUM) ── */
 .lang-switcher-item {
   display: inline-flex;
   align-items: center;
@@ -171,7 +168,6 @@ body {
   border-bottom: 2px solid var(--gold-lt);
 }
 
-/* ── NAV HAMBURGER ── */
 .nav__hamburger {
   display: none;
   flex-direction: column;
@@ -191,7 +187,6 @@ body {
   border-radius: 2px;
 }
 
-/* ── MENU MOBILE ── */
 .nav__mobile {
   position: fixed;
   top: 90px;
@@ -224,7 +219,6 @@ body {
   display: flex;
 }
 
-/* 📱 🌟 PENGOPTIMALAN KHAS UNTUK TELEFON (MOBILE) */
 @media (max-width: 768px) {
   .header {
     height: 70px; 
@@ -235,22 +229,18 @@ body {
     top: 15px; 
   }
 
-  /* Sembunyikan menu desktop */
   .nav__links {
     display: none;
   }
 
-  /* Tunjukkan butang hamburger */
   .nav__hamburger {
     display: flex;
   }
 
-  /* Selaraskan tinggi menu mobile mengikut header 70px */
   .nav__mobile {
     top: 70px;
   }
 
-  /* Gaya penyerlah switch bahasa di dalam menu mobile */
   .mobile-lang-wrapper {
     display: flex !important;
     justify-content: center;
@@ -264,7 +254,6 @@ body {
     padding: 4px 8px;
   }
 }
-/* ── 🛠️ MAIN CONTAINER CONTENT ── */
 .container { 
   max-width: 1100px; 
   margin: 10rem auto 4rem; 
@@ -279,7 +268,6 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Card Section Style */
 .section-card { 
   background: rgba(255, 255, 255, 0.97); 
   padding: 3rem 2.5rem; 
@@ -307,7 +295,6 @@ body {
   margin-bottom: 1.5rem;
 }
 
-/* Sub-grid Maklumat Dalaman (Premium List) */
 .info-list-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -359,13 +346,11 @@ body {
   color: var(--gold);
 }
 
-/* Grid untuk Proses */
 .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin-top: 1.5rem; }
 .step-item { background: rgba(250, 247, 242, 0.8); padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--forest); transition: all 0.25s ease; border-top: 1px solid var(--border); border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 .step-item:hover { transform: translateY(-4px); background: var(--white); box-shadow: 0 8px 20px rgba(3, 43, 29, 0.08); border-color: var(--gold); }
 .step-item h4 { color: var(--forest); margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 700; }
 
-/* Jadual Korporat */
 .table-responsive {
   width: 100%;
   overflow-x: auto;
@@ -409,7 +394,6 @@ body {
   background-color: rgba(191, 161, 95, 0.08) !important;
 }
 
-/* Style Kalkulator */
 .calc-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -445,16 +429,14 @@ body {
 .calc-result h4 { color: #28a745; font-size: 1.1rem; margin-bottom: 0.25rem; }
 .calc-result .total-val { font-size: 1.8rem; font-weight: 800; color: var(--forest); margin-top: 0.25rem; }
 
-/* Accordion FAQ */
-  details { background: rgba(250, 247, 242, 0.8); margin-bottom: 1rem; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); transition: all 0.3s ease; }
-  details[open] { border-color: var(--gold); background: var(--white); box-shadow: 0 4px 12px rgba(3, 43, 29, 0.04); }
-  summary { padding: 1.15rem; font-weight: 600; color: var(--forest); cursor: pointer; outline: none; display: flex; justify-content: space-between; align-items: center; }
-  summary::-webkit-details-marker { display: none; }
-  summary::after { content: '+'; font-size: 1.3rem; color: var(--gold); font-weight: bold; }
-  details[open] summary::after { content: '−'; }
+details { background: rgba(250, 247, 242, 0.8); margin-bottom: 1rem; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); transition: all 0.3s ease; }
+details[open] { border-color: var(--gold); background: var(--white); box-shadow: 0 4px 12px rgba(3, 43, 29, 0.04); }
+summary { padding: 1.15rem; font-weight: 600; color: var(--forest); cursor: pointer; outline: none; display: flex; justify-content: space-between; align-items: center; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: '+'; font-size: 1.3rem; color: var(--gold); font-weight: bold; }
+details[open] summary::after { content: '−'; }
 .faq-content { padding: 1.25rem; background: var(--white); border-top: 1px solid var(--border); font-size: 0.92rem; color: #4a5568; line-height: 1.7; }
 
-/* Premium Quote / Note block */
 .premium-note {
   background: var(--forest);
   color: var(--white);
@@ -465,7 +447,6 @@ body {
 }
 .premium-note p { font-size: 0.9rem; color: var(--gold-pale); }
 
-/* ── RESPONSIVE MOBILE (SEPADAN DENGAN JAVASCRIPT ANDA) ── */
 @media (max-width: 768px) {
   html, body {
     background-image: none !important; 
@@ -481,7 +462,6 @@ body {
 
   .nav__links, .nav__cta { display: none !important; }
 
-  /* MENU HAMBURGER (3 Garisan Putih) */
   .nav__hamburger {
     display: flex !important;
     flex-direction: column;
@@ -502,7 +482,6 @@ body {
     transition: all 0.3s ease;
   }
 
-  /* KOTAK MENU MOBIL */
   .nav__mobile {
     display: none;
     position: fixed;
@@ -518,7 +497,7 @@ body {
     z-index: 999;
   }
 
-  .nav__mobile.open {
+  .nav__mobile.active {
     display: flex !important;
   }
 
@@ -552,7 +531,6 @@ body {
   .why, .services, .process, .audience, .docs { padding: 3.5rem 5%; }
 }
       
-/* ============ FOOTER v2 (matches WasiatKu reference) ============ */
 .site-footer {
   position: relative;
   background: linear-gradient(160deg, #00543d 0%, #004F38 45%, #014a35 100%);
@@ -632,92 +610,11 @@ body {
   .site-footer__badges img.badge--achieve { height: 48px; }
 }
 
-/* ── RESPONSIVE RESPONSIVENESS ── */
 @media (max-width: 992px) {
   .header-logo-wrapper { padding-right: 20px; }
   .nav__links { gap: 1rem; }
   .services__grid { grid-template-columns: repeat(2, 1fr); }
   .footer__container { grid-template-columns: 1.5fr repeat(3, 1fr); gap: 1.5rem; }
-}
-
-@media (max-width: 768px) {
-  .nav__links, .nav__cta { display: none !important; }
-
-  .nav__hamburger {
-    display: flex !important;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 24px;
-    height: 18px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    margin-right: 5%; 
-  }
-
-  .nav__hamburger span {
-    width: 100%;
-    height: 2px;
-    background-color: var(--white);
-    transition: all 0.3s ease;
-  }
-
-  .nav__mobile {
-    display: none; 
-    position: fixed;
-    top: 90px; 
-    left: 0;
-    width: 100%;
-    background-color: var(--forest-md); 
-    padding: 1.5rem;
-    box-sizing: border-box;
-    flex-direction: column;
-    gap: 1.25rem;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-    z-index: 999;
-  }
-
-  .nav__mobile.active {
-    display: flex !important;
-  }
-
-  .nav__mobile a {
-    color: var(--white);
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: 500;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-  }
-
-  .nav__mobile a.active {
-    color: var(--gold-lt);
-  }
-
-  .nav__mobile .nav__cta {
-    display: block !important;
-    text-align: center;
-    background: var(--gold);
-    border: none;
-    margin-top: 0.5rem;
-    padding: 0.75rem;
-    border-radius: 25px;
-  }
-
-  .hero { grid-template-columns: 1fr; padding: 3rem 5% 2rem; min-height: auto; gap: 2.5rem; }
-  .hero__visual { order: -1; }
-  .hero__h1 { font-size: 1.8rem; }
-  .hero__sub { font-size: .9rem; }
-  .why, .services, .process, .audience, .docs { padding: 3.5rem 5%; }
-  .services__grid { grid-template-columns: 1fr; }
-  
-  .footer__container { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
-  .footer__brand { align-items: center; }
-  .footer__logo { align-self: center; }
-  .footer__desc { max-width: 100%; }
-  .footer__bottom { flex-direction: column; text-align: center; margin-top: 2.5rem; }
-  .footer__left-block { flex-direction: column; align-items: flex-start; gap: 1rem; }
 }
 
 @media (max-width: 480px) {
@@ -732,7 +629,6 @@ body {
   .anim.visible { opacity: 1; transform: none; }
 }
 
-    /* ── 🤖 CHATBOT & WHATSAPP FLOATING CONTAINER ── */
     .floating-bot-wrapper {
       position: fixed;
       bottom: 20px;
@@ -755,7 +651,6 @@ body {
       transform: scale(1.08);
     }
 
-    /* 🌟 Suri Avatar (Tanpa bulatan & tanpa latar belakang) */
     .suri-avatar {
       width: 110px;        
       height: 110px;       
@@ -775,7 +670,6 @@ body {
       filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.2)); 
     }
 
-    /* ── Tetingkap Chatbot ── */
     .chatbot-window {
       position: absolute;
       bottom: 125px;      
@@ -825,7 +719,6 @@ body {
     .chat-input { flex: 1; padding: 10px 16px; border: 1px solid #dde8e2; border-radius: 24px; outline: none; font-size: 0.9rem; }
     .chat-send-btn { background: #032b1d; color: #fff; border: none; width: 38px; height: 38px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
 
-    /* Responsif Telefon */
     @media (max-width: 480px) {
       .floating-bot-wrapper { bottom: 15px; right: 15px; }
       .suri-avatar { width: 90px; height: 90px; } 
@@ -838,7 +731,6 @@ body {
 <header class="header">
   <div class="header-left">
     <div class="header-logo-wrapper">
-      <!-- 🌟 Diubah daripada "home.html" kepada URL laman web wasiatku.com -->
       <a href="https://wasiatku.com.my" target="_blank" rel="noopener noreferrer">
         <img src="assets/logo.png" alt="SmartHibah" class="header-logo" />
       </a>
@@ -850,7 +742,6 @@ body {
     <li><a href="pakej.html" data-i18n="nav_pakej">Pakej</a></li>
     <li><a href="panduan.html" class="active" data-i18n="nav_panduan">Panduan</a></li>
     <li><a href="hubungi.html" data-i18n="nav_hubungi">Hubungi Kami</a></li>
-    <!-- AMBIL PERHATIAN: Ini butang baru yang kita tambah -->
     <li class="lang-switcher-item">
       <div class="lang-switcher">
         <button onclick="setLanguage('bm')" id="btn-bm" class="active-lang">BM</button>
@@ -867,12 +758,20 @@ body {
   </button>
 </header>
 
-  <div class="nav__mobile" id="mobileMenu">
+  <!-- MENU MOBILE: id ditukar daripada "mobileMenu" -> "navMobile" supaya padan dengan JS,
+       dan ditambah lang-switcher supaya butang BM/EN turut boleh diakses di telefon -->
+  <div class="nav__mobile" id="navMobile">
     <a href="index.html" data-i18n="nav_home">Laman Utama</a>
     <a href="pakej.html" data-i18n="nav_pakej">Pakej</a>
-    <a href="panduan.html" data-i18n="nav_panduan">Panduan</a>
+    <a href="panduan.html" class="active" data-i18n="nav_panduan">Panduan</a>
     <a href="hubungi.html" data-i18n="nav_hubungi">Hubungi Kami</a>
-    <a href="login.html" class="nav__cta" data-i18n="nav_login_mobile">Login</a>
+    <a href="https://app.mysmartwills.com/portal/?company_id=4" class="nav__cta-mobile nav__cta" data-i18n="nav_login">Login</a>
+
+    <div class="mobile-lang-wrapper">
+      <button onclick="setLanguage('bm')" id="btn-bm-mobile" class="active-lang">BM</button>
+      <span>|</span>
+      <button onclick="setLanguage('en')" id="btn-en-mobile">EN</button>
+    </div>
   </div>
 
   <div class="container">
@@ -1189,7 +1088,6 @@ body {
     <div class="suri-avatar">
       <img src="assets/suri.gif" alt="Suri SmartWills">
     </div>
-    <!-- 🌟 wa-mini-badge dan SVG telah dipadam di sini -->
   </div>
 
   <div class="chatbot-window" id="chatWindow">
@@ -1224,8 +1122,9 @@ body {
   <script src="translation.js"></script>
   <script>
     // Pengendali Menu Hamburger Telefon
+    // FIX: id ditukar daripada 'mobileMenu' -> 'navMobile', class ditukar 'open' -> 'active'
     document.getElementById('hamburger').addEventListener('click', () => {
-      document.getElementById('mobileMenu').classList.toggle('open');
+      document.getElementById('navMobile').classList.toggle('active');
     });
 
     // Fungsi Pengiraan Kalkulator Keperluan Dana
@@ -1233,7 +1132,6 @@ body {
       const hutang = parseFloat(document.getElementById('hutang').value) || 0;
       const belanja = parseFloat(document.getElementById('belanja').value) || 0;
       
-      // Mengira keperluan sara hidup untuk 5 tahun (60 bulan)
       const keperluanSaraHidup = belanja * 12 * 5;
       const total = hutang + keperluanSaraHidup;
       
@@ -1244,51 +1142,35 @@ body {
     const chatTrigger = document.getElementById('chatTrigger');
     const chatWindow = document.getElementById('chatWindow');
     const closeChat = document.getElementById('closeChat');
-    const waLink = document.getElementById('waLink');
+    // FIX: baris "const waLink = document.getElementById('waLink');" dan
+    // "waLink.addEventListener(...)" dibuang kerana elemen ini tak wujud
+    // dalam HTML — ia throw error dan mematikan semua script selepasnya
+    // (termasuk kalkulator dan chat-send button).
 
-    // Klik pada bulatan Suri akan buka/tutup chatbox
     chatTrigger.addEventListener('click', () => {
       chatWindow.classList.toggle('open');
     });
 
-    // Klik pada butang hijau WhatsApp akan direct ke WhatsApp tanpa buka chatbox
-    waLink.addEventListener('click', (e) => {
-      e.stopPropagation(); // Menghalang kotak chatbox Suri daripada terbuka bersama
-    });
-
-    // Butang pangkah untuk tutup chatbox
     closeChat.addEventListener('click', (e) => {
       e.stopPropagation(); 
       chatWindow.classList.remove('open');
     });
 
-    // === DIRECT TERUS KE WHATSAPP SELEPAS TEKAN SEND ===
     const chatInput = document.querySelector('.chat-input');
     const chatSendBtn = document.querySelector('.chat-send-btn');
 
     function sendMessage() {
       const messageText = chatInput.value.trim();
-      
-      // Jika pengguna tidak taip apa-apa, jangan hantar
       if (messageText === '') return;
 
-      // 1. Nombor WhatsApp perniagaan anda (pastikan bermula dengan kod negara 60)
       const phoneNum = "60182209929";
-
-      // 2. Menukar teks taipan menjadi format acuan URL (encode URL)
       const encodedText = encodeURIComponent(messageText);
-
-      // 3. Bina pautan WhatsApp rasmi
       const whatsappUrl = `https://wa.me/${phoneNum}?text=${encodedText}`;
 
-      // 4. Buka tab baru dan hantar mesej ke WhatsApp
       window.open(whatsappUrl, '_blank');
-
-      // 5. Kosongkan semula ruangan input di laman web selepas dihantar
       chatInput.value = '';
     }
 
-    // Kekalkan fungsi trigger butang klik & enter yang sedia ada
     if (chatSendBtn) {
       chatSendBtn.addEventListener('click', sendMessage);
     }
