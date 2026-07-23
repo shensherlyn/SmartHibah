@@ -94,9 +94,8 @@ const i18nTokens = {
     aud_card5_desc: "Mengelak krisis pemilikan syer dengan rakan kongsi selepas ketiadaan anda",
 
     // Video Showcase Section
-    video_label: "",
     video_title: "Mengapa SmartHibah?",
-    video_sub: "",
+  
 
     // Documents Section
     docs_label: "Keperluan",
@@ -322,9 +321,8 @@ const i18nTokens = {
     aud_card5_desc: "Avoiding shareholding crises with business partners in your absence.",
 
     // Video Showcase Section
-    video_label: "",
     video_title: "Why SmartHibah?",
-    video_sub: "",
+
 
     // Documents Section
     docs_label: "Requirements",
