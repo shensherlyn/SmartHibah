@@ -94,9 +94,9 @@ const i18nTokens = {
     aud_card5_desc: "Mengelak krisis pemilikan syer dengan rakan kongsi selepas ketiadaan anda",
 
     // Video Showcase Section
-    video_label: "Lihat Bagaimana Ia Berfungsi",
-    video_title: "Tonton Penjelasan Ringkas SmartHibah",
-    video_sub: "Fahami sepenuhnya bagaimana proses Hibah dapat melindungi masa depan insan tersayang anda dalam masa beberapa minit sahaja.",
+    video_label: "",
+    video_title: "Mengapa SmartHibah?",
+    video_sub: "",
 
     // Documents Section
     docs_label: "Keperluan",
@@ -322,9 +322,9 @@ const i18nTokens = {
     aud_card5_desc: "Avoiding shareholding crises with business partners in your absence.",
 
     // Video Showcase Section
-    video_label: "See How It Works",
-    video_title: "Watch a Quick Overview of SmartHibah",
-    video_sub: "Fully understand how the Hibah process can protect your loved ones' future in just a few minutes.",
+    video_label: "",
+    video_title: "Why SmartHibah?",
+    video_sub: "",
 
     // Documents Section
     docs_label: "Requirements",
