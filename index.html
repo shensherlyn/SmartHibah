@@ -482,7 +482,7 @@
     /* ── VIDEO SHOWCASE (BARU) ── */
     .video-showcase {
       background: linear-gradient(160deg, var(--cream) 0%, #f2ead9 100%);
-      padding: 5.5rem 5%;
+      padding: 5rem 5%;
       position: relative;
       overflow: hidden;
     }
@@ -589,7 +589,6 @@
     }
 
     @media (max-width: 768px) {
-      .video-showcase { padding: 3.5rem 5%; }
       .video-showcase__card { padding: 6px; border-radius: 16px; }
       .video-showcase__ratio { border-radius: 10px; }
       .video-showcase__corner { width: 24px; height: 24px; }
@@ -822,7 +821,7 @@
       .hero__visual { order: -1; }
       .hero__h1 { font-size: 1.8rem; }
       .hero__sub { font-size: .9rem; }
-      .why, .services, .process, .audience, .docs { padding: 3.5rem 5%; }
+      .why, .services, .process, .audience, .docs, .video-showcase { padding: 3.5rem 5%; }
       .services__grid { grid-template-columns: 1fr; }
       
       .footer__container { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
@@ -1211,9 +1210,9 @@
 <!-- ═══════════ VIDEO SHOWCASE (BAHARU) ═══════════ -->
 <section class="video-showcase anim" id="video">
   <div class="video-showcase__inner">
-    <p class="section-label" data-i18n="video_label"></p>
-    <h2 class="section-title" data-i18n="video_title">Mengapa Hibah?</h2>
-   
+    <p class="section-label" data-i18n="video_label">Lihat Bagaimana Ia Berfungsi</p>
+    <h2 class="section-title" data-i18n="video_title">Tonton Penjelasan Ringkas SmartHibah</h2>
+    <p class="section-sub" data-i18n="video_sub">Fahami sepenuhnya bagaimana proses Hibah dapat melindungi masa depan insan tersayang anda dalam masa beberapa minit sahaja.</p>
 
     <div class="video-showcase__frame">
       <div class="video-showcase__glow"></div>
@@ -1226,7 +1225,7 @@
             controls
             playsinline
             preload="metadata">
-            <source src="assets/index1.mp4" type="video/mp4">
+            <source src="assets/smarthibah.mp4" type="video/mp4">
             Pelayar anda tidak menyokong tag video.
           </video>
         </div>
