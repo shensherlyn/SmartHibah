@@ -1,5 +1,8 @@
 // ==========================================================================
-// 🌐 SISTEM DWI-BAHASA (BM / EN) - KAMUS & LOGIK UTAMA (VERSI GABUNGAN LENGKAP)
+// 🌐 SISTEM DWI-BAHASA (BM / EN) + NAV + CHATBOT + ANIMASI
+// SATU-SATUNYA fail JS untuk seluruh laman web. Semua halaman (index,
+// pakej, panduan, hubungi) mesti link fail ni SAHAJA — jangan ada
+// <script> inline lain yang declare setLanguage() atau i18nTokens.
 // ==========================================================================
 
 const i18nTokens = {
@@ -11,7 +14,7 @@ const i18nTokens = {
     nav_hubungi: "Hubungi Kami",
     nav_login: "Login",
     nav_login_mobile: "Log Masuk",
-    
+
     // Hero Section
     hero_badge: "100% Patuh Syariah",
     hero_title: "Lindungi Masa Depan Insan Tersayang Bermula Hari Ini.",
@@ -90,6 +93,11 @@ const i18nTokens = {
     aud_card5_title: "Pemilik Perniagaan",
     aud_card5_desc: "Mengelak krisis pemilikan syer dengan rakan kongsi selepas ketiadaan anda",
 
+    // Video Showcase Section
+    video_label: "Lihat Bagaimana Ia Berfungsi",
+    video_title: "Tonton Penjelasan Ringkas SmartHibah",
+    video_sub: "Fahami sepenuhnya bagaimana proses Hibah dapat melindungi masa depan insan tersayang anda dalam masa beberapa minit sahaja.",
+
     // Documents Section
     docs_label: "Keperluan",
     docs_title: "Dokumen yang Diperlukan",
@@ -153,9 +161,9 @@ const i18nTokens = {
     sec3_title: "Klasifikasi Jenis Harta",
     sec3_desc: "Pastikan aset yang ingin dirancang dikategorikan dengan betul bagi melancarkan proses pengesahan dokumentasi:",
     sec3_c1_title: "A. Harta Tak Alih (Hartanah)",
-    sec3_c1_l1: "Rumah kediaman (Teres, Kondominium, Pangsapuri, Flat) sama ada masih bercagar or telah bebas hutang.",
+    sec3_c1_l1: "Rumah kediaman (Teres, Kondominium, Pangsapuri, Flat) sama ada masih bercagar atau telah bebas hutang.",
     sec3_c1_l2: "Tanah persendirian (Pertanian, Kedai, Komersial) atau tanah lot.",
-    sec3_c1_l3: "*Nota: Status geran individu atau strata mestilah sah and berdaftar.",
+    sec3_c1_l3: "*Nota: Status geran individu atau strata mestilah sah dan berdaftar.",
     sec3_c2_title: "B. Harta Alih (Kewangan & Fizikal)",
     sec3_c2_l1: "Akaun simpanan/semasa di institusi perbankan (Simpanan, Tabung Haji, ASB).",
     sec3_c2_l2: "Portfolio saham tersenarai, Unit Amanah (Unit Trust), dan dana pelaburan patuh syariah.",
@@ -172,7 +180,7 @@ const i18nTokens = {
     doc_l1: "<strong>Kategori Hartanah:</strong> Salinan Geran Hakmilik Sempurna, Perjanjian Jual Beli (SPA), dan Penyata Baki Pembiayaan Perumahan beserta bukti perlindungan MRTT/MLTT.",
     doc_l2: "<strong>Kategori Kewangan:</strong> Salinan buku bank atau penyata akaun rasmi yang memaparkan nombor akaun pemilik dengan jelas.",
     doc_l3: "<strong>Kategori Waris Bawah Umur:</strong> Salinan MyKid/Sijil Kelahiran penerima berserta Kad Pengenalan Pemegang Amanah (Pemegang Amanah) berdaftar yang dilantik.",
-    
+
     // FAQ & Undang-undang (BM)
     sec6_title: "Arkib Soalan Lazim (FAQ) & Bidang Kuasa Undang-Undang",
     q1: "Adakah hibah boleh ditarik balik?",
@@ -188,7 +196,7 @@ const i18nTokens = {
     q6: "Adakah penerima hibah yang masih bayi atau belum berumur 18 tahun boleh menerima aset?",
     a6: "<strong>Boleh.</strong> Bagi memenuhi syarat rukun Qabd (penerimaan atau kawalan harta), pengisytiharan hibah bagi waris di bawah umur (bawah 18 tahun) atau waris kurang upaya (OKU) wajib melantik seorang <strong>Pemegang Amanah</strong> yang akan menguruskan aset tersebut bagi pihak penerima sehingga mereka mencapai umur matang.",
     q7: "Bagaimana status dokumen hibah sekiranya penerima meninggal dunia terlebih dahulu sebelum pemberi?",
-    a7: "Apabila akad hibah telah sempurna dimetrai (berlakunya penyerahan or Qabd), aset tersebut secara rasminya telah bertukar hak milik kepada penerima. Sekiranya penerima meninggal dunia dahulu, aset tersebut akan dikategorikan sebagai harta pusaka penerima dan akan dibahagikan kepada waris-waris penerima mengikut hukum Faraid. Ia tidak akan kembali kepada pemberi asal (melainkan berlaku pembatalan hibah daripada ibu bapa kepada anak ketika masih hidup).",
+    a7: "Apabila akad hibah telah sempurna dimetrai (berlakunya penyerahan atau Qabd), aset tersebut secara rasminya telah bertukar hak milik kepada penerima. Sekiranya penerima meninggal dunia dahulu, aset tersebut akan dikategorikan sebagai harta pusaka penerima dan akan dibahagikan kepada waris-waris penerima mengikut hukum Faraid. Ia tidak akan kembali kepada pemberi asal (melainkan berlaku pembatalan hibah daripada ibu bapa kepada anak ketika masih hidup).",
     q8: "Adakah aset yang berada di luar negara boleh dimasukkan ke dalam sistem SmartHibah?",
     a8: "Sistem SmartHibah dirancang khusus mengikut Enakmen Hibah Kelantan 2022 <strong>di dalam Malaysia sahaja</strong>. Bagi aset di luar negara, ia tertakluk kepada undang-undang dan perlaksanaan di negara terbabit.",
     q9: "Adakah simpanan akaun bersama (Joint Account) di bank boleh dihibahkan?",
@@ -200,7 +208,7 @@ const i18nTokens = {
     q12: "Apakah peranan 2 orang saksi lelaki Muslim di dalam Langkah 4 proses pelaksanaan?",
     a12: "Dua orang saksi berfungsi sebagai ejen pengesahan luaran. Mereka bertanggungjawab menyaksikan bahawa proses penawaran (Ijab) dan penerimaan (Qabul) dokumen berlaku tanpa paksaan, pemberi berada dalam keadaan sihat mental, serta tiada pemalsuan maklumat berlaku sewaktu cetakan fizikal ditandatangani.",
     disclaimer_text: "<strong>Nota Penafian Sempadan Perundangan:</strong> Senarai undang-undang khusus dan keperluan pengisytiharan rasmi adalah tertakluk kepada keputusan Mahkamah Syariah negeri masing-masing. Pihak SmartHibah menyediakan draf bertaraf profesional berdasarkan standard perundangan terkini dengan nota penafian bidang kuasa mutlak mahkamah tersebut.",
-    
+
     // Footer
     footer_cs: "Perkhidmatan Pelanggan",
     footer_email: "Emel",
@@ -313,6 +321,11 @@ const i18nTokens = {
     aud_card5_title: "Business Owners",
     aud_card5_desc: "Avoiding shareholding crises with business partners in your absence.",
 
+    // Video Showcase Section
+    video_label: "See How It Works",
+    video_title: "Watch a Quick Overview of SmartHibah",
+    video_sub: "Fully understand how the Hibah process can protect your loved ones' future in just a few minutes.",
+
     // Documents Section
     docs_label: "Requirements",
     docs_title: "Required Documents",
@@ -333,7 +346,7 @@ const i18nTokens = {
     banner_btn_create: "Start Hibah Declaration",
     banner_btn_wa: "Ask Our Consultant",
 
-   // Panduan & Informasi Tambahan (EN)
+    // Panduan & Informasi Tambahan (EN)
     sec1_title: "Definition & Valid Pillars of Hibah",
     sec1_desc: "In terms of language, <strong>Hibah</strong> means gifting. In terms of Syariah legal context, it refers to a voluntary transfer of property ownership by the owner (Donor) to another party (Recipient) during their lifetime without expecting any consideration (iwad).",
     sec1_subtitle: "4 Essential Pillars of Hibah (Shariah Validity Requirements)",
@@ -395,7 +408,7 @@ const i18nTokens = {
     doc_l1: "<strong>Real Estate Category:</strong> Copy of Perfected Land Title, Sale and Purchase Agreement (SPA), and Housing Loan Balance Statement with proof of MRTT/MLTT coverage.",
     doc_l2: "<strong>Financial Category:</strong> Copy of bank book or official account statement clearly displaying the owner's account number.",
     doc_l3: "<strong>Minor Beneficiary Category:</strong> Copy of recipient's MyKid/Birth Certificate alongside the Identity Card of the appointed registered Trustee.",
-    
+
     // FAQ & Undang-undang (EN)
     sec6_title: "FAQ Archive & Legal Jurisdiction",
     q1: "Can a hibah be revoked?",
@@ -411,7 +424,7 @@ const i18nTokens = {
     q6: "Can a minor or an infant under 18 years old receive hibah assets?",
     a6: "<strong>Yes.</strong> To fulfill the requirement of Qabd (delivery or control of asset), a hibah declaration for minors (under 18) or disabled individuals (OKU) must appoint a <strong>Trustee</strong> to manage the assets until they reach maturity.",
     q7: "What happens to the hibah status if the recipient passes away before the donor?",
-    a7: "Once the hibah contract is fully executed (upon delivery or Qabd), ownership officially passes to the recipient. If the recipient dies first, the asset becomes part of their estate and will be distributed to their heirs via Faraid. It does not revert to the original donor (unless the hibah is revoked by the parent in favour of the child during the parent’s lifetime.).",
+    a7: "Once the hibah contract is fully executed (upon delivery or Qabd), ownership officially passes to the recipient. If the recipient dies first, the asset becomes part of their estate and will be distributed to their heirs via Faraid. It does not revert to the original donor (unless the hibah is revoked by the parent in favour of the child during the parent's lifetime.).",
     q8: "Can overseas assets be registered into the SmartHibah system?",
     a8: "The SmartHibah system is structured Specifically structured based on the Kelantan Hibah Enactment 2022 and applicable <strong>within Malaysia only</strong>. For assets located outside Malaysia, the matter is subject to the laws and enforcement procedures of the relevant country.",
     q9: "Can a banking joint account be given as hibah?",
@@ -423,7 +436,7 @@ const i18nTokens = {
     q12: "What is the role of the 2 Muslim male witnesses in Step 4 of the execution process?",
     a12: "The two witnesses function as external verification agents. They are responsible for testifying that the offer (Ijab) and acceptance (Qabul) occurred without coercion, the donor was of sound mind, and no falsification of data took place when the physical document was signed.",
     disclaimer_text: "<strong>Legal Jurisdiction Disclaimer Note:</strong> Specific legal lists and formal declaration requirements are subject to the rulings of the respective State Syariah Courts. SmartHibah provides professional-grade drafts based on current statutory standards, subject to the absolute discretion of the respective courts.",
-    
+
     // Footer
     footer_cs: "Customer Service",
     footer_email: "Email",
@@ -451,17 +464,18 @@ const i18nTokens = {
   }
 };
 
-// Fungsi Utama Penukaran Bahasa (Telah Digabungkan & Diperbaiki)
+/* ---------------------------------------------------------------------
+   FUNGSI UTAMA PENUKARAN BAHASA
+   --------------------------------------------------------------------- */
 function setLanguage(lang) {
   const elements = document.querySelectorAll('[data-i18n]');
-  
+
   elements.forEach(element => {
     const tokenKey = element.getAttribute('data-i18n');
-    
+
     if (i18nTokens[lang] && i18nTokens[lang][tokenKey]) {
       let textValue = i18nTokens[lang][tokenKey];
-      
-      // Logik Khas bagi pengekalan penggantian gaya elemen 'hero_title'
+
       if (tokenKey === 'hero_title') {
         if (lang === 'bm') {
           textValue = textValue.replace("Bermula Hari Ini.", '<em style="color: var(--gold-lt); font-style: normal; text-shadow: 1px 1px 8px rgba(0,0,0,0.9);">Bermula Hari Ini.</em>');
@@ -469,47 +483,140 @@ function setLanguage(lang) {
           textValue = textValue.replace("Starting Today.", '<em style="color: var(--gold-lt); font-style: normal; text-shadow: 1px 1px 8px rgba(0,0,0,0.9);">Starting Today.</em>');
         }
         element.innerHTML = textValue;
-      } 
-      // Jika teks mengandungi kod HTML lain (seperti <strong>, <br />), gunakan innerHTML
+      }
       else if (textValue.includes('<')) {
         element.innerHTML = textValue;
-      } 
-      // Untuk teks biasa, gunakan textContent bagi mengelakkan isu keselamatan XSS
+      }
       else {
         element.textContent = textValue;
       }
     }
   });
 
-  // Kemaskini UI gaya butang aktif
   updateButtonUI(lang);
 
-  // Simpan pilihan bahasa pengguna di dalam storan pelayar (Browser Storage)
-  localStorage.setItem('userLanguage', lang);
+  try {
+    localStorage.setItem('userLanguage', lang);
+  } catch (e) {}
 }
 
-// Fungsi tambahan untuk menguruskan kelas CSS aktif pada butang penukar bahasa
+/* ---------------------------------------------------------------------
+   UI BUTANG BM/EN — FIX: sekarang toggle KEDUA-DUA versi desktop
+   (btn-bm/btn-en) DAN mobile (btn-bm-mobile/btn-en-mobile). Ini punca
+   sebenar kenapa underline tak berpindah di telefon sebelum ni.
+   --------------------------------------------------------------------- */
 function updateButtonUI(lang) {
-  const btnBm = document.getElementById('btn-bm');
-  const btnEn = document.getElementById('btn-en');
-  if (btnBm && btnEn) {
-    if (lang === 'bm') {
-      btnBm.classList.add('active-lang');
-      btnEn.classList.remove('active-lang');
-    } else {
-      btnEn.classList.add('active-lang');
-      btnBm.classList.remove('active-lang');
-    }
-  }
-  
-  // Sokongan alternatif kod bawah anda (?.)
-  document.getElementById('btn-bm')?.classList.toggle('active-lang', lang === 'bm');
-  document.getElementById('btn-en')?.classList.toggle('active-lang', lang === 'en');
+  const isBm = lang === 'bm';
+  const idsBm = ['btn-bm', 'btn-bm-mobile'];
+  const idsEn = ['btn-en', 'btn-en-mobile'];
+
+  idsBm.forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.classList.toggle('active-lang', isBm);
+  });
+  idsEn.forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.classList.toggle('active-lang', !isBm);
+  });
 }
 
-// Jalankan fungsi sebaik sahaja dokumen web siap dimuat naik
+/* ---------------------------------------------------------------------
+   AUTO-LOAD BAHASA TERSIMPAN — jalan di SETIAP halaman supaya pilihan
+   bahasa "ikut" user bila dia navigate antara pages.
+   --------------------------------------------------------------------- */
 document.addEventListener('DOMContentLoaded', () => {
-  // Menyokong semakan untuk kedua-dua key yang pernah tersimpan bagi mengelakkan isu 'undefined'
-  const savedLang = localStorage.getItem('userLanguage') || localStorage.getItem('preferredLang') || 'bm';
+  let savedLang = 'bm';
+  try {
+    savedLang = localStorage.getItem('userLanguage') || 'bm';
+  } catch (e) {}
   setLanguage(savedLang);
+});
+
+/* =======================================================================
+   MENU HAMBURGER (mobile)
+   ======================================================================= */
+document.addEventListener('DOMContentLoaded', () => {
+  const hamburgerBtn = document.getElementById('hamburger');
+  if (hamburgerBtn) {
+    hamburgerBtn.addEventListener('click', () => {
+      const mobileNav = document.getElementById('navMobile');
+      if (mobileNav) {
+        mobileNav.classList.toggle('active');
+      }
+    });
+  }
+});
+
+/* =======================================================================
+   CHATBOT SURI & WHATSAPP
+   ======================================================================= */
+document.addEventListener('DOMContentLoaded', () => {
+  const chatTrigger = document.getElementById('chatTrigger');
+  const chatWindow = document.getElementById('chatWindow');
+  const closeChat = document.getElementById('closeChat');
+
+  if (chatTrigger && chatWindow) {
+    chatTrigger.addEventListener('click', () => {
+      chatWindow.classList.toggle('open');
+    });
+  }
+
+  if (closeChat && chatWindow) {
+    closeChat.addEventListener('click', (e) => {
+      e.stopPropagation();
+      chatWindow.classList.remove('open');
+    });
+  }
+
+  const chatInput = document.querySelector('.chat-input');
+  const chatSendBtn = document.querySelector('.chat-send-btn');
+
+  function sendMessage() {
+    if (!chatInput) return;
+    const messageText = chatInput.value.trim();
+    if (messageText === '') return;
+
+    const phoneNum = "60182209929";
+    const encodedText = encodeURIComponent(messageText);
+    const whatsappUrl = `https://wa.me/${phoneNum}?text=${encodedText}`;
+
+    window.open(whatsappUrl, '_blank');
+    chatInput.value = '';
+  }
+
+  if (chatSendBtn) {
+    chatSendBtn.addEventListener('click', sendMessage);
+  }
+
+  if (chatInput) {
+    chatInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        sendMessage();
+      }
+    });
+  }
+});
+
+/* =======================================================================
+   REVEAL ANIMASI (.anim) BILA SCROLL — untuk index.html terutamanya
+   ======================================================================= */
+document.addEventListener('DOMContentLoaded', () => {
+  const animElements = document.querySelectorAll('.anim');
+  if (!animElements.length) return;
+
+  if (!('IntersectionObserver' in window)) {
+    animElements.forEach(el => el.classList.add('visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  animElements.forEach(el => observer.observe(el));
 });
