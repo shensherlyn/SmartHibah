@@ -179,60 +179,59 @@
       font-weight: 600;
     }
 
-    .nav__mobile.open { display: flex; }
-    /* ==========================================
-   TAMBAHAN CSS UNTUK BUTANG BAHASA (BM/EN)
-   ========================================== */
+    .nav__mobile.active { display: flex; }
 
-.lang-switcher-item {
-  display: inline-flex;
-  align-items: center;
-}
+    /* ── LANG SWITCHER ── */
+    .lang-switcher-item {
+      display: inline-flex;
+      align-items: center;
+    }
 
-.lang-switcher {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-}
+    .lang-switcher {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
 
-.lang-switcher span {
-  color: rgba(255, 255, 255, 0.4);
-  font-size: 0.875rem;
-  user-select: none;
-}
+    .lang-switcher span {
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 0.875rem;
+      user-select: none;
+    }
 
-.lang-switcher button {
-  background: none;
-  border: none;
-  color: rgba(255, 255, 255, 0.8);
-  font-family: inherit;
-  font-size: 0.875rem;
-  font-weight: 500;
-  cursor: pointer;
-  padding: 2px 4px;
-  transition: color 0.2s, border-color 0.2s;
-  outline: none;
-  border-bottom: 2px solid transparent;
-}
+    .lang-switcher button {
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, 0.8);
+      font-family: inherit;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 2px 4px;
+      transition: color 0.2s, border-color 0.2s;
+      outline: none;
+      border-bottom: 2px solid transparent;
+    }
 
-.lang-switcher button:hover {
-  color: var(--gold-lt);
-}
+    .lang-switcher button:hover {
+      color: var(--gold-lt);
+    }
 
-.lang-switcher button.active-lang {
-  color: var(--gold-lt);
-  font-weight: 600;
-  border-bottom: 2px solid var(--gold-lt);
-}
+    .lang-switcher button.active-lang {
+      color: var(--gold-lt);
+      font-weight: 600;
+      border-bottom: 2px solid var(--gold-lt);
+    }
 
-@media (max-width: 768px) {
-  .lang-switcher-item {
-    margin-top: 0.5rem;
-  }
-  .lang-switcher button {
-    font-size: 1rem;
-  }
-}
+    @media (max-width: 768px) {
+      .lang-switcher-item {
+        margin-top: 0.5rem;
+      }
+      .lang-switcher button {
+        font-size: 1rem;
+      }
+    }
+
     /* ── HERO ── */
     .hero {
       background: linear-gradient(135deg, var(--forest) 0%, var(--forest-md) 55%, #1e4a32 100%);
@@ -479,6 +478,123 @@
     .audience__icon svg { width: 26px; height: 26px; fill: var(--gold); }
     .audience__card h3 { font-size: .875rem; font-weight: 700; color: var(--forest); margin-bottom: .3rem; }
     .audience__card p { font-size: .78rem; color: var(--muted); line-height: 1.5; }
+
+    /* ── VIDEO SHOWCASE (BARU) ── */
+    .video-showcase {
+      background: linear-gradient(160deg, var(--cream) 0%, #f2ead9 100%);
+      padding: 5.5rem 5%;
+      position: relative;
+      overflow: hidden;
+    }
+    .video-showcase::before {
+      content: '';
+      position: absolute;
+      top: -80px; left: -80px;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(191,161,95,.15), transparent 70%);
+      pointer-events: none;
+    }
+    .video-showcase::after {
+      content: '';
+      position: absolute;
+      bottom: -100px; right: -100px;
+      width: 340px; height: 340px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(3,43,29,.08), transparent 70%);
+      pointer-events: none;
+    }
+    .video-showcase__inner {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .video-showcase__frame {
+      position: relative;
+      margin-top: 2.5rem;
+    }
+    .video-showcase__glow {
+      position: absolute;
+      inset: -18px;
+      background: radial-gradient(ellipse at center, rgba(191,161,95,.35), transparent 70%);
+      filter: blur(28px);
+      z-index: 0;
+      pointer-events: none;
+    }
+    .video-showcase__card {
+      position: relative;
+      z-index: 1;
+      background: var(--forest);
+      border-radius: 22px;
+      padding: 10px;
+      box-shadow: 0 30px 70px rgba(3, 43, 29, .28);
+      border: 1px solid rgba(191, 161, 95, .35);
+    }
+    .video-showcase__ratio {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #000;
+    }
+    .video-showcase__ratio video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .video-showcase__corner {
+      position: absolute;
+      width: 34px;
+      height: 34px;
+      border: 3px solid var(--gold-lt);
+      z-index: 2;
+      pointer-events: none;
+    }
+    .video-showcase__corner--tl {
+      top: -8px; left: -8px;
+      border-right: none; border-bottom: none;
+      border-top-left-radius: 10px;
+    }
+    .video-showcase__corner--br {
+      bottom: -8px; right: -8px;
+      border-left: none; border-top: none;
+      border-bottom-right-radius: 10px;
+    }
+    .video-showcase__badge {
+      position: absolute;
+      top: 18px; left: 18px;
+      z-index: 3;
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      background: rgba(3, 43, 29, .78);
+      backdrop-filter: blur(6px);
+      color: var(--gold-lt);
+      padding: .35rem .85rem;
+      border-radius: 20px;
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+    .video-showcase__badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--gold-lt);
+      display: inline-block;
+    }
+
+    @media (max-width: 768px) {
+      .video-showcase { padding: 3.5rem 5%; }
+      .video-showcase__card { padding: 6px; border-radius: 16px; }
+      .video-showcase__ratio { border-radius: 10px; }
+      .video-showcase__corner { width: 24px; height: 24px; }
+      .video-showcase__badge { font-size: .65rem; padding: .3rem .7rem; top: 12px; left: 12px; }
+    }
 
     /* ── DOCUMENTS ── */
     .docs { 
@@ -835,7 +951,6 @@
 <header class="header">
   <div class="header-left">
     <div class="header-logo-wrapper">
-      <!-- 🌟 Diubah daripada "home.html" kepada URL laman web wasiatku.com -->
       <a href="https://wasiatku.com.my" target="_blank" rel="noopener noreferrer">
         <img src="assets/logo.png" alt="SmartHibah" class="header-logo" />
       </a>
@@ -1093,6 +1208,33 @@
   </div>
 </section>
 
+<!-- ═══════════ VIDEO SHOWCASE (BAHARU) ═══════════ -->
+<section class="video-showcase anim" id="video">
+  <div class="video-showcase__inner">
+    <p class="section-label" data-i18n="video_label">Lihat Bagaimana Ia Berfungsi</p>
+    <h2 class="section-title" data-i18n="video_title">Tonton Penjelasan Ringkas SmartHibah</h2>
+    <p class="section-sub" data-i18n="video_sub">Fahami sepenuhnya bagaimana proses Hibah dapat melindungi masa depan insan tersayang anda dalam masa beberapa minit sahaja.</p>
+
+    <div class="video-showcase__frame">
+      <div class="video-showcase__glow"></div>
+      <div class="video-showcase__card">
+        <div class="video-showcase__ratio">
+          <span class="video-showcase__badge">SmartHibah</span>
+          <span class="video-showcase__corner video-showcase__corner--tl"></span>
+          <span class="video-showcase__corner video-showcase__corner--br"></span>
+          <video
+            controls
+            playsinline
+            preload="metadata">
+            <source src="assets/smarthibah.mp4" type="video/mp4">
+            Pelayar anda tidak menyokong tag video.
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="docs" id="keperluan">
   <p class="section-label anim" data-i18n="docs_label">Keperluan</p>
   <h2 class="section-title anim" data-i18n="docs_title">Dokumen yang Diperlukan</h2>
@@ -1206,7 +1348,6 @@
     <div class="suri-avatar">
       <img src="assets/suri.gif" alt="Suri SmartWills">
     </div>
-    <!-- 🌟 wa-mini-badge dan SVG telah dipadam di sini -->
   </div>
 
   <div class="chatbot-window" id="chatWindow">
@@ -1238,101 +1379,8 @@
   </div>
 </div>
 
-  <script>
-    // Reveal elemen .anim bila ia masuk dalam viewport semasa scroll
-document.addEventListener('DOMContentLoaded', () => {
-  const animElements = document.querySelectorAll('.anim');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target); // reveal sekali sahaja
-      }
-    });
-  }, { threshold: 0.1 });
-
-  animElements.forEach(el => observer.observe(el));
-});
-  // 1️⃣ Pengendali Menu Hamburger (Diperkemas untuk navMobile)
-  const hamburgerBtn = document.getElementById('hamburger');
-  if (hamburgerBtn) {
-    hamburgerBtn.addEventListener('click', () => {
-      // Menyokong navMobile (standard baru) atau mobileMenu (versi lama)
-      const mobileNav = document.getElementById('navMobile') || document.getElementById('mobileMenu');
-      if (mobileNav) {
-        mobileNav.classList.toggle('open');
-      }
-    });
-  }
-
-  // 3️⃣ Pengendali Chatbot Suri & WhatsApp
-  const chatTrigger = document.getElementById('chatTrigger');
-  const chatWindow = document.getElementById('chatWindow');
-  const closeChat = document.getElementById('closeChat');
-  const waLink = document.getElementById('waLink');
-
-  // Klik pada bulatan Suri akan buka/tutup chatbox
-  if (chatTrigger && chatWindow) {
-    chatTrigger.addEventListener('click', () => {
-      chatWindow.classList.toggle('open');
-    });
-  }
-
-  // Klik pada WhatsApp badge (sekiranya wujud)
-  if (waLink) {
-    waLink.addEventListener('click', (e) => {
-      e.stopPropagation(); // Menghalang kotak chatbox Suri daripada terbuka bersama
-    });
-  }
-
-  // Butang pangkah untuk tutup chatbox
-  if (closeChat && chatWindow) {
-    closeChat.addEventListener('click', (e) => {
-      e.stopPropagation(); 
-      chatWindow.classList.remove('open');
-    });
-  }
-
-  // 4️⃣ Direct Terus Ke WhatsApp Selepas Tekan Send
-  const chatInput = document.querySelector('.chat-input');
-  const chatSendBtn = document.querySelector('.chat-send-btn');
-
-  function sendMessage() {
-    if (!chatInput) return;
-    const messageText = chatInput.value.trim();
-    
-    // Jika pengguna tidak taip apa-apa, jangan hantar
-    if (messageText === '') return;
-
-    // Nombor WhatsApp perniagaan
-    const phoneNum = "60182209929";
-
-    // Menukar teks taipan menjadi format acuan URL (encode URL)
-    const encodedText = encodeURIComponent(messageText);
-
-    // Bina pautan WhatsApp rasmi
-    const whatsappUrl = `https://wa.me/${phoneNum}?text=${encodedText}`;
-
-    // Buka tab baru dan hantar mesej ke WhatsApp
-    window.open(whatsappUrl, '_blank');
-
-    // Kosongkan semula ruangan input
-    chatInput.value = '';
-  }
-
-  // Event listener untuk butang Hantar & Kekunci Enter
-  if (chatSendBtn) {
-    chatSendBtn.addEventListener('click', sendMessage);
-  }
-
-  if (chatInput) {
-    chatInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
-        sendMessage();
-      }
-    });
-  }
-</script>
+  <!-- SATU-SATUNYA sumber JS. Tiada <script> inline lain — semua logik
+       (bahasa, hamburger, chatbot, reveal animasi) ada dalam script.js -->
   <script src="script.js"></script>
 </body>
 </html>
