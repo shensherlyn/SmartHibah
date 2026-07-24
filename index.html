@@ -448,15 +448,55 @@
       background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1);
       border-radius: var(--radius); padding: 2rem 1.5rem; text-align: center;
       position: relative;
+      transition: transform .25s ease, background .25s ease, border-color .25s ease;
+    }
+    .process__step:hover {
+      transform: translateY(-6px);
+      background: rgba(255,255,255,.08);
+      border-color: rgba(191,161,95,.35);
+    }
+    .process__img-wrap {
+      position: relative;
+      width: 116px;
+      height: 116px;
+      margin: 0 auto 1.5rem;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 2px solid rgba(191, 161, 95, .45);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, .35);
+      transition: transform .25s ease, border-color .25s ease;
+    }
+    .process__step:hover .process__img-wrap {
+      transform: scale(1.04);
+      border-color: var(--gold-lt);
+    }
+    .process__img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
     .process__num {
-      width: 44px; height: 44px; border-radius: 50%;
-      background: var(--gold); color: var(--white);
-      font-weight: 800; font-size: 1rem;
-      display: grid; place-items: center; margin: 0 auto 1rem;
+      position: absolute;
+      bottom: -10px;
+      right: -10px;
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: var(--white);
+      font-weight: 800; font-size: .92rem;
+      display: flex; align-items: center; justify-content: center;
+      border: 3px solid var(--forest);
+      box-shadow: 0 4px 12px rgba(0,0,0,.35);
+      z-index: 2;
     }
     .process__step h3 { color: var(--white); font-size: .95rem; font-weight: 700; margin-bottom: .5rem; }
     .process__step p { color: rgba(255,255,255,.6); font-size: .83rem; line-height: 1.6; }
+
+    @media (max-width: 480px) {
+      .process__img-wrap { width: 96px; height: 96px; }
+      .process__num { width: 28px; height: 28px; font-size: .8rem; }
+    }
 
     /* ── AUDIENCE ── */
     .audience { padding: 5rem 5%; background: var(--cream); }
@@ -479,7 +519,7 @@
     .audience__card h3 { font-size: .875rem; font-weight: 700; color: var(--forest); margin-bottom: .3rem; }
     .audience__card p { font-size: .78rem; color: var(--muted); line-height: 1.5; }
 
-    /* ── VIDEO SHOWCASE (BARU) ── */
+    /* ── VIDEO SHOWCASE ── */
     .video-showcase {
       background: linear-gradient(160deg, var(--cream) 0%, #f2ead9 100%);
       padding: 5rem 5%;
@@ -627,9 +667,40 @@
     .docs__item {
       background: var(--forest); border-radius: var(--radius);
       padding: 1.5rem; color: var(--white);
+      transition: transform .25s ease, border-color .25s ease, background .25s ease;
+      border: 1px solid transparent;
+    }
+    .docs__item:hover {
+      transform: translateY(-6px);
+      border-color: rgba(191,161,95,.4);
+      background: #0a3524;
+    }
+    .docs__img-wrap {
+      width: 84px;
+      height: 84px;
+      margin: 0 0 1.1rem;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 2px solid rgba(191, 161, 95, .5);
+      box-shadow: 0 12px 26px rgba(0, 0, 0, .4);
+      transition: transform .25s ease, border-color .25s ease;
+    }
+    .docs__item:hover .docs__img-wrap {
+      transform: scale(1.05);
+      border-color: var(--gold-lt);
+    }
+    .docs__img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
     .docs__item h3 { font-size: .9rem; font-weight: 700; color: var(--gold-lt); margin-bottom: .5rem; }
     .docs__item p { font-size: .83rem; color: rgba(255,255,255,.75); line-height: 1.6; }
+
+    @media (max-width: 480px) {
+      .docs__img-wrap { width: 68px; height: 68px; }
+    }
     
     .docs__note {
       text-align: center; margin-top: 1.5rem;
@@ -1142,22 +1213,34 @@
   <p class="section-sub anim" data-i18n="step_sub">Miliki dokumen rasmi tanpa urusan pejabat yang merumitkan.</p>
   <div class="process__steps">
     <article class="process__step anim">
-      <div class="process__num">1</div>
+      <div class="process__img-wrap">
+        <img src="assets/step1.jpg" alt="Maklumat Aset">
+        <div class="process__num">1</div>
+      </div>
       <h3 data-i18n="step1_title">Maklumat Aset</h3>
       <p data-i18n="step1_desc">Daftar dan senaraikan aset seperti rumah, tanah atau simpanan yang ingin dihibahkan.</p>
     </article>
     <article class="process__step anim" style="transition-delay:.1s">
-      <div class="process__num">2</div>
+      <div class="process__img-wrap">
+        <img src="assets/step2.jpg" alt="Senarai Penerima">
+        <div class="process__num">2</div>
+      </div>
       <h3 data-i18n="step2_title">Senarai Penerima</h3>
       <p data-i18n="step2_desc">Namakan individu (isteri, anak, anak angkat) yang akan menerima aset tersebut.</p>
     </article>
     <article class="process__step anim" style="transition-delay:.2s">
-      <div class="process__num">3</div>
+      <div class="process__img-wrap">
+        <img src="assets/step3.jpg" alt="Penyediaan Dokumen">
+        <div class="process__num">3</div>
+      </div>
       <h3 data-i18n="step3_title">Penyediaan Dokumen</h3>
       <p data-i18n="step3_desc">Panel peguam kami akan menyediakan draf dokumen Deklarasi Hibah yang patuh Syariah.</p>
     </article>
     <article class="process__step anim" style="transition-delay:.3s">
-      <div class="process__num">4</div>
+      <div class="process__img-wrap">
+        <img src="assets/step4.jpg" alt="Pengesahan Rasmi">
+        <div class="process__num">4</div>
+      </div>
       <h3 data-i18n="step4_title">Pengesahan Rasmi</h3>
       <p data-i18n="step4_desc">Semak dokumen, setuju terma, dan tandatangan bersama dua orang saksi yang layak.</p>
     </article>
@@ -1207,7 +1290,7 @@
   </div>
 </section>
 
-<!-- ═══════════ VIDEO SHOWCASE (BAHARU) ═══════════ -->
+<!-- ═══════════ VIDEO SHOWCASE ═══════════ -->
 <section class="video-showcase anim" id="video">
   <div class="video-showcase__inner">
     <h2 class="section-title" data-i18n="video_title">Tonton Penjelasan Ringkas SmartHibah</h2>
@@ -1238,18 +1321,30 @@
   <p class="section-sub anim" data-i18n="docs_sub">Sediakan salinan dokumen berikut untuk kelancaran penyediaan draf.</p>
   <div class="docs__grid">
     <div class="docs__item anim">
+      <div class="docs__img-wrap">
+        <img src="assets/doc1.jpg" alt="Pengenalan Diri">
+      </div>
       <h3 data-i18n="docs_item1_title">Pengenalan Diri</h3>
       <p data-i18n="docs_item1_desc">MyKad bagi pihak Pemberi (anda) dan Penerima Hibah berserta saksi-saksi.</p>
     </div>
     <div class="docs__item anim" style="transition-delay:.08s">
+      <div class="docs__img-wrap">
+        <img src="assets/doc2.jpg" alt="Bukti Pemilikan Aset">
+      </div>
       <h3 data-i18n="docs_item2_title">Bukti Pemilikan Aset</h3>
       <p data-i18n="docs_item2_desc">Salinan Geran Tanah, Hakmilik Strata, buku akaun, atau geran kenderaan berkaitan.</p>
     </div>
     <div class="docs__item anim" style="transition-delay:.16s">
+      <div class="docs__img-wrap">
+        <img src="assets/doc3.jpg" alt="Dokumen Hubungan">
+      </div>
       <h3 data-i18n="docs_item3_title">Dokumen Hubungan</h3>
       <p data-i18n="docs_item3_desc">Sijil Perkahwinan atau Sijil Kelahiran jika penerima adalah ahli keluarga kandung.</p>
     </div>
     <div class="docs__item anim" style="transition-delay:.24s">
+      <div class="docs__img-wrap">
+        <img src="assets/doc4.jpg" alt="Surat Pembiayaan">
+      </div>
       <h3 data-i18n="docs_item4_title">Surat Pembiayaan (Hutang)</h3>
       <p data-i18n="docs_item4_desc">Penyata pinjaman terkini jika rumah/aset tersebut masih dalam pembiayaan bank.</p>
     </div>
